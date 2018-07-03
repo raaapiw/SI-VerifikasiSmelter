@@ -11,74 +11,55 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+
+    public function index(){
+        return redirect()->route('login');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function login(){
+        return view('login');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function postLogin(Request $request){
+        try{
+            Sentinel::authenticate($request->all());
+            if(Sentinel::check()){
+                if(Sentinel::getUser()->roles()->first()->slug == 'superAdmin')
+                    return redirect()->route('superAdmin.dashboard');
+                elseif(Sentinel::getUser()->roles()->first()->slug == 'admin')
+                    return redirect()->route('admin.dashboard');
+                elseif(Sentinel::getUser()->roles()->first()->slug == 'minerba')
+                    return redirect()->route('minerba.dashboard');
+                else
+                    return redirect()->route('client.dashboard');
+            }else{
+                throw new WrongCredentialException("Username atau Password salah");
+            }
+        } catch (WrongCredentialException $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+        } catch (ThrottlingException $e) {
+            $delay = $e->getDelay();
+            return redirect()->back()->with(['error' => "You are banned for $delay seconds."]);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function postLogout()
     {
-        //
+        Sentinel::logout();
+        return redirect()->route('login');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function get() 
     {
-        //
+        $user = Sentinel::getUser();
+        $notifications = $user->unreadNotifications;
+        // dd($notifications);
+        return $notifications;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function read(Request $request){
+        Sentinel::getUser()->unreadNotifications()->find($request->id)->markAsRead();
+        return 'succes';
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

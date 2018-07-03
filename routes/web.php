@@ -10,7 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => 'visitor'], function() {
+    Route::get('/login', 'UserController@login')->name('login');
+    Route::post('/login', 'UserController@postLogin')->name('postLogin');
 
-Route::get('/', function () {
-    return view('welcome');
 });
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
