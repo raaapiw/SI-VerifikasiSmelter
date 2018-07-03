@@ -8,7 +8,6 @@ class Work extends Model
 {
     //
     protected $fillable =[
-        'id',
         'curva_s',
         'evidence',
     ];

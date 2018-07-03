@@ -8,7 +8,6 @@ class Report extends Model
 {
     //
     protected $fillable =[
-        'id',
         'report',
         'covering_letter',
         'receipt',

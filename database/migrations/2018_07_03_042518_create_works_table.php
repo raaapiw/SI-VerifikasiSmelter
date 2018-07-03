@@ -15,7 +15,15 @@ class CreateWorksTable extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('order_id')->unsigned();
+            $table->string('curva_s')->nullable();
+            $table->string('evidence');
+
             $table->timestamps();
+
+            $table->foreign('order_id')
+            ->references('id')->on('orders')
+            ->onDelete('cascade');
         });
     }
 

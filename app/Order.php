@@ -8,7 +8,6 @@ class Order extends Model
 {
     //
     protected $fillable =[
-        'id',
         'offer_letter',
         'dp_invoice',
         'transfer_proof',
