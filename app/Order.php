@@ -26,5 +26,8 @@ class Order extends Model
     {
         return $this->hasOne(Report::class);
     }
+    public function clients(){
+        return $this->belongsTo(Client::class);
+    }
 
 }

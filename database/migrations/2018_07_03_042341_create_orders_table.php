@@ -15,10 +15,17 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('client_id')->unsigned();
             $table->string('offer_letter');
             $table->string('dp_invoice');
             $table->string('transfer_proof');
             $table->string('companion_letter');
+
+            $table->timestamps();
+
+            $table->foreign('client_id')
+            ->references('id')->on('orders')
+            ->onDelete('cascade');
         });
     }
 
