@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('offer_letter');
             $table->string('dp_invoice');
             $table->string('transfer_proof');
+            $table->string('letter_of_request');
             $table->string('companion_letter');
 
             $table->timestamps();

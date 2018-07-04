@@ -23,6 +23,7 @@ class OrdersTableSeeder extends Seeder
                 'dp_invoice' => $faker->text($maxNbChars = 190), 
                 'transfer_proof' => $faker->text($maxNbChars = 190),
                 'companion_letter' => $faker->text($maxNbChars = 190),  
+                'letter_of_request' => $faker->text($maxNbChars = 190),  
                 'created_at' => $faker->date($format = 'Y-m-d', $max = 'now')       
             ]);
         }

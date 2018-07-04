@@ -371,8 +371,7 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="#">Surat Penawaran</a></li>
-                                        <li><a href="#">Invoice DP</a></li>
+                                        <li><a href="{{ route('admin.order.addOffer')}}">Surat Penawaran</a></li>
                                         <li><a href="#"> List Pemesanan</a></li>
                                         
                                     </ul>
@@ -380,7 +379,7 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="#">BAP</a></li>
+                                        <li><a href="#">Berita Acara</a></li>
                                         <li><a href="#">List Pertemuan</a></li>
                                         
                                     </ul>
@@ -411,23 +410,7 @@
                                 
                                 
                                 
-                                <li>
-                                    {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="javascript:void(0)">item 1.1</a></li>
-                                        <li><a href="javascript:void(0)">item 1.2</a></li>
-                                        <li>
-                                            <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
-                                            <ul aria-expanded="false" class="collapse">
-                                                <li><a href="javascript:void(0)">item 1.3.1</a></li>
-                                                <li><a href="javascript:void(0)">item 1.3.2</a></li>
-                                                <li><a href="javascript:void(0)">item 1.3.3</a></li>
-                                                <li><a href="javascript:void(0)">item 1.3.4</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">item 1.4</a></li>
-                                    </ul>
-                                </li>
+                                
                             </ul>
                         @elseif(Sentinel::getUser()->roles()->first()->slug == 'minerba')
                         <ul id="sidebarnav">
@@ -475,6 +458,15 @@
                                 <li>
                                     <a href="{{ route('client.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
                                 </li>
+                                <li>
+                                        <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
+                                        <ul aria-expanded="false" class="collapse">
+                                                <li><a href="{{ route('client.order.uploadOffer', Sentinel::getUser()->id)}}">Surat Permintaan</a></li>
+                                                <li><a href="{{ route('client.order.listDp', Sentinel::getUser()->id )}}">Bukti Pembayaran DP</a></li>
+                                            <li><a href="#"> List Permintaan</a></li>
+                                            
+                                        </ul>
+                                    </li>
                                 {{-- <li>
                                     <a href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Diagnosis</span></a>
                                     <ul aria-expanded="false" class="collapse">
