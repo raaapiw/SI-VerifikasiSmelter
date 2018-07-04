@@ -4,6 +4,8 @@ namespace App\Http\Controllers\superAdmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use Sentinel;
 
 class MinerbaController extends Controller
 {
@@ -14,7 +16,9 @@ class MinerbaController extends Controller
      */
     public function index()
     {
-        //
+        $role = Sentinel::findRoleById(3);
+        $minerbas = $role->users()->with('roles')->get();
+        return view('pages.superAdmin.minerba.list', compact('minerbas'));
     }
 
     /**
@@ -24,7 +28,7 @@ class MinerbaController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.superAdmin.minerba.form');
     }
 
     /**
@@ -35,7 +39,19 @@ class MinerbaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'name'      => $request->name,
+            'gender'    => $request->gender,
+            'email'     => $request->email,
+            'username'  => $request->username,
+            'password'  => $request->password,
+        ];
+
+        $user = Sentinel::registerAndActivate($data);
+        $role = Sentinel::findRoleBySlug('minerba');
+        $user->roles()->attach($role);
+
+        return redirect()->route('superAdmin.minerba.list');
     }
 
     /**
@@ -57,7 +73,8 @@ class MinerbaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $minerba = User::find($id);
+        return view('pages.superAdmin.minerba.form', compact('minerba'));
     }
 
     /**
@@ -69,7 +86,17 @@ class MinerbaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            'name'      => $request->name,
+            'gender'    => $request->gender,
+            'email'     => $request->email,
+            'password'  => $request->password,
+        ];
+
+        $user = Sentinel::findById($id);
+        $user->update($data);
+        
+        return redirect()->route('superAdmin.minerba.list');
     }
 
     /**
@@ -80,6 +107,8 @@ class MinerbaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $minerba = User::find($id);
+        $minerba->delete();
+        return redirect()->route('superAdmin.minerba.list');
     }
 }

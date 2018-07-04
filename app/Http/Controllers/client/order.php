@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\superAdmin;
+namespace App\Http\Controllers\client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
-use Sentinel;
 
-class ClientController extends Controller
+class order extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $role = Sentinel::findRoleById(3);
-        $clients = $role->users()->with('roles')->get();
-        return view('pages.superAdmin.client.list', compact('clients'));
+        //
     }
 
     /**
@@ -28,7 +24,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('pages.superAdmin.client.form');
+        //
     }
 
     /**
@@ -39,19 +35,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'name'      => $request->name,
-            'gender'    => $request->gender,
-            'email'     => $request->email,
-            'username'  => $request->username,
-            'password'  => $request->password,
-        ];
-
-        $user = Sentinel::registerAndActivate($data);
-        $role = Sentinel::findRoleBySlug('client');
-        $user->roles()->attach($role);
-
-        return redirect()->route('superAdmin.client.list');
+        //
     }
 
     /**
@@ -73,8 +57,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        $client = User::find($id);
-        return view('pages.superAdmin.client.form', compact('client'));
+        //
     }
 
     /**
@@ -86,17 +69,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = [
-            'name'      => $request->name,
-            'gender'    => $request->gender,
-            'email'     => $request->email,
-            'password'  => $request->password,
-        ];
-
-        $user = Sentinel::findById($id);
-        $user->update($data);
-        
-        return redirect()->route('superAdmin.client.list');
+        //
     }
 
     /**
@@ -107,8 +80,6 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        $client = User::find($id);
-        $client->delete();
-        return redirect()->route('superAdmin.client.list');
+        //
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\superAdmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use Sentinel;
 
 class AdminController extends Controller
 {
@@ -14,7 +16,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $role = Sentinel::findRoleById(2);
+        $admins = $role->users()->with('roles')->get();
+        return view('pages.superAdmin.admin.list', compact('admins'));
     }
 
     /**
@@ -24,7 +28,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.superAdmin.admin.form');
     }
 
     /**
@@ -36,6 +40,19 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         //
+        $data = [
+            'name'      => $request->name,
+            'gender'    => $request->gender,
+            'email'     => $request->email,
+            'username'  => $request->username,
+            'password'  => $request->password,
+        ];
+
+        $user = Sentinel::registerAndActivate($data);
+        $role = Sentinel::findRoleBySlug('admin');
+        $user->roles()->attach($role);
+
+        return redirect()->route('superAdmin.admin.list');
     }
 
     /**
@@ -57,7 +74,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $admin =  User::find($id);
+        return view('pages.superAdmin.admin.form', compact('admin'));
     }
 
     /**
@@ -69,7 +87,17 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            'name'      => $request->name,
+            'gender'    => $request->gender,
+            'email'     => $request->email,
+            'password'  => $request->password,
+        ];
+
+        $user = Sentinel::findById($id);
+        $user->update($data);
+
+        return redirect()->route('superAdmin.admin.list');
     }
 
     /**
@@ -80,6 +108,8 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $admin = User::find($id);
+        $admin->delete();
+        return redirect()->route('superAdmin.admin.list');
     }
 }

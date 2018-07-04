@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/favicon.png')}}">
-    <title>Klinik Ganesha Husada</title>
+    <title>Surveyor Indonesia</title>
     <!-- Bootstrap Core CSS -->
     {{--  <link href="../material/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">  --}}
     <link href="{{ asset('material/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

@@ -14,7 +14,7 @@
     
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/favicon.png') }}">
-    <title>Klinik Ganesha Husada</title>
+    <title>Surveyor Indonesia</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('material/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     @yield('style')
@@ -364,7 +364,7 @@
                                 <li>
                                     <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                         <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Registration</span></a>
                                         <ul aria-expanded="false" class="collapse">
                                             <li><a href="{{ route('admin.registration.create')}}">Add Registration</a></li>
@@ -380,7 +380,7 @@
                                         
                                     </ul>
                                 </li>
-                                
+                                 --}}
                                 
                                 
                                 <li>

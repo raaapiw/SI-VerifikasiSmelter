@@ -15,6 +15,12 @@ class ClientMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(Sentinel::check())
+            if(Sentinel::getUser()->roles()->first()->slug == 'admin')
+                return $next($request);
+            else
+                return abort(404);
+        else
+            return redirect()->route('login');
     }
 }
