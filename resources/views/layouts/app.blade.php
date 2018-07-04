@@ -278,6 +278,10 @@
                                     </ul>
                                 </div>
                             </li>
+                            <a href="javascript:void(0);" onclick="$(this).find('form').submit();"><i class="fa fa-power-off"></i> Logout
+                                <form action="{{ route('postLogout') }}" method="POST">
+                                </form>
+                            </a>
                             <!-- ============================================================== -->
                             <!-- Language -->
                             <!-- ============================================================== -->
@@ -364,23 +368,47 @@
                                 <li>
                                     <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                                 </li>
-                                {{-- <li>
-                                        <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Registration</span></a>
-                                        <ul aria-expanded="false" class="collapse">
-                                            <li><a href="{{ route('admin.registration.create')}}">Add Registration</a></li>
-                                            <li><a href="{{ route('admin.registration.list')}}"> List Registration</a></li>
-                                            
-                                        </ul>
-                                    </li>
                                 <li>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="#">Surat Penawaran</a></li>
+                                        <li><a href="#">Invoice DP</a></li>
+                                        <li><a href="#"> List Pemesanan</a></li>
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="#">BAP</a></li>
+                                        <li><a href="#">List Pertemuan</a></li>
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pelaporan</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="#">List Perusahaan</a></li>
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="#">Kurva S</a></li>
+                                        <li><a href="#">List Pekerjaan</a></li>
+                                        
+                                    </ul>
+                                </li>
+                                {{-- <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patient</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('admin.patient.create')}}">Add Patient</a></li>
                                         <li><a href="{{ route('admin.patient.list')}}">List Patient</a></li>
                                         
                                     </ul>
-                                </li>
-                                 --}}
+                                </li> --}}
+                                
                                 
                                 
                                 <li>
@@ -405,7 +433,7 @@
                         <ul id="sidebarnav">
                                 <li class="nav-small-cap">Minerba</li>
                                 <li>
-                                    <a href="{{ route('patient.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
+                                    <a href="{{ route('minerba.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
                                 </li>
                                 {{-- <li>
                                     <a href="{{ route('patient.registration.create')}}" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Registration</span></a>
@@ -417,11 +445,11 @@
                                 {{-- <li>
                                     <a href="{{ route('doctor.patient.list')}}" aria-expanded="false"><i class="fa fa-history"></i><span class="hide-menu">History</span></a>
                                 </li> --}}
-                                <li>
+                                {{-- <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Registration</span></a> 
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('patient.registration.create')}}">Add Registration</a></li>
-                                        <li><a href="{{ route('patient.registration.list')}}">History</a></li>
+                                        <li><a href="{{ route('patient.registration.list')}}">History</a></li> --}}
                                         {{-- <li><a href="{{ route('patient.registration.list')}}">Diagnosis History</a></li> --}}
                                         {{-- <li>
                                             <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
@@ -433,64 +461,33 @@
                                             </ul>
                                         </li>
                                         <li><a href="#">item 1.4</a></li> --}}
-                                    </ul>
-                                </li>
-                                <li>
+                                    {{-- </ul>
+                                </li> --}}
+                                {{-- <li>
                                         <a class="" href="{{route('patient.prescription.confirm')}}" aria-expanded="false"><i class="fa fa-money"></i><span class="hide-menu">Invoice</span></a> 
-                                    {{-- <ul aria-expanded="false" class="collapse"> --}}
-                                            {{-- <li><a href="{{route('patient.prescription.confirm')}}">Confirm Prescription</a></li>
-                                            <li><a href="{{route('patient.prescription.list')}}">Prescription List</a></li> --}}
-                                        {{-- <li><a href="{{ route('patient.registration.list')}}"></a></li> --}}
-                                        {{-- <li><a href="{{ route('patient.registration.list')}}">Diagnosis History</a></li> --}}
-                                        {{-- <li> --}}
-                                            {{-- <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
-                                            <ul aria-expanded="false" class="collapse">
-                                                <li><a href="javascript:void(0)">item 1.3.1</a></li>
-                                                <li><a href="javascript:void(0)">item 1.3.2</a></li>
-                                                <li><a href="javascript:void(0)">item 1.3.3</a></li>
-                                                <li><a href="javascript:void(0)">item 1.3.4</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">item 1.4</a></li> --}}
-                                    {{-- </ul> --}}
-                                </li>
+                                    
+                                </li> --}}
                             </ul>
                         @elseif(Sentinel::getUser()->roles()->first()->slug == 'client')
                         {{-- ====================Real Doctor============================== --}}
                             <ul id="sidebarnav">
                                 <li class="nav-small-cap"></li>
                                 <li>
-                                    <a href="{{ route('doctor.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
+                                    <a href="{{ route('client.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Diagnosis</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis by Photo</a></li>
+                                        <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis by Photo</a></li> --}}
                                         {{-- <li><a href="{{ route('doctor.diagnosis.add1')}}"> Add Diagnosis by System</a></li> --}}
-                                        <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li>
+                                        {{-- <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 
-                                <li>
+                                {{-- <li>
                                     <a href="{{ route('doctor.patient.list')}}" aria-expanded="false"><i class="fa fa-wheelchair"></i><span class="hide-menu">Patients</span></a>
-                                </li>
-                                <li>
-                                    {{-- <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="javascript:void(0)">item 1.1</a></li>
-                                        <li><a href="javascript:void(0)">item 1.2</a></li>
-                                        <li>
-                                            <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
-                                            <ul aria-expanded="false" class="collapse">
-                                                <li><a href="javascript:void(0)">item 1.3.1</a></li>
-                                                <li><a href="javascript:void(0)">item 1.3.2</a></li>
-                                                <li><a href="javascript:void(0)">item 1.3.3</a></li>
-                                                <li><a href="javascript:void(0)">item 1.3.4</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">item 1.4</a></li>
-                                    </ul>
-                                </li>
+                                </li> --}}
+                                
                             </ul>
                         @endif
                     </nav>
@@ -541,7 +538,7 @@
                 <!-- footer -->
                 <!-- ============================================================== -->
                 <footer class="footer">
-                    © 2018 Tekindo.com
+                    © 2018 Surveyor Indonesia
                 </footer>
                 <!-- ============================================================== -->
                 <!-- End footer -->

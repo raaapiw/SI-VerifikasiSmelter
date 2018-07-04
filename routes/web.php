@@ -28,3 +28,21 @@ Route::group(['middleware' => 'admin'], function() {
     
 });
 
+Route::group(['middleware' => 'client'], function() {
+    Route::get('/client/', function(){
+        return redirect()->route('client.dashboard');
+    });
+
+    Route::get('/client/dashboard', 'client\UserController@dashboard') ->name('client.dashboard');
+    
+});
+
+Route::group(['middleware' => 'minerba'], function() {
+    Route::get('/minerba/', function(){
+        return redirect()->route('minerba.dashboard');
+    });
+
+    Route::get('/minerba/dashboard', 'minerba\UserController@dashboard') ->name('minerba.dashboard');
+    
+});
+
