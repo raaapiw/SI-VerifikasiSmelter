@@ -29,7 +29,9 @@ class OrderController extends Controller
     }
 
     public function addDp(){
-        $orders = Order::where('dp_invoice','!=',null)->get(); 
+        // $akun = Order::where(Sentinel::getUser()->name, '=', $order->client->name)->get();
+        // dd($akun);
+        $orders = Order::where(c)->get(); 
         return view('pages.admin.order.addDp', compact('orders'));
     }
 

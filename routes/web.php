@@ -46,6 +46,8 @@ Route::group(['middleware' => 'client'], function() {
     Route::get('/client/order/uploadOffer/{id}', 'client\OrderController@uploadOffer') ->name('client.order.uploadOffer');
     Route::post('/client/order/store', 'client\OrderController@store') ->name('client.order.store');
     Route::get('/client/order/listDp', 'client\OrderController@listDp') ->name('client.order.listDp');
+    Route::get('/client/order/uploadDp/{id}', 'client\OrderController@uploadDp') ->name('client.order.uploadDp');
+    Route::get('/client/order/listOrder', 'client\OrderController@index') ->name('client.order.listOrder');
     
 });
 

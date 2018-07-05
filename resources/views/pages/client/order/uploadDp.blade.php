@@ -6,10 +6,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($order->letter_of_request) ? 'Edit Bukti Transfer': 'Upload Bukti Transfer'}}</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($order->transfer_proof) ? 'Edit Bukti Transfer': 'Upload Bukti Transfer'}}</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">{{ isset($order->letter_of_request) ? 'Edit Bukti Transfer':'Upload Bukti Transfer'}}</li>
+            <li class="breadcrumb-item active">{{ isset($order->transfer_proof) ? 'Edit Bukti Transfer':'Upload Bukti Transfer'}}</li>
         </ol>
     </div>
 </div>
@@ -20,8 +20,8 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{ isset($order->letter_of_request) ? route('admin.order.update', $order-> id) : route('admin.order.store')}}" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="order_id" value="{{ $order-> id}}">
+                <form action="{{ isset($order->transfer_proof) ? route('client.order.update', $order-> id) : route('client.order.store')}}" method="POST" enctype="multipart/form-data">
+                    {{-- <input type="hidden" name="order_id" value="{{ Sentinel::getUser()->id}}"> --}}
                     <div class="form-body">
                         <h3 class="box-title m-t-40">Upload Bukti Transfer</h3>
                         <hr>

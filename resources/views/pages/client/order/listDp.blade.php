@@ -25,9 +25,9 @@
                     <thead>
                         <tr>
                             <th style="width : 5%">ID</th>
-                            <th>Date</th>
-                            <th style="width : 30%">Invoices</th>
-                            <th style="width : 10%">Bukti Transfer</th>
+                            <th><center>Date</center></th>
+                            <th style="width : 10%"><center>Invoices</center></th>
+                            <th style="width : 10%"><center>Bukti Transfer</center></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,8 +35,7 @@
                             <tr>
                                 <td>{{ $row->id }}</td>
                                 <td>{{ $row->created_at }}</td>
-                                <td>{{ $row->client->company_name }}</td>
-                                <td><center><a href="{{ Storage::url($row->dp_invoices) }}"><span><i class="fa fa-download"></i></span></a>
+                                <td><center><a href="{{ Storage::url($row->dp_invoice) }}"><span><i class="fa fa-download"></i></span></a>
                                     </center>
                                 </td>
                                 <td><center><a href="{{ route('client.order.uploadDp', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
@@ -46,6 +45,7 @@
                                 
                             </tr>                            
                         @endforeach
+                        
                     </tbody>
                 </table>
             </div>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use \Input as Input;
 use App\Order;
+use App\Client;
+use Sentinel;
 
 class OrderController extends Controller
 {
@@ -23,17 +25,39 @@ class OrderController extends Controller
         return view('pages.client.order.uploadOffer', compact('order'));
     }
 
-    public function listDp($id)
+    public function listDp()
     {
         //
-        $temporders = Order::doesntHave('transfer_proof');
-        $orders = $temporders->where('client_id','=',$id)->get(); 
-        return view('pages.admin.order.addDp', compact('orders'));
+        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
+        // dd($client);
+        // $orders = Order::where([
+        //         ['dp_invoice','!=',null],
+        //         ['client_id', '=', $client->id]
+        //     ])->get(); 
+
+        $temporders = Order::where('dp_invoice','!=',null);
+        $orders = $temporders->where('client_id','=',$client->id)->get();
+        // return dd($orders);
+        return view('pages.client.order.listDp', compact('orders'));
+    }
+
+    public function uploadDp($id)
+    {
+        //
+        $order = Order::find($id);
+        // dd($order);
+        // $medicine_prescriptions = MedicinePrescription::all();
+        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
+        return view('pages.client.order.uploadOffer', compact('order'));
     }
 
     public function index()
     {
         //
+        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
+        $orders = Order::where('client_id','=',$client->id)->get();
+        return view('pages.client.order.listOrder', compact('orders'));
+    
     }
 
     /**

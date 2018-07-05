@@ -59,7 +59,7 @@ class UsersTableSeeder extends Seeder
         $this->createDefaultMinerba();
         $this->createDefaultClient();
         
-        $roleArray = array("admin", "minerba", "client");
+        $roleArray = array("admin", "minerba");
         foreach(range(0,10) as $index){
             $faker = Faker::create();
             $credentials = [
@@ -72,6 +72,21 @@ class UsersTableSeeder extends Seeder
 
             $user = Sentinel::registerAndActivate($credentials);
             $role = Sentinel::findRoleBySlug($roleArray[array_rand($roleArray)]);
+            $user->roles()->attach($role);
+        }
+
+        foreach(range(0,10) as $index){
+            $faker = Faker::create();
+            $credentials = [
+                'username' => $faker->userName,
+                'email' => $faker->email,
+                'password' => 'qwerty123',
+                'name' => $faker->name,
+                'gender' => 'M',
+            ];
+
+            $user = Sentinel::registerAndActivate($credentials);
+            $role = Sentinel::findRoleBySlug('client');
             $user->roles()->attach($role);
         }
     }
