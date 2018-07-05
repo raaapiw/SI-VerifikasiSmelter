@@ -17,6 +17,9 @@ class CreateMeetingsTable extends Migration
             $table->increments('id');
             $table->integer('order_id')->unsigned();
             $table->string('bap')->nullable();
+            $table->string('date')->nullable();
+            $table->string('time')->nullable();
+            $table->string('place')->nullable();
 
             $table->timestamps();
 

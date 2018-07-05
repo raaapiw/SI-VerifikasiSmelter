@@ -19,6 +19,9 @@ class MeetingsTableSeeder extends Seeder
             DB::table('meetings')->insert([                
                 'order_id' => $index+1,
                 'bap' => $faker->text($maxNbChars = 190),  
+                'date' => $faker->date($format = 'Y-m-d', $max = 'now'),   
+                'time' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'place' => $faker->text($maxNbChars = 190),
                 'created_at' => $faker->date($format = 'Y-m-d', $max = 'now')       
             ]);
         }

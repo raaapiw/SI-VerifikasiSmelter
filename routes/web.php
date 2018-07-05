@@ -35,6 +35,8 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/order/uploadDp/{id}', 'admin\OrderController@uploadOffer') ->name('admin.order.uploadDp');
     Route::get('/admin/order/listOrder', 'admin\OrderController@listOrder') ->name('admin.order.listOrder');
     
+    Route::get('/admin/meeting/uploadBeritaAcara', 'admin\MeetingController@uploadBA') ->name('admin.meeting.uploadBA');
+    
    
 });
 
@@ -49,6 +51,9 @@ Route::group(['middleware' => 'client'], function() {
     Route::get('/client/order/listDp', 'client\OrderController@listDp') ->name('client.order.listDp');
     Route::get('/client/order/uploadDp/{id}', 'client\OrderController@uploadDp') ->name('client.order.uploadDp');
     Route::get('/client/order/listOrder', 'client\OrderController@index') ->name('client.order.listOrder');
+    
+
+    Route::get('/client/meeting/listBeritaAcara', 'client\MeetingController@listBA') ->name('client.meeting.listBA');
     
 });
 

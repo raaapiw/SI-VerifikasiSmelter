@@ -379,7 +379,7 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="#">Berita Acara</a></li>
+                                        <li><a href="{{ route('admin.meeting.uploadBA')}}">Berita Acara</a></li>
                                         <li><a href="#">List Pertemuan</a></li>
                                         
                                     </ul>
@@ -470,7 +470,8 @@
                                 <li>
                                         <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
                                         <ul aria-expanded="false" class="collapse">
-                                            <li><a href="#">List Berita Acara</a></li>
+                                            <li><a href="{{ route('client.meeting.listBA')}}">List Berita Acara</a></li>
+                                            <li><a href="#">Jadwal Pertemuan</a></li>
                                         </ul>
                                     </li>
                                 {{-- <li>

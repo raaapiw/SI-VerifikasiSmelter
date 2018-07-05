@@ -30,12 +30,12 @@ class OrderController extends Controller
         return view('pages.admin.order.uploadOffer', compact('order'));
     }
 
-    public function addDp(){
-        // $akun = Order::where(Sentinel::getUser()->name, '=', $order->client->name)->get();
-        // dd($akun);
-        $orders = Order::where(c)->get(); 
-        return view('pages.admin.order.addDp', compact('orders'));
-    }
+    // public function addDp(){
+    //     // $akun = Order::where(Sentinel::getUser()->name, '=', $order->client->name)->get();
+    //     // dd($akun);
+    //     $orders = Order::where(c)->get(); 
+    //     return view('pages.admin.order.addDp', compact('orders'));
+    // }
 
     public function uploadDp($id)
     {
@@ -53,6 +53,8 @@ class OrderController extends Controller
         // dd($orders);
         return view('pages.admin.order.listOrder', compact('orders'));
     }
+
+   
 
     public function index()
     {
