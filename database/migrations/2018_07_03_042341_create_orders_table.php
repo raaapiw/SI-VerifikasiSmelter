@@ -16,11 +16,12 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('client_id')->unsigned();
-            $table->string('offer_letter');
-            $table->string('dp_invoice');
-            $table->string('transfer_proof');
-            $table->string('letter_of_request');
-            $table->string('companion_letter');
+            $table->string('offer_letter')->nullable();
+            $table->string('dp_invoice')->nullable();
+            $table->string('transfer_proof')->nullable();
+            $table->string('letter_of_request')->nullable();
+            $table->string('companion_letter')->nullable();
+            $table->integer('state')->nullable();
 
             $table->timestamps();
 

@@ -17,7 +17,7 @@ class CreateWorksTable extends Migration
             $table->increments('id');
             $table->integer('order_id')->unsigned();
             $table->string('curva_s')->nullable();
-            $table->string('evidence');
+            $table->string('evidence')->nullable();
 
             $table->timestamps();
 

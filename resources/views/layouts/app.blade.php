@@ -372,7 +372,7 @@
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('admin.order.addOffer')}}">Surat Penawaran</a></li>
-                                        <li><a href="#"> List Pemesanan</a></li>
+                                        <li><a href="{{ route('admin.order.listOrder')}}"> List Pemesanan</a></li>
                                         
                                     </ul>
                                 </li>
@@ -459,12 +459,18 @@
                                     <a href="{{ route('client.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
                                 </li>
                                 <li>
-                                        <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('client.order.uploadOffer', Sentinel::getUser()->id)}}">Surat Permintaan</a></li>
+                                        <li><a href="{{ route('client.order.listDp', Sentinel::getUser()->id )}}">Bukti Pembayaran DP</a></li>
+                                        <li><a href="{{ route('client.order.listOrder')}}">List Pemesanan</a></li>
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                        <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
                                         <ul aria-expanded="false" class="collapse">
-                                                <li><a href="{{ route('client.order.uploadOffer', Sentinel::getUser()->id)}}">Surat Permintaan</a></li>
-                                                <li><a href="{{ route('client.order.listDp', Sentinel::getUser()->id )}}">Bukti Pembayaran DP</a></li>
-                                            <li><a href="{{ route('client.order.listOrder')}}">List Pemesanan</a></li>
-                                            
+                                            <li><a href="#">List Berita Acara</a></li>
                                         </ul>
                                     </li>
                                 {{-- <li>

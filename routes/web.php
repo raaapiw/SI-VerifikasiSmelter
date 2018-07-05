@@ -33,6 +33,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/order/destroy/{id}', 'admin\OrderController@destroy')->name('admin.order.destroy');
     Route::get('/admin/order/addDp', 'admin\OrderController@addOffer') ->name('admin.order.addDp');
     Route::get('/admin/order/uploadDp/{id}', 'admin\OrderController@uploadOffer') ->name('admin.order.uploadDp');
+    Route::get('/admin/order/listOrder', 'admin\OrderController@listOrder') ->name('admin.order.listOrder');
     
    
 });

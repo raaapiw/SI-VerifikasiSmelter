@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use \Input as Input;
 use App\Order;
+use App\Client;
+use Sentinel;
 
 class OrderController extends Controller
 {
@@ -42,6 +44,14 @@ class OrderController extends Controller
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
         return view('pages.admin.order.uploadDp', compact('order'));
+    }
+    
+    public function listOrder()
+    {
+
+        $orders = Order::all();
+        // dd($orders);
+        return view('pages.admin.order.listOrder', compact('orders'));
     }
 
     public function index()
