@@ -18,6 +18,38 @@ class MeetingController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function createSchedule()
+    { 
+        
+        $orders = Order::all();
+        // dd($orders);
+        return view('pages.admin.meeting.schedule', compact ('clients','meetings','orders'));
+    }
+
+    public function editSchedule()
+    {
+        
+    }
+
+    public function createBA($id)
+    {
+        $order = Order::find($id);
+        // $medicine_prescriptions = MedicinePrescription::all();
+        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
+        return view('pages.admin.meeting.createBA', compact ('order','meetings'));
+    }
+
+    
+
+    public function listMeeting()
+    {
+        
+        $orders = Order::all();
+        $meetings = Meeting::all();
+        // dd($orders);
+        return view('pages.admin.meeting.list', compact ('orders','meetings'));
+    }
+
     public function uploadBA()
     {
 
@@ -51,6 +83,14 @@ class MeetingController extends Controller
     public function store(Request $request)
     {
         //
+        $data=[
+            'date'=> $request->date,
+            'time'=> $request->time,
+            'place'=> $request->place,         
+        ];
+
+        Meeting::create($data);
+        return redirect()->route('admin.dashboard');
     }
 
     /**

@@ -9,9 +9,12 @@ class Meeting extends Model
     //
     protected $fillable =[
         'bap',
+        'date',
+        'time',
+        'place',
         
     ];
-    public function orders()
+    public function order()
     {
         return $this->belongsTo(Order::class);
     }

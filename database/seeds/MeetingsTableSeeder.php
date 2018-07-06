@@ -21,7 +21,7 @@ class MeetingsTableSeeder extends Seeder
                 'bap' => $faker->text($maxNbChars = 190),  
                 'date' => $faker->date($format = 'Y-m-d', $max = 'now'),   
                 'time' => $faker->time($format = 'H:i:s', $max = 'now'),
-                'place' => $faker->text($maxNbChars = 190),
+                'place' => $faker->country,
                 'created_at' => $faker->date($format = 'Y-m-d', $max = 'now')       
             ]);
         }

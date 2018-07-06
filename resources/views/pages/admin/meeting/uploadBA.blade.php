@@ -28,7 +28,6 @@
                                 <th>No</th>
                                 <th style="width:50%"><center>Nama Perusahaan</center></th>
                                 <th><center>Upload Berita Acara</center></th>
-                                <th><center>Adakan Meeting ?</center></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,15 +36,7 @@
                                     <td><center>{{$key+1}}</center></td>
                                     <td>{{ $row->client->company_name }}</td>
                                     <td><center>
-                                            <a href="#"><span><i class="fa fa-send"></i></span></a>
-                                        </center>
-                                    </td>
-                                    <td><center>
-                                        <a href="#" data-toggle="tooltip" data-original-title="Accept"> <i class="fa fa-check m-r-10"></i> </a>
-                                        {{-- <a href="#" data-toggle="tooltip" data-original-title="Update"><span><i class="fa fa-tasks text-inverse m-r-10"></i></span></a> --}}
-                                        <a href="#" onclick="$(this).find('#delete').submit();" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i>
-                                        <form action="#" id="delete" method="post">
-                                            {{ method_field('DELETE') }} 
+                                            <a href="{{ route('admin.meeting.createBA', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         </center>
                                     </td>
                                 </tr>                            

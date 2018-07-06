@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('transfer_proof')->nullable();
             $table->string('letter_of_request')->nullable();
             $table->string('companion_letter')->nullable();
+            $table->string('spk')->nullable();
             $table->integer('state')->nullable();
 
             $table->timestamps();

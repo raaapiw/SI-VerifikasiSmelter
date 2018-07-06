@@ -35,7 +35,11 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/order/uploadDp/{id}', 'admin\OrderController@uploadOffer') ->name('admin.order.uploadDp');
     Route::get('/admin/order/listOrder', 'admin\OrderController@listOrder') ->name('admin.order.listOrder');
     
-    Route::get('/admin/meeting/uploadBeritaAcara', 'admin\MeetingController@uploadBA') ->name('admin.meeting.uploadBA');
+    Route::get('/admin/meeting/BeritaAcara', 'admin\MeetingController@uploadBA') ->name('admin.meeting.uploadBA');
+    Route::get('/admin/meeting/schedule', 'admin\MeetingController@createSchedule') ->name('admin.meeting.schedule');
+    Route::post('/admin/meeting/store', 'admin\MeetingController@store') ->name('admin.meeting.store');
+    Route::get('/admin/meeting/listMeeting', 'admin\MeetingController@listMeeting') ->name('admin.meeting.listMeeting');
+    Route::get('/admin/meeting/createBA/{id}', 'admin\MeetingController@createBA') ->name('admin.meeting.createBA');
     
    
 });
@@ -54,6 +58,7 @@ Route::group(['middleware' => 'client'], function() {
     
 
     Route::get('/client/meeting/listBeritaAcara', 'client\MeetingController@listBA') ->name('client.meeting.listBA');
+    Route::get('/client/meeting/listMeeting', 'client\MeetingController@listMeeting') ->name('client.meeting.listMeeting');
     
 });
 

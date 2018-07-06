@@ -37,6 +37,15 @@ class MeetingController extends Controller
         return view('pages.client.meeting.listBA', compact('meetings'));
     }
 
+    public function listMeeting()
+    {
+
+        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
+        $order = Order::where('client_id','=',$client->id)->first();
+        $meetings = Meeting::where('order_id','=',$order->id)->get();
+        // dd($orders);
+        return view('pages.client.meeting.jadwal', compact ('orders','meetings'));
+    }
     public function index()
     {
         //

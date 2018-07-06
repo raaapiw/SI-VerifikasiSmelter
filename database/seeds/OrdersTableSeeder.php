@@ -24,6 +24,7 @@ class OrdersTableSeeder extends Seeder
                 'transfer_proof' => $faker->text($maxNbChars = 190),
                 'companion_letter' => $faker->text($maxNbChars = 190),  
                 'letter_of_request' => $faker->text($maxNbChars = 190),  
+                'spk' => $faker->text($maxNbChars = 190),  
                 'created_at' => $faker->date($format = 'Y-m-d', $max = 'now')       
             ]);
         }

@@ -20,7 +20,7 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{ isset($order->letter_of_request) ? route('admin.order.update', $order-> id) : route('admin.order.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ isset($order->letter_of_request) ? route('client.order.update', $order-> id) : route('client.order.store')}}" method="POST" enctype="multipart/form-data">
                     {{-- <input type="hidden" name="order_id" value="{{ $order-> id}}"> --}}
                     <div class="form-body">
                         <h3 class="box-title m-t-40">Upload Surat Permintaan</h3>
