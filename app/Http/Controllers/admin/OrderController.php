@@ -37,6 +37,13 @@ class OrderController extends Controller
     //     return view('pages.admin.order.addDp', compact('orders'));
     // }
 
+    public function proceed($id)
+    {
+        $order = Order::find($id);
+        // $medicine_prescriptions = MedicinePrescription::all();
+        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
+        return view('pages.admin.order.proceed', compact('order'));
+    }
     public function uploadDp($id)
     {
         //
@@ -54,12 +61,16 @@ class OrderController extends Controller
         return view('pages.admin.order.listOrder', compact('orders'));
     }
 
-   
-
-    public function index()
+    public function detail($id)
     {
         //
+        $order = Order::find($id);
+        // $medicine_prescriptions = MedicinePrescription::all();
+        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
+        return view('pages.admin.order.detail', compact('order'));
     }
+
+    
 
     /**
      * Show the form for creating a new resource.

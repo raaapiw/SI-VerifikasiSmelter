@@ -34,6 +34,8 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/order/addDp', 'admin\OrderController@addOffer') ->name('admin.order.addDp');
     Route::get('/admin/order/uploadDp/{id}', 'admin\OrderController@uploadOffer') ->name('admin.order.uploadDp');
     Route::get('/admin/order/listOrder', 'admin\OrderController@listOrder') ->name('admin.order.listOrder');
+    Route::get('/admin/order/proceed/{id}', 'admin\OrderController@proceed') ->name('admin.order.proceed');
+    Route::get('/admin/order/detail/{id}', 'admin\OrderController@detail') ->name('admin.order.detail');
     
     Route::get('/admin/meeting/BeritaAcara', 'admin\MeetingController@uploadBA') ->name('admin.meeting.uploadBA');
     Route::get('/admin/meeting/schedule', 'admin\MeetingController@createSchedule') ->name('admin.meeting.schedule');
