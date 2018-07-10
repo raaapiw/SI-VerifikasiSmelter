@@ -61,7 +61,11 @@
                                         </a>
                                     </center>
                                 </td>
-                                <td> {{ isset($row->contract) ? Storage::url($row->contract) : "Belum ada kontrak"}}</td>
+                                <td> <center>
+                                        <a href="{{ route('admin.order.contract', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
+                                        <a href="{{ Storage::url($row->contract) }}"><span><i class="fa fa-download"></i></span></a>
+                                    </center>
+                                </td>
                             </tr>                            
                         @endforeach
                     </tbody>

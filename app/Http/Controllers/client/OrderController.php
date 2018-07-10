@@ -204,7 +204,7 @@ class OrderController extends Controller
     
                 $data = [
                     'client_id' => $request->client_id,
-                    'transfer_proof' => $path,
+                    'state_offer' => $path,
                 ];    
            
                 $order->fill($data)->save();

@@ -36,6 +36,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/order/listOrder', 'admin\OrderController@listOrder') ->name('admin.order.listOrder');
     Route::get('/admin/order/proceed/{id}', 'admin\OrderController@proceed') ->name('admin.order.proceed');
     Route::get('/admin/order/detail/{id}', 'admin\OrderController@detail') ->name('admin.order.detail');
+    Route::get('/admin/order/contract/{id}', 'admin\OrderController@contract') ->name('admin.order.contract');
     
     
     Route::get('/admin/meeting/BeritaAcara', 'admin\MeetingController@uploadBA') ->name('admin.meeting.uploadBA');

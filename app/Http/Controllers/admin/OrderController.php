@@ -16,6 +16,11 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function contract($id)
+    {
+        $order = Order::find($id);
+        return view('pages.admin.order.contract', compact('order'));
+    }
     public function addOffer(){
         // $tempclient = Client::doesntHave('order');
         $order = Order::where('state','=',0)->get();
@@ -214,13 +219,10 @@ class OrderController extends Controller
                 // $order = Order::update($data);
         
                 return redirect()->route('admin.dashboard');
-            
-            
-             
            
             
         } elseif (isset($request->dp_invoice)){
-            $uploadedFile = $request->file('file');
+            $uploadedFile = $request->file('dp_invoice');
 
                 $path = $uploadedFile->store('public/files');
     
@@ -235,7 +237,7 @@ class OrderController extends Controller
             return redirect()->route('admin.dashboard');
            
         }elseif (isset($request->spk)){
-            $uploadedFile = $request->file('file');
+            $uploadedFile = $request->file('spk');
 
                 $path = $uploadedFile->store('public/files');
     
@@ -243,6 +245,19 @@ class OrderController extends Controller
                     'client_id' => $request->client_id,
                     'spk' => $path,
                     'state' => 1,
+                ];    
+                $order->fill($data)->save();
+            // $order = Order::update($data);
+        
+            return redirect()->route('admin.dashboard');
+        }elseif (isset($request->contract)){
+            $uploadedFile = $request->file('contract');
+
+                $path = $uploadedFile->store('public/files');
+    
+                $data = [
+                    'client_id' => $request->client_id,
+                    'contract' => $path,
                 ];    
                 $order->fill($data)->save();
             // $order = Order::update($data);
