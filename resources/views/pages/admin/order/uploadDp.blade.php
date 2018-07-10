@@ -21,12 +21,12 @@
         <div class="card card-outline-info">
             <div class="card-body">
                 <form action="{{ isset($order->offer_letter) ? route('admin.order.update', $order-> id) : route('admin.order.store')}}" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="order_id" value="{{ $order-> id}}">
+                    <input type="hidden" name="client_id" value="{{ $client-> id}}">
                     <div class="form-body">
                         <h3 class="card-title">Company Info</h3>
                         <hr>
                         <div class="row p-t-20">
-                            <div class="col-md-6">
+                           <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="idPatient1">Id Company :</label>
                                 <input type="text" class="form-control" disabled id="idPatient1" value="{{$order->client->id}}">
@@ -55,11 +55,6 @@
                                 </div>
                             </div>
                             <br>
-                            {{-- <div class="col-md-6">
-                                <div class="form-group">
-                                    <a href="{{ route('doctor.patient.detail', $registration->patient->id)}}"><span><i class="fa fa-info-circle">Details</i></span></a>
-                                </div>
-                            </div> --}}
                         </div>
                         <h3 class="box-title m-t-40">Upload Invoice DP</h3>
                         <hr>

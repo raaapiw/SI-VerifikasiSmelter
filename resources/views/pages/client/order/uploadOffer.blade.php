@@ -21,7 +21,7 @@
         <div class="card card-outline-info">
             <div class="card-body">
                 <form action="{{ isset($order->letter_of_request) ? route('client.order.update', $order-> id) : route('client.order.store')}}" method="POST" enctype="multipart/form-data">
-                    {{-- <input type="hidden" name="order_id" value="{{ $order-> id}}"> --}}
+                    <input type="hidden" name="client_id" value="{{ $client->id}}">
                     <div class="form-body">
                         <h3 class="box-title m-t-40">Upload Surat Permintaan</h3>
                         <hr>
@@ -29,7 +29,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File Surat Permintaan</h4>
-                                    <input type="file" id="file" name="offer_letter" class="dropify" required/>
+                                    <input type="file" id="file" name="letter_of_request" class="dropify" required/>
                                 </div>
                             </div>
                         </div>

@@ -32,10 +32,11 @@ Route::group(['middleware' => 'admin'], function() {
     Route::post('/admin/order/list/{id}', 'admin\OrderController@update') ->name('admin.order.update');
     Route::get('/admin/order/destroy/{id}', 'admin\OrderController@destroy')->name('admin.order.destroy');
     Route::get('/admin/order/addDp', 'admin\OrderController@addOffer') ->name('admin.order.addDp');
-    Route::get('/admin/order/uploadDp/{id}', 'admin\OrderController@uploadOffer') ->name('admin.order.uploadDp');
+    Route::get('/admin/order/uploadDp/{id}', 'admin\OrderController@uploadDP') ->name('admin.order.uploadDp');
     Route::get('/admin/order/listOrder', 'admin\OrderController@listOrder') ->name('admin.order.listOrder');
     Route::get('/admin/order/proceed/{id}', 'admin\OrderController@proceed') ->name('admin.order.proceed');
     Route::get('/admin/order/detail/{id}', 'admin\OrderController@detail') ->name('admin.order.detail');
+    
     
     Route::get('/admin/meeting/BeritaAcara', 'admin\MeetingController@uploadBA') ->name('admin.meeting.uploadBA');
     Route::get('/admin/meeting/schedule', 'admin\MeetingController@createSchedule') ->name('admin.meeting.schedule');
@@ -58,7 +59,8 @@ Route::group(['middleware' => 'client'], function() {
     Route::get('/client/order/uploadDp/{id}', 'client\OrderController@uploadDp') ->name('client.order.uploadDp');
     Route::get('/client/order/listOrder', 'client\OrderController@index') ->name('client.order.listOrder');
     
-
+    Route::get('/client/offer/approveOrder', 'client\OrderController@offerLetter') ->name('client.offer.listOrder');
+    
     Route::get('/client/meeting/listBeritaAcara', 'client\MeetingController@listBA') ->name('client.meeting.listBA');
     Route::get('/client/meeting/listMeeting', 'client\MeetingController@listMeeting') ->name('client.meeting.listMeeting');
     

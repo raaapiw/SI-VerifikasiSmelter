@@ -467,13 +467,17 @@
                                         
                                     </ul>
                                 </li>
-                                <li>
-                                        <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
-                                        <ul aria-expanded="false" class="collapse">
-                                            <li><a href="{{ route('client.meeting.listBA')}}">List Berita Acara</a></li>
-                                            <li><a href="{{ route('client.meeting.listMeeting')}}">Jadwal Pertemuan</a></li>
-                                        </ul>
+                                    <li>
+                                        <a href="{{ route('client.offer.listOrder')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Surat Penawaran</span></a>
                                     </li>
+                                <li>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('client.meeting.listBA')}}">List Berita Acara</a></li>
+                                        <li><a href="{{ route('client.meeting.listMeeting')}}">Jadwal Pertemuan</a></li>
+                                    </ul>
+                                </li>
+                                
                                 {{-- <li>
                                     <a href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Diagnosis</span></a>
                                     <ul aria-expanded="false" class="collapse">

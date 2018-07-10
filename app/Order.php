@@ -8,10 +8,15 @@ class Order extends Model
 {
     //
     protected $fillable =[
+        'client_id',
         'offer_letter',
+        'letter_of_request',
         'dp_invoice',
         'transfer_proof',
         'companion_letter',
+        'state',
+        'state_offer',
+        'contract',
         
     ];
     public function works()

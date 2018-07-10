@@ -25,6 +25,8 @@ class OrdersTableSeeder extends Seeder
                 'companion_letter' => $faker->text($maxNbChars = 190),  
                 'letter_of_request' => $faker->text($maxNbChars = 190),  
                 'spk' => $faker->text($maxNbChars = 190),  
+                'state' =>0,
+                // 'state_offer' =>0,
                 'created_at' => $faker->date($format = 'Y-m-d', $max = 'now')       
             ]);
         }

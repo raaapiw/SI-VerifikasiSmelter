@@ -26,9 +26,8 @@
                         <tr>
                             <th style="width : 5%">ID</th>
                             <th><center>Date</center></th>
-                            <th style="width : 10%"><center>Invoices</center></th>
-                            <th style="width : 10%"><center>Bukti Transfer</center></th>
                             <th style="width : 10%"><center>Surat Penawaran</center></th>
+                            <th style="width : 10%"><center>Persetujuan</center></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,23 +35,24 @@
                             <tr>
                                 <td>{{ $row->id }}</td>
                                 <td>{{ $row->created_at }}</td>
-                                <td><center>
-                                        <a href="{{ Storage::url($row->dp_invoice) }}"><span><i class="fa fa-download"></i></span></a>
-                                    </center>
-                                </td>
-                                <td><center>
-                                        <a href="{{ route('client.order.uploadDp', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
-                                    </center>
-                                </td>   
-                                <td><center>
+                                <td>
+                                    <center>
                                         <a href="{{ Storage::url($row->offer_letter) }}"><span><i class="fa fa-download"></i></span></a>
                                     </center>
                                 </td>
-                                
-                                
+                                <td class="text-nowrap">
+                                    <center>
+                                        <a href="{{ route('admin.order.update', $row->id)}}" data-toggle="tooltip" data-original-title="Accept"> <i class="fa fa-check m-r-10"></i> </a>
+                                        {{-- <a href="#" data-toggle="tooltip" data-original-title="Update"><span><i class="fa fa-tasks text-inverse m-r-10"></i></span></a> --}}
+                                        <a href="#" onclick="$(this).find('#delete').submit();" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i>
+                                        <form action="#" id="delete" method="post">
+                                            {{ method_field('DELETE') }} 
+                                        </form>
+                                        </a>
+                                    </center>
+                                </td>
                             </tr>                            
                         @endforeach
-                        
                     </tbody>
                 </table>
             </div>

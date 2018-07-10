@@ -17,17 +17,33 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function addOffer(){
-        $orders = Order::where('letter_of_request','!=',null)->get(); 
-        return view('pages.admin.order.addOffer', compact('orders'));
+        // $tempclient = Client::doesntHave('order');
+        $order = Order::where('state','=',0)->get();
+        // dd($order);
+        // $client = $tempclient->where('state','=',0)->get();
+        // dd($client);
+        // $orders = Order::where('letter_of_request','!=',null)->get(); 
+        return view('pages.admin.order.addOffer', compact('order'));
     }
 
     public function uploadOffer($id)
     {
         //
+
         $order = Order::find($id);
+        // dd($client);
+        // dd($client);
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
         return view('pages.admin.order.uploadOffer', compact('order'));
+    }
+
+    public function editOffer($id)
+    {
+        $order = Order::find($id);
+        // dd($client);
+        return view('pages.admin.order.uploadOffer', compact('order'));
+    
     }
 
     // public function addDp(){
@@ -39,7 +55,7 @@ class OrderController extends Controller
 
     public function proceed($id)
     {
-        $order = Order::find($id);
+        $order = Order::find($id)->first();
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
         return view('pages.admin.order.proceed', compact('order'));
@@ -102,12 +118,13 @@ class OrderController extends Controller
                 $path = $uploadedFile->store('public/files');
     
                 $data = [
+                    'client_id' => $request->client_id,
                     'offer_letter' => $path,
                 ];
-
+                // dd($data);
                 $order = Order::create($data);
-        
-                return redirect()->route('admin.order.dashboard');
+                // dd($order);
+                return redirect()->route('admin.dashboard');
             
             
              
@@ -119,12 +136,28 @@ class OrderController extends Controller
                 $path = $uploadedFile->store('public/files');
     
                 $data = [
+                    'client_id' => $request->client_id,
                     'dp_invoice' => $path,
                 ];    
            
             $order = Order::create($data);
         
-            return redirect()->route('admin.order.dashboard');
+            return redirect()->route('admin.dashboard');
+           
+        }elseif (isset($request->spk)){
+            $uploadedFile = $request->file('file');
+
+                $path = $uploadedFile->store('public/files');
+    
+                $data = [
+                    'client_id' => $request->client_id,
+                    'spk' => $path,
+                    'state' => 0,
+                ];    
+           
+            $order = Order::create($data);
+        
+            return redirect()->route('admin.dashboard');
            
         }
     }
@@ -161,6 +194,7 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $order = Order::find($id);
         if (isset($request->offer_letter)){
             $rules = [
                 'offer_letter'                  => 'required',
@@ -172,12 +206,14 @@ class OrderController extends Controller
                 $path = $uploadedFile->store('public/files');
     
                 $data = [
+                    'client_id' => $request->client_id,
                     'offer_letter' => $path,
                 ];
+                $order->fill($data)->save();
 
-                $order = Order::create($data);
+                // $order = Order::update($data);
         
-                return redirect()->route('admin.order.dashboard');
+                return redirect()->route('admin.dashboard');
             
             
              
@@ -189,13 +225,29 @@ class OrderController extends Controller
                 $path = $uploadedFile->store('public/files');
     
                 $data = [
+                    'client_id' => $request->client_id,
                     'dp_invoice' => $path,
                 ];    
+                $order->fill($data)->save();
            
-            $order = Order::create($data);
+            // $order = Order::update($data);
         
-            return redirect()->route('admin.order.dashboard');
+            return redirect()->route('admin.dashboard');
            
+        }elseif (isset($request->spk)){
+            $uploadedFile = $request->file('file');
+
+                $path = $uploadedFile->store('public/files');
+    
+                $data = [
+                    'client_id' => $request->client_id,
+                    'spk' => $path,
+                    'state' => 1,
+                ];    
+                $order->fill($data)->save();
+            // $order = Order::update($data);
+        
+            return redirect()->route('admin.dashboard');
         }
     }
 

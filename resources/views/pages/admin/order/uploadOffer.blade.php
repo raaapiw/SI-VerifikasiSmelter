@@ -20,8 +20,8 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{ isset($order->offer_letter) ? route('admin.order.update', $order-> id) : route('admin.order.store')}}" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="order_id" value="{{ $order-> id}}">
+                <form action="{{ route('admin.order.update', $order-> id)}}" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="client_id" value="{{ $order->client-> id}}">
                     <div class="form-body">
                         <h3 class="card-title">Company Info</h3>
                         <hr>
@@ -55,11 +55,11 @@
                                 </div>
                             </div>
                             <br>
-                            {{-- <div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <a href="{{ route('doctor.patient.detail', $registration->patient->id)}}"><span><i class="fa fa-info-circle">Details</i></span></a>
+                                    <a href="{{ Storage::url($order->letter_of_request) }}"><span><i class="fa fa-info-circle">Surat Permintaan</i></span></a>
                                 </div>
-                            </div> --}}
+                            </div>
                         </div>
                         <h3 class="box-title m-t-40">Upload Surat Penawaran</h3>
                         <hr>

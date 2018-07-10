@@ -16,13 +16,20 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function offerLetter()
+    {
+        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
+        $orders = Order::where('client_id','=',$client->id)->get();
+        return view('pages.client.order.offerLetter', compact('orders'));
+    }
     public function uploadOffer($id)
     {
         //
-        $order = Order::find($id);
+        $client = Client::where('user_id','=',$id)->first();
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('pages.client.order.uploadOffer', compact('order'));
+        return view('pages.client.order.uploadOffer', compact('client'));
     }
 
     public function listDp()
@@ -90,12 +97,14 @@ class OrderController extends Controller
                 $path = $uploadedFile->store('public/files');
     
                 $data = [
+                    'client_id' => $request->client_id,
                     'letter_of_request' => $path,
+                    'state' => 0,
                 ];
 
                 $order = Order::create($data);
-        
-                return redirect()->route('client.order.dashboard');
+                // dd($order);
+                return redirect()->route('client.dashboard');
             
             
              
@@ -107,12 +116,14 @@ class OrderController extends Controller
                 $path = $uploadedFile->store('public/files');
     
                 $data = [
+                    'client_id' => $request->client_id,
                     'transfer_proof' => $path,
+                    'state' => 0,
                 ];    
            
             $order = Order::create($data);
         
-            return redirect()->route('client.order.dashboard');
+            return redirect()->route('client.dashboard');
            
         }
     }
@@ -149,6 +160,57 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if (isset($request->letter_of_request)){
+            $rules = [
+                'letter_of_request'                  => 'required',
+            ];
+            
+            
+                $uploadedFile = $request->file('letter_of_request');
+
+                $path = $uploadedFile->store('public/files');
+    
+                $data = [
+                    'client_id' => $request->client_id,
+                    'letter_of_request' => $path,
+                ];
+
+                $order->fill($data)->save();
+        
+                return redirect()->route('client.dashboard');
+            
+            
+             
+           
+            
+        } elseif (isset($request->transfer_proof)){
+            $uploadedFile = $request->file('transfer_proof');
+
+                $path = $uploadedFile->store('public/files');
+    
+                $data = [
+                    'client_id' => $request->client_id,
+                    'transfer_proof' => $path,
+                ];    
+           
+                $order->fill($data)->save();
+        
+            return redirect()->route('client.dashboard');
+           
+        }elseif (isset($request->state_offer)){
+            $uploadedFile = $request->file('state_offer');
+
+                $path = $uploadedFile->store('public/files');
+    
+                $data = [
+                    'client_id' => $request->client_id,
+                    'transfer_proof' => $path,
+                ];    
+           
+                $order->fill($data)->save();
+    
+            return redirect()->route('client.dashboard');
+        }
     }
 
     /**
