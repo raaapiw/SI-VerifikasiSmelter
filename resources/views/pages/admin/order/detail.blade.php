@@ -72,31 +72,31 @@
                             <th>Invoices DP</th>
                             <th>Bukti Transfer</th>
                             <th>SPK</th>
+                            <th>Kontrak</th>
                         </thead>
                     </tr>
-                    
-                    
-                        <tr>
-                            <td>{{ $order->id}}</td>
-                            <td>{{ $order->created_at}}</td>
-                            <td>
-                                <center><a href="{{ Storage::url($order->letter_of_request) }}"><span><i class="fa fa-download"></i></span></a></center>
-                            </td>
-                            <td>
-                                <center><a href="{{ Storage::url($order->Offer_letter) }}"><span><i class="fa fa-download"></i></span></a></center>
-                            </td>
-                            <td>
-                                <center><a href="{{ Storage::url($order->dp_invoices) }}"><span><i class="fa fa-download"></i></span></a></center>
-                            </td>
-                            <td>
-                                <center><a href="{{ Storage::url($order->transfer_proof) }}"><span><i class="fa fa-download"></i></span></a></center>
-                            </td>
-                            <td>
-                                <center><a href="{{ Storage::url($order->spk) }}"><span><i class="fa fa-download"></i></span></a></center>
-                            </td>  
-                                                      
-                        </tr>
-                    
+                    <tr>
+                        <td>{{ $order->id}}</td>
+                        <td>{{ $order->created_at}}</td>
+                        <td>
+                            <center><a href="{{ Storage::url($order->letter_of_request) }}"><span><i class="fa fa-download"></i></span></a></center>
+                        </td>
+                        <td>
+                            <center><a href="{{ Storage::url($order->Offer_letter) }}"><span><i class="fa fa-download"></i></span></a></center>
+                        </td>
+                        <td>
+                            <center><a href="{{ Storage::url($order->dp_invoices) }}"><span><i class="fa fa-download"></i></span></a></center>
+                        </td>
+                        <td>
+                            <center><a href="{{ Storage::url($order->transfer_proof) }}"><span><i class="fa fa-download"></i></span></a></center>
+                        </td>
+                        <td>
+                            <center><a href="{{ Storage::url($order->spk) }}"><span><i class="fa fa-download"></i></span></a></center>
+                        </td>  
+                        <td>
+                            <center><a href="{{ Storage::url($order->contract) }}"><span><i class="fa fa-download"></i></span></a></center>
+                        </td>                       
+                    </tr>
                 </table>
             </div>
         </div>

@@ -8,11 +8,12 @@ class Work extends Model
 {
     //
     protected $fillable =[
+        'order_id',
         'curva_s',
         'evidence',
     ];
 
-    public function orders()
+    public function order()
     {
         return $this->belongsTo(Order::class);
     }

@@ -59,11 +59,16 @@ Route::group(['middleware' => 'client'], function() {
     Route::get('/client/order/listDp', 'client\OrderController@listDp') ->name('client.order.listDp');
     Route::get('/client/order/uploadDp/{id}', 'client\OrderController@uploadDp') ->name('client.order.uploadDp');
     Route::get('/client/order/listOrder', 'client\OrderController@index') ->name('client.order.listOrder');
+    Route::post('/client/order/update/{id}', 'client\OrderController@update') ->name('client.order.update');
     
     Route::get('/client/offer/approveOrder', 'client\OrderController@offerLetter') ->name('client.offer.listOrder');
+    Route::get('/client/offer/uploadOffer2/{id}', 'client\OrderController@uploadOffer2') ->name('client.offer.uploadOffer2');
     
     Route::get('/client/meeting/listBeritaAcara', 'client\MeetingController@listBA') ->name('client.meeting.listBA');
     Route::get('/client/meeting/listMeeting', 'client\MeetingController@listMeeting') ->name('client.meeting.listMeeting');
+    
+    Route::post('/client/work/update/{id}', 'client\WorkController@update') ->name('client.work.update');
+    Route::get('/client/work/uploadCurvaS/{id}', 'client\WorkController@uploadCurvaS') ->name('client.work.uploadCurvaS');
     
 });
 

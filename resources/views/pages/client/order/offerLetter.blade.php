@@ -27,7 +27,7 @@
                             <th style="width : 5%">ID</th>
                             <th><center>Date</center></th>
                             <th style="width : 10%"><center>Surat Penawaran</center></th>
-                            <th style="width : 10%"><center>Persetujuan</center></th>
+                            <th style="width : 10%"><center>Upload Persetujuan</center></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,7 +42,7 @@
                                 </td>
                                 <td class="text-nowrap">
                                     <center>
-                                        <a href="{{ route('admin.order.update', $row->id)}}" data-toggle="tooltip" data-original-title="Accept"> <i class="fa fa-check m-r-10"></i> </a>
+                                        <a href="{{ route('client.offer.uploadOffer2', $row->id)}}" data-toggle="tooltip" data-original-title="Accept"> <i class="fa fa-check m-r-10"></i> </a>
                                         {{-- <a href="#" data-toggle="tooltip" data-original-title="Update"><span><i class="fa fa-tasks text-inverse m-r-10"></i></span></a> --}}
                                         <a href="#" onclick="$(this).find('#delete').submit();" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i>
                                         <form action="#" id="delete" method="post">

@@ -32,6 +32,17 @@ class OrderController extends Controller
         return view('pages.client.order.uploadOffer', compact('client'));
     }
 
+    public function uploadOffer2($id)
+    {
+        //
+        // dd($id);
+        $order = Order::find($id);
+        // dd($order);
+        // $medicine_prescriptions = MedicinePrescription::all();
+        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
+        return view('pages.client.order.uploadOffer2', compact('order'));
+    }
+
     public function listDp()
     {
         //
@@ -55,7 +66,7 @@ class OrderController extends Controller
         // dd($order);
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('pages.client.order.uploadOffer', compact('order'));
+        return view('pages.client.order.uploadDp', compact('order'));
     }
 
     public function index()
@@ -83,9 +94,10 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
         //
+        $order = Order::find($id);
         if (isset($request->letter_of_request)){
             $rules = [
                 'letter_of_request'                  => 'required',
@@ -160,6 +172,7 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $order = Order::find($id);
         if (isset($request->letter_of_request)){
             $rules = [
                 'letter_of_request'                  => 'required',
@@ -179,9 +192,6 @@ class OrderController extends Controller
         
                 return redirect()->route('client.dashboard');
             
-            
-             
-           
             
         } elseif (isset($request->transfer_proof)){
             $uploadedFile = $request->file('transfer_proof');

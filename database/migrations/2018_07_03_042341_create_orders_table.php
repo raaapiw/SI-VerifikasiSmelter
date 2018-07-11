@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string('companion_letter')->nullable();
             $table->string('spk')->nullable();
             $table->integer('state')->nullable();
-            $table->integer('state_offer')->nullable();
+            $table->string('state_offer')->nullable();
             $table->string('contract')->nullable();
 
             $table->timestamps();
