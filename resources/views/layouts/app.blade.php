@@ -385,17 +385,17 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pelaporan</span></a>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="#">List Perusahaan</a></li>
+                                        <li><a href="{{ route('admin.work.curvaS')}}">Kurva S</a></li>
+                                        <li><a href="#">List Pekerjaan</a></li>
                                         
                                     </ul>
                                 </li>
                                 <li>
-                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pelaporan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="#">Kurva S</a></li>
-                                        <li><a href="#">List Pekerjaan</a></li>
+                                        <li><a href="#">List Perusahaan</a></li>
                                         
                                     </ul>
                                 </li>
@@ -565,7 +565,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     <!-- ============================================================== -->
     <script src="{{ asset('material/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap tether Core JavaScript -->

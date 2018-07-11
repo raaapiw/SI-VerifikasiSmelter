@@ -207,8 +207,8 @@ class OrderController extends Controller
             
             
                 $uploadedFile = $request->file('offer_letter');
-
-                $path = $uploadedFile->store('public/files');
+                $uploadedFileName = $uploadedFile->getClientOriginalName();
+                $path = $uploadedFile->storeAs('public/files/', $uploadedFileName);
     
                 $data = [
                     'client_id' => $request->client_id,

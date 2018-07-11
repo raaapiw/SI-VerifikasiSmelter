@@ -14,6 +14,11 @@ class Client extends Model
         
     ];
 
+    protected $appends =[
+        'full_company_name',
+        'new_date'
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -21,5 +26,10 @@ class Client extends Model
     public function orders(){
         return $this->hasMany(Order::class);
     }
-
+    public function getFullCompanyNameAttribute()
+    {
+        $full_company_name = 'PT.'.$this->company_name;
+        return $full_company_name;
+    }
+    
 }

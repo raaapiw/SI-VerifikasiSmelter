@@ -27,6 +27,9 @@ class WorkController extends Controller
         return view('pages.client.work.curvaS', compact('client','order'));
     }
 
+
+    
+
     public function index()
     {
         //

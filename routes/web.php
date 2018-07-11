@@ -46,6 +46,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/meeting/createBA/{id}', 'admin\MeetingController@createBA') ->name('admin.meeting.createBA');
     
    
+    Route::get('/admin/work/curva_s', 'admin\WorkController@curvaS') ->name('admin.work.curvaS');
 });
 
 Route::group(['middleware' => 'client'], function() {

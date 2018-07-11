@@ -19,6 +19,11 @@ class Order extends Model
         'contract',
         
     ];
+    
+    protected $appends =[
+        'new_date'
+    ];
+
     public function works()
     {
         return $this->hasMany(Work::class);
@@ -33,6 +38,11 @@ class Order extends Model
     }
     public function client(){
         return $this->belongsTo(Client::class);
+    }
+    public function getNewDateAttribute()
+    {
+        $new_date = $this->created_at->format('d - m - Y');
+        return $new_date;
     }
 
 }
