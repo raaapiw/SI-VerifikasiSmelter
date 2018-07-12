@@ -21,7 +21,8 @@ class Order extends Model
     ];
     
     protected $appends =[
-        'new_date'
+        'new_date',
+        'real_name_offer_letter'
     ];
 
     public function works()
@@ -43,6 +44,16 @@ class Order extends Model
     {
         $new_date = $this->created_at->format('d - m - Y');
         return $new_date;
+    }
+    public function getRealNameOfferLetterAttribute()
+    {
+        if($this->offer_letter != NULL){
+            $real_name = explode('/', $this->offer_letter);
+            return $real_name[2];
+        }else{
+            return null;
+        }
+        
     }
 
 }

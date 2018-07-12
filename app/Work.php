@@ -17,4 +17,8 @@ class Work extends Model
     {
         return $this->belongsTo(Order::class);
     }
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
 }
