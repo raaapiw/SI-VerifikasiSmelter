@@ -5,6 +5,7 @@ namespace App\Http\Controllers\client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use \Input as Input;
+use Storage;
 use App\Order;
 use App\Document;
 use App\Work;
@@ -57,18 +58,26 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         // 
-        $uploadedFile = $request->file('evidence[]');
-        $uploadedFileName = $uploadedFile->getClientOriginalName();
-        $path = $uploadedFile->store('public/files/'.$uploadedFileName);
+        $arrayFile = $request->file('evidence');
+        // return dd($arrayFile);
+        foreach ($arrayFile as $row){
+            $uploadedFile =  $row;
+            // dd($uploadedFile);
+            $uploadedFileName = $request->work_id . '-' . $uploadedFile->getClientOriginalName();
+            if (Storage::exists($uploadedFileName)) {
+                Storage::delete($uploadedFileName);
+            }
+            // return dd($uploadedFileName);
+            $path = $uploadedFile->storeAs('public/files/works/document', $uploadedFileName);
+            // return dd($path);
 
-        foreach ($path as $index => $row) {            
+
             $data = [       
-                'work_id' => $prescription->id,
-                'evidence' => $path[$index], 
+                'work_id' => $request->work_id,
+                'evidence' => $path, 
             ];
-            $document = Document::create($data);    
+            $document = Document::create($data);
         }
-
     }
 
     /**
@@ -104,7 +113,7 @@ class DocumentController extends Controller
     {
         //
         $document = Document::find($id);
-        $uploadedFile = $request->file('evidence');
+        $uploadedFile = $request->file('evidence[]');
         $uploadedFileName = $uploadedFile->getClientOriginalName();
         $path = $uploadedFile->store('public/files/'.$uploadedFileName);
 

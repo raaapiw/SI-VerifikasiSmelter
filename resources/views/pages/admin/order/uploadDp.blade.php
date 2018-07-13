@@ -20,8 +20,8 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{ route('admin.order.update', $order-> id) }}" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="client_id" value="{{ $order->client-> id}}">
+                <form action="{{ route('admin.order.update', $order->id) }}" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="client_id" value="{{ $order->client->id}}">
                     <div class="form-body">
                         <h3 class="card-title">Company Info</h3>
                         <hr>
@@ -62,7 +62,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File Invoice DP</h4>
-                                    <input type="file" id="file" name="offer_letter" class="dropify" required/>
+                                    <input type="file" id="file" name="dp_invoice" class="dropify" required/>
                                 </div>
                             </div>
                         </div>

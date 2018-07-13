@@ -9,6 +9,7 @@ use App\Order;
 use App\Client;
 use App\Work;
 use Sentinel;
+use Storage;
 
 class WorkController extends Controller
 {
@@ -132,8 +133,11 @@ class WorkController extends Controller
             
             
                 $uploadedFile = $request->file('curva_s');
-
-                $path = $uploadedFile->store('public/files');
+                $uploadedFileName = $request->order_id . '-' . $uploadedFile->getClientOriginalName();
+                if (Storage::exists($uploadedFileName)) {
+                    Storage::delete($uploadedFileName);
+                }
+                $path = $uploadedFile->storeAs('public/files/work/client', $uploadedFileName);$uploadedFile->store('public/files');
     
                 $data = [
                     'order_id' => $request->order_id,

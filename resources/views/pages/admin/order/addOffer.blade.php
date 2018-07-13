@@ -44,7 +44,13 @@
                                         <a href="{{ route('admin.order.uploadOffer', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         <a href="{{ Storage::url($row->offer_letter) }}"><span><i class="fa fa-download"></i></span></a></center>
                                 </td>
-                                <td> {{ isset($row->state_offer) ? Storage::url($row->state_offer) : "Belum Disetujui"}}</td>
+                                <td> @if ($row->state_offer !== null) 
+                                        <a href="{{ Storage::url($row->state_offer) }}"><span><i class="fa fa-download"></i></span></a>
+                                    @else
+                                        "Belum Disetujui"
+                                    
+                                    @endif
+                                </td>
                                 <td><center>
                                         <a href="{{ route('admin.order.uploadDp', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         <a href="{{ Storage::url($row->dp_invoice) }}"><span><i class="fa fa-download"></i></span></a>

@@ -25,11 +25,13 @@
                     <div class="form-body">
                         <h3 class="box-title m-t-40">Upload Dokumen Pekerjaan</h3>
                         <hr>
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">File Dokumen Pekerjaan</h4>
-                                    <input type="file" id="file" name="evidence[]" class="dropify" required/>
+                        <div id="dynamic_field">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">File Dokumen Pekerjaan</h4>
+                                        <input type="file" id="file" name="evidence[]" class="dropify" required/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
