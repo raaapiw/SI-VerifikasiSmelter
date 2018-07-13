@@ -481,7 +481,7 @@
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('client.work.uploadCurvaS',Sentinel::getUser()->id)}}">Kurva S</a></li>
-                                        <li><a href="#">Dokumen Pendukung</a></li>
+                                        <li><a href="{{ route('client.work.listOrder',Sentinel::getUser()->id)}}">Dokumen Pendukung</a></li>
                                     </ul>
                                 </li>
                                 

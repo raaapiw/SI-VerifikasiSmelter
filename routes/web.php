@@ -70,7 +70,13 @@ Route::group(['middleware' => 'client'], function() {
     
     Route::post('/client/work/update/{id}', 'client\WorkController@update') ->name('client.work.update');
     Route::get('/client/work/uploadCurvaS/{id}', 'client\WorkController@uploadCurvaS') ->name('client.work.uploadCurvaS');
-    
+
+    Route::get('/client/document/addDocument/{id}', 'client\DocumentController@addDoc') ->name('client.document.addDoc');
+    Route::get('/client/document/listOrder', 'client\DocumentController@index') ->name('client.work.listOrder');
+    Route::post('/client/document/update/{id}', 'client\DocumentController@update') ->name('client.document.update');
+    Route::post('/client/document/store', 'client\DocumentController@store') ->name('client.document.store');
+   
+   
 });
 
 Route::group(['middleware' => 'minerba'], function() {

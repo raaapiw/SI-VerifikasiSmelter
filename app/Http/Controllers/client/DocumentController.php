@@ -4,6 +4,12 @@ namespace App\Http\Controllers\client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use \Input as Input;
+use App\Order;
+use App\Document;
+use App\Work;
+use App\Client;
+use Sentinel;
 
 class DocumentController extends Controller
 {
@@ -12,9 +18,24 @@ class DocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function addDoc($id)
+    {
+        $order = Order::where('id','=',$id)->first();
+        // dd($order);
+        $work  = Work::where('order_id','=',$order->id)->first();
+        // dd($work);
+        // $document = Document::where('work_id','=',$work->id)->first();
+        // dd($document);
+        return view('pages.client.work.addDoc', compact('work','document'));
+    }
     public function index()
     {
         //
+      
+        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
+        $orders = Order::where('client_id','=',$client->id)->get();
+        return view('pages.client.work.listOrder', compact('orders'));
+        
     }
 
     /**
@@ -36,10 +57,14 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         // 
-        foreach ($request->evidencec as $index => $row) {            
+        $uploadedFile = $request->file('evidence[]');
+        $uploadedFileName = $uploadedFile->getClientOriginalName();
+        $path = $uploadedFile->store('public/files/'.$uploadedFileName);
+
+        foreach ($path as $index => $row) {            
             $data = [       
                 'work_id' => $prescription->id,
-                'evidence' => $request->evidence[$index], 
+                'evidence' => $path[$index], 
             ];
             $document = Document::create($data);    
         }
@@ -78,14 +103,19 @@ class DocumentController extends Controller
     public function update(Request $request, $id)
     {
         //
-        foreach ($request->medicine as $index => $row) {            
-            $data_mp = [       
-                'prescription_id' => $prescription->id,
-                'medicine_id' => $request->medicine[$index], 
-                'amount' => $request->amount[$index],
-                'notation' => $request->notation[$index],
+        $document = Document::find($id);
+        $uploadedFile = $request->file('evidence');
+        $uploadedFileName = $uploadedFile->getClientOriginalName();
+        $path = $uploadedFile->store('public/files/'.$uploadedFileName);
+
+        foreach ($path as $index => $row) {            
+            $data = [       
+                'work_id' => $request->work_id,
+                'evidence' => $path[$index], 
             ];
-            $medicine_prescription = MedicinePrescription::create($data_mp);    
+            $document = Document::create($data);   
+            
+            return redirect()->route('admin.dashboard');
         }
 
     }

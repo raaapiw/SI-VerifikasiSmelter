@@ -25,6 +25,7 @@ class Order extends Model
         'real_name_offer_letter'
     ];
 
+    
     public function works()
     {
         return $this->hasMany(Work::class);
