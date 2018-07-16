@@ -6,10 +6,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($document->evidence) ? 'Upload Dokumen': 'Edit Dokumen'}}</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Edit Dokumen</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">{{ isset($document->evidence) ? ' Upload Dokumen':'Edit Dokumen'}}</li>
+            <li class="breadcrumb-item active">Edit Dokumen</li>
         </ol>
     </div>
 </div>
@@ -20,8 +20,8 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{ isset($document) ? route('client.document.update', $document->id) : route('client.document.store') }}" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="work_id" value="{{$work->id}}">
+                <form action="{{  route('client.document.update',$document->id) }}" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="work_id" value="{{$document->work_id}}">
                     <div class="form-body">
                         <h3 class="box-title m-t-40">Upload Dokumen Pekerjaan</h3>
                         <hr>
@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-md-12">
                                 <center>
                                     <button name="add" id="add" type="button" class="btn btn-block btn-info" data-count={{ isset($document) ? count($document) : 0 }}>Tambah Dokumen</button>
@@ -43,7 +43,7 @@
                                 <br>
                                 <br>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-actions">
                             <button type="submit" class="btn btn-success" value="upload"><i class="fa fa-check"></i> Submit</button>

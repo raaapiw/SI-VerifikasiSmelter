@@ -17,6 +17,7 @@ class Order extends Model
         'state',
         'state_offer',
         'contract',
+        'spk',
         
     ];
     

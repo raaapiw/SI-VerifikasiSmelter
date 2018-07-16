@@ -270,6 +270,7 @@ class OrderController extends Controller
             // $order = Order::update($data);
         
             return redirect()->route('admin.dashboard');
+            
         }elseif (isset($request->contract)){
             $uploadedFile = $request->file('contract');
             $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();

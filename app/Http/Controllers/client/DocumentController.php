@@ -27,15 +27,34 @@ class DocumentController extends Controller
         // dd($work);
         // $document = Document::where('work_id','=',$work->id)->first();
         // dd($document);
-        return view('pages.client.work.addDoc', compact('work','document'));
+        return view('pages.client.document.addDoc', compact('work','document'));
     }
+    
     public function index()
     {
         //
       
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $orders = Order::where('client_id','=',$client->id)->get();
-        return view('pages.client.work.listOrder', compact('orders'));
+        $order = Order::where('client_id','=',$client->id)->get();
+        // dd($order);
+        // $work  = Work::where('order_id','=',$order->id)->get();
+        // dd($work);
+        return view('pages.client.document.listOrder', compact('order'));
+        
+    }
+
+    public function index_doc()
+    {
+        //
+      
+        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
+        $temporder = Order::has('works');
+        $order = $temporder->where('client_id','=',$client->id)->get();
+        // $order = Order::where('client_id','=',$client->id)->get();
+        // dd($order);
+        // $work  = Work::where('order_id','=',$order->id)->get();
+        // dd($work);
+        return view('pages.client.document.listDoc', compact('order'));
         
     }
 
@@ -44,6 +63,16 @@ class DocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function detail($id)
+    {
+        $order = Order::find($id);
+        $work  = Work::where('order_id','=',$order->id)->first();
+        $document = Document::where('work_id','=',$work->id)->get();
+        // dd($document);
+
+        return view('pages.client.document.detail', compact('document','order','work'));
+
+    }
     public function create()
     {
         //
@@ -77,6 +106,7 @@ class DocumentController extends Controller
                 'evidence' => $path, 
             ];
             $document = Document::create($data);
+            return redirect()->route('client.dashboard');
         }
     }
 
@@ -97,9 +127,14 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editDoc($id)
     {
         //
+
+        $document = Document::find($id);
+        // dd($document);
+
+        return view('pages.client.document.editDoc', compact('document','order','work'));
     }
 
     /**
@@ -113,18 +148,24 @@ class DocumentController extends Controller
     {
         //
         $document = Document::find($id);
-        $uploadedFile = $request->file('evidence[]');
-        $uploadedFileName = $uploadedFile->getClientOriginalName();
-        $path = $uploadedFile->store('public/files/'.$uploadedFileName);
+        $arrayFile = $request->file('evidence');
+        // return dd($arrayFile);
+        foreach ($arrayFile as $row){
+            $uploadedFile =  $row;
+            // dd($uploadedFile);
+            $uploadedFileName = $request->work_id . '-' . $uploadedFile->getClientOriginalName();
+            if (Storage::exists($uploadedFileName)) {
+                Storage::delete($uploadedFileName);
+            }
+            // return dd($uploadedFileName);
+            $path = $uploadedFile->storeAs('public/files/works/document', $uploadedFileName);
 
-        foreach ($path as $index => $row) {            
             $data = [       
                 'work_id' => $request->work_id,
-                'evidence' => $path[$index], 
+                'evidence' => $path, 
             ];
-            $document = Document::create($data);   
-            
-            return redirect()->route('admin.dashboard');
+            $document->fill($data)->save();
+            return redirect()->route('client.dashboard');
         }
 
     }
@@ -138,5 +179,9 @@ class DocumentController extends Controller
     public function destroy($id)
     {
         //
+        
+        $document = Document::find($id)->delete();
+        
+        return redirect()->route('client.dashboard');
     }
 }

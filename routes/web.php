@@ -44,9 +44,12 @@ Route::group(['middleware' => 'admin'], function() {
     Route::post('/admin/meeting/store', 'admin\MeetingController@store') ->name('admin.meeting.store');
     Route::get('/admin/meeting/listMeeting', 'admin\MeetingController@listMeeting') ->name('admin.meeting.listMeeting');
     Route::get('/admin/meeting/createBA/{id}', 'admin\MeetingController@createBA') ->name('admin.meeting.createBA');
-    
    
     Route::get('/admin/work/curva_s', 'admin\WorkController@curvaS') ->name('admin.work.curvaS');
+
+    Route::get('/admin/document/listDoc', 'admin\DocumentController@index_doc') ->name('admin.document.listDoc');
+    Route::get('/admin/document/detail/{id}', 'admin\DocumentController@detail') ->name('admin.document.detail');
+    
 });
 
 Route::group(['middleware' => 'client'], function() {
@@ -68,14 +71,22 @@ Route::group(['middleware' => 'client'], function() {
     Route::get('/client/meeting/listBeritaAcara', 'client\MeetingController@listBA') ->name('client.meeting.listBA');
     Route::get('/client/meeting/listMeeting', 'client\MeetingController@listMeeting') ->name('client.meeting.listMeeting');
     
+    Route::get('/client/work/addCurva', 'client\WorkController@index') ->name('client.work.addCurva');
     Route::post('/client/work/update/{id}', 'client\WorkController@update') ->name('client.work.update');
     Route::get('/client/work/uploadCurvaS/{id}', 'client\WorkController@uploadCurvaS') ->name('client.work.uploadCurvaS');
-
+    Route::post('/client/work/store', 'client\WorkController@store') ->name('client.work.store');
+    Route::get('/client/work/listCurvaS', 'client\WorkController@index_curva') ->name('client.work.listCurvaS');
+    Route::get('/client/work/editCurvaS/{id}', 'client\WorkController@edit') ->name('client.work.editCurvaS');
+   
     Route::get('/client/document/addDocument/{id}', 'client\DocumentController@addDoc') ->name('client.document.addDoc');
-    Route::get('/client/document/listOrder', 'client\DocumentController@index') ->name('client.work.listOrder');
+    Route::get('/client/document/listOrder', 'client\DocumentController@index') ->name('client.document.listOrder');
     Route::post('/client/document/update/{id}', 'client\DocumentController@update') ->name('client.document.update');
     Route::post('/client/document/store', 'client\DocumentController@store') ->name('client.document.store');
-   
+    Route::get('/client/document/listDoc', 'client\DocumentController@index_doc') ->name('client.document.listDoc');
+    Route::get('/client/document/detail/{id}', 'client\DocumentController@detail') ->name('client.document.detail');
+    Route::get('/client/document/edit/{id}', 'client\DocumentController@editDoc') ->name('client.document.editDoc');
+    Route::get('/client/document/destroy/{id}', 'client\DocumentController@destroy')->name('client.document.destroy');
+    
    
 });
 

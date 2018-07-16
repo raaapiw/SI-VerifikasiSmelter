@@ -20,21 +20,54 @@ class WorkController extends Controller
      */
     public function uploadCurvaS($id)
     {
-        $client = Client::where('user_id','=',$id)->first();
-        $order = Order::where('client_id','=',$client->id)->first();
+        
+        $order = Order::find($id);
+        // dd($order);
+        // $work = Work::all();
+        // $work = Work::where('order_id','=',$order->id)->first();
+        // $work = Work::where('order_id','=',$id)->get();
+        // dd($work);
         // dd($order);
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('pages.client.work.curvaS', compact('client','order'));
+        return view('pages.client.work.curvaS', compact('work','order'));
     }
-
 
     
 
+
+    
     public function index()
     {
         //
+      
+        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
+        $temporder = Order::doesntHave('works');
+        $order = $temporder->where('client_id','=',$client->id)->get();
+        // $order = Order::where('client_id','=',$client->id)->get();
+        // dd($order);
+        // $work  = Work::where('order_id','=',$order->id)->get();
+        // dd($work);
+        return view('pages.client.work.addCurva', compact('order'));
+        
     }
+
+    public function index_curva()
+    {
+        //
+      
+        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
+        // $temporder = Order::doesntHave('works');
+        // $order = $temporder->where('client_id','=',$client->id)->get();
+        $order = Order::where('client_id','=',$client->id)->get();
+        // dd($order);
+        // $work  = Work::where('order_id','=',$order->id)->get();
+        // dd($work);
+        return view('pages.client.work.list', compact('order'));
+        
+    }
+    
+    
 
     /**
      * Show the form for creating a new resource.
@@ -77,20 +110,7 @@ class WorkController extends Controller
              
            
             
-        } elseif (isset($request->evidence)){
-            $uploadedFile = $request->file('evidence');
-
-                $path = $uploadedFile->store('public/files');
-    
-                $data = [
-                    'order_id' => $request->client_id,
-                    'evidence' => $path,
-                ];    
-                $work = Work::create($data);
-        
-            return redirect()->route('client.dashboard');
-           
-        }
+        } 
     }
 
     /**
@@ -113,6 +133,14 @@ class WorkController extends Controller
     public function edit($id)
     {
         //
+        // dd($id);
+        $order = Order::find($id);
+        // dd($order);
+        $work = Work::where('order_id','=',$order->id)->first();
+        // dd($work);
+
+        return view('pages.client.work.curvaS', compact('order','work'));
+
     }
 
     /**
