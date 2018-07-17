@@ -99,6 +99,11 @@ Route::group(['middleware' => 'client'], function() {
     Route::get('/client/document/detail/{id}', 'client\DocumentController@detail') ->name('client.document.detail');
     Route::get('/client/document/edit/{id}', 'client\DocumentController@editDoc') ->name('client.document.editDoc');
     Route::get('/client/document/destroy/{id}', 'client\DocumentController@destroy')->name('client.document.destroy');
+
+
+    Route::get('/client/report/listLetter', 'client\ReportController@listLetter') ->name('client.report.listLetter');
+    Route::get('/client/report/listReceipt', 'client\ReportController@listReceipt') ->name('client.report.listReceipt');
+    Route::get('/client/report/listReport', 'client\ReportController@index') ->name('client.report.listReport');
     
    
 });

@@ -491,19 +491,16 @@
                                         <li><a href="{{ route('client.document.listDoc',Sentinel::getUser()->id)}}">List Dokumen</a></li>
                                     </ul>
                                 </li>
-                                
-                                {{-- <li>
-                                    <a href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Diagnosis</span></a>
+                                <li>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pelaporan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis by Photo</a></li> --}}
-                                        {{-- <li><a href="{{ route('doctor.diagnosis.add1')}}"> Add Diagnosis by System</a></li> --}}
-                                        {{-- <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li>
+                                        <li><a href="{{ route('client.report.listReport')}}">List Laporan</a></li>
+                                        <li><a href="{{ route('client.report.listReceipt')}}">List Receipt</a></li>
+                                        <li><a href="{{ route('client.report.listLetter')}}">List Surat Pengantar</a></li>
+                                        
                                     </ul>
-                                </li> --}}
+                                </li>
                                 
-                                {{-- <li>
-                                    <a href="{{ route('doctor.patient.list')}}" aria-expanded="false"><i class="fa fa-wheelchair"></i><span class="hide-menu">Patients</span></a>
-                                </li> --}}
                                 
                             </ul>
                         @endif
