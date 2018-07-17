@@ -395,7 +395,12 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pelaporan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="#">List Perusahaan</a></li>
+                                        <li><a href="{{ route('admin.report.addReport')}}">Tambah Laporan</a></li>
+                                        <li><a href="{{ route('admin.report.listReport')}}">List Laporan</a></li>
+                                        <li><a href="{{ route('admin.report.addReceipt')}}">Tambah Receipt</a></li>
+                                        <li><a href="{{ route('admin.report.listReceipt')}}">List Receipt</a></li>
+                                        <li><a href="{{ route('admin.report.addLetter')}}">Tambah Surat Pengatar</a></li>
+                                        <li><a href="{{ route('admin.report.listLetter')}}">List Surat Pengantar</a></li>
                                         
                                     </ul>
                                 </li>
@@ -507,14 +512,7 @@
                 </div>
                 <!-- End Sidebar scroll-->
                 <!-- Bottom points-->
-                <div class="sidebar-footer">
-                    <!-- item-->
-                    <a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
-                    <!-- item-->
-                    <a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-                    <!-- item-->
-                    <a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
-                </div>
+              
                 <!-- End Bottom points-->
             </aside>
             <!-- ============================================================== -->

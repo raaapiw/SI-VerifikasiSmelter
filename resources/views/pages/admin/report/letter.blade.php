@@ -6,10 +6,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Upload Tanda Terima</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Upload Surat Pengantar</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">Upload Tanda Terima</li>
+            <li class="breadcrumb-item active">Upload Surat Pengantar</li>
         </ol>
     </div>
 </div>
@@ -23,13 +23,13 @@
                 <form action="{{ route('admin.report.update', $report->id) }}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="order_id" value="{{$report->order->id}}">
                     <div class="form-body">
-                        <h3 class="box-title m-t-40">Upload Tanda Terima</h3>
+                        <h3 class="box-title m-t-40">Upload Surat Pengantar</h3>
                         <hr>
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">File Tanda Terima</h4>
-                                    <input type="file" id="file" name="receipt" class="dropify" required/>
+                                    <h4 class="card-title">File Surat Pengantar</h4>
+                                    <input type="file" id="file" name="covering_letter" class="dropify" required/>
                                 </div>
                             </div>
                         </div>

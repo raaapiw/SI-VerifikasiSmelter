@@ -49,6 +49,19 @@ Route::group(['middleware' => 'admin'], function() {
 
     Route::get('/admin/document/listDoc', 'admin\DocumentController@index_doc') ->name('admin.document.listDoc');
     Route::get('/admin/document/detail/{id}', 'admin\DocumentController@detail') ->name('admin.document.detail');
+
+    Route::get('/admin/report/addReport', 'admin\ReportController@addReport') ->name('admin.report.addReport');
+    Route::get('/admin/report/listReport', 'admin\ReportController@index') ->name('admin.report.listReport');
+    Route::get('/admin/report/createReport/{id}', 'admin\ReportController@create') ->name('admin.report.create');
+    Route::post('/admin/report/store', 'admin\ReportController@store') ->name('admin.report.store');
+    Route::get('/admin/report/addReceipt', 'admin\ReportController@addReceipt') ->name('admin.report.addReceipt');
+    Route::get('/admin/report/receipt/{id}', 'admin\ReportController@receipt') ->name('admin.report.receipt');
+    Route::post('/admin/report/receiptUpdate{id}', 'admin\ReportController@update') ->name('admin.report.update');
+    Route::get('/admin/report/listReceipt', 'admin\ReportController@listReceipt') ->name('admin.report.listReceipt');
+
+    Route::get('/admin/report/addletter', 'admin\ReportController@addletter') ->name('admin.report.addLetter');
+    Route::get('/admin/report/letter/{id}', 'admin\ReportController@letter') ->name('admin.report.letter');
+    Route::get('/admin/report/listLetter', 'admin\ReportController@listLetter') ->name('admin.report.listLetter');
     
 });
 

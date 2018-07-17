@@ -35,7 +35,7 @@ class Order extends Model
     {
         return $this->hasMany(Meeting::class);
     }
-    public function reports()
+    public function report()
     {
         return $this->hasOne(Report::class);
     }
