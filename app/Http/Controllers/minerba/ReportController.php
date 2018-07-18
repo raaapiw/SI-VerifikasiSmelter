@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\client;
+namespace App\Http\Controllers\minerba;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use \Input as Input;
-use Storage;
-use App\Order;
-use App\Document;
-use App\Work;
-use App\Client;
-use App\Report;
-use Sentinel;
 
+use \Input as Input;
+use App\Order;
+use App\Client;
+use Sentinel;
+use Storage;
 class ReportController extends Controller
 {
     /**
@@ -20,34 +17,17 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function listLetter()
-    {
-        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $orders = Order::where('client_id','=',$client->id)->get();
-
-        return view('pages.client.report.listLetter', compact('orders'));
+    public function listReport()
+    { 
         
+        $orders = Order::all();
+        // dd($orders);
+        return view('pages.minerba.report.list', compact ('clients','meetings','orders'));
     }
-    public function listReceipt()
-    {
-        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $orders = Order::where('client_id','=',$client->id)->get();
-
-        return view('pages.client.report.listReceipt', compact('orders'));
-        
-    }
-     public function index()
+    public function index()
     {
         //
-        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $orders = Order::where('client_id','=',$client->id)->get();
-        // dd($orders);
-        $report = Report::all();
-        // $report = Report::where('order_id','=',$orders->id)->get();
-        // dd($report);
-        return view('pages.client.report.list', compact('orders','report'));
     }
-   
 
     /**
      * Show the form for creating a new resource.

@@ -13,8 +13,8 @@
     {{-- <meta name="userId" content="{{ Auth::check() ? Auth::user->id : '' }}"> --}}
     
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/favicon.png') }}">
-    <title>Surveyor Indonesia</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/head-logo.png') }}">
+    <title>Verifikasi Smelter SI</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('material/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     @yield('style')
@@ -60,22 +60,22 @@
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="https://www.ptsi.co.id/">
                             <!-- Logo icon -->
                             <b>
                                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                                 <!-- Dark Logo icon -->
-                                <img src="{{ asset('material/images/logo-icon.png') }}" alt="homepage" class="dark-logo" />
+                                <img src="{{ asset('material/images/head-logo.png') }}" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo icon -->
-                                <img src="{{ asset('material/images/logo-light-icon.png') }}" alt="homepage" class="light-logo" />
+                                <img src="{{ asset('material/images/head-logo.png') }}" alt="homepage" class="light-logo" />
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
                             <span>
                             <!-- dark Logo text -->
-                            <img src="{{ asset('material/images/logo-text.png') }}" alt="homepage" class="dark-logo" />
+                            <img src="{{ asset('material/images/head-logo.png') }}" alt="homepage" class="dark-logo" />
                             <!-- Light Logo text -->    
-                            <img src="{{ asset('material/images/logo-light-text.png') }}" class="light-logo" alt="homepage" /></span> </a>
+                            <img src="{{ asset('material/images/logo3.png') }}" class="light-logo" alt="homepage" /></span> </a>
                     </div>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -91,8 +91,8 @@
                             <!-- ============================================================== -->
                             <!-- Messages -->
                             <!-- ============================================================== -->
-                            <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-view-grid"></i></a>
-                                <div class="dropdown-menu scale-up-left">
+                            {{-- <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-view-grid"></i></a> --}}
+                                {{-- <div class="dropdown-menu scale-up-left">
                                     <ul class="mega-dropdown-menu row">
                                         <li class="col-lg-3 col-xlg-2 m-b-30">
                                             <h4 class="m-b-20">CAROUSEL</h4>
@@ -179,8 +179,8 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </div>
-                            </li>
+                                </div> --}}
+                            {{-- </li> --}}
                             <!-- ============================================================== -->
                             <!-- End Messages -->
                             <!-- ============================================================== -->
@@ -192,7 +192,7 @@
                             <!-- ============================================================== -->
                             <!-- Comment -->
                             <!-- ============================================================== -->
-                            @if(Sentinel::getUser()->roles()->first()->slug == 'patient')
+                            @if(Sentinel::getUser()->roles()->first()->slug == 'client')
                             <notification v-bind:unreads="notifications" v-bind:userid="{{ Sentinel::getUser()->id}}"></notification>
                             @endif
                             <!-- ============================================================== -->
@@ -201,7 +201,7 @@
                             <!-- ============================================================== -->
                             <!-- Messages -->
                             <!-- ============================================================== -->
-                            <li class="nav-item dropdown">
+                            {{-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-email"></i>
                                     <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                                 </a>
@@ -243,7 +243,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li> --}}
                             <!-- ============================================================== -->
                             <!-- End Messages -->
                             <!-- ============================================================== -->
@@ -251,23 +251,19 @@
                             <!-- Profile -->
                             <!-- ============================================================== -->
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" class="profile-pic" /></a>
+                                <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('material/images/admin.png') }}" alt="user" class="profile-pic" /></a>
                                 <div class="dropdown-menu dropdown-menu-right scale-up">
                                     <ul class="dropdown-user">
                                         <li>
                                             <div class="dw-user-box">
-                                                <div class="u-img"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user"></div>
+                                                <div class="u-img"><img src="{{ asset('material/images/admin.png') }}" alt="user"></div>
                                                 <div class="u-text">
-                                                    <h4>{{ Sentinel::getUser()->username }}</h4>
-                                                    <p class="text-muted">varun@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                                    <h4>Username : {{ Sentinel::getUser()->username }}</h4>
+                                                    <p class="text-muted">{{ Sentinel::getUser()->name }}</p>
+                                                    {{-- <a href="" class="btn btn-rounded btn-danger btn-sm">View Profile</a> --}}
+                                                </div>
                                             </div>
                                         </li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                                        <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                                        <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li>
                                             <a href="javascript:void(0);" onclick="$(this).find('form').submit();"><i class="fa fa-power-off"></i> Logout
@@ -278,17 +274,11 @@
                                     </ul>
                                 </div>
                             </li>
-                            <a href="javascript:void(0);" onclick="$(this).find('form').submit();"><i class="fa fa-power-off"></i> Logout
-                                <form action="{{ route('postLogout') }}" method="POST">
-                                </form>
-                            </a>
+                           
                             <!-- ============================================================== -->
                             <!-- Language -->
                             <!-- ============================================================== -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="flag-icon flag-icon-us"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right scale-up"> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-id"></i> Indonesia</a></div>
-                            </li>
+                           
                         </ul>
                     </div>
                 </nav>
@@ -305,16 +295,9 @@
                     <!-- User profile -->
                     <div class="user-profile" style="background: url({{ asset('material/images/background/user-info.jpg') }}) no-repeat;">
                         <!-- User profile image -->
-                        <div class="profile-img"> <img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" /> </div>
+                        <div class="profile-img"> <img src="{{ asset('material/images/admin.png') }}" alt="user" /> </div>
                         <!-- User profile text-->
-                        <div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ Sentinel::getUser()->name }}<span class="caret"></span></a>
-                            <div class="dropdown-menu animated flipInY">
-                                <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
-                                <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
-                                <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
-                                <div class="dropdown-divider"></div> <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
-                                <div class="dropdown-divider"></div> <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
-                            </div>
+                        <div class="profile-text"> <a href="#" role="button" aria-haspopup="true" aria-expanded="true">{{ Sentinel::getUser()->name }}<span class="caret"></span></a>
                         </div>
                     </div>
                     <!-- End User profile text-->
@@ -424,6 +407,15 @@
                                 <li>
                                     <a href="{{ route('minerba.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('minerba.order.listSpk')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">SPK</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('minerba.meeting.listMeeting')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Meeting</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('minerba.report.listReport')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Laporan</span></a>
+                                </li>
                                 {{-- <li>
                                     <a href="{{ route('patient.registration.create')}}" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Registration</span></a>
                                     <ul aria-expanded="false" class="collapse">
@@ -469,7 +461,7 @@
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('client.order.uploadOffer', Sentinel::getUser()->id)}}">Surat Permintaan</a></li>
                                         <li><a href="{{ route('client.order.listDp', Sentinel::getUser()->id )}}">Pembayaran DP</a></li>
-                                        <li><a href="{{ route('client.order.listOrder', Sentinel::getUser()->id)}}">Surat Penawaran</a></li>
+                                        <li><a href="{{ route('client.offer.listOrder', Sentinel::getUser()->id)}}">Surat Penawaran</a></li>
                                         <li><a href="{{ route('client.order.listOrder')}}">List Pemesanan</a></li>
                                         
                                     </ul>

@@ -17,6 +17,14 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function detail($id)
+    {
+        //
+        $order = Order::find($id);
+        // $medicine_prescriptions = MedicinePrescription::all();
+        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
+        return view('pages.client.order.detail', compact('order'));
+    }
 
     public function offerLetter()
     {

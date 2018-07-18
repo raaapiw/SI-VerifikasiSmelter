@@ -32,6 +32,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if(isset($orders->report))
                             @foreach($orders as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
@@ -43,6 +44,7 @@
                                     </td>
                                 </tr>                            
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>

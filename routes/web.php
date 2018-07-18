@@ -78,6 +78,7 @@ Route::group(['middleware' => 'client'], function() {
     Route::get('/client/order/uploadDp/{id}', 'client\OrderController@uploadDp') ->name('client.order.uploadDp');
     Route::get('/client/order/listOrder', 'client\OrderController@index') ->name('client.order.listOrder');
     Route::post('/client/order/update/{id}', 'client\OrderController@update') ->name('client.order.update');
+    Route::get('/client/order/detail/{id}', 'admin\OrderController@detail') ->name('client.order.detail');
     
     Route::get('/client/offer/approveOrder', 'client\OrderController@offerLetter') ->name('client.offer.listOrder');
     Route::get('/client/offer/uploadOffer2/{id}', 'client\OrderController@uploadOffer2') ->name('client.offer.uploadOffer2');
@@ -115,6 +116,10 @@ Route::group(['middleware' => 'minerba'], function() {
     });
 
     Route::get('/minerba/dashboard', 'minerba\UserController@dashboard') ->name('minerba.dashboard');
+    Route::get('/minerba/report/listReport', 'minerba\ReportController@listReport') ->name('minerba.report.listReport');
+    Route::get('/minerba/meeting/listMeeting', 'minerba\MeetingController@listMeeting') ->name('minerba.meeting.listMeeting');
+    Route::get('/minerba/order/listSPK', 'minerba\OrderController@listSpk') ->name('minerba.order.listSpk');
+    
     
 });
 
