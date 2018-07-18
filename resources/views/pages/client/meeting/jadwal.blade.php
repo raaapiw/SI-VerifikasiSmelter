@@ -32,7 +32,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(isset($order))
+                            @if(isset($order->meeting))
                                 @foreach($order as $key=>$row)
                                     <tr>
                                         <td><center>{{$key+1}}</center></td>
