@@ -371,9 +371,10 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('admin.order.addOffer')}}">Surat Penawaran</a></li>
+                                        <li><a href="{{ route('admin.order.addOffer')}}">Tambah Pemesanan</a></li>
                                         <li><a href="{{ route('admin.order.listOrder')}}"> List Pemesanan</a></li>
-                                        
+                                        <li><a href="{{ route('admin.order.addContract')}}"> Tambah Kontrak</a></li>
+                                        <li><a href="{{ route('admin.order.listContract')}}">List Kontrak</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -467,13 +468,11 @@
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('client.order.uploadOffer', Sentinel::getUser()->id)}}">Surat Permintaan</a></li>
-                                        <li><a href="{{ route('client.order.listDp', Sentinel::getUser()->id )}}">Bukti Pembayaran DP</a></li>
+                                        <li><a href="{{ route('client.order.listDp', Sentinel::getUser()->id )}}">Pembayaran DP</a></li>
+                                        <li><a href="{{ route('client.order.listOrder', Sentinel::getUser()->id)}}">Surat Penawaran</a></li>
                                         <li><a href="{{ route('client.order.listOrder')}}">List Pemesanan</a></li>
                                         
                                     </ul>
-                                </li>
-                                <li>
-                                    <a href="{{ route('client.offer.listOrder')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Surat Penawaran</span></a>
                                 </li>
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>

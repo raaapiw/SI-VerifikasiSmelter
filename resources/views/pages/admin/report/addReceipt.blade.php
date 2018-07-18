@@ -35,8 +35,8 @@
                             @foreach($report as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
-                                    <td><center>{{ $row->order->new_date }}</center></td>
-                                    <td>{{ $row->order->client->full_company_name }}</td>
+                                    <td><center>{{ $row->order->created_at }}</center></td>
+                                    <td>{{ $row->order->client->company_name }}</td>
                                     <td><center>
                                             <a href="{{ route('admin.report.receipt',$row->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         </center>

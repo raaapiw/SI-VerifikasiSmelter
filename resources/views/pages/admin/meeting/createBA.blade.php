@@ -67,7 +67,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File Berita Acara</h4>
-                                    <input type="file" id="file" name="offer_letter" class="dropify" required/>
+                                    <input type="file" id="file" name="bap" class="dropify" accept="application/pdf" required/>
                                 </div>
                             </div>
                         </div>

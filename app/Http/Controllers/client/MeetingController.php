@@ -22,7 +22,7 @@ class MeetingController extends Controller
     {
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
         
-        $order = Order::where('client_id','=',$client->id)->first();
+        $order = Order::where('client_id','=',$client->id)->get();
         // dd($order);
         // dd($client);
         // $orders = Order::where([
@@ -30,11 +30,11 @@ class MeetingController extends Controller
         //         ['client_id', '=', $client->id]
         //     ])->get(); 
 
-        $tempMeeting = Meeting::where('bap','!=',null);
-        $meetings = $tempMeeting->where('order_id','=',$order->id)->get();
+        // $tempMeeting = Meeting::where('bap','!=',null);
+        // $meetings = $tempMeeting->where('order_id','=',$order->id)->get();
         // dd($meetings);
         // return dd($orders);
-        return view('pages.client.meeting.listBA', compact('meetings'));
+        return view('pages.client.meeting.listBA', compact('meetings','order'));
     }
 
     public function listMeeting()
@@ -42,9 +42,9 @@ class MeetingController extends Controller
 
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
         $order = Order::where('client_id','=',$client->id)->first();
-        $meetings = Meeting::where('order_id','=',$order->id)->get();
+        // $meetings = Meeting::where('order_id','=',$order->id)->get();
         // dd($orders);
-        return view('pages.client.meeting.jadwal', compact ('orders','meetings'));
+        return view('pages.client.meeting.jadwal', compact ('order','meetings'));
     }
     public function index()
     {

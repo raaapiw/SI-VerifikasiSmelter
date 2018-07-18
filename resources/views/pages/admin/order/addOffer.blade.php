@@ -31,7 +31,6 @@
                             <th style="width : 10%">Status Penawaran</th>
                             <th style="width : 10%">Invoice DP</th>
                             <th style="width : 10%">Accept Pemesanan</th>
-                            <th style="width : 10%">Kontrak</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,16 +59,11 @@
                                     <center>
                                         <a href="{{ route('admin.order.proceed', $row->id)}}" data-toggle="tooltip" data-original-title="Accept"> <i class="fa fa-check m-r-10"></i> </a>
                                         {{-- <a href="#" data-toggle="tooltip" data-original-title="Update"><span><i class="fa fa-tasks text-inverse m-r-10"></i></span></a> --}}
-                                        <a href="#" onclick="$(this).find('#delete').submit();" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i>
+                                        {{-- <a href="#" onclick="$(this).find('#delete').submit();" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i>
                                         <form action="#" id="delete" method="post">
                                             {{ method_field('DELETE') }} 
-                                        </form>
-                                        </a>
-                                    </center>
-                                </td>
-                                <td> <center>
-                                        <a href="{{ route('admin.order.contract', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
-                                        <a href="{{ Storage::url($row->contract) }}"><span><i class="fa fa-download"></i></span></a>
+                                        </form> --}}
+                                        {{-- </a> --}}
                                     </center>
                                 </td>
                             </tr>                            
@@ -85,6 +79,6 @@
 @section('script')
 <script src="{{ asset('material/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script>$('#myTable').DataTable({
-    "order": [[ 1, "asc" ]]
+    "order": [[ 1, "DESC" ]]
 });</script>
 @endsection

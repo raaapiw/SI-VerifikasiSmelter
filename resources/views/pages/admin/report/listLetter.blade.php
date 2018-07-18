@@ -35,8 +35,8 @@
                             @foreach($report as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
-                                    <td><center>{{ $row->order->new_date }}</center></td>
-                                    <td>{{ $row->order->client->full_company_name }}</td>
+                                    <td><center>{{ $row->order->created_at }}</center></td>
+                                    <td>{{ $row->order->client->company_name }}</td>
                                     <td><center>
                                           <a href="{{ Storage::url($row->covering_letter) }}"><span><i class="fa fa-download"></i></span></a>
                                         </center>
@@ -57,6 +57,6 @@
 <script src="{{ asset('material/plugins/sweetalert/sweetalert.min.js')}}"></script>
 <script src="{{ asset('material/plugins/sweetalert/jquery.sweet-alert.custom.js')}}"></script>
 <script>$('#myTable').DataTable({
-    "order": [[ 1, "desc" ]]
+    "order": [[ 1, "DESC" ]]
 });</script>
 @endsection

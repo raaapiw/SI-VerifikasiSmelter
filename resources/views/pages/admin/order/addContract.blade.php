@@ -7,10 +7,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">List Order</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">List Kontrak</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">List Order</li>
+            <li class="breadcrumb-item active">List Kontrak</li>
         </ol>
     </div>
 </div>
@@ -28,17 +28,17 @@
                                 <th>No</th>
                                 <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
-                                <th><center>Action</center></th>
+                                <th><center>Kirim Kontrak</center></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($report as $key=>$row)
+                            @foreach($orders as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
-                                    <td><center>{{ $row->order->created_at }}</center></td>
-                                    <td>{{ $row->order->client->company_name }}</td>
+                                    <td><center>{{ $row->created_at }}</center></td>
+                                    <td>{{ $row->client->company_name }}</td>
                                     <td><center>
-                                          <a href="{{ Storage::url($row->receipt) }}"><span><i class="fa fa-download"></i></span></a>
+                                            <a href="{{ route('admin.order.contract', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         </center>
                                     </td>
                                 </tr>                            

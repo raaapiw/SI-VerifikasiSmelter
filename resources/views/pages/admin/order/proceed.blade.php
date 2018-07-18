@@ -67,7 +67,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File SPK</h4>
-                                    <input type="file" id="file" name="spk" class="dropify" required/>
+                                    <input type="file" id="file" name="spk" class="dropify" accept="application/pdf" required/>
                                 </div>
                             </div>
                         </div>

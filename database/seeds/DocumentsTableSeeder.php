@@ -20,6 +20,7 @@ class DocumentsTableSeeder extends Seeder
             DB::table('documents')->insert([                
                 'work_id' => $index+1,
                 'evidence' => $faker->text($maxNbChars = 190), 
+                'type' => rand(1,6),
                 'created_at' => $faker->date($format = 'Y-m-d', $max = 'now')       
             ]);
         }

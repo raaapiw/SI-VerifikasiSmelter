@@ -42,8 +42,6 @@
                                 <td><center><a href="{{ route('admin.order.uploadDp', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
                                     </center>
                                 </td>
-                                
-                                
                             </tr>                            
                         @endforeach
                     </tbody>

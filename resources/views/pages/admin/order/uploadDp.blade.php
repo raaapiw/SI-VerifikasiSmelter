@@ -62,7 +62,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File Invoice DP</h4>
-                                    <input type="file" id="file" name="dp_invoice" class="dropify" required/>
+                                    <input type="file" id="file" name="dp_invoice" class="dropify" accept="application/pdf" required/>
                                 </div>
                             </div>
                         </div>

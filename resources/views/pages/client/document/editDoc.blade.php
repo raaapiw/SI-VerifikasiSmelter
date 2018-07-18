@@ -29,21 +29,23 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-body">
+                                        <h4 class="card-title">Pilih Jenis Dokumen</h4>
+                                        <div class="form-group">
+                                                <select class="select2" style="width: 100%" name="type" placeholder={{$document->NameType}} >
+                                                   <option value=1>PERSIAPAN AWAL </option>
+                                                   <option value=2>PERSIAPAN PROYEK </option>
+                                                   <option value=3>PELAKSANAAN PROYEK </option>
+                                                   <option value=4>UTILITAS </option>
+                                                   <option value=5>INFRASTRUKTUR PENDUKUNG </option>
+                                                   <option value=6>COMMISIONING & START UP </option>                                                                   
+                                               </select>    
+                                           </div>
                                         <h4 class="card-title">File Dokumen Pekerjaan</h4>
-                                        <input type="file" id="file" name="evidence[]" class="dropify" required/>
+                                        <input type="file" id="file" name="evidence[]" class="dropify" accept="application/pdf" required/>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="row">
-                            <div class="col-md-12">
-                                <center>
-                                    <button name="add" id="add" type="button" class="btn btn-block btn-info" data-count={{ isset($document) ? count($document) : 0 }}>Tambah Dokumen</button>
-                                </center>
-                                <br>
-                                <br>
-                            </div>
-                        </div> --}}
 
                         <div class="form-actions">
                             <button type="submit" class="btn btn-success" value="upload"><i class="fa fa-check"></i> Submit</button>

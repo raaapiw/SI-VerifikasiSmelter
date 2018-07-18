@@ -29,7 +29,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File Laporan</h4>
-                                    <input type="file" id="file" name="report" class="dropify" required/>
+                                    <input type="file" id="file" name="report" class="dropify" accept="application/pdf" required/>
                                 </div>
                             </div>
                         </div>

@@ -31,12 +31,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($meetings as $key=>$row)
+                            @foreach($order as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
-                                    <td><center>{{ $row->created_at }}</center></td>
+                                    <td><center>{{ $row->meeting->created_at }}</center></td>
                                     <td><center>
-                                            <a href="#"><span><i class="fa fa-download"></i></span></a>
+                                            <a href="{{ Storage::url($row->meeting->bap) }}"><span><i class="fa fa-download"></i></span></a><
                                         </center>
                                     </td>
                                 </tr>                            
@@ -55,6 +55,6 @@
 <script src="{{ asset('material/plugins/sweetalert/sweetalert.min.js')}}"></script>
 <script src="{{ asset('material/plugins/sweetalert/jquery.sweet-alert.custom.js')}}"></script>
 <script>$('#myTable').DataTable({
-    "order": [[ 1, "desc" ]]
+    "order": [[ 1, "DESC" ]]
 });</script>
 @endsection

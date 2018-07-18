@@ -17,6 +17,8 @@ class CreateDocumentsTable extends Migration
             $table->increments('id');
             $table->integer('work_id')->unsigned();
             $table->string('evidence')->nullable();
+            $table->integer('type')->nullable();
+            
             $table->timestamps();
 
             $table->foreign('work_id')

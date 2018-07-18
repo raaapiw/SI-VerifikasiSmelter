@@ -29,7 +29,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File Surat Permintaan</h4>
-                                    <input type="file" id="file" name="letter_of_request" class="dropify" required/>
+                                    <input type="file" id="file" name="letter_of_request" class="dropify" accept="application/pdf" required/>
                                 </div>
                             </div>
                         </div>

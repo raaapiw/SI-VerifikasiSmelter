@@ -25,7 +25,7 @@ class DocumentController extends Controller
         // dd($order);
         $work  = Work::where('order_id','=',$order->id)->first();
         // dd($work);
-        // $document = Document::where('work_id','=',$work->id)->first();
+        $document = Document::all();
         // dd($document);
         return view('pages.client.document.addDoc', compact('work','document'));
     }
@@ -88,8 +88,11 @@ class DocumentController extends Controller
     {
         // 
         $arrayFile = $request->file('evidence');
+        $arrayType = $request->type;
         // return dd($arrayFile);
-        foreach ($arrayFile as $row){
+        // return dd($arrayType);
+        
+        foreach ($arrayFile as $index => $row){
             $uploadedFile =  $row;
             // dd($uploadedFile);
             $uploadedFileName = $request->work_id . '-' . $uploadedFile->getClientOriginalName();
@@ -100,14 +103,17 @@ class DocumentController extends Controller
             $path = $uploadedFile->storeAs('public/files/works/document', $uploadedFileName);
             // return dd($path);
 
-
             $data = [       
                 'work_id' => $request->work_id,
+                'type' =>$request->arrayType[$index],
                 'evidence' => $path, 
             ];
+            // dd($data);
             $document = Document::create($data);
-            return redirect()->route('client.dashboard');
+            // dd($document);
         }
+
+        return redirect()->route('client.dashboard');
     }
 
     /**

@@ -75,6 +75,7 @@
                                 <th>ID</th>
                                 <th>Date</th>
                                 <th><center>Dokumen</center></th>
+                                <th><center>Tipe Dokumen</center></th>
                                 <th><center>Action</center></th>
                             </tr>
                         </thead>
@@ -85,6 +86,7 @@
                             <td>
                                 <center><a href="{{ Storage::url($row->evidence) }}"><span>{{$row->RealNameEvidence}}</span></a></center>
                             </td>   
+                            <td>{{ $row->NameType}}</td>
                             <td><center>
                                     <a href="{{ route('client.document.editDoc',$row->id)}}"><span><i class="fa fa-pencil"></i></span></a>
                                     <a href="{{ route('client.document.destroy', $row->id) }}"><span><i class="mdi mdi-delete"></i></span></a>
@@ -109,7 +111,7 @@
 <script src="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js')}}" type="text/javascript"></script>
 <script src="{{ asset('material/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script>$('#myTable').DataTable({
-        "order": [[ 1, "desc" ]]
+        "order": [[ 1, "DESC" ]]
     });</script>
   
 @endsection

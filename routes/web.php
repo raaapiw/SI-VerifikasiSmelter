@@ -37,7 +37,8 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/order/proceed/{id}', 'admin\OrderController@proceed') ->name('admin.order.proceed');
     Route::get('/admin/order/detail/{id}', 'admin\OrderController@detail') ->name('admin.order.detail');
     Route::get('/admin/order/contract/{id}', 'admin\OrderController@contract') ->name('admin.order.contract');
-    
+    Route::get('/admin/order/addContract', 'admin\OrderController@addContract') ->name('admin.order.addContract');
+    Route::get('/admin/order/listContract', 'admin\OrderController@listContract') ->name('admin.order.listContract');
     
     Route::get('/admin/meeting/BeritaAcara', 'admin\MeetingController@uploadBA') ->name('admin.meeting.uploadBA');
     Route::get('/admin/meeting/schedule', 'admin\MeetingController@createSchedule') ->name('admin.meeting.schedule');
