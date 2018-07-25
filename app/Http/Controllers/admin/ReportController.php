@@ -107,7 +107,7 @@ class ReportController extends Controller
                 if (Storage::exists($uploadedFileName)) {
                     Storage::delete($uploadedFileName);
                 }
-                $path = $uploadedFile->storeAs('public/files/order/admin', $uploadedFileName);
+                $path = $uploadedFile->storeAs('public/files/report/admin', $uploadedFileName);
     
                 $data = [
                     'order_id' => $request->order_id,
@@ -128,7 +128,7 @@ class ReportController extends Controller
                     if (Storage::exists($uploadedFileName)) {
                         Storage::delete($uploadedFileName);
                     }
-                    $path = $uploadedFile->storeAs('public/files/order/admin', $uploadedFileName);
+                    $path = $uploadedFile->storeAs('public/files/report/admin', $uploadedFileName);
         
                     $data = [
                         'order_id' => $request->order_id,
@@ -211,7 +211,7 @@ class ReportController extends Controller
                 if (Storage::exists($uploadedFileName)) {
                     Storage::delete($uploadedFileName);
                 }
-                $path = $uploadedFile->storeAs('public/files/order/admin', $uploadedFileName);
+                $path = $uploadedFile->storeAs('public/files/report/admin', $uploadedFileName);
     
                 $data = [
                     'order_id' => $request->order_id,
@@ -232,7 +232,7 @@ class ReportController extends Controller
                     if (Storage::exists($uploadedFileName)) {
                         Storage::delete($uploadedFileName);
                     }
-                    $path = $uploadedFile->storeAs('public/files/order/admin', $uploadedFileName);
+                    $path = $uploadedFile->storeAs('public/files/report/admin', $uploadedFileName);
         
                     $data = [
                         'order_id' => $request->order_id,
@@ -254,7 +254,7 @@ class ReportController extends Controller
                         if (Storage::exists($uploadedFileName)) {
                             Storage::delete($uploadedFileName);
                         }
-                        $path = $uploadedFile->storeAs('public/files/order/admin', $uploadedFileName);
+                        $path = $uploadedFile->storeAs('public/files/report/admin', $uploadedFileName);
             
                         $data = [
                             'order_id' => $request->order_id,
