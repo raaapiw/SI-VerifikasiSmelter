@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/head-logo.png')}}">
     <title>Surveyor Indonesia</title>
     <!-- Bootstrap Core CSS -->
     {{--  <link href="../material/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">  --}}
@@ -17,7 +17,7 @@
     <!-- Custom CSS -->
     <link href="{{ asset('material/css/style.css')}}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
-    <link href="{{asset('material/css/colors/red.css')}}" id="theme" rel="stylesheet">
+    <link href="{{ asset('material/css/colors/blue.css')}}" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -37,7 +37,7 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <section id="wrapper" class="login-register login-sidebar"  style="background-image:url({{ asset('material/images/background/login-klinik.jpg')}});">
+    <section id="wrapper" class="login-register login-sidebar"  style="background-image:url({{ asset('material/images/background/coal.jpg')}});">
   <div class="login-box card">
     <div class="card-body">
       <form class="form-horizontal form-material" id="loginform" action="{{ route('postLogin') }}" method="POST">
