@@ -9,6 +9,7 @@ use App\Order;
 use App\Client;
 use App\Meeting;
 use Sentinel;
+use Storage;
 
 class MeetingController extends Controller
 {
@@ -83,14 +84,39 @@ class MeetingController extends Controller
     public function store(Request $request)
     {
         //
-        $data=[
-            'date'=> $request->date,
-            'time'=> $request->time,
-            'place'=> $request->place,         
-        ];
+        if (isset($request->bap)){
+            $rules = [
+                'bap'                  => 'required',
+            ];
+            
+            
+                $uploadedFile = $request->file('bap');
+                $uploadedFileName = $request->order_id . '-' . $uploadedFile->getClientOriginalName();
+                if (Storage::exists($uploadedFileName)) {
+                    Storage::delete($uploadedFileName);
+                }
+                $path = $uploadedFile->store('public/files/meeting/admin', $uploadedFileName);
+    
+                $data = [
+                    'client_id' => $request->client_id,
+                    'offer_letter' => $path,
+                ];
+                $meeting = Meeting::create($data);
 
-        Meeting::create($data);
-        return redirect()->route('admin.dashboard');
+                // $order = Order::update($data);
+        
+                return redirect()->route('admin.dashboard');
+        
+            }else{
+                $data=[
+                    'date'=> $request->date,
+                    'time'=> $request->time,
+                    'place'=> $request->place,         
+                ];
+
+                Meeting::create($data);
+                return redirect()->route('admin.dashboard');
+            }
     }
 
     /**
@@ -125,6 +151,40 @@ class MeetingController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $meeting = Meeting::find($id);
+        if (isset($request->bap)){
+            $rules = [
+                'bap'                  => 'required',
+            ];
+            
+            
+                $uploadedFile = $request->file('bap');
+                $uploadedFileName = $request->order_id . '-' . $uploadedFile->getClientOriginalName();
+                if (Storage::exists($uploadedFileName)) {
+                    Storage::delete($uploadedFileName);
+                }
+                $path = $uploadedFile->store('public/files/meeting/admin', $uploadedFileName);
+    
+                $data = [
+                    'client_id' => $request->client_id,
+                    'offer_letter' => $path,
+                ];
+                $meeting->fill($data)->save();
+
+                // $order = Order::update($data);
+        
+                return redirect()->route('admin.dashboard');
+        
+            }else{
+                $data=[
+                    'date'=> $request->date,
+                    'time'=> $request->time,
+                    'place'=> $request->place,         
+                ];
+
+                $order->fill($data)->save();
+                return redirect()->route('admin.dashboard');
+            }
     }
 
     /**

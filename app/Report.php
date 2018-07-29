@@ -8,11 +8,12 @@ class Report extends Model
 {
     //
     protected $fillable =[
+        'order_id',
         'report',
         'covering_letter',
         'receipt',
     ];
-    public function orders()
+    public function order()
     {
         return $this->belongsTo(Order::class);
     }

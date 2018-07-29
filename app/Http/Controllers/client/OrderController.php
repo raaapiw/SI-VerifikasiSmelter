@@ -8,6 +8,7 @@ use \Input as Input;
 use App\Order;
 use App\Client;
 use Sentinel;
+use Storage;
 
 class OrderController extends Controller
 {
@@ -16,6 +17,14 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function detail($id)
+    {
+        //
+        $order = Order::find($id);
+        // $medicine_prescriptions = MedicinePrescription::all();
+        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
+        return view('pages.client.order.detail', compact('order'));
+    }
 
     public function offerLetter()
     {
@@ -27,9 +36,10 @@ class OrderController extends Controller
     {
         //
         $client = Client::where('user_id','=',$id)->first();
+        $order = Order::where('client_id','=',$client->id)->get();
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('pages.client.order.uploadOffer', compact('client'));
+        return view('pages.client.order.uploadOffer', compact('client','order'));
     }
 
     public function uploadOffer2($id)
@@ -94,19 +104,18 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request  )
     {
         //
-        $order = Order::find($id);
         if (isset($request->letter_of_request)){
-            $rules = [
-                'letter_of_request'                  => 'required',
-            ];
-            
             
                 $uploadedFile = $request->file('letter_of_request');
 
-                $path = $uploadedFile->store('public/files');
+                 $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
+                if (Storage::exists($uploadedFileName)) {
+                    Storage::delete($uploadedFileName);
+                }
+                $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
     
                 $data = [
                     'client_id' => $request->client_id,
@@ -124,8 +133,11 @@ class OrderController extends Controller
             
         } elseif (isset($request->transfer_proof)){
             $uploadedFile = $request->file('transfer_proof');
-
-                $path = $uploadedFile->store('public/files');
+            $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
+                if (Storage::exists($uploadedFileName)) {
+                    Storage::delete($uploadedFileName);
+                }
+                $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
     
                 $data = [
                     'client_id' => $request->client_id,
@@ -174,14 +186,13 @@ class OrderController extends Controller
         //
         $order = Order::find($id);
         if (isset($request->letter_of_request)){
-            $rules = [
-                'letter_of_request'                  => 'required',
-            ];
-            
             
                 $uploadedFile = $request->file('letter_of_request');
-
-                $path = $uploadedFile->store('public/files');
+                $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
+                if (Storage::exists($uploadedFileName)) {
+                    Storage::delete($uploadedFileName);
+                }
+                $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
     
                 $data = [
                     'client_id' => $request->client_id,
@@ -194,9 +205,12 @@ class OrderController extends Controller
             
             
         } elseif (isset($request->transfer_proof)){
-            $uploadedFile = $request->file('transfer_proof');
-
-                $path = $uploadedFile->store('public/files');
+                $uploadedFile = $request->file('transfer_proof');
+                $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
+                if (Storage::exists($uploadedFileName)) {
+                    Storage::delete($uploadedFileName);
+                }
+                $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
     
                 $data = [
                     'client_id' => $request->client_id,
@@ -210,8 +224,12 @@ class OrderController extends Controller
         }elseif (isset($request->state_offer)){
             $uploadedFile = $request->file('state_offer');
 
-                $path = $uploadedFile->store('public/files');
-    
+            $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
+            if (Storage::exists($uploadedFileName)) {
+                Storage::delete($uploadedFileName);
+            }
+            $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
+
                 $data = [
                     'client_id' => $request->client_id,
                     'state_offer' => $path,

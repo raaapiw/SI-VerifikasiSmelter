@@ -6,10 +6,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($work->curva_s) ? 'Edit Kurva S': 'Upload Kurva S'}}</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($work) ? 'Edit Kurva S': 'Upload Kurva S'}}</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">{{ isset($work->curva_s) ? 'Edit Kurva S':'Upload Kurva S'}}</li>
+            <li class="breadcrumb-item active">{{ isset($work) ? 'Edit Kurva S':'Upload Kurva S'}}</li>
         </ol>
     </div>
 </div>
@@ -20,7 +20,7 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{route('client.work.update', $order->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{isset($work) ? route('client.work.update', $work->id) : route('client.work.store') }}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="order_id" value="{{$order->id}}">
                     <div class="form-body">
                         <h3 class="box-title m-t-40">Upload Kurva S</h3>
@@ -29,7 +29,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File Kurva S</h4>
-                                    <input type="file" id="file" name="curva_s" class="dropify" required/>
+                                    <input type="file" id="file" name="curva_s" class="dropify" accept="application/pdf" required/>
                                 </div>
                             </div>
                         </div>

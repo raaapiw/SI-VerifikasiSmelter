@@ -13,8 +13,8 @@
     {{-- <meta name="userId" content="{{ Auth::check() ? Auth::user->id : '' }}"> --}}
     
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/favicon.png') }}">
-    <title>Surveyor Indonesia</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/head-logo.png') }}">
+    <title>Verifikasi Smelter SI</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('material/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     @yield('style')
@@ -60,22 +60,22 @@
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="https://www.ptsi.co.id/">
                             <!-- Logo icon -->
                             <b>
                                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                                 <!-- Dark Logo icon -->
-                                <img src="{{ asset('material/images/logo-icon.png') }}" alt="homepage" class="dark-logo" />
+                                <img src="{{ asset('material/images/head-logo.png') }}" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo icon -->
-                                <img src="{{ asset('material/images/logo-light-icon.png') }}" alt="homepage" class="light-logo" />
+                                <img src="{{ asset('material/images/head-logo.png') }}" alt="homepage" class="light-logo" />
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
                             <span>
                             <!-- dark Logo text -->
-                            <img src="{{ asset('material/images/logo-text.png') }}" alt="homepage" class="dark-logo" />
+                            <img src="{{ asset('material/images/head-logo.png') }}" alt="homepage" class="dark-logo" />
                             <!-- Light Logo text -->    
-                            <img src="{{ asset('material/images/logo-light-text.png') }}" class="light-logo" alt="homepage" /></span> </a>
+                            <img src="{{ asset('material/images/logo3.png') }}" class="light-logo" alt="homepage" /></span> </a>
                     </div>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -91,8 +91,8 @@
                             <!-- ============================================================== -->
                             <!-- Messages -->
                             <!-- ============================================================== -->
-                            <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-view-grid"></i></a>
-                                <div class="dropdown-menu scale-up-left">
+                            {{-- <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-view-grid"></i></a> --}}
+                                {{-- <div class="dropdown-menu scale-up-left">
                                     <ul class="mega-dropdown-menu row">
                                         <li class="col-lg-3 col-xlg-2 m-b-30">
                                             <h4 class="m-b-20">CAROUSEL</h4>
@@ -179,8 +179,8 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </div>
-                            </li>
+                                </div> --}}
+                            {{-- </li> --}}
                             <!-- ============================================================== -->
                             <!-- End Messages -->
                             <!-- ============================================================== -->
@@ -192,7 +192,7 @@
                             <!-- ============================================================== -->
                             <!-- Comment -->
                             <!-- ============================================================== -->
-                            @if(Sentinel::getUser()->roles()->first()->slug == 'patient')
+                            @if(Sentinel::getUser()->roles()->first()->slug == 'client')
                             <notification v-bind:unreads="notifications" v-bind:userid="{{ Sentinel::getUser()->id}}"></notification>
                             @endif
                             <!-- ============================================================== -->
@@ -201,7 +201,7 @@
                             <!-- ============================================================== -->
                             <!-- Messages -->
                             <!-- ============================================================== -->
-                            <li class="nav-item dropdown">
+                            {{-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-email"></i>
                                     <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                                 </a>
@@ -243,7 +243,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li> --}}
                             <!-- ============================================================== -->
                             <!-- End Messages -->
                             <!-- ============================================================== -->
@@ -251,23 +251,19 @@
                             <!-- Profile -->
                             <!-- ============================================================== -->
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" class="profile-pic" /></a>
+                                <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('material/images/admin.png') }}" alt="user" class="profile-pic" /></a>
                                 <div class="dropdown-menu dropdown-menu-right scale-up">
                                     <ul class="dropdown-user">
                                         <li>
                                             <div class="dw-user-box">
-                                                <div class="u-img"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user"></div>
+                                                <div class="u-img"><img src="{{ asset('material/images/admin.png') }}" alt="user"></div>
                                                 <div class="u-text">
-                                                    <h4>{{ Sentinel::getUser()->username }}</h4>
-                                                    <p class="text-muted">varun@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                                    <h4>Username : {{ Sentinel::getUser()->username }}</h4>
+                                                    <p class="text-muted">{{ Sentinel::getUser()->name }}</p>
+                                                    {{-- <a href="" class="btn btn-rounded btn-danger btn-sm">View Profile</a> --}}
+                                                </div>
                                             </div>
                                         </li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                                        <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                                        <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li>
                                             <a href="javascript:void(0);" onclick="$(this).find('form').submit();"><i class="fa fa-power-off"></i> Logout
@@ -278,17 +274,11 @@
                                     </ul>
                                 </div>
                             </li>
-                            <a href="javascript:void(0);" onclick="$(this).find('form').submit();"><i class="fa fa-power-off"></i> Logout
-                                <form action="{{ route('postLogout') }}" method="POST">
-                                </form>
-                            </a>
+                           
                             <!-- ============================================================== -->
                             <!-- Language -->
                             <!-- ============================================================== -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="flag-icon flag-icon-us"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right scale-up"> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-id"></i> Indonesia</a></div>
-                            </li>
+                           
                         </ul>
                     </div>
                 </nav>
@@ -305,63 +295,42 @@
                     <!-- User profile -->
                     <div class="user-profile" style="background: url({{ asset('material/images/background/user-info.jpg') }}) no-repeat;">
                         <!-- User profile image -->
-                        <div class="profile-img"> <img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" /> </div>
+                        <div class="profile-img"> <img src="{{ asset('material/images/admin.png') }}" alt="user" /> </div>
                         <!-- User profile text-->
-                        <div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ Sentinel::getUser()->name }}<span class="caret"></span></a>
-                            <div class="dropdown-menu animated flipInY">
-                                <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
-                                <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
-                                <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
-                                <div class="dropdown-divider"></div> <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
-                                <div class="dropdown-divider"></div> <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
-                            </div>
+                        <div class="profile-text"> <a href="#" role="button" aria-haspopup="true" aria-expanded="true">{{ Sentinel::getUser()->name }}<span class="caret"></span></a>
                         </div>
                     </div>
                     <!-- End User profile text-->
                     <!-- Sidebar navigation-->
                     <nav class="sidebar-nav">
                         @if(Sentinel::getUser()->roles()->first()->slug == 'superAdmin')
-                            <ul id="sidebarnav">
-                                <li class="nav-small-cap">SUPERADMIN</li>
-                                <li>
-                                    <a href="{{ route('superAdmin.dashboard') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a>
-                                </li>
-                                <li>
-                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Admin</span></a>
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('superAdmin.admin.create') }}">Add Admin</a></li>
-                                        <li><a href="{{ route('superAdmin.admin.list') }}">List Admin</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Doctor</span></a>
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('superAdmin.doctor.create') }}">Add Doctor</a></li>
-                                        <li><a href="{{ route('superAdmin.doctor.list') }}">List Doctor</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Midwife</span></a>
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('superAdmin.midwife.create') }}">Add Midwife</a></li>
-                                        <li><a href="{{ route('superAdmin.midwife.list') }}">List Midwife</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Health Analyst</span></a>
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('superAdmin.healthAnalyst.create') }}">Add Health Analyst</a></li>
-                                        <li><a href="{{ route('superAdmin.healthAnalyst.list') }}">List Health Analyst</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Pharmacist</span></a>
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('superAdmin.pharmacist.create') }}">Add Pharmacist</a></li>
-                                        <li><a href="{{ route('superAdmin.pharmacist.list') }}">List Pharmacist</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <ul id="sidebarnav">
+                            <li class="nav-small-cap">SUPERADMIN</li>
+                            <li>
+                                <a href="{{ route('superAdmin.dashboard') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a>
+                            </li>
+                            <li>
+                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Admin</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="{{ route('superAdmin.admin.create') }}">Add Admin</a></li>
+                                    <li><a href="{{ route('superAdmin.admin.list') }}">List Admin</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Client</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="{{ route('superAdmin.client.create') }}">Add Client</a></li>
+                                    <li><a href="{{ route('superAdmin.client.list') }}">List Client</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Minerba</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="{{ route('superAdmin.minerba.create') }}">Add Minerba</a></li>
+                                    <li><a href="{{ route('superAdmin.minerba.list') }}">List Minerba</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                         @elseif(Sentinel::getUser()->roles()->first()->slug == 'admin')
                             <ul id="sidebarnav">
                                 <li class="nav-small-cap">Admin</li>
@@ -371,9 +340,10 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('admin.order.addOffer')}}">Surat Penawaran</a></li>
+                                        <li><a href="{{ route('admin.order.addOffer')}}">Tambah Pemesanan</a></li>
                                         <li><a href="{{ route('admin.order.listOrder')}}"> List Pemesanan</a></li>
-                                        
+                                        <li><a href="{{ route('admin.order.addContract')}}"> Tambah Kontrak</a></li>
+                                        <li><a href="{{ route('admin.order.listContract')}}">List Kontrak</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -388,14 +358,19 @@
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('admin.work.curvaS')}}">Kurva S</a></li>
-                                        <li><a href="#">List Pekerjaan</a></li>
+                                        <li><a href="{{ route('admin.document.listDoc')}}">List Pekerjaan</a></li>
                                         
                                     </ul>
                                 </li>
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pelaporan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="#">List Perusahaan</a></li>
+                                        <li><a href="{{ route('admin.report.addReport')}}">Tambah Laporan</a></li>
+                                        <li><a href="{{ route('admin.report.listReport')}}">List Laporan</a></li>
+                                        <li><a href="{{ route('admin.report.addReceipt')}}">Tambah Receipt</a></li>
+                                        <li><a href="{{ route('admin.report.listReceipt')}}">List Receipt</a></li>
+                                        <li><a href="{{ route('admin.report.addLetter')}}">Tambah Surat Pengatar</a></li>
+                                        <li><a href="{{ route('admin.report.listLetter')}}">List Surat Pengantar</a></li>
                                         
                                     </ul>
                                 </li>
@@ -417,6 +392,15 @@
                                 <li class="nav-small-cap">Minerba</li>
                                 <li>
                                     <a href="{{ route('minerba.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('minerba.order.listSpk')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">SPK</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('minerba.meeting.listMeeting')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Meeting</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('minerba.report.listReport')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Laporan</span></a>
                                 </li>
                                 {{-- <li>
                                     <a href="{{ route('patient.registration.create')}}" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Registration</span></a>
@@ -462,13 +446,11 @@
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('client.order.uploadOffer', Sentinel::getUser()->id)}}">Surat Permintaan</a></li>
-                                        <li><a href="{{ route('client.order.listDp', Sentinel::getUser()->id )}}">Bukti Pembayaran DP</a></li>
+                                        <li><a href="{{ route('client.order.listDp', Sentinel::getUser()->id )}}">Pembayaran DP</a></li>
+                                        <li><a href="{{ route('client.offer.listOrder', Sentinel::getUser()->id)}}">Surat Penawaran</a></li>
                                         <li><a href="{{ route('client.order.listOrder')}}">List Pemesanan</a></li>
                                         
                                     </ul>
-                                </li>
-                                <li>
-                                    <a href="{{ route('client.offer.listOrder')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Surat Penawaran</span></a>
                                 </li>
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
@@ -480,23 +462,22 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('client.work.uploadCurvaS',Sentinel::getUser()->id)}}">Kurva S</a></li>
-                                        <li><a href="#">Dokumen Pendukung</a></li>
+                                        <li><a href="{{ route('client.work.addCurva',Sentinel::getUser()->id)}}">Tambah Kurva S</a></li>
+                                        <li><a href="{{ route('client.work.listCurvaS',Sentinel::getUser()->id)}}">List Kurva S</a></li>
+                                        <li><a href="{{ route('client.document.listOrder',Sentinel::getUser()->id)}}">Dokumen Pendukung</a></li>
+                                        <li><a href="{{ route('client.document.listDoc',Sentinel::getUser()->id)}}">List Dokumen</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pelaporan</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('client.report.listReport')}}">List Laporan</a></li>
+                                        <li><a href="{{ route('client.report.listReceipt')}}">List Receipt</a></li>
+                                        <li><a href="{{ route('client.report.listLetter')}}">List Surat Pengantar</a></li>
+                                        
                                     </ul>
                                 </li>
                                 
-                                {{-- <li>
-                                    <a href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Diagnosis</span></a>
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis by Photo</a></li> --}}
-                                        {{-- <li><a href="{{ route('doctor.diagnosis.add1')}}"> Add Diagnosis by System</a></li> --}}
-                                        {{-- <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li>
-                                    </ul>
-                                </li> --}}
-                                
-                                {{-- <li>
-                                    <a href="{{ route('doctor.patient.list')}}" aria-expanded="false"><i class="fa fa-wheelchair"></i><span class="hide-menu">Patients</span></a>
-                                </li> --}}
                                 
                             </ul>
                         @endif
@@ -505,14 +486,7 @@
                 </div>
                 <!-- End Sidebar scroll-->
                 <!-- Bottom points-->
-                <div class="sidebar-footer">
-                    <!-- item-->
-                    <a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
-                    <!-- item-->
-                    <a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-                    <!-- item-->
-                    <a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
-                </div>
+              
                 <!-- End Bottom points-->
             </aside>
             <!-- ============================================================== -->

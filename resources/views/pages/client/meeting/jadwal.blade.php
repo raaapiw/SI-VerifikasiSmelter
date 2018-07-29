@@ -32,15 +32,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($meetings as $key=>$row)
-                                <tr>
-                                    <td><center>{{$key+1}}</center></td>
-                                    <td>{{ $row->date }}</td>
-                                    <td>{{ $row->time }}</td>
-                                    <td>{{ $row->place }}</td>
-                                    
-                                </tr>                            
-                            @endforeach
+                            @if(isset($order->meeting))
+                                @foreach($order as $key=>$row)
+                                    <tr>
+                                        <td><center>{{$key+1}}</center></td>
+                                        <td>{{ $row->meeting->date }}</td>
+                                        <td>{{ $row->meeting->time }}</td>
+                                        <td>{{ $row->meeting->place }}</td>
+                                    </tr>                            
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>

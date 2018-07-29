@@ -35,8 +35,8 @@
                             @foreach($orders as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
-                                    <td><center>{{ $row->new_date }}</center></td>
-                                    <td>{{ $row->client->full_company_name }}</td>
+                                    <td><center>{{ $row->created_at }}</center></td>
+                                    <td>{{ $row->client->company_name }}</td>
                                     <td><center>
                                             <a href="{{ route('admin.order.detail', $row->id)}}"><span><i class="fa fa-search"></i></span></a>
                                         </center>
@@ -57,6 +57,6 @@
 <script src="{{ asset('material/plugins/sweetalert/sweetalert.min.js')}}"></script>
 <script src="{{ asset('material/plugins/sweetalert/jquery.sweet-alert.custom.js')}}"></script>
 <script>$('#myTable').DataTable({
-    "order": [[ 1, "desc" ]]
+    "order": [[ 1, "DESC" ]]
 });</script>
 @endsection

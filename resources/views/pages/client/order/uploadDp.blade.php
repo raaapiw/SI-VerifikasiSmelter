@@ -29,7 +29,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File Bukti Transfer</h4>
-                                    <input type="file" id="file" name="transfer_proof" class="dropify" required/>
+                                    <input type="file" id="file" name="transfer_proof" class="dropify" accept="application/pdf" required/>
                                 </div>
                             </div>
                         </div>

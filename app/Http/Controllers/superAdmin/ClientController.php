@@ -16,7 +16,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $role = Sentinel::findRoleById(3);
+        $role = Sentinel::findRoleById(4);
         $clients = $role->users()->with('roles')->get();
         return view('pages.superAdmin.client.list', compact('clients'));
     }

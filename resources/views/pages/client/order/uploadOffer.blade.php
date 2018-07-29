@@ -20,7 +20,7 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{ isset($order->letter_of_request) ? route('client.order.update', $order-> id) : route('client.order.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ isset($order->letter_of_request) ? route('client.order.update', $order->id) : route('client.order.store')}}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="client_id" value="{{ $client->id}}">
                     <div class="form-body">
                         <h3 class="box-title m-t-40">Upload Surat Permintaan</h3>
@@ -29,7 +29,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File Surat Permintaan</h4>
-                                    <input type="file" id="file" name="letter_of_request" class="dropify" required/>
+                                    <input type="file" id="file" name="letter_of_request" class="dropify" accept="application/pdf" required/>
                                 </div>
                             </div>
                         </div>

@@ -17,13 +17,16 @@ class Order extends Model
         'state',
         'state_offer',
         'contract',
+        'spk',
         
     ];
     
     protected $appends =[
-        'new_date'
+        'new_date',
+        'real_name_offer_letter'
     ];
 
+    
     public function works()
     {
         return $this->hasMany(Work::class);
@@ -32,7 +35,7 @@ class Order extends Model
     {
         return $this->hasMany(Meeting::class);
     }
-    public function reports()
+    public function report()
     {
         return $this->hasOne(Report::class);
     }
@@ -43,6 +46,16 @@ class Order extends Model
     {
         $new_date = $this->created_at->format('d - m - Y');
         return $new_date;
+    }
+    public function getRealNameOfferLetterAttribute()
+    {
+        if($this->offer_letter != NULL){
+            $real_name = explode('/', $this->offer_letter);
+            return $real_name[2];
+        }else{
+            return null;
+        }
+        
     }
 
 }
