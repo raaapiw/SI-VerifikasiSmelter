@@ -74,6 +74,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Date</th>
+                                <th><center>Tipe Dokumen</center></th>
                                 <th><center>Dokumen</center></th>
                             </tr>
                         </thead>
@@ -81,6 +82,7 @@
                         <tr>
                             <td>{{ $row->id}}</td>
                             <td>{{ $row->created_at}}</td>
+                            <td>{{ $row->NameType}}</td>
                             <td>
                                 <center><a href="{{ Storage::url($row->evidence) }}"><span>{{$row->RealNameEvidence}}</span></a></center>
                             </td>                  

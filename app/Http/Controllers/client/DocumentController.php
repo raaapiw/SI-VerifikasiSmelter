@@ -105,9 +105,10 @@ class DocumentController extends Controller
 
             $data = [       
                 'work_id' => $request->work_id,
-                'type' =>$request->arrayType[$index],
+                'type' =>$arrayType[$index],
                 'evidence' => $path, 
             ];
+            
             // dd($data);
             $document = Document::create($data);
             // dd($document);
