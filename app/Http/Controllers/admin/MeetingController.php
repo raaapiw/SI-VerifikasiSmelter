@@ -98,6 +98,7 @@ class MeetingController extends Controller
                 $path = $uploadedFile->store('public/files/meeting/admin', $uploadedFileName);
     
                 $data = [
+                    'order_id' => $request->order_id,
                     'client_id' => $request->client_id,
                     'offer_letter' => $path,
                 ];
@@ -109,11 +110,12 @@ class MeetingController extends Controller
         
             }else{
                 $data=[
+                    'order_id' => $request->order_id,
                     'date'=> $request->date,
                     'time'=> $request->time,
                     'place'=> $request->place,         
                 ];
-
+                // dd($data);
                 Meeting::create($data);
                 return redirect()->route('admin.dashboard');
             }
@@ -166,9 +168,11 @@ class MeetingController extends Controller
                 $path = $uploadedFile->store('public/files/meeting/admin', $uploadedFileName);
     
                 $data = [
+                    'order_id' => $request->order_id,
                     'client_id' => $request->client_id,
                     'offer_letter' => $path,
                 ];
+                dd($meeting);
                 $meeting->fill($data)->save();
 
                 // $order = Order::update($data);
@@ -177,6 +181,7 @@ class MeetingController extends Controller
         
             }else{
                 $data=[
+                    'order_id' => $request->order_id,
                     'date'=> $request->date,
                     'time'=> $request->time,
                     'place'=> $request->place,         

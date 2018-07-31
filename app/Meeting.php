@@ -8,6 +8,7 @@ class Meeting extends Model
 {
     //
     protected $fillable =[
+        'order_id',
         'bap',
         'date',
         'time',
