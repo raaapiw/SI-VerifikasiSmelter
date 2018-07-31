@@ -19,6 +19,18 @@ class DocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function doc()
+    {
+        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
+        $temporder = Order::has('works');
+        $order = $temporder->where('client_id','=',$client->id)->get();
+        // $order = Order::where('client_id','=',$client->id)->get();
+        // dd($order);
+        // $work  = Work::where('order_id','=',$order->id)->get();
+        // dd($work);
+        $work = Work::all();
+        return view('pages.client.document.listOrder', compact('order','work'));
+    }
     public function addDoc($id)
     {
         $order = Order::where('id','=',$id)->first();
@@ -42,6 +54,7 @@ class DocumentController extends Controller
         return view('pages.client.document.listOrder', compact('order'));
         
     }
+    
 
     public function index_doc()
     {

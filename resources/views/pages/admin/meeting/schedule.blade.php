@@ -30,13 +30,13 @@
                                 <div class="form-group">
                                     <label for="idPatient1">Company :</label>
                                     @if(isset($orders))
-                                    <select id="id" class="form-control custom-select" name="company_name" >
+                                    <select id="id" class="form-control custom-select" name="order_id" >
                                         @foreach($orders as $row)
                                         <option   value="{{$row->id}}">{{$row->id}} - {{ $row->client->company_name}} </option>                                                                   
                                         @endforeach
                                     </select>
                                     @else
-                                    <select id="id" class="form-control custom-select" name="company_name" >
+                                    <select id="id" class="form-control custom-select" name="order_id" >
                                         @foreach($orders as $row)
                                         <option   value="{{$row->id}}">{{$row->id}} - {{ $row->client->company_name }}</option>                                                                   
                                         @endforeach

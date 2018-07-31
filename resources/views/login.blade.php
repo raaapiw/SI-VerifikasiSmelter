@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/head-logo.png')}}">
-    <title>Surveyor Indonesia</title>
+    <title>Verifikasi Smelter SI</title>
     <!-- Bootstrap Core CSS -->
     {{--  <link href="../material/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">  --}}
     <link href="{{ asset('material/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -37,11 +37,11 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <section id="wrapper" class="login-register login-sidebar"  style="background-image:url({{ asset('material/images/background/coal.jpg')}});">
+    <section id="wrapper" class="login-register login-sidebar"  style="background-image:url({{ asset('material/images/background/surveyor3.jpg')}});">
   <div class="login-box card">
     <div class="card-body">
       <form class="form-horizontal form-material" id="loginform" action="{{ route('postLogin') }}" method="POST">
-        <a href="javascript:void(0)" class="text-center db"><img src="{{ asset('material/images/SURVEYOR.png')}}" alt="Home" /></a>  
+        <a href="https://www.ptsi.co.id/" class="text-center db"><img src="{{ asset('material/images/SURVEYOR.png')}}" alt="Home" /></a>  
         
         @if(session('error'))
         <div class="form-group m-t-30">

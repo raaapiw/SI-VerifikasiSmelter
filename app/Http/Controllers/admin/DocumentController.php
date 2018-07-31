@@ -23,13 +23,13 @@ class DocumentController extends Controller
     public function index_doc()
     {
         //
-        $order = Order::all();
+        // $order = Order::all();
         // $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
         // $temporder = Order::has('works');
         // $order = $temporder->where('client_id','=',$client->id)->get();
         // $order = Order::where('client_id','=',$client->id)->get();
         // dd($order);
-        // $work  = Work::where('order_id','=',$order->id)->get();
+        $work  = Work::all();
         // dd($work);
         return view('pages.admin.work.listDoc', compact('order'));
         
