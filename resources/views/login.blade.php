@@ -63,7 +63,7 @@
         
         <div class="form-group text-center m-t-20">
           <div class="col-xs-12">
-            <button class="btn btn-success btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" style="background-color:#00897B">Log In</button>
+            <button class="btn btn-success btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" style="background-color:#007eed">Log In</button>
           </div>
         </div>
         {{-- <div class="row">
