@@ -21,7 +21,7 @@
     <!-- Custom CSS -->
     <link href="{{ asset('material/css/style.css') }}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
-    <link href="{{ asset('material/css/colors/megna.css') }}" id="theme" rel="stylesheet">
+    <link href="{{ asset('material/css/colors/blue.css') }}" id="theme" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -293,13 +293,13 @@
                 <!-- Sidebar scroll-->
                 <div class="scroll-sidebar">
                     <!-- User profile -->
-                    <div class="user-profile" style="background: url({{ asset('material/images/background/user-info.jpg') }}) no-repeat;">
+                    {{-- <div class="user-profile" style="background: url({{ asset('material/images/background/user-info.jpg') }}) no-repeat;">
                         <!-- User profile image -->
                         <div class="profile-img"> <img src="{{ asset('material/images/admin.png') }}" alt="user" /> </div>
                         <!-- User profile text-->
                         <div class="profile-text"> <a href="#" role="button" aria-haspopup="true" aria-expanded="true">{{ Sentinel::getUser()->name }}<span class="caret"></span></a>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- End User profile text-->
                     <!-- Sidebar navigation-->
                     <nav class="sidebar-nav">
@@ -464,7 +464,7 @@
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('client.work.addCurva',Sentinel::getUser()->id)}}">Tambah Kurva S</a></li>
                                         <li><a href="{{ route('client.work.listCurvaS',Sentinel::getUser()->id)}}">List Kurva S</a></li>
-                                        <li><a href="{{ route('client.document.listOrder',Sentinel::getUser()->id)}}">Dokumen Pendukung</a></li>
+                                        <li><a href="{{ route('client.document.doc',Sentinel::getUser()->id)}}">Dokumen Pendukung</a></li>
                                         <li><a href="{{ route('client.document.listDoc',Sentinel::getUser()->id)}}">List Dokumen</a></li>
                                     </ul>
                                 </li>
