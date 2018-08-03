@@ -144,7 +144,7 @@ class OrderController extends Controller
                 // dd($order);
                 $user = Sentinel::getUser();
                 $user->notify(new SmelterNotificationEmail($order));
-                dd($user);
+                // dd($user);
                 return redirect()->route('client.dashboard');
             
             

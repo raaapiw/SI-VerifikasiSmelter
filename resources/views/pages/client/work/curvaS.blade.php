@@ -29,7 +29,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File Dokumen Perencanaan</h4>
-                                    <input type="file" id="file" name="curva_s" class="dropify" accept="application/pdf" required/>
+                                    <input type="file" id="file" name="curva_s" class="dropify" required/>
                                 </div>
                             </div>
                         </div>
