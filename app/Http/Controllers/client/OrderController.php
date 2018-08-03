@@ -9,6 +9,7 @@ use App\Order;
 use App\Client;
 use Sentinel;
 use Storage;
+use App\Notifications\SmelterNotificationEmail;
 
 class OrderController extends Controller
 {
@@ -125,6 +126,9 @@ class OrderController extends Controller
 
                 $order = Order::create($data);
                 // dd($order);
+                $user = Sentinel::getUser();
+                $user->notify(new SmelterNotificationEmail($order));
+                dd($user);
                 return redirect()->route('client.dashboard');
             
             
@@ -149,7 +153,7 @@ class OrderController extends Controller
         
             return redirect()->route('client.dashboard');
            
-        }
+        } 
     }
 
     /**
