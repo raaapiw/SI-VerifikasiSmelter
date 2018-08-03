@@ -181,6 +181,15 @@ class OrderController extends Controller
         
             return redirect()->route('admin.dashboard');
            
+        } else {
+            $data = [
+                'client_id' => $request->client_id,
+                'state' => 1,
+            ];    
+            
+                $order = Order::create($data);
+            
+                return redirect()->route('admin.dashboard');
         }
     }
 
@@ -260,24 +269,6 @@ class OrderController extends Controller
         
             return redirect()->route('admin.dashboard');
            
-        }elseif (isset($request->spk)){
-            $uploadedFile = $request->file('spk');
-            $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
-            if (Storage::exists($uploadedFileName)) {
-                Storage::delete($uploadedFileName);
-            }
-            $path = $uploadedFile->storeAs('public/files/order/admin/spk', $uploadedFileName);
-
-                $data = [
-                    'client_id' => $request->client_id,
-                    'spk' => $path,
-                    'state' => 1,
-                ];    
-                $order->fill($data)->save();
-            // $order = Order::update($data);
-        
-            return redirect()->route('admin.dashboard');
-            
         }elseif (isset($request->contract)){
             $uploadedFile = $request->file('contract');
             $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
@@ -290,10 +281,19 @@ class OrderController extends Controller
                     'client_id' => $request->client_id,
                     'contract' => $path,
                 ];    
-                $order->fill($data)->save();
+                
             // $order = Order::update($data);
         
             return redirect()->route('admin.dashboard');
+        } else {
+            $data = [
+                'client_id' => $request->client_id,
+                'state' => 1,
+            ];    
+            
+                $order->fill($data)->save();
+            
+                return redirect()->route('admin.dashboard');
         }
     }
 

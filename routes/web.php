@@ -118,7 +118,9 @@ Route::group(['middleware' => 'client'], function() {
     Route::get('/client/order/listOrder', 'client\OrderController@index') ->name('client.order.listOrder');
     Route::post('/client/order/update/{id}', 'client\OrderController@update') ->name('client.order.update');
     Route::get('/client/order/detail/{id}', 'admin\OrderController@detail') ->name('client.order.detail');
-    
+    Route::get('/client/order/listSPK', 'client\OrderController@listSPK') ->name('client.order.listSPK');
+    Route::get('/client/order/uploadSPK/{id}', 'client\OrderController@uploadSPK') ->name('client.order.uploadSPK');
+   
     Route::get('/client/offer/approveOrder', 'client\OrderController@offerLetter') ->name('client.offer.listOrder');
     Route::get('/client/offer/uploadOffer2/{id}', 'client\OrderController@uploadOffer2') ->name('client.offer.uploadOffer2');
     

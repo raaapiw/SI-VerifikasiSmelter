@@ -55,24 +55,45 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="col-md-6">
+                            <table id="myTable" class="table table-bordered table-striped">
+                                <tr>
+                                    <thead>
+                                        <th>Bukti Transfer</th>
+                                        <th>SPK</th>
+                                    </thead>
+                                </tr>
+                                <tr>
+                                    @if(isset($order->transfer_proof))
+                                    <td>
+                                        <center><a href="{{ Storage::url($order->transfer_proof) }}"><span><i class="fa fa-download"></i></span></a></center>
+                                    </td>
+                                    @else
+                                    <td>
+                                        BUKTI TRANSFER BELUM ADA !
+                                    </td>
+                                    @endif
+                                    @if(isset($order->spk))
+                                    <td>
+                                        <center><a href="{{ Storage::url($order->spk) }}"><span><i class="fa fa-download"></i></span></a></center>
+                                    </td>             
+                                    @else
+                                    <td>
+                                        SPK BELUM ADA !
+                                    </td>
+                                    @endif
+                                </tr>
+                            </table>
+                            {{-- <div class="col-md-6">
                                 <div class="form-group">
                                     <a href="{{ Storage::url($order->transfer_proof) }}"><span><i class="fa fa-info-circle">Bukti Transfer</i></span></a>
                                 </div>
                             </div>
                         </div>
-                        <h3 class="box-title m-t-40">Upload SPK</h3>
-                        <hr>
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">File SPK</h4>
-                                    <input type="file" id="file" name="spk" class="dropify" accept="application/pdf" required/>
-                                </div>
-                            </div>
-                        </div>
+                            <div class="form-group">
+                                <a href="{{ Storage::url($order->transfer_proof) }}"><span><i class="fa fa-info-circle">Bukti Transfer</i></span></a>
+                            </div> --}}
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-success" value="upload"><i class="fa fa-check"></i>Proceed</button>
+                                <button type="submit" class="btn btn-success" value="upload"> Proceed </button></a>
                             <button type="button" class="btn btn-inverse">Cancel</button>
                         </div>
                     </div>
@@ -92,6 +113,12 @@ $( document ).ready(function() {
 });
 
 </script> 
+<script src="{{ asset('material/plugins/moment/min/moment.min.js')}}"></script>
+<script src="{{ asset('material/plugins/wizard/jquery.steps.min.js')}}"></script>
+<script src="{{ asset('material/plugins/wizard/jquery.validate.min.js')}}"></script>
+<script src="{{ asset('material/plugins/wizard/steps.js')}}"></script>
+<script src="{{ asset('material/plugins/select2/dist/js/select2.full.min.js')}}" type="text/javascript"></script>
+<script src="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js')}}" type="text/javascript"></script>
 
 
   
