@@ -43,9 +43,9 @@ class FinalReportNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line('Laporan Akhir sudah dibuat silahkan cek di website')
+            ->action('Verifikasi Smelter', url('http://103.236.201.45'))
+            ->line('Terima Kasih');
     }
 
     /**

@@ -44,9 +44,9 @@ class TransferProofNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line('Perusahaan' . $this->order->client->company_name . 'sudah mengirim BUKTI TRANSFER')
+            ->line('SEGERA LAKUKAN PENGECEKAN !')
+            ->action('Verifikasi Smelter', url('http://103.236.201.45'));
     }
 
     /**

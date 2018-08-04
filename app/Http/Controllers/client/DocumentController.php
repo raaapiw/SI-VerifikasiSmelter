@@ -130,8 +130,9 @@ class DocumentController extends Controller
             
             $user = User::where('id','=',2)->first();
             $user->notify(new DocPenNotificationEmail($document));
-            return redirect()->route('client.dashboard');
         }
+        
+        return redirect()->route('client.dashboard');
     }
 
     /**

@@ -115,6 +115,12 @@ class ReportController extends Controller
                 ];
                 // dd($data);
                 $report = Report::create($data);
+                
+                $order = Order::where('id','=',$report->order_id)->first();
+                $client = Client::where('id','=',$order->client_id)->first();
+
+                $user = User::where('id','=',$client->user_id)->first();
+                $user->notify(new ReportNotificationEmail($report));
                 // dd($order);
                 return redirect()->route('admin.dashboard');
             }elseif (isset($request->covering_letter)){
