@@ -9,6 +9,15 @@ use App\Order;
 use App\Client;
 use Sentinel;
 use Storage;
+use App\User;
+use App\Notifications\SmelterNotificationEmail;
+use App\Notifications\CompanionNotificationEmail;
+use App\Notifications\DpInvoiceNotificationEmail;
+use App\Notifications\TransferProofNotificationEmail;
+use App\Notifications\OfferLetterNotificationEmail;
+use App\Notifications\SpkNotificationEmail;
+use App\Notifications\StateONotificationEmail;
+use App\Notifications\ApprovalNotificationEmail;
 
 class OrderController extends Controller
 {
@@ -244,8 +253,11 @@ class OrderController extends Controller
                     'offer_letter' => $path,
                 ];
                 $order->fill($data)->save();
-
-                // $order = Order::update($data);
+                $client = Client::where('id','=',$order->client_id)->first();
+                // dd($client);
+                $user = User::where('id','=',$client->user_id)->first();
+                $user->notify(new OfferLetterNotificationEmail($order));
+                    // $order = Order::update($data);
         
                 return redirect()->route('admin.dashboard');
            
@@ -265,6 +277,9 @@ class OrderController extends Controller
                 ];    
                 $order->fill($data)->save();
            
+                $client = Client::where('id','=',$order->client_id)->first();
+                $user = User::where('id','=',$client->user_id)->first();
+                $user->notify(new DpInvoiceNotificationEmail($order));
             // $order = Order::update($data);
         
             return redirect()->route('admin.dashboard');
@@ -288,11 +303,15 @@ class OrderController extends Controller
         } else {
             $data = [
                 'client_id' => $request->client_id,
+                'admin_id' => Sentinel::getUser()->id,
                 'state' => 1,
             ];    
             
                 $order->fill($data)->save();
             
+                $client = Client::where('id','=',$order->client_id)->first();
+                $user = User::where('id','=',$client->user_id)->first();
+                $user->notify(new ApprovalNotificationEmail($order));
                 return redirect()->route('admin.dashboard');
         }
     }

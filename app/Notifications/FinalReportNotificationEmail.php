@@ -10,6 +10,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 class FinalReportNotificationEmail extends Notification
 {
     use Queueable;
+    protected $report;
 
     /**
      * Create a new notification instance.
@@ -19,6 +20,7 @@ class FinalReportNotificationEmail extends Notification
     public function __construct()
     {
         //
+        $this->report = $report;
     }
 
     /**

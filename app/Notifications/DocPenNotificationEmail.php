@@ -11,14 +11,18 @@ class DocPenNotificationEmail extends Notification
 {
     use Queueable;
 
+    protected $document;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($document)
     {
         //
+
+        $this->document = $document;
     }
 
     /**

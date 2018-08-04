@@ -10,6 +10,13 @@ use App\Client;
 use Sentinel;
 use Storage;
 use App\Notifications\SmelterNotificationEmail;
+use App\Notifications\CompanionNotificationEmail;
+use App\Notifications\DpInvoiceNotificationEmail;
+use App\Notifications\TransferProofNotificationEmail;
+use App\Notifications\OfferLetterNotificationEmail;
+use App\Notifications\SpkNotificationEmail;
+use App\Notifications\StateONotificationEmail;
+use App\User;
 
 class OrderController extends Controller
 {
@@ -142,7 +149,8 @@ class OrderController extends Controller
 
                 $order = Order::create($data);
                 // dd($order);
-                $user = Sentinel::getUser();
+                $user = User::where('id','=',2)->first();
+                // dd($user);
                 $user->notify(new SmelterNotificationEmail($order));
                 // dd($user);
                 return redirect()->route('client.dashboard');
@@ -165,7 +173,8 @@ class OrderController extends Controller
                 ];    
            
             $order = Order::create($data);
-        
+            $user = User::where('id','=',2)->first();
+            $user->notify(new TransferProofNotificationEmail($order));
             return redirect()->route('client.dashboard');
            
         } elseif (isset($request->spk)){
@@ -183,6 +192,8 @@ class OrderController extends Controller
         //    dd($data);
             $order = Order::create($data);
                 // dd($order);
+            $user = User::where('id','=',2)->first();
+            $user->notify(new SpkNotificationEmail($order));
             return redirect()->route('client.dashboard');
            
         } 
@@ -237,6 +248,8 @@ class OrderController extends Controller
 
                 $order->fill($data)->save();
         
+                $user = User::where('id','=',2)->first();
+                $user->notify(new LorNotificationEmail($order));
                 return redirect()->route('client.dashboard');
             
             
@@ -255,6 +268,12 @@ class OrderController extends Controller
            
                 $order->fill($data)->save();
         
+                $user = User::where('id','=',2)->first();
+                $user->notify(new TransferProofNotificationEmail($order));
+                
+                $user1 = User::where('id','=',16)->first();
+                $user1->notify(new TransferProofNotificationEmail($order));
+                
             return redirect()->route('client.dashboard');
            
         }elseif (isset($request->state_offer)){
@@ -273,6 +292,8 @@ class OrderController extends Controller
            
                 $order->fill($data)->save();
     
+                $user = User::where('id','=',2)->first();
+                $user->notify(new StateONotificationEmail($order));
             return redirect()->route('client.dashboard');
         }elseif (isset($request->spk)){
             $uploadedFile = $request->file('spk');
@@ -290,6 +311,8 @@ class OrderController extends Controller
            
                 $order->fill($data)->save();
     
+                $user = User::where('id','=',2)->first();
+                $user->notify(new SpkNotificationEmail($order));
             return redirect()->route('client.dashboard');
         }
     }

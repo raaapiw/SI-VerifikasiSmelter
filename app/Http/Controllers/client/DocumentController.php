@@ -10,7 +10,9 @@ use App\Order;
 use App\Document;
 use App\Work;
 use App\Client;
+use App\User;
 use Sentinel;
+use App\Notifications\DocPenNotificationEmail;
 
 class DocumentController extends Controller
 {
@@ -125,9 +127,11 @@ class DocumentController extends Controller
             // dd($data);
             $document = Document::create($data);
             // dd($document);
+            
+            $user = User::where('id','=',2)->first();
+            $user->notify(new DocPenNotificationEmail($document));
+            return redirect()->route('client.dashboard');
         }
-
-        return redirect()->route('client.dashboard');
     }
 
     /**
@@ -185,6 +189,9 @@ class DocumentController extends Controller
                 'evidence' => $path, 
             ];
             $document->fill($data)->save();
+            
+            $user = User::where('id','=',2)->first();
+            $user->notify(new DocPenNotificationEmail($document));
             return redirect()->route('client.dashboard');
         }
 

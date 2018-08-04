@@ -11,6 +11,7 @@ class MeetingNotificationEmail extends Notification
 {
     use Queueable;
 
+    protected $meeting;
     /**
      * Create a new notification instance.
      *
@@ -19,6 +20,7 @@ class MeetingNotificationEmail extends Notification
     public function __construct()
     {
         //
+        $this->meeting = $meeting;
     }
 
     /**

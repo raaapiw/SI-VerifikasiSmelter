@@ -43,10 +43,10 @@
                                         </div> --}}
                                         <div class="form-group">
                                             <h4 class="card-title">Nama Dokumen</h4>
-                                            <input type="text" class="form-control" id="nameFile" name="type" required/>
+                                            <input type="text" class="form-control" id="nameFile" name="type[]" required/>
                                         </div>
                                         <h4 class="card-title">Dokumen Pekerjaan</h4>
-                                        <input type="file" id="file" name="evidence[]" class="dropify" accept="application/rar" required/>
+                                        <input type="file" id="file" name="evidence[]" class="dropify" required/>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@ $( document ).ready(function() {
         var i = 0;
         i = $(this).attr("data-count");
         $(document).on("click","#add",function() {
-            $('#dynamic_field').append('<div class="row" id="row'+i+'"><div class="col-md-12"><div class="card"><div class="card-body"><div class="form-group"><h4 class="card-title">Nama Dokumen</h4><input type="text" class="form-control" id="nameFile" name="type" required/></div><h4 class="card-title">File Dokumen Pekerjaan</h4><input type="file" id="file" name="evidence[]" class="dropify" required/></div></div></div></div>');
+            $('#dynamic_field').append('<div class="row" id="row'+i+'"><div class="col-md-12"><div class="card"><div class="card-body"><div class="form-group"><h4 class="card-title">Nama Dokumen</h4><input type="text" class="form-control" id="nameFile" name="type[]" required/></div><h4 class="card-title">File Dokumen Pekerjaan</h4><input type="file" id="file" name="evidence[]" class="dropify" required/></div></div></div></div>');
             i++;
             $(".select2").select2();
             $(".vertical-spin").TouchSpin({

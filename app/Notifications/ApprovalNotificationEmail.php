@@ -7,18 +7,20 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class LorNotificationEmail extends Notification
+class ApprovalNotificationEmail extends Notification
 {
     use Queueable;
 
+    protected $order;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($order)
     {
         //
+        $this->order = $order;
     }
 
     /**

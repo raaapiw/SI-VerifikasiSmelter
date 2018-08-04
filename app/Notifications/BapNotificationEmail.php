@@ -10,15 +10,17 @@ use Illuminate\Notifications\Messages\MailMessage;
 class BapNotificationEmail extends Notification
 {
     use Queueable;
+    protected $meeting;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($meeting)
     {
         //
+        $this->meeting = $meeting;
     }
 
     /**

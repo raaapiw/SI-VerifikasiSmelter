@@ -25,7 +25,7 @@ class CreateOrdersTable extends Migration
             $table->integer('state')->nullable();
             $table->string('state_offer')->nullable();
             $table->string('contract')->nullable();
-            $table->integer('admin_id');
+            $table->integer('admin_id')->nullable();
 
             $table->timestamps();
 

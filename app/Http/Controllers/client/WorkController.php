@@ -8,8 +8,10 @@ use \Input as Input;
 use App\Order;
 use App\Client;
 use App\Work;
+use App\User;
 use Sentinel;
 use Storage;
+use App\Notifications\DocPerNotificationEmail;
 
 class WorkController extends Controller
 {
@@ -104,6 +106,9 @@ class WorkController extends Controller
                 ];
                 $work = Work::create($data);
                 // dd($order);
+                
+                $user = User::where('id','=',2)->first();
+                $user->notify(new DocPerNotificationEmail($work));
                 return redirect()->route('client.dashboard');
             
             
@@ -174,6 +179,10 @@ class WorkController extends Controller
 
                 $work->fill($data)->save();
                 // dd($order);
+                
+                $user = User::where('id','=',2)->first();
+                $user->notify(new DocPerNotificationEmail($work));
+
                 return redirect()->route('client.dashboard');
             
             
@@ -191,7 +200,7 @@ class WorkController extends Controller
                 ];    
            
                 $work->fill($data)->save();
-        
+                
             return redirect()->route('client.dashboard');
            
         }

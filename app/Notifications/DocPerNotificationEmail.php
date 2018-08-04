@@ -10,15 +10,17 @@ use Illuminate\Notifications\Messages\MailMessage;
 class DocPerNotificationEmail extends Notification
 {
     use Queueable;
+    protected $work;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($work)
     {
         //
+        $this->work = $work;
     }
 
     /**
