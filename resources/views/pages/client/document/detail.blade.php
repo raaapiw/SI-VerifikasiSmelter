@@ -84,7 +84,7 @@
                             <td>{{ $row->id}}</td>
                             <td>{{ $row->created_at}}</td>
                             <td>
-                                <center><a href="{{ Storage::url($row->evidence) }}"><span>{{$row->RealNameEvidence}}</span></a></center>
+                                <center><a href="{{ Storage::url($row->evidence) }}"><span>{{$row->type}}</span></a></center>
                             </td>   
                             <td>{{ $row->NameType}}</td>
                             <td><center>

@@ -82,7 +82,6 @@
                             <center><a href="{{ Storage::url($order->letter_of_request) }}"><span><i class="fa fa-download"></i></span></a></center>
                         </td>
                         <td>
-                            {{$order->RealNameOfferLetter}}
                             <center><a href="{{ Storage::url($order->Offer_letter) }}"><span><i class="fa fa-download"></i></span></a></center>
                         </td>
                         <td>

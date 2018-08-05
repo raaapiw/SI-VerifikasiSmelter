@@ -9,6 +9,14 @@ use App\Order;
 use App\Client;
 use Sentinel;
 use Storage;
+use App\Notifications\SmelterNotificationEmail;
+use App\Notifications\CompanionNotificationEmail;
+use App\Notifications\DpInvoiceNotificationEmail;
+use App\Notifications\TransferProofNotificationEmail;
+use App\Notifications\OfferLetterNotificationEmail;
+use App\Notifications\SpkNotificationEmail;
+use App\Notifications\StateONotificationEmail;
+use App\User;
 
 class OrderController extends Controller
 {
@@ -24,6 +32,22 @@ class OrderController extends Controller
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
         return view('pages.client.order.detail', compact('order'));
+    }
+    public function listSPK()
+    {
+        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
+        $orders = Order::where('client_id','=',$client->id)->get();
+        // dd($orders);
+        return view('pages.client.order.listSPK', compact('orders'));
+    }
+    public function uploadSPK($id)
+    {
+        //
+        $order = Order::find($id);
+        // dd($order);
+        // $medicine_prescriptions = MedicinePrescription::all();
+        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
+        return view('pages.client.order.spk', compact('client','order'));
     }
 
     public function offerLetter()
@@ -125,6 +149,10 @@ class OrderController extends Controller
 
                 $order = Order::create($data);
                 // dd($order);
+                $user = User::where('id','=',2)->first();
+                // dd($user);
+                $user->notify(new SmelterNotificationEmail($order));
+                // dd($user);
                 return redirect()->route('client.dashboard');
             
             
@@ -142,14 +170,33 @@ class OrderController extends Controller
                 $data = [
                     'client_id' => $request->client_id,
                     'transfer_proof' => $path,
-                    'state' => 0,
                 ];    
            
             $order = Order::create($data);
-        
+            $user = User::where('id','=',2)->first();
+            $user->notify(new TransferProofNotificationEmail($order));
             return redirect()->route('client.dashboard');
            
-        }
+        } elseif (isset($request->spk)){
+            $uploadedFile = $request->file('spk');
+            $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
+                if (Storage::exists($uploadedFileName)) {
+                    Storage::delete($uploadedFileName);
+                }
+                $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
+    
+                $data = [
+                    'client_id' => $request->client_id,
+                    'spk' => $path,
+                ];    
+        //    dd($data);
+            $order = Order::create($data);
+                // dd($order);
+            $user = User::where('id','=',2)->first();
+            $user->notify(new SpkNotificationEmail($order));
+            return redirect()->route('client.dashboard');
+           
+        } 
     }
 
     /**
@@ -201,6 +248,8 @@ class OrderController extends Controller
 
                 $order->fill($data)->save();
         
+                $user = User::where('id','=',2)->first();
+                $user->notify(new LorNotificationEmail($order));
                 return redirect()->route('client.dashboard');
             
             
@@ -219,6 +268,12 @@ class OrderController extends Controller
            
                 $order->fill($data)->save();
         
+                $user = User::where('id','=',2)->first();
+                $user->notify(new TransferProofNotificationEmail($order));
+                
+                $user1 = User::where('id','=',16)->first();
+                $user1->notify(new TransferProofNotificationEmail($order));
+                
             return redirect()->route('client.dashboard');
            
         }elseif (isset($request->state_offer)){
@@ -237,6 +292,27 @@ class OrderController extends Controller
            
                 $order->fill($data)->save();
     
+                $user = User::where('id','=',2)->first();
+                $user->notify(new StateONotificationEmail($order));
+            return redirect()->route('client.dashboard');
+        }elseif (isset($request->spk)){
+            $uploadedFile = $request->file('spk');
+
+            $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
+            if (Storage::exists($uploadedFileName)) {
+                Storage::delete($uploadedFileName);
+            }
+            $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
+
+                $data = [
+                    'client_id' => $request->client_id,
+                    'spk' => $path,
+                ];    
+           
+                $order->fill($data)->save();
+    
+                $user = User::where('id','=',2)->first();
+                $user->notify(new SpkNotificationEmail($order));
             return redirect()->route('client.dashboard');
         }
     }

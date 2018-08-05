@@ -8,8 +8,11 @@ use \Input as Input;
 use App\Order;
 use App\Client;
 use App\Meeting;
+use App\User;
 use Sentinel;
 use Storage;
+use App\Notifications\MeetingNotificationEmail;
+use App\Notifications\BapNotificationEmail;
 
 class MeetingController extends Controller
 {
@@ -103,7 +106,12 @@ class MeetingController extends Controller
                     'offer_letter' => $path,
                 ];
                 $meeting = Meeting::create($data);
-
+                
+                $order = Order::where('id','=',$meeting->order_id)->first();
+                $client = Client::where('id','=',$order->client_id)->first();
+                // dd($client);
+                $user = User::where('id','=',$client->user_id)->first();
+                $user->notify(new BapNotificationEmail($meeting));
                 // $order = Order::update($data);
         
                 return redirect()->route('admin.dashboard');
@@ -116,6 +124,12 @@ class MeetingController extends Controller
                     'place'=> $request->place,         
                 ];
                 // dd($data);
+                
+                $order = Order::where('id','=',$meeting->order_id)->first();
+                $client = Client::where('id','=',$order->client_id)->first();
+                // dd($client);
+                $user = User::where('id','=',$client->user_id)->first();
+                $user->notify(new MeetingNotificationEmail($meeting));
                 Meeting::create($data);
                 return redirect()->route('admin.dashboard');
             }
@@ -172,9 +186,14 @@ class MeetingController extends Controller
                     'client_id' => $request->client_id,
                     'offer_letter' => $path,
                 ];
-                dd($meeting);
+                // dd($meeting);
                 $meeting->fill($data)->save();
-
+                
+                $order = Order::where('id','=',$meeting->order_id)->first();
+                $client = Client::where('id','=',$order->client_id)->first();
+                // dd($client);
+                $user = User::where('id','=',$client->user_id)->first();
+                $user->notify(new BapNotificationEmail($meeting));
                 // $order = Order::update($data);
         
                 return redirect()->route('admin.dashboard');
@@ -186,8 +205,14 @@ class MeetingController extends Controller
                     'time'=> $request->time,
                     'place'=> $request->place,         
                 ];
-
+                
                 $order->fill($data)->save();
+                
+                $order = Order::where('id','=',$meeting->order_id)->first();
+                $client = Client::where('id','=',$order->client_id)->first();
+                // dd($client);
+                $user = User::where('id','=',$client->user_id)->first();
+                $user->notify(new MeetingNotificationEmail($meeting));
                 return redirect()->route('admin.dashboard');
             }
     }

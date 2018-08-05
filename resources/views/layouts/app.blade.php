@@ -349,16 +349,16 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('admin.meeting.uploadBA')}}">Berita Acara</a></li>
                                         <li><a href="{{ route('admin.meeting.schedule')}}">Buat Pertemuan</a></li>
+                                        <li><a href="{{ route('admin.meeting.uploadBA')}}">Berita Acara</a></li>
                                         <li><a href="{{ route('admin.meeting.listMeeting')}}">List Pertemuan</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('admin.work.curvaS')}}">Kurva S</a></li>
-                                        <li><a href="{{ route('admin.document.listDoc')}}">List Pekerjaan</a></li>
+                                        <li><a href="{{ route('admin.work.curvaS')}}">Dokumen Perencanaan</a></li>
+                                        <li><a href="{{ route('admin.document.listDoc')}}">List Dokumen</a></li>
                                         
                                     </ul>
                                 </li>
@@ -446,8 +446,9 @@
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('client.order.uploadOffer', Sentinel::getUser()->id)}}">Surat Permintaan</a></li>
-                                        <li><a href="{{ route('client.order.listDp', Sentinel::getUser()->id )}}">Pembayaran DP</a></li>
                                         <li><a href="{{ route('client.offer.listOrder', Sentinel::getUser()->id)}}">Surat Penawaran</a></li>
+                                        <li><a href="{{ route('client.order.listDp', Sentinel::getUser()->id )}}">Pembayaran DP</a></li>
+                                        <li><a href="{{ route('client.order.listSPK')}}">Upload SPK</a></li>
                                         <li><a href="{{ route('client.order.listOrder')}}">List Pemesanan</a></li>
                                         
                                     </ul>
@@ -455,15 +456,15 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('client.meeting.listBA')}}">List Berita Acara</a></li>
                                         <li><a href="{{ route('client.meeting.listMeeting')}}">Jadwal Pertemuan</a></li>
+                                        <li><a href="{{ route('client.meeting.listBA')}}">List Berita Acara</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('client.work.addCurva',Sentinel::getUser()->id)}}">Tambah Kurva S</a></li>
-                                        <li><a href="{{ route('client.work.listCurvaS',Sentinel::getUser()->id)}}">List Kurva S</a></li>
+                                        <li><a href="{{ route('client.work.addCurva',Sentinel::getUser()->id)}}">Dokumen Perencanaan</a></li>
+                                        <li><a href="{{ route('client.work.listCurvaS',Sentinel::getUser()->id)}}">List Dok Perencanaan</a></li>
                                         <li><a href="{{ route('client.document.doc',Sentinel::getUser()->id)}}">Dokumen Pendukung</a></li>
                                         <li><a href="{{ route('client.document.listDoc',Sentinel::getUser()->id)}}">List Dokumen</a></li>
                                     </ul>

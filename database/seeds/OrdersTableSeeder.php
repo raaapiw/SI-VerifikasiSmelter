@@ -26,6 +26,7 @@ class OrdersTableSeeder extends Seeder
                 'letter_of_request' => $faker->text($maxNbChars = 190),  
                 'spk' => $faker->text($maxNbChars = 190),  
                 'state' =>0,
+                'admin_id' => rand(1,6),
                 // 'state_offer' =>0,
                 'created_at' => $faker->date($format = 'Y-m-d', $max = 'now')       
             ]);

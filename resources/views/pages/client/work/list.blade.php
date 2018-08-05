@@ -7,10 +7,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">List Kurva S</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">List Dokumen Perencanaan</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">List Kurva S</li>
+            <li class="breadcrumb-item active">List Dokumen Perencanaan</li>
         </ol>
     </div>
 </div>
@@ -28,7 +28,7 @@
                                 <th>No</th>
                                 <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
-                                <th><center>Detail</center></th>
+                                <th><center>Action</center></th>
                             </tr>
                         </thead>
                         <tbody>
