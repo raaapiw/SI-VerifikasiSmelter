@@ -56,6 +56,11 @@ class UsersTableSeeder extends Seeder
     {
         $this->createDefaultSuperAdmin();
         $this->createDefaultAdmin();
+        $this->createDefaultZul();
+        $this->createDefaultAni();
+        $this->createDefaultSuk();
+        $this->createDefaultOzi();
+        $this->createDefaultAti();
         $this->createDefaultMinerba();
         $this->createDefaultClient();
         
@@ -108,7 +113,7 @@ class UsersTableSeeder extends Seeder
     public function createDefaultAdmin(){
         $credentials = [
             'username' => 'admin',
-			'email' => 'admin@example.com',
+			'email' => 'verifikasismelter.ptsi@gmail.com',
             'password' => 'qwerty123',
             'name' => 'Admin',
             'gender' => 'M',
@@ -119,6 +124,89 @@ class UsersTableSeeder extends Seeder
         $user->roles()->attach($role);
     }
 
+    public function createDefaultZul(){
+        $credentials = [
+            'username' => 'zulkifli',
+			'email' => 'zk.mubar@gmail.com',
+            'password' => 'zul123',
+            'name' => 'Zulkifli Kurais Mubar',
+            'gender' => 'M',
+		];
+
+        $user = Sentinel::registerAndActivate($credentials);
+        $role = Sentinel::findRoleBySlug('admin');
+        $user->roles()->attach($role);
+    }
+
+    public function createDefaultAni(){
+        $credentials = [
+            'username' => 'Ani',
+			'email' => 'anynovyant@gmail.com',
+            'password' => 'ani123',
+            'name' => 'Ani Novyanti',
+            'gender' => 'F',
+		];
+
+        $user = Sentinel::registerAndActivate($credentials);
+        $role = Sentinel::findRoleBySlug('admin');
+        $user->roles()->attach($role);
+    }
+
+    public function createDefaultOzi(){
+        $credentials = [
+            'username' => 'ozi',
+			'email' => '.com',
+            'password' => 'ozi123',
+            'name' => 'Fauzie',
+            'gender' => 'M',
+		];
+
+        $user = Sentinel::registerAndActivate($credentials);
+        $role = Sentinel::findRoleBySlug('admin');
+        $user->roles()->attach($role);
+    }
+
+    public function createDefaultAti(){
+        $credentials = [
+            'username' => 'nurhayati',
+			'email' => 'nurhayatisurbakti@gmail.com',
+            'password' => 'ati123',
+            'name' => 'Nurhayati Surbakti',
+            'gender' => 'F',
+		];
+
+        $user = Sentinel::registerAndActivate($credentials);
+        $role = Sentinel::findRoleBySlug('admin');
+        $user->roles()->attach($role);
+    }
+
+    public function createDefaultSuk(){
+        $credentials = [
+            'username' => 'sukma',
+			'email' => 'sukmaaulia@gmail.com',
+            'password' => 'suk123',
+            'name' => 'Sukma Aulia',
+            'gender' => 'F',
+		];
+
+        $user = Sentinel::registerAndActivate($credentials);
+        $role = Sentinel::findRoleBySlug('admin');
+        $user->roles()->attach($role);
+    }
+
+    public function createDefaultHelmy(){
+        $credentials = [
+            'username' => 'helmy',
+			'email' => 'helmysatriayudha@gmail.com',
+            'password' => '123',
+            'name' => 'Helmy S. Yudha',
+            'gender' => 'M',
+		];
+
+        $user = Sentinel::registerAndActivate($credentials);
+        $role = Sentinel::findRoleBySlug('admin');
+        $user->roles()->attach($role);
+    }
     public function createDefaultClient(){
         $credentials = [
             'username' => 'client',
