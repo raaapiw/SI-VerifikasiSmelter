@@ -16,7 +16,7 @@ class ClientsTableSeeder extends Seeder
         $faker = Faker::create();
         foreach(range(0,10) as $index){
             DB::table('clients')->insert([     
-                'user_id' => 16+$index,           
+                'user_id' => 21+$index,           
                 'company_name' => $faker->company(),
                 'address' => $faker->address(),   
                 'phone' => $faker->phoneNumber (),
