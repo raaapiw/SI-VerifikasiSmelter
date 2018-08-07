@@ -124,8 +124,9 @@ class MeetingController extends Controller
                     'place'=> $request->place,         
                 ];
                 // dd($data);
-                
-                $order = Order::where('id','=',$meeting->order_id)->first();
+                $meeting = Meeting::create($data);
+               
+                $order = Order::where('id','=',$request->order_id)->first();
                 $client = Client::where('id','=',$order->client_id)->first();
                 // dd($client);
                 $user = User::where('id','=',$client->user_id)->first();

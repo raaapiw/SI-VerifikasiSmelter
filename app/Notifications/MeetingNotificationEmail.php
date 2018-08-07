@@ -17,7 +17,7 @@ class MeetingNotificationEmail extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($meeting)
     {
         //
         $this->meeting = $meeting;

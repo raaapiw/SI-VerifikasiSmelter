@@ -103,6 +103,7 @@ class OrderController extends Controller
     {
         //
         $order = Order::find($id);
+        // dd($order);
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
         return view('pages.admin.order.detail', compact('order'));

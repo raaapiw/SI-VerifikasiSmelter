@@ -11,6 +11,7 @@ use App\Document;
 use App\Work;
 use App\Client;
 use Sentinel;
+// use Work;
 
 class DocumentController extends Controller
 {
@@ -23,13 +24,14 @@ class DocumentController extends Controller
     public function index_doc()
     {
         //
-        // $order = Order::all();
+        $order = Order::has('works')->get();
+        // dd($order);
         // $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
         // $temporder = Order::has('works');
         // $order = $temporder->where('client_id','=',$client->id)->get();
         // $order = Order::where('client_id','=',$client->id)->get();
         // dd($order);
-        $work  = Work::all();
+        // $work  = Work::all();
         // dd($work);
         return view('pages.admin.work.listDoc', compact('order'));
         
