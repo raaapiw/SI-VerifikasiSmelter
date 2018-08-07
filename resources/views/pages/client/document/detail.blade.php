@@ -84,9 +84,9 @@
                             <td>{{ $row->id}}</td>
                             <td>{{ $row->created_at}}</td>
                             <td>
-                                <center><a href="{{ Storage::url($row->evidence) }}"><span>{{$row->type}}</span></a></center>
+                                <center><a href="{{ Storage::url($row->evidence) }}"><span>{{$row->RealNameEvidence}}</span></a></center>
                             </td>   
-                            <td>{{ $row->NameType}}</td>
+                            <td>{{ $row->type}}</td>
                             <td><center>
                                     <a href="{{ route('client.document.editDoc',$row->id)}}"><span><i class="fa fa-pencil"></i></span></a>
                                     <a href="{{ route('client.document.destroy', $row->id) }}"><span><i class="mdi mdi-delete"></i></span></a>

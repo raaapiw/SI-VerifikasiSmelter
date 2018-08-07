@@ -79,23 +79,47 @@
                         <td>{{ $order->id}}</td>
                         <td>{{ $order->created_at}}</td>
                         <td>
+                            @if ($order->letter_of_request !== null)
                             <center><a href="{{ Storage::url($order->letter_of_request) }}"><span><i class="fa fa-download"></i></span></a></center>
+                            @else
+                                Dokumen Tidak ada !
+                            @endif
                         </td>
                         <td>
-                            <center><a href="{{ Storage::url($order->Offer_letter) }}"><span><i class="fa fa-download"></i></span></a></center>
+                            @if ($order->offer_letter !== null)
+                                <center><a href="{{ Storage::url($order->offer_letter) }}"><span><i class="fa fa-download"></i></span></a></center>
+                            @else
+                                Dokumen Tidak ada
+                            @endif
                         </td>
                         <td>
-                            <center><a href="{{ Storage::url($order->dp_invoices) }}"><span><i class="fa fa-download"></i></span></a></center>
+                            @if ($order->dp_invoice !== null)
+                            <center><a href="{{ Storage::url($order->dp_invoice) }}"><span><i class="fa fa-download"></i></span></a></center>
+                            @else
+                                Dokumen Tidak ada
+                            @endif
                         </td>
                         <td>
+                            @if ($order->transfer_proof !== null)
                             <center><a href="{{ Storage::url($order->transfer_proof) }}"><span><i class="fa fa-download"></i></span></a></center>
+                            @else
+                                Dokumen Tidak ada
+                            @endif
                         </td>
                         <td>
+                            @if ($order->spk !== null)
                             <center><a href="{{ Storage::url($order->spk) }}"><span><i class="fa fa-download"></i></span></a></center>
+                            @else
+                                Dokumen Tidak ada
+                            @endif
                         </td>  
                         <td>
+                            @if ($order->contract !== null)
                             <center><a href="{{ Storage::url($order->contract) }}"><span><i class="fa fa-download"></i></span></a></center>
-                        </td>                       
+                            @else
+                                Dokumen Tidak ada
+                            @endif
+                        </td>                     
                     </tr>
                 </table>
             </div>

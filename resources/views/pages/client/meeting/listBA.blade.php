@@ -31,6 +31,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if(isset($order->meeting))
                             @foreach($order as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
@@ -41,6 +42,7 @@
                                     </td>
                                 </tr>                            
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>

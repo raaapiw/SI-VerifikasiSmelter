@@ -32,24 +32,5 @@ class Document extends Model
         }
         
     }
-    public function getNameTypeAttribute()
-    {
-        if($this->type != NULL){
-            if($this->type == 1){
-                return 'PERSIAPAN AWAL';
-            }elseif($this->type == 2){
-                return 'PERSIAPAN PROYEK';
-            }elseif($this->type == 3){
-                return 'PELAKSANAAN PROYEK';
-            }elseif($this->type == 4){
-                return 'UTILITAS';
-            }elseif($this->type == 5){
-                return 'INFRASTRUKTUR PENDUKUNG';
-            }else{
-                return 'COMMISIONING & START UP';
-            }
-        }else{
-            return null;
-        }
-    }
+    
 }

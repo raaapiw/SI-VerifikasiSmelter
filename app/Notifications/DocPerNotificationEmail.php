@@ -43,7 +43,7 @@ class DocPerNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('Perusahaan' . $this->order->client->company_name . 'sudah melakukan upload DOKUMEN PERENCANAAN')
+            ->line('Perusahaan' . $this->work->order->client->company_name . 'sudah melakukan upload DOKUMEN PERENCANAAN')
             ->line('SEGERA LAKUKAN PENGECEKAN !')
             ->action('Verifikasi Smelter', url('http://103.236.201.45'));
     }
