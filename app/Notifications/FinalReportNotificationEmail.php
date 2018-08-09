@@ -17,7 +17,7 @@ class FinalReportNotificationEmail extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($report)
     {
         //
         $this->report = $report;
