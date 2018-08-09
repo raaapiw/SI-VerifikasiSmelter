@@ -11,7 +11,9 @@ use App\Document;
 use App\Work;
 use App\Client;
 use App\Report;
+use App\User;
 use Sentinel;
+use App\Notifications\FinalReportNotificationEmail;
 
 class ReportController extends Controller
 {
@@ -120,7 +122,7 @@ class ReportController extends Controller
                 $client = Client::where('id','=',$order->client_id)->first();
 
                 $user = User::where('id','=',$client->user_id)->first();
-                $user->notify(new ReportNotificationEmail($report));
+                $user->notify(new FinalReportNotificationEmail($report));
                 // dd($order);
                 return redirect()->route('admin.dashboard');
             }elseif (isset($request->covering_letter)){
