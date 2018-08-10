@@ -23,12 +23,12 @@
                 <form action="{{isset($work) ? route('client.work.update', $work->id) : route('client.work.store') }}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="order_id" value="{{$order->id}}">
                     <div class="form-body">
-                        <h3 class="box-title m-t-40">Upload Dokumen Perencanaan</h3>
+                        <h3 class="box-title m-t-40">Upload Verifikasi Perencanaan</h3>
                         <hr>
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">File Dokumen Perencanaan</h4>
+                                    <h4 class="card-title">File Verifikasi Perencanaan</h4>
                                     <input type="file" id="file" name="curva_s" class="dropify" required/>
                                 </div>
                             </div>
