@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-use App\Work;
+use App\Order;
 
-class DocumentsTableSeeder extends Seeder
+class DocpersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,12 +13,11 @@ class DocumentsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
         $faker = Faker::create();
-        $works = Work::all();
+        $orders = Order::all();
         foreach(range(0,10) as $index){
-            DB::table('documents')->insert([                
-                'work_id' => $index+1,
+            DB::table('docpers')->insert([                
+                'order_id' => $index+1,
                 'evidence' => $faker->text($maxNbChars = 190), 
                 'type' => $faker->text($maxNbChars = 190),
                 'state' =>0,

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDocumentsTable extends Migration
+class CreateDocpersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('documents', function (Blueprint $table) {
+        Schema::create('docpers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('work_id')->unsigned();
+            $table->integer('order_id')->unsigned();
             $table->string('evidence')->nullable();
             $table->string('type')->nullable();
             $table->integer('state')->nullable();
             
             $table->timestamps();
 
-            $table->foreign('work_id')
-            ->references('id')->on('works')
+            $table->foreign('order_id')
+            ->references('id')->on('orders')
             ->onDelete('cascade');
         });
     }
@@ -35,6 +35,6 @@ class CreateDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documents');
+        Schema::dropIfExists('docpers');
     }
 }

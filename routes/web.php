@@ -144,6 +144,16 @@ Route::group(['middleware' => 'client'], function() {
     Route::get('/client/document/destroy/{id}', 'client\DocumentController@destroy')->name('client.document.destroy');
     Route::get('/client/document/addDocument', 'client\DocumentController@doc') ->name('client.document.doc');
 
+    Route::get('/client/docper/addDocument/{id}', 'client\DocperController@addDoc') ->name('client.docper.addDoc');
+    Route::get('/client/docper/listOrder', 'client\DocperController@index') ->name('client.docper.listOrder');
+    Route::post('/client/docper/update/{id}', 'client\DocperController@update') ->name('client.docper.update');
+    Route::post('/client/docper/store', 'client\DocperController@store') ->name('client.docper.store');
+    Route::get('/client/docper/listDoc', 'client\DocperController@index_doc') ->name('client.docper.listDoc');
+    Route::get('/client/docper/detail/{id}', 'client\DocperController@detail') ->name('client.docper.detail');
+    Route::get('/client/docper/edit/{id}', 'client\DocperController@editDoc') ->name('client.docper.editDoc');
+    Route::get('/client/docper/destroy/{id}', 'client\DocperController@destroy')->name('client.docper.destroy');
+    Route::get('/client/docper/addDocument', 'client\DocperController@doc') ->name('client.docper.doc');
+
     Route::get('/client/report/listLetter', 'client\ReportController@listLetter') ->name('client.report.listLetter');
     Route::get('/client/report/listReceipt', 'client\ReportController@listReceipt') ->name('client.report.listReceipt');
     Route::get('/client/report/listReport', 'client\ReportController@index') ->name('client.report.listReport');
