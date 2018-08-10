@@ -463,10 +463,10 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('client.work.addCurva',Sentinel::getUser()->id)}}">Dokumen Perencanaan</a></li>
-                                        <li><a href="{{ route('client.work.listCurvaS',Sentinel::getUser()->id)}}">List Dok Perencanaan</a></li>
-                                        <li><a href="{{ route('client.document.doc',Sentinel::getUser()->id)}}">Dokumen Pendukung</a></li>
-                                        <li><a href="{{ route('client.document.listDoc',Sentinel::getUser()->id)}}">List Dokumen</a></li>
+                                        <li><a href="{{ route('client.work.addCurva',Sentinel::getUser()->id)}}">Verifikasi Perencanaan</a></li>
+                                        <li><a href="{{ route('client.work.listCurvaS',Sentinel::getUser()->id)}}">List Ver. Perencanaan</a></li>
+                                        <li><a href="{{ route('client.document.doc',Sentinel::getUser()->id)}}">Verifikasi Kemajuan</a></li>
+                                        <li><a href="{{ route('client.document.listDoc',Sentinel::getUser()->id)}}">List ver. Kemajuan</a></li>
                                     </ul>
                                 </li>
                                 <li>
