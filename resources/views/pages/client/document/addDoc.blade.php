@@ -27,22 +27,20 @@
                         <h3 class="box-title m-t-40">Upload Dokumen Pekerjaan</h3>
                         <hr>
                         <div id="dynamic_field">
-                        @foreach($document as $key)
-                        <div class="row" id="{{'row'.$key}})">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <h4 class="card-title">Nama Dokumen</h4>
-                                            <input type="text" class="form-control" id="nameFile" name="type[]" required/>
+                            <div class="row" >
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <h4 class="card-title">Nama Dokumen</h4>
+                                                <input type="text" class="form-control" id="nameFile" name="type[]" required/>
+                                            </div>
+                                            <h4 class="card-title">Dokumen Pekerjaan</h4>
+                                            <input type="file" id="file" name="evidence[]" class="dropify" required/>
                                         </div>
-                                        <h4 class="card-title">Dokumen Pekerjaan</h4>
-                                        <input type="file" id="file" name="evidence[]" class="dropify" required/>
                                     </div>
                                 </div>
                             </div>
-                            </div>
-                            @endforeach
                         </div>
                         <div class="row">
                             <div class="col-md-12">
