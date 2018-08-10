@@ -250,7 +250,7 @@ class UsersTableSeeder extends Seeder
         $credentials = [
             'username' => 'marketingminba',
 			'email' => 'marketing@example.com',
-            'password' => 'qwerty123',
+            'password' => 'hargaharusmahal',
             'name' => 'Vienna',
             'gender' => 'F',
 		];
