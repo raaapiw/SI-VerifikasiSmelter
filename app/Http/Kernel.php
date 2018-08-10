@@ -64,5 +64,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'minerba' => \App\Http\Middleware\MinerbaMiddleware::class,
         'client' => \App\Http\Middleware\ClientMiddleware::class,
+        'marketing' => \App\Http\Middleware\MarketingMiddleware::class,
     ];
 }

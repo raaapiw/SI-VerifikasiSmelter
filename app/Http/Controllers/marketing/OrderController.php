@@ -4,10 +4,96 @@ namespace App\Http\Controllers\marketing;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use \Input as Input;
+use App\Order;
+use App\Client;
+use Sentinel;
+use Storage;
+use App\User;
+use App\Notifications\SmelterNotificationEmail;
+use App\Notifications\CompanionNotificationEmail;
+use App\Notifications\DpInvoiceNotificationEmail;
+use App\Notifications\TransferProofNotificationEmail;
+use App\Notifications\OfferLetterNotificationEmail;
+use App\Notifications\SpkNotificationEmail;
+use App\Notifications\StateONotificationEmail;
+use App\Notifications\ApprovalNotificationEmail;
 
 class OrderController extends Controller
 {
     //
+    public function addContract()
+    {
+        $orders = Order::where('contract','=',null)->get();
+        // dd($orders);
+        return view('pages.marketing.order.addContract', compact('orders'));
+
+    }
+    public function contract($id)
+    {
+        $order = Order::find($id);
+        return view('pages.marketing.order.contract', compact('order'));
+    }
+    public function listContract()
+    {
+        $orders = Order::where('contract','!=',null)->get() ;
+        // dd($orders);
+        return view('pages.marketing.order.listContract', compact('orders'));
+    }
+    public function addOffer(){
+        // $tempclient = Client::doesntHave('order');
+        $order = Order::where('state','=',0)->get();
+        // dd($order);
+        // $client = $tempclient->where('state','=',0)->get();
+        // dd($client);
+        // $orders = Order::where('letter_of_request','!=',null)->get(); 
+        return view('pages.marketing.order.addOffer', compact('order'));
+    }
+
+    public function uploadOffer($id)
+    {
+        //
+
+        $order = Order::find($id);
+        // dd($client);
+        // dd($client);
+        // $medicine_prescriptions = MedicinePrescription::all();
+        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
+        return view('pages.marketing.order.uploadOffer', compact('order'));
+    }
+
+    public function editOffer($id)
+    {
+        $order = Order::find($id);
+        // dd($client);
+        return view('pages.marketing.order.uploadOffer', compact('order'));
+    
+    }
+
+    public function proceed($id)
+    {
+        $order = Order::find($id);
+        // $medicine_prescriptions = MedicinePrescription::all();
+        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
+        return view('pages.marketing.order.proceed', compact('order'));
+    }
+    public function uploadDp($id)
+    {
+        //
+        $order = Order::find($id);
+        // $medicine_prescriptions = MedicinePrescription::all();
+        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
+        return view('pages.marketing.order.uploadDp', compact('order'));
+    }
+    
+    public function listOrder()
+    {
+
+        $orders = Order::all();
+        // dd($orders);
+        return view('pages.marketing.order.listOrder', compact('orders'));
+    }
+
     public function detail($id)
     {
         //
@@ -15,86 +101,10 @@ class OrderController extends Controller
         // dd($order);
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('pages.client.order.detail', compact('order'));
-    }
-    public function listSPK()
-    {
-        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $orders = Order::where('client_id','=',$client->id)->get();
-        // dd($orders);
-        return view('pages.client.order.listSPK', compact('orders'));
-    }
-    public function uploadSPK($id)
-    {
-        //
-        $order = Order::find($id);
-        // dd($order);
-        // $medicine_prescriptions = MedicinePrescription::all();
-        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('pages.client.order.spk', compact('client','order'));
+        return view('pages.marketing.order.detail', compact('order'));
     }
 
-    public function offerLetter()
-    {
-        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $orders = Order::where('client_id','=',$client->id)->get();
-        return view('pages.client.order.offerLetter', compact('orders'));
-    }
-    public function uploadOffer($id)
-    {
-        //
-        $client = Client::where('user_id','=',$id)->first();
-        $order = Order::where('client_id','=',$client->id)->get();
-        // $medicine_prescriptions = MedicinePrescription::all();
-        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('pages.client.order.uploadOffer', compact('client','order'));
-    }
-
-    public function uploadOffer2($id)
-    {
-        //
-        // dd($id);
-        $order = Order::find($id);
-        // dd($order);
-        // $medicine_prescriptions = MedicinePrescription::all();
-        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('pages.client.order.uploadOffer2', compact('order'));
-    }
-
-    public function listDp()
-    {
-        //
-        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        // dd($client);
-        // $orders = Order::where([
-        //         ['dp_invoice','!=',null],
-        //         ['client_id', '=', $client->id]
-        //     ])->get(); 
-
-        $temporders = Order::where('dp_invoice','!=',null);
-        $orders = $temporders->where('client_id','=',$client->id)->get();
-        // return dd($orders);
-        return view('pages.client.order.listDp', compact('orders'));
-    }
-
-    public function uploadDp($id)
-    {
-        //
-        $order = Order::find($id);
-        // dd($order);
-        // $medicine_prescriptions = MedicinePrescription::all();
-        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('pages.client.order.uploadDp', compact('order'));
-    }
-
-    public function index()
-    {
-        //
-        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $orders = Order::where('client_id','=',$client->id)->get();
-        return view('pages.client.order.listOrder', compact('orders'));
     
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -112,75 +122,80 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request  )
+    public function store(Request $request)
     {
         //
-        if (isset($request->letter_of_request)){
+        if (isset($request->offer_letter)){
+            $rules = [
+                'offer_letter'                  => 'required',
+            ];
             
-                $uploadedFile = $request->file('letter_of_request');
-
-                 $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
+            
+                $uploadedFile = $request->file('offer_letter');
+                $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
                 if (Storage::exists($uploadedFileName)) {
                     Storage::delete($uploadedFileName);
                 }
-                $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
+                $path = $uploadedFile->storeAs('public/files/order/admin', $uploadedFileName);
     
                 $data = [
                     'client_id' => $request->client_id,
-                    'letter_of_request' => $path,
-                    'state' => 0,
+                    'offer_letter' => $path,
                 ];
-
+                // dd($data);
                 $order = Order::create($data);
                 // dd($order);
-                $user = User::where('id','=',2)->first();
-                // dd($user);
-                $user->notify(new SmelterNotificationEmail($order));
-                // dd($user);
-                return redirect()->route('client.dashboard');
+                return redirect()->route('marketing.dashboard');
             
             
              
            
             
-        } elseif (isset($request->transfer_proof)){
-            $uploadedFile = $request->file('transfer_proof');
+        } elseif (isset($request->dp_invoice)){
+            $uploadedFile = $request->file('dp_invoice');
             $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
-                if (Storage::exists($uploadedFileName)) {
-                    Storage::delete($uploadedFileName);
-                }
-                $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
-    
+            if (Storage::exists($uploadedFileName)) {
+                Storage::delete($uploadedFileName);
+            }
+            $path = $uploadedFile->storeAs('public/files/order/admin', $uploadedFileName);
+
                 $data = [
                     'client_id' => $request->client_id,
-                    'transfer_proof' => $path,
+                    'dp_invoice' => $path,
                 ];    
            
             $order = Order::create($data);
-            $user = User::where('id','=',2)->first();
-            $user->notify(new TransferProofNotificationEmail($order));
-            return redirect()->route('client.dashboard');
+        
+            return redirect()->route('marketing.dashboard');
            
-        } elseif (isset($request->spk)){
+        }elseif (isset($request->spk)){
             $uploadedFile = $request->file('spk');
             $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
-                if (Storage::exists($uploadedFileName)) {
-                    Storage::delete($uploadedFileName);
-                }
-                $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
-    
+            if (Storage::exists($uploadedFileName)) {
+                Storage::delete($uploadedFileName);
+            }
+            $path = $uploadedFile->storeAs('public/files/order/admin', $uploadedFileName);
+
                 $data = [
                     'client_id' => $request->client_id,
                     'spk' => $path,
+                    'state' => 1,
                 ];    
-        //    dd($data);
-            $order = Order::create($data);
-                // dd($order);
-            $user = User::where('id','=',2)->first();
-            $user->notify(new SpkNotificationEmail($order));
-            return redirect()->route('client.dashboard');
            
-        } 
+            $order = Order::create($data);
+        
+            return redirect()->route('marketing.dashboard');
+           
+        } else {
+            $data = [
+                'client_id' => $request->client_id,
+                'state' => 1,
+            ];    
+            
+                $order = Order::create($data);
+            
+                return redirect()->route('marketing.dashboard');
+        }
     }
 
     /**
@@ -216,88 +231,84 @@ class OrderController extends Controller
     {
         //
         $order = Order::find($id);
-        if (isset($request->letter_of_request)){
+        if (isset($request->offer_letter)){
+            $rules = [
+                'offer_letter'                  => 'required',
+            ];
             
-                $uploadedFile = $request->file('letter_of_request');
+            
+                $uploadedFile = $request->file('offer_letter');
                 $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
                 if (Storage::exists($uploadedFileName)) {
                     Storage::delete($uploadedFileName);
                 }
-                $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
+                $path = $uploadedFile->storeAs('public/files/order/admin/offer_letter', $uploadedFileName);
     
                 $data = [
                     'client_id' => $request->client_id,
-                    'letter_of_request' => $path,
+                    'offer_letter' => $path,
                 ];
-
                 $order->fill($data)->save();
+                $client = Client::where('id','=',$order->client_id)->first();
+                // dd($client);
+                $user = User::where('id','=',$client->user_id)->first();
+                $user->notify(new OfferLetterNotificationEmail($order));
+                    // $order = Order::update($data);
         
-                $user = User::where('id','=',2)->first();
-                $user->notify(new LorNotificationEmail($order));
-                return redirect()->route('client.dashboard');
-            
-            
-        } elseif (isset($request->transfer_proof)){
-                $uploadedFile = $request->file('transfer_proof');
-                $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
-                if (Storage::exists($uploadedFileName)) {
-                    Storage::delete($uploadedFileName);
-                }
-                $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
-    
-                $data = [
-                    'client_id' => $request->client_id,
-                    'transfer_proof' => $path,
-                ];    
+                return redirect()->route('marketing.dashboard');
            
-                $order->fill($data)->save();
-        
-                $user = User::where('id','=',2)->first();
-                $user->notify(new TransferProofNotificationEmail($order));
-                
-                $user1 = User::where('id','=',16)->first();
-                $user1->notify(new TransferProofNotificationEmail($order));
-                
-            return redirect()->route('client.dashboard');
-           
-        }elseif (isset($request->state_offer)){
-            $uploadedFile = $request->file('state_offer');
+            
+        } elseif (isset($request->dp_invoice)){
 
+            $uploadedFile = $request->file('dp_invoice');
             $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
             if (Storage::exists($uploadedFileName)) {
                 Storage::delete($uploadedFileName);
             }
-            $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
+            $path = $uploadedFile->storeAs('public/files/order/admin/dp_invoice', $uploadedFileName);
 
                 $data = [
                     'client_id' => $request->client_id,
-                    'state_offer' => $path,
+                    'dp_invoice' => $path,
                 ];    
-           
                 $order->fill($data)->save();
-    
-                $user = User::where('id','=',2)->first();
-                $user->notify(new StateONotificationEmail($order));
-            return redirect()->route('client.dashboard');
-        }elseif (isset($request->spk)){
-            $uploadedFile = $request->file('spk');
-
+           
+                $client = Client::where('id','=',$order->client_id)->first();
+                $user = User::where('id','=',$client->user_id)->first();
+                $user->notify(new DpInvoiceNotificationEmail($order));
+            // $order = Order::update($data);
+        
+            return redirect()->route('marketing.dashboard');
+           
+        }elseif (isset($request->contract)){
+            $uploadedFile = $request->file('contract');
             $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
             if (Storage::exists($uploadedFileName)) {
                 Storage::delete($uploadedFileName);
             }
-            $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
+            $path = $uploadedFile->storeAs('public/files/order/admin/contract', $uploadedFileName);
 
                 $data = [
                     'client_id' => $request->client_id,
-                    'spk' => $path,
+                    'contract' => $path,
                 ];    
-           
+                
+            // $order = Order::update($data);
+        
+            return redirect()->route('marketing.dashboard');
+        } else {
+            $data = [
+                'client_id' => $request->client_id,
+                'admin_id' => Sentinel::getUser()->id,
+                'state' => 1,
+            ];    
+            
                 $order->fill($data)->save();
-    
-                $user = User::where('id','=',2)->first();
-                $user->notify(new SpkNotificationEmail($order));
-            return redirect()->route('client.dashboard');
+            
+                $client = Client::where('id','=',$order->client_id)->first();
+                $user = User::where('id','=',$client->user_id)->first();
+                $user->notify(new ApprovalNotificationEmail($order));
+                return redirect()->route('marketing.dashboard');
         }
     }
 

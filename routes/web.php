@@ -164,3 +164,40 @@ Route::group(['middleware' => 'minerba'], function() {
     
 });
 
+Route::group(['middleware' => 'marketing'], function() {
+    Route::get('/marketing/', function(){
+        return redirect()->route('marketing.dashboard');
+    });
+
+    Route::get('/marketing/dashboard', 'marketing\UserController@dashboard') ->name('marketing.dashboard');
+    Route::get('/marketing/order/addOffer', 'marketing\OrderController@addOffer') ->name('marketing.order.addOffer');
+    Route::get('/marketing/order/uploadOffer/{id}', 'marketing\OrderController@uploadOffer') ->name('marketing.order.uploadOffer');
+    Route::post('/marketing/order/store', 'marketing\OrderController@store') ->name('marketing.order.store');
+    Route::get('/marketing/order/list/edit/{id}', 'marketing\OrderController@edit') ->name('marketing.order.edit');
+    Route::post('/marketing/order/list/{id}', 'marketing\OrderController@update') ->name('marketing.order.update');
+    Route::get('/marketing/order/destroy/{id}', 'marketing\OrderController@destroy')->name('marketing.order.destroy');
+    Route::get('/marketing/order/addDp', 'marketing\OrderController@addOffer') ->name('marketing.order.addDp');
+    Route::get('/marketing/order/uploadDp/{id}', 'marketing\OrderController@uploadDP') ->name('marketing.order.uploadDp');
+    Route::get('/marketing/order/listOrder', 'marketing\OrderController@listOrder') ->name('marketing.order.listOrder');
+    Route::get('/marketing/order/proceed/{id}', 'marketing\OrderController@proceed') ->name('marketing.order.proceed');
+    Route::get('/marketing/order/detail/{id}', 'marketing\OrderController@detail') ->name('marketing.order.detail');
+    Route::get('/marketing/order/contract/{id}', 'marketing\OrderController@contract') ->name('marketing.order.contract');
+    Route::get('/marketing/order/addContract', 'marketing\OrderController@addContract') ->name('marketing.order.addContract');
+    Route::get('/marketing/order/listContract', 'marketing\OrderController@listContract') ->name('marketing.order.listContract');
+    
+    
+});
+
+Route::group(['middleware' => 'management'], function() {
+    Route::get('/management/', function(){
+        return redirect()->route('minerba.dashboard');
+    });
+
+    Route::get('/minerba/dashboard', 'minerba\UserController@dashboard') ->name('minerba.dashboard');
+    Route::get('/minerba/report/listReport', 'minerba\ReportController@listReport') ->name('minerba.report.listReport');
+    Route::get('/minerba/meeting/listMeeting', 'minerba\MeetingController@listMeeting') ->name('minerba.meeting.listMeeting');
+    Route::get('/minerba/order/listSPK', 'minerba\OrderController@listSpk') ->name('minerba.order.listSpk');
+    
+    
+});
+

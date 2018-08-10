@@ -27,6 +27,8 @@ class VisitorMiddleware
                 return redirect()->route('minerba.dashboard');
             elseif(Sentinel::getUser()->roles()->first()->slug == 'client')
                 return redirect()->route('client.dashboard');
+            elseif(Sentinel::getUser()->roles()->first()->slug == 'marketing')
+                return redirect()->route('marketing.dashboard');
             else
                 return abort(404);
     }

@@ -6,10 +6,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($order->contract) ? 'Edit Kontrak': 'Upload Kontrak'}}</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($order->dp_invoice) ? 'Edit Invoice DP': 'Upload Invoice DP'}}</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">{{ isset($order->contract) ? 'Edit Kontrak':'Upload Kontrak'}}</li>
+            <li class="breadcrumb-item active">{{ isset($order->dp_invoice) ? 'Edit Invoice DP':'Upload Invoice DP'}}</li>
         </ol>
     </div>
 </div>
@@ -20,13 +20,13 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{ route('admin.order.update', $order-> id)}}" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="client_id" value="{{ $order->client-> id}}">
+                <form action="{{ route('marketing.order.update', $order->id) }}" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="client_id" value="{{ $order->client->id}}">
                     <div class="form-body">
                         <h3 class="card-title">Company Info</h3>
                         <hr>
                         <div class="row p-t-20">
-                            <div class="col-md-6">
+                           <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="idPatient1">Id Company :</label>
                                 <input type="text" class="form-control" disabled id="idPatient1" value="{{$order->client->id}}">
@@ -56,13 +56,13 @@
                             </div>
                             <br>
                         </div>
-                        <h3 class="box-title m-t-40">Upload Kontrak</h3>
+                        <h3 class="box-title m-t-40">Upload Invoice DP</h3>
                         <hr>
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">File surat kontrak</h4>
-                                    <input type="file" id="file" name="contract" class="dropify" required/>
+                                    <h4 class="card-title">File Invoice DP</h4>
+                                    <input type="file" id="file" name="dp_invoice" class="dropify" accept="application/pdf" required/>
                                 </div>
                             </div>
                         </div>

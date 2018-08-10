@@ -6,10 +6,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($order->offer_letter) ? 'Edit Invoice DP': 'Upload Invoice DP'}}</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($order->offer_letter) ? 'Edit Surat Penawaran': 'Upload Surat Penawaran'}}</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">{{ isset($order->offer_leter) ? 'Edit Invoice DP':'Upload Invoice DP'}}</li>
+            <li class="breadcrumb-item active">{{ isset($order->offer_leter) ? 'Edit Surat Penawaran':'Upload Surat Penawaran'}}</li>
         </ol>
     </div>
 </div>
@@ -20,8 +20,8 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{ route('admin.order.update', $order->id)}}" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="client_id" value="{{ $order->client->id}}">
+                <form action="{{ route('marketing.order.update', $order-> id)}}" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="client_id" value="{{ $order->client-> id}}">
                     <div class="form-body">
                         <h3 class="card-title">Company Info</h3>
                         <hr>
@@ -55,45 +55,24 @@
                                 </div>
                             </div>
                             <br>
-                            <table id="myTable" class="table table-bordered table-striped">
-                                <tr>
-                                    <thead>
-                                        <th>Bukti Transfer</th>
-                                        <th>SPK</th>
-                                    </thead>
-                                </tr>
-                                <tr>
-                                    @if(isset($order->transfer_proof))
-                                    <td>
-                                        <center><a href="{{ Storage::url($order->transfer_proof) }}"><span><i class="fa fa-download"></i></span></a></center>
-                                    </td>
-                                    @else
-                                    <td>
-                                        BUKTI TRANSFER BELUM ADA !
-                                    </td>
-                                    @endif
-                                    @if(isset($order->spk))
-                                    <td>
-                                        <center><a href="{{ Storage::url($order->spk) }}"><span><i class="fa fa-download"></i></span></a></center>
-                                    </td>             
-                                    @else
-                                    <td>
-                                        SPK BELUM ADA !
-                                    </td>
-                                    @endif
-                                </tr>
-                            </table>
-                            {{-- <div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <a href="{{ Storage::url($order->transfer_proof) }}"><span><i class="fa fa-info-circle">Bukti Transfer</i></span></a>
+                                    <a href="{{ Storage::url($order->letter_of_request) }}"><span><i class="fa fa-info-circle">Surat Permintaan</i></span></a>
                                 </div>
                             </div>
                         </div>
-                            <div class="form-group">
-                                <a href="{{ Storage::url($order->transfer_proof) }}"><span><i class="fa fa-info-circle">Bukti Transfer</i></span></a>
-                            </div> --}}
+                        <h3 class="box-title m-t-40">Upload Surat Penawaran</h3>
+                        <hr>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">File Surat Penawaran</h4>
+                                    <input type="file" id="file" name="offer_letter" accept="application/pdf" class="dropify" required/>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-actions">
-                                <button type="submit" class="btn btn-success" value="upload"> Proceed </button></a>
+                            <button type="submit" class="btn btn-success" value="upload"><i class="fa fa-check"></i> Submit</button>
                             <button type="button" class="btn btn-inverse">Cancel</button>
                         </div>
                     </div>
@@ -113,12 +92,6 @@ $( document ).ready(function() {
 });
 
 </script> 
-<script src="{{ asset('material/plugins/moment/min/moment.min.js')}}"></script>
-<script src="{{ asset('material/plugins/wizard/jquery.steps.min.js')}}"></script>
-<script src="{{ asset('material/plugins/wizard/jquery.validate.min.js')}}"></script>
-<script src="{{ asset('material/plugins/wizard/steps.js')}}"></script>
-<script src="{{ asset('material/plugins/select2/dist/js/select2.full.min.js')}}" type="text/javascript"></script>
-<script src="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js')}}" type="text/javascript"></script>
 
 
   

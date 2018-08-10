@@ -40,7 +40,7 @@
                                 <td>{{ $row->created_at }}</td>
                                 <td>{{ $row->client->company_name }}</td>
                                 <td><center>
-                                        <a href="{{ route('admin.order.uploadOffer', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
+                                        <a href="{{ route('marketing.order.uploadOffer', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         <a href="{{ Storage::url($row->offer_letter) }}"><span><i class="fa fa-download"></i></span></a></center>
                                 </td>
                                 <td> @if ($row->state_offer !== null) 
@@ -51,13 +51,13 @@
                                     @endif
                                 </td>
                                 <td><center>
-                                        <a href="{{ route('admin.order.uploadDp', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
+                                        <a href="{{ route('marketing.order.uploadDp', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         <a href="{{ Storage::url($row->dp_invoice) }}"><span><i class="fa fa-download"></i></span></a>
                                     </center>
                                 </td>
                                 <td class="text-nowrap">
                                     <center>
-                                        <a href="{{ route('admin.order.proceed', $row->id)}}" data-toggle="tooltip" data-original-title="Accept"> <i class="fa fa-check m-r-10"></i> </a>
+                                        <a href="{{ route('marketing.order.proceed', $row->id)}}" data-toggle="tooltip" data-original-title="Accept"> <i class="fa fa-check m-r-10"></i> </a>
                                         {{-- <a href="#" data-toggle="tooltip" data-original-title="Update"><span><i class="fa fa-tasks text-inverse m-r-10"></i></span></a> --}}
                                         {{-- <a href="#" onclick="$(this).find('#delete').submit();" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i>
                                         <form action="#" id="delete" method="post">

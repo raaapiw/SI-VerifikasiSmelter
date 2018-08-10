@@ -389,17 +389,17 @@
                             </ul>
                             @elseif(Sentinel::getUser()->roles()->first()->slug == 'marketing')
                                 <ul id="sidebarnav">
-                                    <li class="nav-small-cap">Admin</li>
+                                    <li class="nav-small-cap">Marketing</li>
                                     <li>
                                         <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                                     </li>
                                     <li>
                                         <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
                                         <ul aria-expanded="false" class="collapse">
-                                            <li><a href="{{ route('admin.order.addOffer')}}">Tambah Pemesanan</a></li>
-                                            <li><a href="{{ route('admin.order.listOrder')}}"> List Pemesanan</a></li>
-                                            <li><a href="{{ route('admin.order.addContract')}}"> Tambah Kontrak</a></li>
-                                            <li><a href="{{ route('admin.order.listContract')}}">List Kontrak</a></li>
+                                            <li><a href="{{ route('marketing.order.addOffer')}}">Tambah Pemesanan</a></li>
+                                            <li><a href="{{ route('marketing.order.listOrder')}}"> List Pemesanan</a></li>
+                                            <li><a href="{{ route('marketing.order.addContract')}}"> Tambah Kontrak</a></li>
+                                            <li><a href="{{ route('marketing.order.listContract')}}">List Kontrak</a></li>
                                         </ul>
                                     </li>
                                 </ul>
