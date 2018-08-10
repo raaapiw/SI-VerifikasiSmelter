@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use \Input as Input;
 use App\Order;
 use App\Client;
+use App\Report;
 use Sentinel;
 use Storage;
 class ReportController extends Controller
@@ -20,9 +21,9 @@ class ReportController extends Controller
     public function listReport()
     { 
         
-        $orders = Order::all();
+        $reports = Report::all();
         // dd($orders);
-        return view('pages.minerba.report.list', compact ('clients','meetings','orders'));
+        return view('pages.minerba.report.list', compact ('reports'));
     }
     public function index()
     {

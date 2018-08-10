@@ -20,7 +20,7 @@ class OrderController extends Controller
     public function listSPK()
     { 
         
-        $orders = Order::all();
+        $orders = Order::where('spk','!=', null)->get();
         // dd($orders);
         return view('pages.minerba.order.list', compact ('clients','meetings','orders'));
     }
