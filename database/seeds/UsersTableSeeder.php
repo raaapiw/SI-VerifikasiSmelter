@@ -58,6 +58,14 @@ class UsersTableSeeder extends Seeder
                 'slug'        => 'marketing',
             ]
         );
+
+        Sentinel::getRoleRepository()->createModel()->create
+        (
+			[
+				'name'        => 'Management',
+                'slug'        => 'management',
+            ]
+        );
     }
 
     public function createUser()
@@ -72,6 +80,7 @@ class UsersTableSeeder extends Seeder
         $this->createDefaultMinerba();
         $this->createDefaultClient();
         $this->createDefaultMarketing();
+        $this->createDefaultManagement();
         
         $roleArray = array("admin", "minerba");
         foreach(range(0,10) as $index){
@@ -258,7 +267,19 @@ class UsersTableSeeder extends Seeder
         $user = Sentinel::registerAndActivate($credentials);
         $role = Sentinel::findRoleBySlug('marketing');
         $user->roles()->attach($role);
-    
-    
+    }
+
+    public function createDefaultManagement(){
+        $credentials = [
+            'username' => 'managementminba',
+			'email' => 'management@example.com',
+            'password' => 'management123',
+            'name' => 'Management',
+            'gender' => 'M',
+		];
+
+        $user = Sentinel::registerAndActivate($credentials);
+        $role = Sentinel::findRoleBySlug('management');
+        $user->roles()->attach($role);
     }
 }

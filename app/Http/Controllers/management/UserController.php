@@ -13,13 +13,12 @@ use App\Client;
 use App\User;
 use Sentinel;
 
-class OrderController extends Controller
+class UserController extends Controller
 {
     //
-    public function list()
-    {
-        $orders = Order::all();
-
-        return view('pages.management.order.list', compact('orders'));
+    public function dashboard(){
+        
+        return view('pages.management.dashboard');
     }
+    
 }

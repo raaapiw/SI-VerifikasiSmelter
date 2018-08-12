@@ -13,13 +13,14 @@ use App\Client;
 use App\User;
 use Sentinel;
 
-class OrderController extends Controller
+class WorkController extends Controller
 {
     //
     public function list()
     {
-        $orders = Order::all();
+        $works = Work::all();
 
-        return view('pages.management.order.list', compact('orders'));
+        return view('pages.management.work.list', compact('works'));
     }
+
 }

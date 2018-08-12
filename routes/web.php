@@ -200,14 +200,16 @@ Route::group(['middleware' => 'marketing'], function() {
 
 Route::group(['middleware' => 'management'], function() {
     Route::get('/management/', function(){
-        return redirect()->route('minerba.dashboard');
+        return redirect()->route('management.dashboard');
     });
 
-    Route::get('/minerba/dashboard', 'minerba\UserController@dashboard') ->name('minerba.dashboard');
-    Route::get('/minerba/report/listReport', 'minerba\ReportController@listReport') ->name('minerba.report.listReport');
-    Route::get('/minerba/meeting/listMeeting', 'minerba\MeetingController@listMeeting') ->name('minerba.meeting.listMeeting');
-    Route::get('/minerba/order/listSPK', 'minerba\OrderController@listSpk') ->name('minerba.order.listSpk');
+    Route::get('/management/dashboard', 'management\UserController@dashboard') ->name('management.dashboard');
+    Route::get('/management/report/list', 'management\ReportController@list') ->name('management.report.list');
+    Route::get('/management/work/list', 'management\WorkController@list') ->name('management.meeting.list');
+    Route::get('/management/order/list', 'management\OrderController@list') ->name('management.order.list');
+    Route::get('/management/meeting/list', 'management\OrderController@list') ->name('management.meeting.list');
     
     
 });
+
 

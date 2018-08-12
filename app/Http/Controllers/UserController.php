@@ -37,6 +37,10 @@ class UserController extends Controller
                     return redirect()->route('admin.dashboard');
                 elseif(Sentinel::getUser()->roles()->first()->slug == 'minerba')
                     return redirect()->route('minerba.dashboard');
+                elseif(Sentinel::getUser()->roles()->first()->slug == 'marketing')
+                    return redirect()->route('marketing.dashboard');
+                elseif(Sentinel::getUser()->roles()->first()->slug == 'management')
+                    return redirect()->route('management.dashboard');
                 else
                     return redirect()->route('client.dashboard');
             }else{
