@@ -27,6 +27,17 @@
                         <hr>
                         <div class="col-md-12">
                             <div class="card">
+                                {{-- <div class="card-body">
+                                    <h4 class="card-title">Jenis Pekerjaan</h4>
+                                    <label class="custom-control custom-radio">
+                                        <input required id="radio5" name="radio" type="radio" class="custom-control-input" value="1" >
+                                        <span class="custom-control-label">Verifikasi Kemajuan</span>
+                                    </label>
+                                    <label class="custom-control custom-radio">
+                                        <input id="radio6" name="radio" type="radio" class="custom-control-input" value="0" >
+                                        <span class="custom-control-label">Verifikasi Perencanaan</span>
+                                    </label>
+                                </div> --}}
                                 <div class="card-body">
                                     <h4 class="card-title">File Surat Permintaan</h4>
                                     <input type="file" id="file" name="letter_of_request" class="dropify" accept="application/pdf" required/>

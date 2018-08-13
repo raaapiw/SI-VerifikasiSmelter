@@ -18,7 +18,8 @@ class Order extends Model
         'state_offer',
         'contract',
         'spk',
-        'admin_id'
+        'admin_id',
+        'state_work'
     ];
     
     protected $appends =[

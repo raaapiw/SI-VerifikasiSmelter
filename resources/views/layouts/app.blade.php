@@ -387,6 +387,38 @@
                                 
                                 
                             </ul>
+                            @elseif(Sentinel::getUser()->roles()->first()->slug == 'management')
+                            <ul id="sidebarnav">
+                                <li class="nav-small-cap">Management</li>
+                                <li>
+                                    <a href="{{ route('management.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                                </li>
+                                <li>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('management.order.listOrder')}}"> List Pemesanan</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('management.meeting.listMeeting')}}">List Pertemuan</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('management.work.listDoc')}}">List Pekerjaan</a></li>
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pelaporan</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('management.report.listReport')}}">List Laporan</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
                             @elseif(Sentinel::getUser()->roles()->first()->slug == 'marketing')
                                 <ul id="sidebarnav">
                                     <li class="nav-small-cap">Marketing</li>
