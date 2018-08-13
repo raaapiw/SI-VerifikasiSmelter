@@ -20,6 +20,7 @@ class CreateMeetingsTable extends Migration
             $table->string('date')->nullable();
             $table->string('time')->nullable();
             $table->string('place')->nullable();
+            $table->integer('state')->nullable();
 
             $table->timestamps();
 
