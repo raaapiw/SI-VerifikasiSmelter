@@ -19,8 +19,9 @@ class WorkController extends Controller
     public function list()
     {
         $works = Work::all();
+        $orders = Order::all();
 
-        return view('pages.management.work.list', compact('works'));
+        return view('pages.management.work.list', compact('works','orders'));
     }
 
 }

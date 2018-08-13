@@ -28,7 +28,7 @@
                                 <th>No</th>
                                 <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
-                                <th><center>Detail</center></th>
+                                <th><center>Status</center></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,7 +38,12 @@
                                     <td><center>{{ $row->created_at }}</center></td>
                                     <td>{{ $row->order->client->company_name }}</td>
                                     <td><center>
-                                            <a href="#"><span><i class="fa fa-search"></i></span></a>
+                                            @if ($orders->state_work = 1)
+                                            <span class="label label-warning">ON PROCESS</span>
+                                            
+                                            @else
+                                                <span class="label label-success">FINISH</span>
+                                            @endif
                                         </center>
                                     </td>
                                 </tr>                            

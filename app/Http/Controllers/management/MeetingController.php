@@ -21,6 +21,7 @@ class MeetingController extends Controller
     public function list()
     {
         $meetings = Meeting::all();
+        // dd($meetings);
 
         return view('pages.management.meeting.list', compact('meetings'));
     }
