@@ -25,7 +25,7 @@ class Docper extends Model
     {
         if($this->evidence != NULL){
             $real_name = explode('/', $this->evidence);
-            return $real_name[0];
+            return $real_name[4];
         }else{
             return null;
         }
