@@ -78,7 +78,7 @@
                                 <th><center>Dokumen</center></th>
                             </tr>
                         </thead>
-                        @foreach($document as $row)
+                        @foreach($docper as $row)
                         <tr>
                             <td>{{ $row->id}}</td>
                             <td>{{ $row->created_at}}</td>

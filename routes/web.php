@@ -205,9 +205,9 @@ Route::group(['middleware' => 'management'], function() {
 
     Route::get('/management/dashboard', 'management\UserController@dashboard') ->name('management.dashboard');
     Route::get('/management/report/list', 'management\ReportController@list') ->name('management.report.list');
-    Route::get('/management/work/list', 'management\WorkController@list') ->name('management.meeting.list');
+    Route::get('/management/work/list', 'management\WorkController@list') ->name('management.work.list');
     Route::get('/management/order/list', 'management\OrderController@list') ->name('management.order.list');
-    Route::get('/management/meeting/list', 'management\OrderController@list') ->name('management.meeting.list');
+    Route::get('/management/meeting/list', 'management\MeetingController@list') ->name('management.meeting.list');
     
     
 });

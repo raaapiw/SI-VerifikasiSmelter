@@ -11,6 +11,7 @@ use App\Document;
 use App\Work;
 use App\Client;
 use App\User;
+use App\Report;
 use Sentinel;
 
 class ReportController extends Controller

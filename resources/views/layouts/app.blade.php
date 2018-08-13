@@ -396,26 +396,26 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('management.order.listOrder')}}"> List Pemesanan</a></li>
+                                        <li><a href="{{ route('management.order.list')}}"> List Pemesanan</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('management.meeting.listMeeting')}}">List Pertemuan</a></li>
+                                        <li><a href="{{ route('management.meeting.list')}}">List Pertemuan</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('management.work.listDoc')}}">List Pekerjaan</a></li>
+                                        <li><a href="{{ route('management.work.list')}}">List Pekerjaan</a></li>
                                         
                                     </ul>
                                 </li>
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pelaporan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('management.report.listReport')}}">List Laporan</a></li>
+                                        <li><a href="{{ route('management.report.list')}}">List Laporan</a></li>
                                     </ul>
                                 </li>
                             </ul>
