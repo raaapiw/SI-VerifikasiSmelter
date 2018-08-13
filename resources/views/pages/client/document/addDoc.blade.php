@@ -45,7 +45,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <center>
-                                    <button name="add" id="add" type="button" class="btn btn-block btn-info" data-count={{ isset($document) ? count($document) : 0 }}>Tambah Dokumen</button>
+                                    <button name="add" id="add" type="button" class="btn btn-block btn-info" data-count=0>Tambah Dokumen</button>
                                 </center>
                                 <br>
                                 <br>
@@ -78,7 +78,8 @@ $( document ).ready(function() {
 <script>
     $( document ).ready(function() {
         var i = 0;
-        i = $(this).attr("data-count");
+        // i = $(this).attr("data-count");
+        // console.log(i);
         $(document).on("click","#add",function() {
             $('#dynamic_field').append('<div class="row" id="row'+i+'"><div class="col-md-12"><div class="card"><div class="card-body"><div class="form-group"><h4 class="card-title">Nama Dokumen</h4><input type="text" class="form-control" id="nameFile" name="type[]" required/></div><h4 class="card-title">File Dokumen Pekerjaan</h4><input type="file" id="file" name="evidence[]" class="dropify" required/></div><div class="col-md-12"><div class="form-group"><button type="button" name="btn_remove" id="'+i+'" class="btn btn-danger btn_remove">Clear</button></div></div></div></div></div>');
             i++;

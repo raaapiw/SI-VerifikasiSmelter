@@ -19,6 +19,7 @@ class CreateReportsTable extends Migration
             $table->string('report')->nullable();
             $table->string('covering_letter')->nullable();
             $table->string('receipt')->nullable();
+            $table->integer('state')->nullable();
 
             $table->timestamps();
 

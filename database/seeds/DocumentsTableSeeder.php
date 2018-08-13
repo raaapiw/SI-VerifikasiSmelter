@@ -19,8 +19,9 @@ class DocumentsTableSeeder extends Seeder
         foreach(range(0,10) as $index){
             DB::table('documents')->insert([                
                 'work_id' => $index+1,
-                'evidence' => 0, 
-                'type' => rand(1,6),
+                'evidence' => $faker->text($maxNbChars = 190), 
+                'type' => $faker->text($maxNbChars = 190),
+                'state' =>0,
                 'created_at' => $faker->date($format = 'Y-m-d', $max = 'now')       
             ]);
         }

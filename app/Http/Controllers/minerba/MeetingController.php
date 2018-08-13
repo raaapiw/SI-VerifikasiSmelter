@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use \Input as Input;
 use App\Order;
 use App\Client;
+use App\Meeting;
 use Sentinel;
 use Storage;
 class MeetingController extends Controller
@@ -20,9 +21,9 @@ class MeetingController extends Controller
     public function listMeeting()
     { 
         
-        $orders = Order::all();
+        $meetings = Meeting::all();
         // dd($orders);
-        return view('pages.minerba.meeting.list', compact ('clients','meetings','orders'));
+        return view('pages.minerba.meeting.list', compact ('meetings'));
     }
     public function index()
     {
