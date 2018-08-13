@@ -191,6 +191,15 @@ class OrderController extends Controller
         
             return redirect()->route('admin.dashboard');
            
+        } elseif (isset($request->state_work)) {
+            $data = [
+                'client_id' => $request->client_id,
+                'state_work' => $request->state_work,
+            ];    
+            
+                $order = Order::create($data);
+            
+                return redirect()->route('admin.dashboard');
         } else {
             $data = [
                 'client_id' => $request->client_id,
@@ -301,6 +310,15 @@ class OrderController extends Controller
             // $order = Order::update($data);
         
             return redirect()->route('admin.dashboard');
+        } elseif (isset($request->state_work)) {
+            $data = [
+                'client_id' => $request->client_id,
+                'state_work' => $request->state_work,
+            ];    
+            
+                $order->fill($data)->save();
+            
+                return redirect()->route('admin.dashboard');
         } else {
             $data = [
                 'client_id' => $request->client_id,

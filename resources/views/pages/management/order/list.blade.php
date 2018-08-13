@@ -38,7 +38,12 @@
                                     <td><center>{{ $row->created_at }}</center></td>
                                     <td>{{ $row->client->company_name }}</td>
                                     <td><center>
-                                            <a href="{{ route('management.order.detail', $row->id)}}"><span><i class="fa fa-search"></i></span></a>
+                                            @if ($orders->state = 1)
+                                            <span class="label label-warning">ON PROCESS</span>
+                                            
+                                            @else
+                                                <span class="label label-success">FINISH</span>
+                                            @endif
                                         </center>
                                     </td>
                                 </tr>                            

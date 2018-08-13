@@ -7,10 +7,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">List Laporan</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">List Dokumen</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">List Laporan</li>
+            <li class="breadcrumb-item active">List Dokumen</li>
         </ol>
     </div>
 </div>
@@ -32,18 +32,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($reports as $key=>$row)
+                            
+                            @foreach($orders as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
-                                    <td>{{ $row->order->client->company_name }}</td>
+                                    <td>{{ $row->client->company_name }}</td>
                                     <td><center>
-                                            @if ($reports->state = 1)
-                                            <span class="label label-warning">ON PROCESS</span>
-                                            
-                                            @else
-                                                <span class="label label-success">FINISH</span>
-                                            @endif
+                                            {{-- <input type="hidden" name="state_work" value=1> --}}
+                                            <a href="{{ route('admin.work.approval', $row->id)}}"><span><i class="fa fa-check m-r-10"></i></span></a>
                                         </center>
                                     </td>
                                 </tr>                            
@@ -62,6 +59,6 @@
 <script src="{{ asset('material/plugins/sweetalert/sweetalert.min.js')}}"></script>
 <script src="{{ asset('material/plugins/sweetalert/jquery.sweet-alert.custom.js')}}"></script>
 <script>$('#myTable').DataTable({
-    "order": [[ 1, "DESC" ]]
+    "order": [[ 1, "desc" ]]
 });</script>
 @endsection

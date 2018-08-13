@@ -17,6 +17,28 @@ class WorkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function detail($id)
+    {
+        $order = Order::find($id);
+        return view('pages.admin.work.approve', compact('order'));
+    }
+    
+    public function approve()
+    {
+        $orders = Order::all();
+        // dd($orders);
+
+        return view('pages.admin.work.approve', compact('orders'));
+    }
+
+    public function approval($id)
+    {
+        $order = Order::find($id);
+
+        return view('pages.admin.work.approval', compact('order'));
+    }
+
     public function curvaS()
     {
         $work = Work::all();

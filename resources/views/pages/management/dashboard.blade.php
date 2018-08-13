@@ -17,7 +17,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                Dashboard Admin
+                Dashboard Management
             </div>
         </div>
     </div>

@@ -86,7 +86,10 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/meeting/createBA/{id}', 'admin\MeetingController@createBA') ->name('admin.meeting.createBA');
    
     Route::get('/admin/work/curva_s', 'admin\WorkController@curvaS') ->name('admin.work.curvaS');
-
+    Route::get('/admin/work/approve', 'admin\WorkController@approve') ->name('admin.work.approve');
+    Route::get('/admin/work/approval/{id}', 'admin\WorkController@approval') ->name('admin.work.approval');
+    Route::get('/admin/work/detail/{id}', 'admin\DocperController@detail') ->name('admin.work.detailDocper');
+    
     Route::get('/admin/document/listDoc', 'admin\DocumentController@index_doc') ->name('admin.document.listDoc');
     Route::get('/admin/document/detail/{id}', 'admin\DocumentController@detail') ->name('admin.document.detail');
 
@@ -102,6 +105,11 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/report/addletter', 'admin\ReportController@addletter') ->name('admin.report.addLetter');
     Route::get('/admin/report/letter/{id}', 'admin\ReportController@letter') ->name('admin.report.letter');
     Route::get('/admin/report/listLetter', 'admin\ReportController@listLetter') ->name('admin.report.listLetter');
+    
+    Route::get('/admin/docper/detail/{id}', 'admin\DocperController@detail') ->name('admin.work.detail');
+    Route::get('/admin/docper/listDocper', 'admin\DocperController@list') ->name('admin.work.listDocper');
+    
+    
     
 });
 
@@ -205,9 +213,9 @@ Route::group(['middleware' => 'management'], function() {
 
     Route::get('/management/dashboard', 'management\UserController@dashboard') ->name('management.dashboard');
     Route::get('/management/report/list', 'management\ReportController@list') ->name('management.report.list');
-    Route::get('/management/work/list', 'management\WorkController@list') ->name('management.meeting.list');
+    Route::get('/management/work/list', 'management\WorkController@list') ->name('management.work.list');
     Route::get('/management/order/list', 'management\OrderController@list') ->name('management.order.list');
-    Route::get('/management/meeting/list', 'management\OrderController@list') ->name('management.meeting.list');
+    Route::get('/management/meeting/list', 'management\MeetingController@list') ->name('management.meeting.list');
     
     
 });
