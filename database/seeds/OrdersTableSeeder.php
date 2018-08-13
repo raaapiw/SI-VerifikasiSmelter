@@ -27,7 +27,7 @@ class OrdersTableSeeder extends Seeder
                 'spk' => $faker->text($maxNbChars = 190),  
                 'state' =>0,
                 'admin_id' => rand(1,6),
-                // 'state_offer' =>0,
+                'state_work' =>rand(0,1),
                 'created_at' => $faker->date($format = 'Y-m-d', $max = 'now')       
             ]);
         }
