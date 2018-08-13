@@ -19,7 +19,6 @@ class CreateWorksTable extends Migration
             $table->string('curva_s')->nullable();
             $table->string('evidence')->nullable();
             $table->integer('state')->nullable();
-            $table->integer('state')->nullable();
 
             $table->timestamps();
 
