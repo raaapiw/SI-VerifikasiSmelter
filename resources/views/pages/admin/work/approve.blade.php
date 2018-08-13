@@ -33,13 +33,14 @@
                         </thead>
                         <tbody>
                             
-                            @foreach($order as $key=>$row)
+                            @foreach($orders as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
                                     <td>{{ $row->client->company_name }}</td>
                                     <td><center>
-                                            <a href="{{ route('admin.document.detail', $row->id)}}"><span><i class="fa fa-search"></i></span></a>
+                                            {{-- <input type="hidden" name="state_work" value=1> --}}
+                                            <a href="{{ route('admin.work.approval', $row->id)}}"><span><i class="fa fa-check m-r-10"></i></span></a>
                                         </center>
                                     </td>
                                 </tr>                            
