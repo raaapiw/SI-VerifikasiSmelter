@@ -84,6 +84,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::post('/admin/meeting/store', 'admin\MeetingController@store') ->name('admin.meeting.store');
     Route::get('/admin/meeting/listMeeting', 'admin\MeetingController@listMeeting') ->name('admin.meeting.listMeeting');
     Route::get('/admin/meeting/createBA/{id}', 'admin\MeetingController@createBA') ->name('admin.meeting.createBA');
+    Route::post('/admin/meeting/updateData/{id}', 'admin\MeetingController@update') ->name('admin.meeting.update');
    
     Route::get('/admin/work/curva_s', 'admin\WorkController@curvaS') ->name('admin.work.curvaS');
     Route::get('/admin/work/approve', 'admin\WorkController@approve') ->name('admin.work.approve');
