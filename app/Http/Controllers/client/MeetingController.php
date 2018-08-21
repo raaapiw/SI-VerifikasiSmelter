@@ -42,8 +42,8 @@ class MeetingController extends Controller
 
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
         $order = Order::where('client_id','=',$client->id)->first();
-        // $meetings = Meeting::where('order_id','=',$order->id)->get();
-        // dd($orders);
+        $meetings = Meeting::where('order_id','=',$order->id)->get();
+        // dd($meetings);
         return view('pages.client.meeting.jadwal', compact ('order','meetings'));
     }
     public function index()

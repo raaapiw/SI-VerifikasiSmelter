@@ -103,7 +103,7 @@ class MeetingController extends Controller
                 $data = [
                     'order_id' => $request->order_id,
                     'client_id' => $request->client_id,
-                    'offer_letter' => $path,
+                    'bap' => $path,
                 ];
                 $meeting = Meeting::create($data);
                 
@@ -185,7 +185,7 @@ class MeetingController extends Controller
                 $data = [
                     'order_id' => $request->order_id,
                     'client_id' => $request->client_id,
-                    'offer_letter' => $path,
+                    'bap' => $path,
                 ];
                 // dd($meeting);
                 $meeting->fill($data)->save();
