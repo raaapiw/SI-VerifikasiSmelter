@@ -27,6 +27,7 @@
                             <tr>
                                 <th>No</th>
                                 <th style="width:50%"><center>Nama Perusahaan</center></th>
+                                <th>Tanggal Order</th>
                                 <th><center>Upload Berita Acara</center></th>
                             </tr>
                         </thead>
@@ -35,6 +36,7 @@
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
                                     <td>{{ $row->client->company_name }}</td>
+                                    <td>{{$row->created_at}}</td>
                                     <td><center>
                                             <a href="{{ route('admin.meeting.createBA', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         </center>
@@ -55,6 +57,6 @@
 <script src="{{ asset('material/plugins/sweetalert/sweetalert.min.js')}}"></script>
 <script src="{{ asset('material/plugins/sweetalert/jquery.sweet-alert.custom.js')}}"></script>
 <script>$('#myTable').DataTable({
-    "order": [[ 1, "desc" ]]
+    "order": [[ 2, "desc" ]]
 });</script>
 @endsection
