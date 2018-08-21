@@ -37,10 +37,11 @@ class MeetingController extends Controller
 
     public function createBA($id)
     {
-        $order = Order::find($id);
+        $meeting = Meeting::where('order_id','=',$id)->first();
+        
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('pages.admin.meeting.createBA', compact ('order','meetings'));
+        return view('pages.admin.meeting.createBA', compact ('order','meeting'));
     }
 
     
@@ -57,9 +58,9 @@ class MeetingController extends Controller
     public function uploadBA()
     {
 
-        $orders = Order::all();
+        $meetings = Meeting::all();
         // dd($orders);
-        return view('pages.admin.meeting.uploadBA', compact('orders'));
+        return view('pages.admin.meeting.uploadBA', compact('orders','meetings'));
     }
     
 
@@ -180,7 +181,7 @@ class MeetingController extends Controller
                 if (Storage::exists($uploadedFileName)) {
                     Storage::delete($uploadedFileName);
                 }
-                $path = $uploadedFile->store('public/files/meeting/admin', $uploadedFileName);
+                $path = $uploadedFile->storeAs('public/files/meeting/admin', $uploadedFileName);
     
                 $data = [
                     'order_id' => $request->order_id,

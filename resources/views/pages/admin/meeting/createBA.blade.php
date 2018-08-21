@@ -20,8 +20,8 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{ isset($order->meeting->bap) ? route('admin.meeting.update', $order->meeting-> id) : route('admin.meeting.store')}}" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="order_id" value="{{ $order-> id}}">
+                <form action="{{ route('admin.meeting.update', $meeting->id)}}" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="order_id" value="{{ $meeting->order->id}}">
                     <div class="form-body">
                         <h3 class="card-title">Company Info</h3>
                         <hr>
@@ -29,13 +29,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="idPatient1">Id Company :</label>
-                                <input type="text" class="form-control" disabled id="idPatient1" value="{{$order->client->id}}">
+                                <input type="text" class="form-control" disabled id="idPatient1" value="{{$meeting->order->client->id}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="phoneNumber1">Company Name :</label>
-                                    <input type="tel" class="form-control" disabled id="phoneNumber1" value="{{$order->client->company_name}}">
+                                    <input type="tel" class="form-control" disabled id="phoneNumber1" value="{{$meeting->order->client->company_name}}">
                                 </div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name1">Address :</label>
-                                <input type="text" class="form-control" disabled id="name1" value="{{$order->client->address}}">
+                                <input type="text" class="form-control" disabled id="name1" value="{{$meeting->order->client->address}}">
                                 </div>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="address1">Phone :</label>
-                                    <input type="text" class="form-control" disabled id="address1" value="{{$order->client->phone}}">
+                                    <input type="text" class="form-control" disabled id="address1" value="{{$meeting->order->client->phone}}">
                                 </div>
                             </div>
                             <br>

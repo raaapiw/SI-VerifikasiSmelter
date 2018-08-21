@@ -32,13 +32,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($orders as $key=>$row)
+                            @foreach($meetings as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
-                                    <td>{{ $row->client->company_name }}</td>
-                                    <td>{{$row->created_at}}</td>
+                                    <td>{{ $row->order->client->company_name }}</td>
+                                    <td>{{$row->order->created_at}}</td>
                                     <td><center>
-                                            <a href="{{ route('admin.meeting.createBA', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
+                                            <a href="{{ route('admin.meeting.createBA', $row->order->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         </center>
                                     </td>
                                 </tr>                            
