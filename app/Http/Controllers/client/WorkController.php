@@ -60,9 +60,9 @@ class WorkController extends Controller
         //
       
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        // $temporder = Order::doesntHave('works');
-        // $order = $temporder->where('client_id','=',$client->id)->get();
-        $order = Order::where('client_id','=',$client->id)->get();
+        $temporder = Order::has('works');
+        $order = $temporder->where('client_id','=',$client->id)->get();
+        // $order = Order::where('client_id','=',$client->id)->get();
         // dd($order);
         // $work  = Work::where('order_id','=',$order->id)->get();
         // dd($work);

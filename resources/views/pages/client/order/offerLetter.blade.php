@@ -31,7 +31,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($orders as $row)
+                        @foreach($order as $row)
                             <tr>
                                 <td>{{ $row->id }}</td>
                                 <td>{{ $row->created_at }}</td>
