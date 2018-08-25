@@ -161,7 +161,7 @@ Route::group(['middleware' => 'client'], function() {
     Route::get('/client/docper/detail/{id}', 'client\DocperController@detail') ->name('client.docper.detail');
     Route::get('/client/docper/edit/{id}', 'client\DocperController@editDoc') ->name('client.docper.editDoc');
     Route::get('/client/docper/destroy/{id}', 'client\DocperController@destroy')->name('client.docper.destroy');
-    Route::get('/client/docper/addDocument', 'client\DocperController@doc') ->name('client.docper.doc');
+    Route::get('/client/docper/addDocument', 'client\DocperController@index') ->name('client.docper.doc');
 
     Route::get('/client/report/listLetter', 'client\ReportController@listLetter') ->name('client.report.listLetter');
     Route::get('/client/report/listReceipt', 'client\ReportController@listReceipt') ->name('client.report.listReceipt');

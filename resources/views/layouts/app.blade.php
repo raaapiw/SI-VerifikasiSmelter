@@ -519,8 +519,8 @@
                                         <li>
                                             <a class="has-arrow" href="#" aria-expanded="false">Ver Kemajuan Fisik</a>
                                             <ul aria-expanded="false" class="collapse">
-                                                <li><a href="{{ route('client.document.doc',Sentinel::getUser()->id)}}">Verifikasi Kemajuan Fisik</a></li>
                                                 <li><a href="{{ route('client.work.addCurva',Sentinel::getUser()->id)}}">DPF (syarat)</a></li>
+                                                <li><a href="{{ route('client.document.doc',Sentinel::getUser()->id)}}">Verifikasi Kemajuan Fisik</a></li>
                                                 <li><a href="{{ route('client.work.listCurvaS',Sentinel::getUser()->id)}}">List DPF (syarat)</a></li>
                                                 <li><a href="{{ route('client.document.listDoc',Sentinel::getUser()->id)}}">List ver. Kemajuan Fisik</a></li>
                                             </ul>
@@ -531,9 +531,9 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pelaporan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('client.report.listReport')}}">List Laporan</a></li>
-                                        <li><a href="{{ route('client.report.listReceipt')}}">List Receipt</a></li>
-                                        <li><a href="{{ route('client.report.listLetter')}}">List Surat Pengantar</a></li>
+                                        <li><a href="{{ route('client.report.listReport')}}">List Laporan Akhir</a></li>
+                                        {{-- <li><a href="{{ route('client.report.listReceipt')}}">List Receipt</a></li>
+                                        <li><a href="{{ route('client.report.listLetter')}}">List Surat Pengantar</a></li> --}}
                                         
                                     </ul>
                                 </li>
