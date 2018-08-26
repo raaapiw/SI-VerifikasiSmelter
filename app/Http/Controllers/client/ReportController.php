@@ -40,9 +40,9 @@ class ReportController extends Controller
     {
         //
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $orders = Order::where('client_id','=',$client->id)->get();
+        $order = Order::where('client_id','=',$client->id)->first();
         // dd($orders);
-        $report = Report::all();
+        $report = Report::where('order_id','=',$order->id)->get();
         // $report = Report::where('order_id','=',$orders->id)->get();
         // dd($report);
         return view('pages.client.report.list', compact('orders','report'));

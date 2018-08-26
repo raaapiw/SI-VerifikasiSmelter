@@ -22,8 +22,10 @@ class MeetingController extends Controller
     {
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
         
-        $order = Order::where('client_id','=',$client->id)->get();
-        // dd($order);
+        $order = Order::where('client_id','=',$client->id)->first();
+        
+        $meetings = Meeting::where('order_id','=',$order->id)->get();
+        // dd($meetings);
         // dd($client);
         // $orders = Order::where([
         //         ['dp_invoice','!=',null],

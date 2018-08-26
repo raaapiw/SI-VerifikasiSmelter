@@ -58,7 +58,7 @@ class DocperController extends Controller
         //
       
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $temporder = Order::has('works');
+        $temporder = Order::has('docpers');
         $order = $temporder->where('client_id','=',$client->id)->get();
         // $order = Order::where('client_id','=',$client->id)->get();
         // dd($order);
@@ -104,7 +104,7 @@ class DocperController extends Controller
         foreach ($arrayFile as $index => $row){
             $uploadedFile =  $row;
             // dd($uploadedFile);
-            $uploadedFileName = $request->work_id . '-' . $uploadedFile->getClientOriginalName();
+            $uploadedFileName = $request->order_id . '-' . $uploadedFile->getClientOriginalName();
             if (Storage::exists($uploadedFileName)) {
                 Storage::delete($uploadedFileName);
             }

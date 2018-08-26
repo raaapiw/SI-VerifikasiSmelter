@@ -54,8 +54,9 @@ class OrderController extends Controller
     public function offerLetter()
     {
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $orders = Order::where('client_id','=',$client->id)->get();
-        return view('pages.client.order.offerLetter', compact('orders'));
+        $temporders = Order::where('offer_letter','!=',null);
+        $order = $temporders->where('client_id','=',$client->id)->get();
+        return view('pages.client.order.offerLetter', compact('order'));
     }
     public function uploadOffer($id)
     {

@@ -31,13 +31,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(isset($order->meeting))
-                            @foreach($order as $key=>$row)
+                            @if(isset($meetings))
+                            @foreach($meetings as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
-                                    <td><center>{{ $row->meeting->created_at }}</center></td>
+                                    <td><center>{{ $row->created_at }}</center></td>
                                     <td><center>
-                                            <a href="{{ Storage::url($row->meeting->bap) }}"><span><i class="fa fa-download"></i></span></a><
+                                            <a href="{{ Storage::url($row->bap) }}"><span><i class="fa fa-download"></i></span></a>
                                         </center>
                                     </td>
                                 </tr>                            
