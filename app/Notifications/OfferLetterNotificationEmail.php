@@ -44,9 +44,7 @@ class OfferLetterNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                ->line('Surat Penawaran sudah dibuat silahkan cek di website')
-                ->action('Verifikasi Smelter', url('http://103.236.201.45'))
-                ->line('Terima Kasih');
+        ->markdown('vendor.mail.client.penawaran', ['order' => $this->order]);
     }
 
     /**

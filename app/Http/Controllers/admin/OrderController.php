@@ -266,7 +266,7 @@ class OrderController extends Controller
                 $client = Client::where('id','=',$order->client_id)->first();
                 // dd($client);
                 $user = User::where('id','=',$client->user_id)->first();
-                $user->notify(new OfferLetterNotificationEmail($order));
+                $user->notify(new SuratPenawaranNotificationEmail($order));
                     // $order = Order::update($data);
         
                 return redirect()->route('admin.dashboard');

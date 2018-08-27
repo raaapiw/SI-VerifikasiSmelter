@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class SmelterNotificationEmail extends Notification
+class SuratPermintaanNotificationEmail extends Notification
 {
     use Queueable;
 
@@ -45,7 +45,7 @@ class SmelterNotificationEmail extends Notification
         return (new MailMessage)
                     ->line('Perusahaan' . $this->order->client->company_name . 'sudah mengirim SURAT PERMINTAAN')
                     ->line('SEGERA LAKUKAN PENGECEKAN !')
-                    ->action('Verifikasi Smelter', url('http://103.236.201.45'));
+                    ->markdown('vendor.mail.admin.permintaan', ['order' => $this->order]);
     }
 
     /**
