@@ -44,7 +44,7 @@ class PersetujuanPenawaranNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->markdown('vendor.mail.client.persetujuan', ['order' => $this->order]);
+        ->markdown('vendor.mail.admin.persetujuan', ['order' => $this->order]);
     }
 
     /**
