@@ -10,14 +10,14 @@ use App\Client;
 use Sentinel;
 use Storage;
 use App\User;
-use App\Notifications\SmelterNotificationEmail;
 use App\Notifications\CompanionNotificationEmail;
 use App\Notifications\DpInvoiceNotificationEmail;
-use App\Notifications\TransferProofNotificationEmail;
-use App\Notifications\OfferLetterNotificationEmail;
 use App\Notifications\SpkNotificationEmail;
-use App\Notifications\StateONotificationEmail;
 use App\Notifications\ApprovalNotificationEmail;
+use App\Notifications\SuratPermintaanNotificationEmail;
+use App\Notifications\BuktiTransferNotificationEmail;
+use App\Notifications\SuratPenawaranNotificationEmail;
+use App\Notifications\PersetujuanPenawaranNotificationEmail;
 
 class OrderController extends Controller
 {

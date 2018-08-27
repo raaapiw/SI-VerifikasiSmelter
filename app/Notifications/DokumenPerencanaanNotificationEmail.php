@@ -7,21 +7,20 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class OfferLetterNotificationEmail extends Notification
+class DocPerNotificationEmail extends Notification
 {
     use Queueable;
-
-    protected $order;
+    protected $docper;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($order)
+    public function __construct($docper)
     {
         //
-        $this->order = $order;
+        $this->docper = $docper;
     }
 
     /**
@@ -44,7 +43,7 @@ class OfferLetterNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->markdown('vendor.mail.client.penawaran', ['order' => $this->order]);
+        ->markdown('vendor.mail.client.status', ['order' => $this->docper]);
     }
 
     /**

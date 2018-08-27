@@ -13,7 +13,7 @@ use App\Notifications\SuratPermintaanNotificationEmail;
 use App\Notifications\CompanionNotificationEmail;
 use App\Notifications\DpInvoiceNotificationEmail;
 use App\Notifications\BuktiTransferNotificationEmail;
-use App\Notifications\OfferLetterNotificationEmail;
+use App\Notifications\SuratPenawaranNotificationEmail;
 use App\Notifications\SpkNotificationEmail;
 use App\Notifications\PersetujuanPenawaranNotificationEmail;
 use App\User;

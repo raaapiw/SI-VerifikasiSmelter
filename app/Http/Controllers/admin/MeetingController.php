@@ -12,7 +12,7 @@ use App\User;
 use Sentinel;
 use Storage;
 use App\Notifications\MeetingNotificationEmail;
-use App\Notifications\BapNotificationEmail;
+use App\Notifications\BeritaAcaraNotificationEmail;
 
 class MeetingController extends Controller
 {
