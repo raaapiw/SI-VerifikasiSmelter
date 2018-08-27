@@ -112,7 +112,7 @@ class MeetingController extends Controller
                 $client = Client::where('id','=',$order->client_id)->first();
                 // dd($client);
                 $user = User::where('id','=',$client->user_id)->first();
-                $user->notify(new BapNotificationEmail($meeting));
+                $user->notify(new BeritaAcaraNotificationEmail($meeting));
                 // $order = Order::update($data);
         
                 return redirect()->route('admin.dashboard');
@@ -195,7 +195,7 @@ class MeetingController extends Controller
                 $client = Client::where('id','=',$order->client_id)->first();
                 // dd($client);
                 $user = User::where('id','=',$client->user_id)->first();
-                $user->notify(new BapNotificationEmail($meeting));
+                $user->notify(new BeritaAcaraNotificationEmail($meeting));
                 // $order = Order::update($data);
         
                 return redirect()->route('admin.dashboard');
