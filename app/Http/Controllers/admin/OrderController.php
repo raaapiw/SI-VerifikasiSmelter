@@ -306,7 +306,7 @@ class OrderController extends Controller
                     'client_id' => $request->client_id,
                     'contract' => $path,
                 ];    
-                
+                $order->fill($data)->save();
             // $order = Order::update($data);
         
             return redirect()->route('admin.dashboard');
