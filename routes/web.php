@@ -117,6 +117,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/announcement/destroy/{id}', 'admin\AnnouncementController@destroy') ->name('admin.announcement.destroy');
     Route::get('/admin/announcement/edit/{id}', 'admin\AnnouncementController@edit') ->name('admin.announcement.edit');
     Route::post('/admin/announcement/active/{id}', 'admin\AnnouncementController@active') ->name('admin.announcement.active');
+    Route::post('/admin/announcement/not_active/{id}', 'admin\AnnouncementController@not_active') ->name('admin.announcement.not_active');
     
     
 });

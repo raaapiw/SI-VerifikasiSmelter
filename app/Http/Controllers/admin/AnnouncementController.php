@@ -80,11 +80,9 @@ class AnnouncementController extends Controller
     {
         $announcement = Announcement::find($id);
     
-        $data = [
-            'is_active' => 1,
-        ];
+        $announcement->is_active = 1;
         // $announcement->fill($data)->save();
-        $announcement->update($data);
+        $announcement->save();
         
         return redirect()->route('admin.announcement.list');
 
@@ -95,12 +93,8 @@ class AnnouncementController extends Controller
     {
         
         $announcement = Announcement::find($id);
-        $data = [
-
-            'user_id' => $request->user_id,
-            'field' => $request->field
-        ];
-        $announcement->fill($data)->save();
+        $announcement->is_active = 0;
+        $announcement->save();
         
         return redirect()->route('admin.announcement.list');
 

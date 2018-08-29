@@ -68,7 +68,7 @@
                         </div>
                         <div class="form-actions">
                                 <button type="submit" class="btn btn-success" value="upload"> Approve </button></a>
-                            <button type="button" class="btn btn-inverse">Cancel</button>
+                            <a class="btn btn-inverse btn-close" href="{{ url()->previous() }}">Cancel</a>
                         </div>
                     </div>
                 </form>

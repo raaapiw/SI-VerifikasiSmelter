@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="form-actions pull-right">
-                        <button type="button" class="btn btn-inverse">Cancel</button>
+                        <a class="btn btn-inverse btn-close" href="{{ url()->previous() }}">Cancel</a>
                         <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Submit</button>
                     </div>
                 </form>

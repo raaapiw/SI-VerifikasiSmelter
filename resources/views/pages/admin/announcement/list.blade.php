@@ -54,20 +54,15 @@
                                             <a href="{{ route('admin.announcement.destroy', $row->id) }}"><span><i class="mdi mdi-delete" alt="alert" id="sa-params"></i></span></a>
                                         </center>
                                     </td>
-                                    <td class="text-nowrap">
-                                        <center>
-                                                
+                                    <td> 
+                                        <center>    
                                             <a href="#" onclick="$(this).find('#aktif').submit();" data-toggle="tooltip" data-original-title="Accept" method="POST" enctype="multipart/form-data"> <i class="fa fa-check m-r-10"></i>
-                                                 <form action="{{ route('admin.announcement.active', $row->id)}}" id="aktif" method="post">
+                                                <form action="{{ route('admin.announcement.active', $row->id)}}" id="aktif" method="post">
                                                 </form>
                                             </a>
-                                            
-                                            
-                                            {{-- <a href="#" data-toggle="tooltip" data-original-title="Update"><span><i class="fa fa-tasks text-inverse m-r-10"></i></span></a> --}}
                                             <a href="#" onclick="$(this).find('#delete').submit();" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i>
-                                            <form action="#" id="delete" method="post">
-                                                {{ method_field('DELETE') }} 
-                                            </form>
+                                                <form action="{{ route('admin.announcement.not_active', $row->id)}}" id="delete" method="post">
+                                                </form>
                                             </a>
                                         </center>
                                     </td>
