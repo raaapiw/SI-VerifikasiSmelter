@@ -12,7 +12,7 @@ use App\Work;
 use App\Client;
 use App\User;
 use Sentinel;
-use App\Notifications\DocPenNotificationEmail;
+use App\Notifications\DokumenKemajuanFisikNotificationEmail;
 
 class DocumentController extends Controller
 {
@@ -129,7 +129,7 @@ class DocumentController extends Controller
             // dd($document);
             
             $user = User::where('id','=',2)->first();
-            $user->notify(new DocPenNotificationEmail($document));
+            $user->notify(new DokumenKemajuanFisikNotificationEmail($document));
         }
         
         return redirect()->route('client.dashboard');
@@ -192,7 +192,7 @@ class DocumentController extends Controller
             $document->fill($data)->save();
             
             $user = User::where('id','=',2)->first();
-            $user->notify(new DocPenNotificationEmail($document));
+            $user->notify(new DokumenKemajuanFisikNotificationEmail($document));
             return redirect()->route('client.dashboard');
         }
 

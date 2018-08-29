@@ -43,9 +43,8 @@ class SpkNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('Perusahaan' . $this->order->client->company_name . 'sudah melakukan upload SPK')
-            ->line('SEGERA LAKUKAN PENGECEKAN !')
-            ->action('Verifikasi Smelter', url('http://103.236.201.45'));
+            ->markdown('vendor.mail.admin.spk', ['order' => $this->order]);
+            
     }
 
     /**

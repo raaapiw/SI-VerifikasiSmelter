@@ -80,6 +80,7 @@
                     <!-- ============================================================== -->
                     <!-- End Logo -->
                     <!-- ============================================================== -->
+
                     <div class="navbar-collapse">
                         <!-- ============================================================== -->
                         <!-- toggle and nav items -->
@@ -188,6 +189,12 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
+                        
+                    <marquee>
+                        @foreach($announcements as $row)
+                            {{ $row->field }}
+                        @endforeach
+                    </marquee>
                         <ul class="navbar-nav my-lg-0">
                             <!-- ============================================================== -->
                             <!-- Comment -->
@@ -247,6 +254,7 @@
                             <!-- ============================================================== -->
                             <!-- End Messages -->
                             <!-- ============================================================== -->
+                            
                             <!-- ============================================================== -->
                             <!-- Profile -->
                             <!-- ============================================================== -->
@@ -357,11 +365,20 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('admin.work.curvaS')}}">List Dokumen Perencanaan</a></li>
-                                        <li><a href="{{ route('admin.document.listDoc')}}">List Ver. Kemajuan Fisik</a></li>
-                                        <li><a href="{{ route('admin.work.listDocper')}}">List Verifikasi Perencanaan</a></li>
+                                        <li>
+                                            <a class="has-arrow" href="#" aria-expanded="false">Ver Perencanaan</a>
+                                            <ul aria-expanded="false" class="collapse">
+                                                <li><a href="{{ route('admin.work.listDocper')}}">List Ver. Perencanaan</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="has-arrow" href="#" aria-expanded="false">Ver Kemajuan Fisik</a>
+                                            <ul aria-expanded="false" class="collapse">
+                                                <li><a href="{{ route('admin.work.curvaS')}}">List Dok. Perencanaan</a></li>
+                                                <li><a href="{{ route('admin.document.listDoc')}}">List Ver. Kemajuan Fisik</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="{{ route('admin.work.approve')}}">Approval Pekerjaan</a></li>
-                                        
                                     </ul>
                                 </li>
                                 <li>
@@ -369,8 +386,11 @@
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('admin.report.addReport')}}">Tambah Laporan</a></li>
                                         <li><a href="{{ route('admin.report.listReport')}}">List Laporan</a></li>
-                                        
                                     </ul>
+                                </li>
+                                <li>
+                                    <a class="" href="{{ route('admin.announcement.list')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pengumuman</span></a> 
+                                    
                                 </li>
                                 {{-- <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patient</span></a>

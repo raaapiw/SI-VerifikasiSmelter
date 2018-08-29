@@ -9,13 +9,13 @@ use App\Order;
 use App\Client;
 use Sentinel;
 use Storage;
-use App\Notifications\SmelterNotificationEmail;
+use App\Notifications\SuratPermintaanNotificationEmail;
 use App\Notifications\CompanionNotificationEmail;
 use App\Notifications\DpInvoiceNotificationEmail;
-use App\Notifications\TransferProofNotificationEmail;
-use App\Notifications\OfferLetterNotificationEmail;
+use App\Notifications\BuktiTransferNotificationEmail;
+use App\Notifications\SuratPenawaranNotificationEmail;
 use App\Notifications\SpkNotificationEmail;
-use App\Notifications\StateONotificationEmail;
+use App\Notifications\PersetujuanPenawaranNotificationEmail;
 use App\User;
 
 class OrderController extends Controller
@@ -153,7 +153,7 @@ class OrderController extends Controller
                 // dd($order);
                 $user = User::where('id','=',2)->first();
                 // dd($user);
-                $user->notify(new SmelterNotificationEmail($order));
+                $user->notify(new SuratPermintaanNotificationEmail($order));
                 // dd($user);
                 return redirect()->route('client.dashboard');
             
@@ -176,7 +176,7 @@ class OrderController extends Controller
            
             $order = Order::create($data);
             $user = User::where('id','=',2)->first();
-            $user->notify(new TransferProofNotificationEmail($order));
+            $user->notify(new BuktiTransferNotificationEmail($order));
             return redirect()->route('client.dashboard');
            
         } elseif (isset($request->spk)){
@@ -251,7 +251,7 @@ class OrderController extends Controller
                 $order->fill($data)->save();
         
                 $user = User::where('id','=',2)->first();
-                $user->notify(new LorNotificationEmail($order));
+                $user->notify(new SuratPermintaanNotificationEmail($order));
                 return redirect()->route('client.dashboard');
             
             
@@ -271,10 +271,10 @@ class OrderController extends Controller
                 $order->fill($data)->save();
         
                 $user = User::where('id','=',2)->first();
-                $user->notify(new TransferProofNotificationEmail($order));
+                $user->notify(new BuktiTransferNotificationEmail($order));
                 
                 $user1 = User::where('id','=',16)->first();
-                $user1->notify(new TransferProofNotificationEmail($order));
+                $user1->notify(new BuktiTransferNotificationEmail($order));
                 
             return redirect()->route('client.dashboard');
            
@@ -295,7 +295,7 @@ class OrderController extends Controller
                 $order->fill($data)->save();
     
                 $user = User::where('id','=',2)->first();
-                $user->notify(new StateONotificationEmail($order));
+                $user->notify(new PersetujuanPenawaranNotificationEmail($order));
             return redirect()->route('client.dashboard');
         }elseif (isset($request->spk)){
             $uploadedFile = $request->file('spk');

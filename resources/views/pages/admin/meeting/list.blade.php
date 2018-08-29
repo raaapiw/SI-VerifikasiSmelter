@@ -40,7 +40,6 @@
                                     <td>{{ $row->date }}</td>
                                     <td>{{ $row->time }}</td>
                                     <td>{{ $row->place }}</td>
-                                    
                                 </tr>                            
                             @endforeach
                         </tbody>

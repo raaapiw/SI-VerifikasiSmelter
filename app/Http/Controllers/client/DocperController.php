@@ -13,7 +13,7 @@ use App\Client;
 use App\User;
 use App\Docper;
 use Sentinel;
-use App\Notifications\DocPenNotificationEmail;
+use App\Notifications\DokumenPerencanaanNotificationEmail;
 
 class DocperController extends Controller
 {
@@ -122,6 +122,9 @@ class DocperController extends Controller
             $document = Docper::create($data);
             // dd($document);
             
+            $user = User::where('id','=',2)->first();
+            $user->notify(new DokumenPerencanaanNotificationEmail($docper));
+            
             // $user = User::where('id','=',2)->first();
             // $user->notify(new DocPenNotificationEmail($document));
         }
@@ -186,6 +189,8 @@ class DocperController extends Controller
             ];
             $document->fill($data)->save();
             
+            $user = User::where('id','=',2)->first();
+            $user->notify(new DokumenPerencanaanNotificationEmail($docper));
             // $user = User::where('id','=',2)->first();
             // $user->notify(new DocPenNotificationEmail($document));
             return redirect()->route('client.dashboard');

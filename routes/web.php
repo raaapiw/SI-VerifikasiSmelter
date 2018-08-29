@@ -110,6 +110,14 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/docper/detail/{id}', 'admin\DocperController@detail') ->name('admin.work.detail');
     Route::get('/admin/docper/listDocper', 'admin\DocperController@list') ->name('admin.work.listDocper');
     
+    Route::get('/admin/announcement/list', 'admin\AnnouncementController@list') ->name('admin.announcement.list');
+    Route::post('/admin/announcement/update/{id}', 'admin\AnnouncementController@update') ->name('admin.announcement.update');
+    Route::post('/admin/announcement/store', 'admin\AnnouncementController@store') ->name('admin.announcement.store');
+    Route::get('/admin/announcement/create', 'admin\AnnouncementController@create') ->name('admin.announcement.create');
+    Route::get('/admin/announcement/destroy/{id}', 'admin\AnnouncementController@destroy') ->name('admin.announcement.destroy');
+    Route::get('/admin/announcement/edit/{id}', 'admin\AnnouncementController@edit') ->name('admin.announcement.edit');
+    Route::post('/admin/announcement/active/{id}', 'admin\AnnouncementController@active') ->name('admin.announcement.active');
+    Route::post('/admin/announcement/not_active/{id}', 'admin\AnnouncementController@not_active') ->name('admin.announcement.not_active');
     
     
 });

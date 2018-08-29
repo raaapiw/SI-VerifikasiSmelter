@@ -43,10 +43,8 @@ class ApprovalNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Pesanan Anda sudah di Aprrove oleh kami silahkan cek di website.')
-                    ->action('Verifikasi Smelter', url('http://103.236.201.45'))
-                    ->line('MOHON SEGERA LANJUTKAN KE BAGIAN PEKERJAAN DAN UPLOAD DOKUMEN PERENCANAAN')
-                    ->line('TERIMA KASIH');
+                   
+        ->markdown('vendor.mail.client.status', ['order' => $this->order]);
     }
 
     /**

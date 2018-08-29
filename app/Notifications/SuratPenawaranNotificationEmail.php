@@ -7,10 +7,10 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class StateONotificationEmail extends Notification
+class SuratPenawaranNotificationEmail extends Notification
 {
     use Queueable;
-    
+
     protected $order;
 
     /**
@@ -44,9 +44,7 @@ class StateONotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                ->line('Perusahaan' . $this->order->client->company_name . 'sudah melakukan menandatangani SURAT PENAWARAN')
-                ->line('SEGERA LAKUKAN PENGECEKAN !')
-                ->action('Verifikasi Smelter', url('http://103.236.201.45'));
+        ->markdown('vendor.mail.client.penawaran', ['order' => $this->order]);
     }
 
     /**

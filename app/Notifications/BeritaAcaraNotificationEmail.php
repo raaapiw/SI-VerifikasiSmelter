@@ -7,21 +7,20 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class OfferLetterNotificationEmail extends Notification
+class BeritaAcaraNotificationEmail extends Notification
 {
     use Queueable;
-
-    protected $order;
+    protected $meeting;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($order)
+    public function __construct($meeting)
     {
         //
-        $this->order = $order;
+        $this->meeting = $meeting;
     }
 
     /**
@@ -44,9 +43,7 @@ class OfferLetterNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                ->line('Surat Penawaran sudah dibuat silahkan cek di website')
-                ->action('Verifikasi Smelter', url('http://103.236.201.45'))
-                ->line('Terima Kasih');
+        ->markdown('vendor.mail.client.bap', ['order' => $this->meeting]);
     }
 
     /**

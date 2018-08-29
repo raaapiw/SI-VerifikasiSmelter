@@ -44,9 +44,7 @@ class DpInvoiceNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('Invoice untuk pembayaran DP sudah dibuat silahkan cek di website')
-            ->action('Verifikasi Smelter', url('http://103.236.201.45'))
-            ->line('Terima Kasih');
+        ->markdown('vendor.mail.client.invoice', ['order' => $this->order]);
     }
 
     /**

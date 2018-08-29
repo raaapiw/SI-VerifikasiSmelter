@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class TransferProofNotificationEmail extends Notification
+class BuktiTransferNotificationEmail extends Notification
 {
     use Queueable;
 
@@ -44,9 +44,7 @@ class TransferProofNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('Perusahaan' . $this->order->client->company_name . 'sudah mengirim BUKTI TRANSFER')
-            ->line('SEGERA LAKUKAN PENGECEKAN !')
-            ->action('Verifikasi Smelter', url('http://103.236.201.45'));
+            ->markdown('vendor.mail.admin.bukti', ['order' => $this->order]);
     }
 
     /**

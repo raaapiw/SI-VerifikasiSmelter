@@ -7,22 +7,20 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class DocPenNotificationEmail extends Notification
+class SuratPermintaanNotificationEmail extends Notification
 {
     use Queueable;
 
-    protected $document;
+    protected $order;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($document)
+    public function __construct($order)
     {
-        //
-
-        $this->document = $document;
+        $this->order = $order;
     }
 
     /**
@@ -45,9 +43,9 @@ class DocPenNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Perusahaan' . $this->document->work->order->client->company_name . 'sudah melakukan upload DOKUMEN PENDUKUNG')
+                    ->line('Perusahaan' . $this->order->client->company_name . 'sudah mengirim SURAT PERMINTAAN')
                     ->line('SEGERA LAKUKAN PENGECEKAN !')
-                    ->action('Verifikasi Smelter', url('http://103.236.201.45'));
+                    ->markdown('vendor.mail.admin.permintaan', ['order' => $this->order]);
     }
 
     /**
