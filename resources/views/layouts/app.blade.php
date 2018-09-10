@@ -191,9 +191,11 @@
                         <!-- ============================================================== -->
                         
                     <marquee>
-                        @foreach($announcements as $row)
-                            {{ $row->field }}
-                        @endforeach
+                        <font color="red">
+                            @foreach($announcements as $row)
+                                {{ $row->field }} <font color="white">spasi spasi spasi spasi spasi</font>
+                            @endforeach
+                        </font>
                     </marquee>
                         <ul class="navbar-nav my-lg-0">
                             <!-- ============================================================== -->
