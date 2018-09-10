@@ -327,8 +327,9 @@
                             <li>
                                 <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Client</span></a>
                                 <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{ route('superAdmin.client.create') }}">Add Client</a></li>
+                                    <li><a href="{{ route('superAdmin.client.create') }}">Add User Client</a></li>
                                     <li><a href="{{ route('superAdmin.client.list') }}">List Client</a></li>
+                                    <li><a href="{{ route('superAdmin.client.addClient') }}">Add Client</a></li>
                                 </ul>
                             </li>
                             <li>

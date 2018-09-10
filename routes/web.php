@@ -24,6 +24,8 @@ Route::group(['middleware' => 'superAdmin'], function() {
         return redirect()->route('superAdmin.dashboard');
     });
     Route::get('/superadmin/dashboard', 'superAdmin\UserController@Dashboard') ->name('superAdmin.dashboard');
+    Route::get('/superadmin/client/addClient', 'superAdmin\ClientController@addClient') ->name('superAdmin.client.addClient');
+    Route::get('/superadmin/client/storeClient', 'superAdmin\ClientController@storeClient') ->name('superAdmin.client.storeClient');
 
     Route::resource('superadmin/admin', 'superAdmin\AdminController', ['names' => [
         'index'   => 'superAdmin.admin.list',

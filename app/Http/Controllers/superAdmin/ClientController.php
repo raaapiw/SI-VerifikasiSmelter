@@ -5,6 +5,7 @@ namespace App\Http\Controllers\superAdmin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Client;
 use Sentinel;
 
 class ClientController extends Controller
@@ -14,6 +15,49 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function addClient()
+    {
+        $role = Sentinel::findRoleById(4);
+        
+        $users = $role->users()->get();
+        // bentar ini jadinya si user banyak yak bukan cuman 1 ingetr, iyo ri ini tuh menu buat nambahin user ke tabel client
+        // wait inet tolol ini kantor
+        // $users = User::where($tempuser)->get();
+        // lu mau ngambil apanya fi? wait , jadi gua mau ambil data user yg rolenya itu client gt ri
+        // return dd($users);sal
+        return view ('pages.superAdmin.client.addClient', compact('users'));
+    }
+
+    public function storeClient(Request $request)
+    {
+        $data = [
+            'company_name'      => $request->company_name,
+            'address'    => $request->address,
+            'phone'     => $request->phone,
+            'user_id'  => $request->user_id,
+        ];
+
+        $client = Client::create($data);
+        
+        return redirect()->route('superAdmin.client.list');
+    }
+
+    public function updateClient(Request $request, $id)
+    {
+        $data = [
+            'company_name'      => $request->company_name,
+            'address'    => $request->address,
+            'phone'     => $request->phone,
+            'user_id'  => $request->user_id,
+        ];
+
+        $user = Sentinel::findById($id);
+        $user->update($data);
+        
+        return redirect()->route('superAdmin.client.list');
+    }
+
     public function index()
     {
         $role = Sentinel::findRoleById(4);
