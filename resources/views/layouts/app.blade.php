@@ -389,6 +389,7 @@
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('admin.report.addReport')}}">Tambah Laporan</a></li>
                                         <li><a href="{{ route('admin.report.listReport')}}">List Laporan</a></li>
+                                        <li><a href="{{ route('admin.report.approve')}}">Approval Laporan</a></li>
                                     </ul>
                                 </li>
                                 <li>

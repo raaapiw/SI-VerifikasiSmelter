@@ -105,7 +105,10 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/report/receipt/{id}', 'admin\ReportController@receipt') ->name('admin.report.receipt');
     Route::post('/admin/report/receiptUpdate{id}', 'admin\ReportController@update') ->name('admin.report.update');
     Route::get('/admin/report/listReceipt', 'admin\ReportController@listReceipt') ->name('admin.report.listReceipt');
-
+    Route::post('/admin/report/UpdateReport/{id}', 'admin\ReportController@update_report') ->name('admin.report.update_state');
+    Route::get('/admin/report/approve', 'admin\ReportController@approve') ->name('admin.report.approve');
+    Route::get('/admin/report/approval/{id}', 'admin\ReportController@approval') ->name('admin.report.approval');
+    
     Route::get('/admin/report/addletter', 'admin\ReportController@addletter') ->name('admin.report.addLetter');
     Route::get('/admin/report/letter/{id}', 'admin\ReportController@letter') ->name('admin.report.letter');
     Route::get('/admin/report/listLetter', 'admin\ReportController@listLetter') ->name('admin.report.listLetter');

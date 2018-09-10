@@ -22,6 +22,25 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function approve()
+    {
+        $orders = Order::has('report')->get();
+        // $orders = Order::has('work')->get();
+        // $orders = $temporder->where($temporder->work->state, '=', null)->get();
+        // dd($orders);
+
+        return view('pages.admin.report.approve', compact('orders'));
+    }
+
+    public function approval($id)
+    {
+        $order = Order::find($id);
+        
+        // dd($work);
+
+        return view('pages.admin.report.approval', compact('order','work'));
+    }
     public function addLetter()
     {
         $report = Report::where('covering_letter','=', null)->get();
@@ -282,6 +301,18 @@ class ReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function update_report(Request $request, $id)
+    {
+        $order = Order::find($id);
+        $data = [
+            'state_report' => $request->state_report
+        ];
+        // dd($data);
+        $order->fill($data)->save();
+        return redirect()->route('admin.dashboard');
+
+    }
     public function destroy($id)
     {
         //
