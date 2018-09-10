@@ -24,7 +24,7 @@ class DocumentController extends Controller
     public function index_doc()
     {
         //
-        $order = Order::has('works')->get();
+        $order = Order::has('work')->get();
         // dd($order);
         // $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
         // $temporder = Order::has('works');

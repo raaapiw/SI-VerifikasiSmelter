@@ -24,6 +24,8 @@ Route::group(['middleware' => 'superAdmin'], function() {
         return redirect()->route('superAdmin.dashboard');
     });
     Route::get('/superadmin/dashboard', 'superAdmin\UserController@Dashboard') ->name('superAdmin.dashboard');
+    Route::get('/superadmin/client/addClient', 'superAdmin\ClientController@addClient') ->name('superAdmin.client.addClient');
+    Route::get('/superadmin/client/storeClient', 'superAdmin\ClientController@storeClient') ->name('superAdmin.client.storeClient');
 
     Route::resource('superadmin/admin', 'superAdmin\AdminController', ['names' => [
         'index'   => 'superAdmin.admin.list',
@@ -90,6 +92,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/work/approve', 'admin\WorkController@approve') ->name('admin.work.approve');
     Route::get('/admin/work/approval/{id}', 'admin\WorkController@approval') ->name('admin.work.approval');
     Route::get('/admin/work/detail/{id}', 'admin\DocperController@detail') ->name('admin.work.detailDocper');
+    Route::post('/admin/work/update/{id}', 'admin\WorkController@update') ->name('admin.work.update');
     
     Route::get('/admin/document/listDoc', 'admin\DocumentController@index_doc') ->name('admin.document.listDoc');
     Route::get('/admin/document/detail/{id}', 'admin\DocumentController@detail') ->name('admin.document.detail');
@@ -118,6 +121,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/announcement/edit/{id}', 'admin\AnnouncementController@edit') ->name('admin.announcement.edit');
     Route::post('/admin/announcement/active/{id}', 'admin\AnnouncementController@active') ->name('admin.announcement.active');
     Route::post('/admin/announcement/not_active/{id}', 'admin\AnnouncementController@not_active') ->name('admin.announcement.not_active');
+    
     
     
 });

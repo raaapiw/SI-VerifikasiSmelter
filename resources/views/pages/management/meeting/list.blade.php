@@ -26,26 +26,20 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
-                                <th><center>Status</center></th>
+                                <th><center>Tanggal Meeting</center></th>
+                                <th><center>Waktu Meeting</center></th>
+                                <th><center>Tempat Meeting</center></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($meetings as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
-                                    <td><center>{{ $row->created_at }}</center></td>
                                     <td>{{ $row->order->client->company_name }}</td>
-                                    <td><center>
-                                        @if ($meetings->state = 1)
-                                            <span class="label label-warning">ON PROCESS</span>
-                                            
-                                        @else
-                                            <span class="label label-success">FINISH</span>
-                                        @endif
-                                        </center>
-                                    </td>
+                                    <td>{{ $row->date }}</td>
+                                    <td>{{ $row->time }}</td>
+                                    <td>{{ $row->place }}</td>
                                 </tr>                            
                             @endforeach
                         </tbody>

@@ -44,7 +44,7 @@ class WorkController extends Controller
         //
       
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $temporder = Order::doesntHave('works');
+        $temporder = Order::doesntHave('work');
         // $temporder = Order::where('state','=',1);
         $order = $temporder->where('client_id','=',$client->id)->get();
         // $order = Order::where('client_id','=',$client->id)->get();
@@ -60,7 +60,7 @@ class WorkController extends Controller
         //
       
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $temporder = Order::has('works');
+        $temporder = Order::has('work');
         $order = $temporder->where('client_id','=',$client->id)->get();
         // $order = Order::where('client_id','=',$client->id)->get();
         // dd($order);

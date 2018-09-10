@@ -13,6 +13,7 @@ class Meeting extends Model
         'date',
         'time',
         'place',
+        'admin_id'
         
     ];
     public function order()

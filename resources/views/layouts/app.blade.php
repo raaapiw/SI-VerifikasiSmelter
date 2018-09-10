@@ -191,9 +191,11 @@
                         <!-- ============================================================== -->
                         
                     <marquee>
-                        @foreach($announcements as $row)
-                            {{ $row->field }}
-                        @endforeach
+                        <font color="red">
+                            @foreach($announcements as $row)
+                                {{ $row->field }} <font color="white">spasi spasi spasi spasi spasi</font>
+                            @endforeach
+                        </font>
                     </marquee>
                         <ul class="navbar-nav my-lg-0">
                             <!-- ============================================================== -->
@@ -327,8 +329,9 @@
                             <li>
                                 <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Client</span></a>
                                 <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{ route('superAdmin.client.create') }}">Add Client</a></li>
+                                    <li><a href="{{ route('superAdmin.client.create') }}">Add User Client</a></li>
                                     <li><a href="{{ route('superAdmin.client.list') }}">List Client</a></li>
+                                    <li><a href="{{ route('superAdmin.client.addClient') }}">Add Client</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -411,31 +414,31 @@
                                 <li>
                                     <a href="{{ route('management.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('management.order.list')}}"> List Pemesanan</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('management.meeting.list')}}">List Pertemuan</a></li>
                                     </ul>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('management.work.list')}}">List Pekerjaan</a></li>
                                         
                                     </ul>
-                                </li>
-                                <li>
+                                </li> --}}
+                                {{-- <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pelaporan</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('management.report.list')}}">List Laporan</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                             </ul>
                             @elseif(Sentinel::getUser()->roles()->first()->slug == 'marketing')
                                 <ul id="sidebarnav">
