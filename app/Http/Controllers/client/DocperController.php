@@ -20,7 +20,7 @@ class DocperController extends Controller
     public function doc()
     {
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $temporder = Order::has('works');
+        $temporder = Order::has('work');
         $order = $temporder->where('client_id','=',$client->id)->get();
         // $order = Order::where('client_id','=',$client->id)->get();
         // dd($order);

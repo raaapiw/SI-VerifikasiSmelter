@@ -105,6 +105,7 @@ class MeetingController extends Controller
                     'order_id' => $request->order_id,
                     'client_id' => $request->client_id,
                     'bap' => $path,
+                    
                 ];
                 $meeting = Meeting::create($data);
                 
@@ -119,6 +120,7 @@ class MeetingController extends Controller
         
             }else{
                 $data=[
+                    'admin_id' =>Sentinel::getUser()->id,
                     'order_id' => $request->order_id,
                     'date'=> $request->date,
                     'time'=> $request->time,

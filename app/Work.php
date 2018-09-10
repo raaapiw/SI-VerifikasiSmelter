@@ -11,6 +11,7 @@ class Work extends Model
         'order_id',
         'curva_s',
         'evidence',
+        'state'
     ];
 
     public function order()

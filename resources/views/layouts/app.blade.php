@@ -412,31 +412,31 @@
                                 <li>
                                     <a href="{{ route('management.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('management.order.list')}}"> List Pemesanan</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('management.meeting.list')}}">List Pertemuan</a></li>
                                     </ul>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('management.work.list')}}">List Pekerjaan</a></li>
                                         
                                     </ul>
-                                </li>
-                                <li>
+                                </li> --}}
+                                {{-- <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pelaporan</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('management.report.list')}}">List Laporan</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                             </ul>
                             @elseif(Sentinel::getUser()->roles()->first()->slug == 'marketing')
                                 <ul id="sidebarnav">

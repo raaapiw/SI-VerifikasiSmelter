@@ -28,6 +28,7 @@ class OrdersTableSeeder extends Seeder
                 'state' =>0,
                 'admin_id' => rand(1,6),
                 'state_work' =>rand(0,1),
+                'state_report' =>0,
                 'created_at' => $faker->date($format = 'Y-m-d', $max = 'now')       
             ]);
         }

@@ -16,9 +16,19 @@ use Sentinel;
 class UserController extends Controller
 {
     //
-    public function dashboard(){
+    public function dashboard()
+    {
+        $order = Order::all();
+        $orders = Order::doesntHave('work')->get();
         
-        return view('pages.management.dashboard');
+        // return dd ($orders);
+
+
+        $work = work::all();
+        // return dd ($work);
+        
+        
+        return view('pages.management.dashboard', compact('order','work'));
     }
     
 }

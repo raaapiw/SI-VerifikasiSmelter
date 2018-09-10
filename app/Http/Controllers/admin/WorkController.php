@@ -27,6 +27,8 @@ class WorkController extends Controller
     public function approve()
     {
         $orders = Order::all();
+        // $orders = Order::has('work')->get();
+        // $orders = $temporder->where($temporder->work->state, '=', null)->get();
         // dd($orders);
 
         return view('pages.admin.work.approve', compact('orders'));
@@ -35,8 +37,10 @@ class WorkController extends Controller
     public function approval($id)
     {
         $order = Order::find($id);
+        $work = Work::where('order_id','=',$id)->first();
+        // dd($work);
 
-        return view('pages.admin.work.approval', compact('order'));
+        return view('pages.admin.work.approval', compact('order','work'));
     }
 
     public function curvaS()
@@ -105,6 +109,17 @@ class WorkController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $order = Order::find($id);
+        $data = [
+            'state_work' => $request->state_work,
+        ];
+
+        // dd($data);
+        $order->fill($data)->save();
+        // dd($work);
+        
+        return redirect()->route('admin.dashboard');
+
     }
 
     /**

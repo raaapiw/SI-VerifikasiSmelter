@@ -19,7 +19,8 @@ class Order extends Model
         'contract',
         'spk',
         'admin_id',
-        'state_work'
+        'state_work',
+        'state_report'
     ];
     
     protected $appends =[
@@ -28,9 +29,9 @@ class Order extends Model
     ];
 
     
-    public function works()
+    public function work()
     {
-        return $this->hasMany(Work::class);
+        return $this->hasOne(Work::class);
     }
     public function docpers()
     {

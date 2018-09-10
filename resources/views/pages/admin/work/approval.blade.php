@@ -20,8 +20,8 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{ route('admin.order.update', $order->id)}}" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="client_id" value="{{ $order->client->id}}">
+                <form action="{{ route('admin.work.update', $order->id)}}" method="POST" enctype="multipart/form-data">
+                    {{-- <input type="hidden" name="client_id" value="{{ $order->client->id}}"> --}}
                     <div class="form-body">
                         <h3 class="card-title">Company Info</h3>
                         <hr>

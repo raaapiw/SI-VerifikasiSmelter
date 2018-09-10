@@ -16,6 +16,7 @@ class CreateMeetingsTable extends Migration
         Schema::create('meetings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('order_id')->unsigned();
+            $table->integer('admin_id')->nullable();
             $table->string('bap')->nullable();
             $table->string('date')->nullable();
             $table->string('time')->nullable();
@@ -31,7 +32,7 @@ class CreateMeetingsTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migration
      *
      * @return void
      */
