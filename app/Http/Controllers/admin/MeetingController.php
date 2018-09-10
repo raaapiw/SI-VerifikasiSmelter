@@ -132,9 +132,12 @@ class MeetingController extends Controller
                 $order = Order::where('id','=',$request->order_id)->first();
                 $client = Client::where('id','=',$order->client_id)->first();
                 // dd($client);
+                
+                Meeting::create($data);
                 $user = User::where('id','=',$client->user_id)->first();
                 $user->notify(new MeetingNotificationEmail($meeting));
-                Meeting::create($data);
+                $user1 = User::where('id','=',2)->first();
+                $user1->notify(new MeetingNotificationEmail($meeting));
                 return redirect()->route('admin.dashboard');
             }
     }
