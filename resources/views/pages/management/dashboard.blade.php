@@ -54,7 +54,7 @@
                                         </center>
                                     </td>
                                     <td><center>
-                                        @if ($row->report->state == 1)
+                                        @if ($row->state_report == 1)
                                             
                                             <span class="label label-success">FINISH</span>
                                         @else
