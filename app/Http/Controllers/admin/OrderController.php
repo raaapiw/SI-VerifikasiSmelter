@@ -194,7 +194,6 @@ class OrderController extends Controller
         } elseif (isset($request->state_work)) {
             $data = [
                 'client_id' => $request->client_id,
-                'state_work' => $request->state_work,
             ];    
             
                 $order = Order::create($data);
