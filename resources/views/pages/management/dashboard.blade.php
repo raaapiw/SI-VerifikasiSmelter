@@ -25,6 +25,7 @@
                                 <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
                                 <th><center>Status Pemesanan</center></th>
+                                
                                 <th><center>Status Pekerjaan</center></th>
                                 <th><center>Status Laporan Akhir</center></th>
                             </tr>
