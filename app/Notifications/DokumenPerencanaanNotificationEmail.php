@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class DocPerNotificationEmail extends Notification
+class DokumenPerencanaanNotificationEmail extends Notification
 {
     use Queueable;
     protected $docper;

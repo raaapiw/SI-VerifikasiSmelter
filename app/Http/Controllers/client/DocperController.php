@@ -119,7 +119,7 @@ class DocperController extends Controller
             ];
             
             // dd($data);
-            $document = Docper::create($data);
+            $docper = Docper::create($data);
             // dd($document);
             
             $user = User::where('id','=',2)->first();
@@ -169,7 +169,7 @@ class DocperController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $document = Docper::find($id);
+        $docper = Docper::find($id);
         $arrayFile = $request->file('evidence');
         // return dd($arrayFile);
         foreach ($arrayFile as $row){
@@ -187,7 +187,7 @@ class DocperController extends Controller
                 'evidence' => $path, 
                 'type' => $request->type,
             ];
-            $document->fill($data)->save();
+            $docper->fill($data)->save();
             
             $user = User::where('id','=',2)->first();
             $user->notify(new DokumenPerencanaanNotificationEmail($docper));
