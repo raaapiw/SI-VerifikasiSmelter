@@ -28,7 +28,7 @@ class Client extends Model
     }
     public function getFullCompanyNameAttribute()
     {
-        $full_company_name = 'PT.'.$this->company_name;
+        $full_company_name = ''.$this->company_name;
         return $full_company_name;
     }
     

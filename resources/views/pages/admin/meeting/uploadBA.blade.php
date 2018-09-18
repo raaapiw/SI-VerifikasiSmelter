@@ -27,7 +27,7 @@
                             <tr>
                                 <th>No</th>
                                 <th style="width:50%"><center>Nama Perusahaan</center></th>
-                                <th>Tanggal Order</th>
+                                <th>Tanggal Meeting</th>
                                 <th><center>Upload Berita Acara</center></th>
                             </tr>
                         </thead>
@@ -36,7 +36,7 @@
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
                                     <td>{{ $row->order->client->company_name }}</td>
-                                    <td>{{$row->order->created_at}}</td>
+                                    <td>{{$row->date}}</td>
                                     <td><center>
                                             <a href="{{ route('admin.meeting.createBA', $row->order->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         </center>
