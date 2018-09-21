@@ -545,7 +545,7 @@
                                             <ul aria-expanded="false" class="collapse">
                                                 <li><a href="{{ route('client.work.addCurva',Sentinel::getUser()->id)}}">Dokumen Perencanaan<font color="red">*</font></a></li>
                                                 <li><a href="{{ route('client.document.doc',Sentinel::getUser()->id)}}">Verifikasi Kemajuan Fisik</a></li>
-                                                <li><a href="{{ route('client.work.listCurvaS',Sentinel::getUser()->id)}}">List Dokumen <br> Perencanaan<font color="red">*</font></a></li>
+                                                <li><a href="{{ route('client.work.listCurvaS',Sentinel::getUser()->id)}}">List Dokumen <br> Perencanaan</a></li>
                                                 <li><a href="{{ route('client.document.listDoc',Sentinel::getUser()->id)}}">List verifikasi <br> Kemajuan Fisik</a></li>
                                             </ul>
                                         </li>
