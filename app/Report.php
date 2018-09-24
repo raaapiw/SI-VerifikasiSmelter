@@ -12,6 +12,7 @@ class Report extends Model
         'report',
         'covering_letter',
         'receipt',
+        'state'
     ];
     public function order()
     {

@@ -32,15 +32,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($orders as $key=>$row)
+                            @foreach($reports as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
-                                    <td>{{ $row->client->company_name }}</td>
+                                    <td>{{ $row->order->client->company_name }}</td>
                                     <td><center>
-                                            <a href="#"><span><i class="fa fa-pencil"></i></span></a>
-                                            <a href="#"><span><i class="mdi mdi-delete"></i></span></a>
-                                            <a href="#"><span><i class="fa fa-download"></i></span></a>
+                                            <a href="{{ route('admin.report.edit', $row->id)}}"><span><i class="fa fa-pencil"></i></span></a>
+                                            <a href="{{ route('admin.report.destroy', $row->id)}}"><span><i class="mdi mdi-delete"></i></span></a>
+                                            <a href="{{ Storage::url($row->report) }}"><span><i class="fa fa-download"></i></span></a>
                                         </center>
                                     </td>
                                 </tr>                            

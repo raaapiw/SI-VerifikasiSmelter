@@ -25,10 +25,11 @@ class ReportController extends Controller
 
     public function approve()
     {
-        $orders = Order::has('report')->get();
-        // $orders = Order::has('work')->get();
+        $temporders = Order::where('state_report','=',null);
+        // dd($temporders);
+        $orders = $temporders->has('report')->get();
         // $orders = $temporder->where($temporder->work->state, '=', null)->get();
-        // dd($orders);
+        
 
         return view('pages.admin.report.approve', compact('orders'));
     }
@@ -71,8 +72,6 @@ class ReportController extends Controller
     public function receipt($id)
     {
         $report = Report::find($id);
-
-
         return view('pages.admin.report.receipt', compact('report'));
     }
     public function listReceipt()
@@ -91,8 +90,8 @@ class ReportController extends Controller
     public function index()
     {
         //
-        $orders = Order::all();
-        return view('pages.admin.report.list', compact('orders'));
+        $reports = Report::all();
+        return view('pages.admin.report.list', compact('reports'));
     }
 
     /**
@@ -143,7 +142,7 @@ class ReportController extends Controller
                 $user = User::where('id','=',$client->user_id)->first();
                 $user->notify(new FinalReportNotificationEmail($report));
                 // dd($order);
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.report.listReport');
             }elseif (isset($request->covering_letter)){
                 $rules = [
                     'covering_letter'                  => 'required',
@@ -164,7 +163,7 @@ class ReportController extends Controller
                     // dd($data);
                     $report = Report::create($data);
                     // dd($order);
-                    return redirect()->route('admin.dashboard');
+                    return redirect()->route('admin.report.listReport');
                 }elseif (isset($request->receipt)){
                     $rules = [
                         'receipt'                  => 'required',
@@ -185,7 +184,7 @@ class ReportController extends Controller
                         // dd($data);
                         $report = Report::create($data);
                         // dd($order);
-                        return redirect()->route('admin.dashboard');
+                        return redirect()->route('admin.report.listReport');
                     }
     }
 
@@ -209,11 +208,15 @@ class ReportController extends Controller
     public function edit($id)
     {
         //
-        $order = Order::find($id);
-        $report = Report::where('order_id','=',$order->id)->get();
+        $report = Report::find($id);
+        // dd($report);
+
+        $orders = Order::where('id','=',$report->order_id)->first();
+        // $report = Report::where('order_id','=', $id)->get();
+        // dd($orders);
 
 
-        return view('pages.admin.report.add', compact('orders'));
+        return view('pages.admin.report.create', compact('report','orders'));
     }
 
     /**
@@ -247,7 +250,7 @@ class ReportController extends Controller
                 // dd($data);
                 $report->fill($data)->save();
                 // dd($order);
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.report.listReport');
             }elseif (isset($request->covering_letter)){
                 $rules = [
                     'covering_letter'                  => 'required',
@@ -269,7 +272,7 @@ class ReportController extends Controller
                     $report->fill($data)->save();
                 
                     // dd($order);
-                    return redirect()->route('admin.dashboard');
+                    return redirect()->route('admin.report.listReport');
                 }elseif (isset($request->receipt)){
                     $rules = [
                         'receipt'                  => 'required',
@@ -291,7 +294,7 @@ class ReportController extends Controller
                         $report->fill($data)->save();
                 
                         // dd($order);
-                        return redirect()->route('admin.dashboard');
+                        return redirect()->route('admin.report.listReport');
                     }
     }
 
@@ -305,12 +308,14 @@ class ReportController extends Controller
     public function update_report(Request $request, $id)
     {
         $order = Order::find($id);
+        $report = Report::where('order_id','=',$id);
         $data = [
             'state_report' => $request->state_report
         ];
+       
         // dd($data);
         $order->fill($data)->save();
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.report.approve');
 
     }
     public function destroy($id)
@@ -319,6 +324,6 @@ class ReportController extends Controller
 
         $report = Report::find($id)->delete();
         
-        return redirect()->route('client.dashboard');
+        return redirect()->route('admin.report.listReport');
     }
 }
