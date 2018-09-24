@@ -100,6 +100,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/report/addReport', 'admin\ReportController@addReport') ->name('admin.report.addReport');
     Route::get('/admin/report/listReport', 'admin\ReportController@index') ->name('admin.report.listReport');
     Route::get('/admin/report/createReport/{id}', 'admin\ReportController@create') ->name('admin.report.create');
+    Route::get('/admin/report/editReport/{id}', 'admin\ReportController@edit') ->name('admin.report.edit');
     Route::post('/admin/report/store', 'admin\ReportController@store') ->name('admin.report.store');
     Route::get('/admin/report/addReceipt', 'admin\ReportController@addReceipt') ->name('admin.report.addReceipt');
     Route::get('/admin/report/receipt/{id}', 'admin\ReportController@receipt') ->name('admin.report.receipt');
@@ -108,6 +109,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::post('/admin/report/UpdateReport/{id}', 'admin\ReportController@update_report') ->name('admin.report.update_state');
     Route::get('/admin/report/approve', 'admin\ReportController@approve') ->name('admin.report.approve');
     Route::get('/admin/report/approval/{id}', 'admin\ReportController@approval') ->name('admin.report.approval');
+    Route::get('/admin/report/destroy/{id}', 'admin\ReportController@destroy') ->name('admin.report.destroy');
     
     Route::get('/admin/report/addletter', 'admin\ReportController@addletter') ->name('admin.report.addLetter');
     Route::get('/admin/report/letter/{id}', 'admin\ReportController@letter') ->name('admin.report.letter');
