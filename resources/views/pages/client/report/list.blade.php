@@ -38,8 +38,13 @@
                                     <td><center>{{$key+1}}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
                                     <td>{{ $row->order->client->full_company_name }}</td>
-                                    <td><center>
-                                            <a href="{{ Storage::url($row->report) }}"><span><i class="fa fa-download"></i></span></a>
+                                    <td>
+                                        <center>
+                                            @if($row->order->state_report == 1)
+                                                <a href="{{ Storage::url($row->report) }}"><span><i class="fa fa-download"></i></span></a>
+                                            @else
+                                                <span class="label label-warning">ON PROCESS</span>
+                                            @endif
                                         </center>
                                     </td>
                                 </tr>                            
