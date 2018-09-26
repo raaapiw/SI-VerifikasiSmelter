@@ -112,6 +112,7 @@ class WorkController extends Controller
         $order = Order::find($id);
         $data = [
             'state_work' => $request->state_work,
+            'author_work' => Sentinel::getUser()->id
         ];
 
         // dd($data);
