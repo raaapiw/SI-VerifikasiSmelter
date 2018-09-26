@@ -26,7 +26,7 @@ class WorkController extends Controller
     
     public function approve()
     {
-        $orders = Order::all();
+        $orders = Order::where('state_work','!=',1)->get();
         // $orders = Order::has('work')->get();
         // $orders = $temporder->where($temporder->work->state, '=', null)->get();
         // dd($orders);
@@ -112,7 +112,7 @@ class WorkController extends Controller
         $order = Order::find($id);
         $data = [
             'state_work' => $request->state_work,
-            'author_work' => Sentinel::getUser()->id
+            'author_work' => Sentinel::getUser()->name
         ];
 
         // dd($data);

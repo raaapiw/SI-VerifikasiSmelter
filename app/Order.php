@@ -20,7 +20,10 @@ class Order extends Model
         'spk',
         'admin_id',
         'state_work',
-        'state_report'
+        'state_report',
+        'author_work',
+        'author_report',
+        'author_order'
     ];
     
     protected $appends =[

@@ -323,6 +323,7 @@ class OrderController extends Controller
                 'client_id' => $request->client_id,
                 'admin_id' => Sentinel::getUser()->id,
                 'state' => 1,
+                'author_order' => Sentinel::getUser()->name
             ];    
             
                 $order->fill($data)->save();
