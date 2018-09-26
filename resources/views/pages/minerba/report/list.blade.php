@@ -39,7 +39,11 @@
                                     <td><center>{{ $row->created_at }}</center></td>
                                     <td>{{ $row->order->client->company_name }}</td>
                                     <td><center>
-                                            <a href="{{ Storage::url($row->report), $row->id }}"><span><i class="fa fa-download"></i></span></a>
+                                            @if($row->order->state_report == 1)
+                                                <a href="{{ Storage::url($row->report) }}"><span><i class="fa fa-download"></i></span></a>
+                                            @else
+                                                <span class="label label-warning">ON PROCESS</span>
+                                            @endif
                                         </center>
                                     </td>
                                 </tr>                            
