@@ -4,6 +4,14 @@ namespace App\Http\Controllers\minerba;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use \Input as Input;
+use Storage;
+use App\Order;
+use App\Document;
+use App\Work;
+use App\Client;
+use App\User;
+use Sentinel;
 
 class UserController extends Controller
 {
@@ -13,8 +21,15 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function dashboard(){
+        $order = Order::all();
+        $orders = Order::doesntHave('work')->get();
         
-        return view('pages.minerba.dashboard');
+        // return dd ($orders);
+
+
+        $work = work::all();
+        
+        return view('pages.minerba.dashboard', compact('order','work'));
     }
 
     public function index()
