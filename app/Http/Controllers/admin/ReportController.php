@@ -310,7 +310,8 @@ class ReportController extends Controller
         $order = Order::find($id);
         $report = Report::where('order_id','=',$id);
         $data = [
-            'state_report' => $request->state_report
+            'state_report' => $request->state_report,
+            'author_report' => Sentinel::getUser()->name
         ];
        
         // dd($data);

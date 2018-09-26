@@ -26,25 +26,24 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
-                                <th><center>Action</center></th>
+                                <th><center>Tanggal Meeting</center></th>
+                                <th><center>Waktu Meeting</center></th>
+                                <th><center>Tempat Meeting</center></th>
+                                <th><center>Download Berita Acara</center></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if(isset($meetings))
-                                @foreach($meetings as $key=>$row)
-                                    <tr>
-                                        <td><center>{{$key+1}}</center></td>
-                                        <td><center>{{ $row->created_at }}</center></td>
-                                        <td>{{ $row->order->client->company_name }}</td>
-                                        <td><center>
-                                                <a href="{{ Storage::url($row->bap), $row->id }}"><span><i class="fa fa-download"></i></span></a>
-                                            </center>
-                                        </td>
-                                    </tr>                            
-                                @endforeach
-                            @endif
+                            @foreach($meetings as $key=>$row)
+                                <tr>
+                                    <td><center>{{$key+1}}</center></td>
+                                    <td>{{ $row->order->client->company_name }}</td>
+                                    <td>{{ $row->date }}</td>
+                                    <td>{{ $row->time }}</td>
+                                    <td>{{ $row->place }}</td>
+                                    <td><center><a href="{{ Storage::url($row->bap) }}"><span><i class="fa fa-download"></i></span></a></center></td>
+                                </tr>                            
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
