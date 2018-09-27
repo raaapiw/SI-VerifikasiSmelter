@@ -461,16 +461,16 @@
                         <ul id="sidebarnav">
                                 <li class="nav-small-cap">Minerba</li>
                                 <li>
-                                    <a href="{{ route('minerba.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
+                                    <a href="{{ route('minerba.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('minerba.order.listSpk')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">SPK</span></a>
+                                    <a href="{{ route('minerba.order.listSpk')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">SPK</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('minerba.meeting.listMeeting')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Meeting</span></a>
+                                    <a href="{{ route('minerba.meeting.listMeeting')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Meeting</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('minerba.report.listReport')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Laporan</span></a>
+                                    <a href="{{ route('minerba.report.listReport')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Laporan</span></a>
                                 </li>
                                 {{-- <li>
                                     <a href="{{ route('patient.registration.create')}}" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Registration</span></a>
