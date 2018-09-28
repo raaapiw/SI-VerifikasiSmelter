@@ -28,6 +28,7 @@
                                 <th>No</th>
                                 <th style="width:50%"><center>Nama Perusahaan</center></th>
                                 <th>Tanggal Meeting</th>
+                                <th>Waktu Meeting</th>
                                 <th><center>Upload Berita Acara</center></th>
                             </tr>
                         </thead>
