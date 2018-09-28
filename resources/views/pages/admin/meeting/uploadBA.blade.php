@@ -37,6 +37,7 @@
                                     <td><center>{{$key+1}}</center></td>
                                     <td>{{ $row->order->client->company_name }}</td>
                                     <td>{{$row->date}}</td>
+                                    <td>{{$row->time}}</td>
                                     <td><center>
                                             <a href="{{ route('admin.meeting.createBA', $row->order->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         </center>
