@@ -41,7 +41,14 @@
                                     <td>{{ $row->date }}</td>
                                     <td>{{ $row->time }}</td>
                                     <td>{{ $row->place }}</td>
-                                    <td><center><a href="{{ Storage::url($row->bap) }}"><span><i class="fa fa-download"></i></span></a></center></td>
+                                    <td><center>
+                                        @if($row->bap == null)
+                                            <span class="label label-warning">ON PROCESS</span>
+                                        @else
+                                            <a href="{{ Storage::url($row->bap) }}"><span><i class="fa fa-download"></i></span></a>
+                                        @endif
+                                        </center>
+                                    </td>
                                 </tr>                            
                             @endforeach
                         </tbody>
