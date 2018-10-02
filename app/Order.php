@@ -42,6 +42,10 @@ class Order extends Model
     {
         return $this->hasMany(Docper::class);
     }
+    public function others()
+    {
+        return $this->hasMany(Other::class);
+    }
     public function meetings()
     {
         return $this->hasMany(Meeting::class);
