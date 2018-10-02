@@ -96,6 +96,11 @@ Route::group(['middleware' => 'admin'], function() {
     
     Route::get('/admin/document/listDoc', 'admin\DocumentController@index_doc') ->name('admin.document.listDoc');
     Route::get('/admin/document/detail/{id}', 'admin\DocumentController@detail') ->name('admin.document.detail');
+    
+    
+    Route::get('/admin/other/addPics', 'admin\OtherController@addPics') ->name('admin.other.addPics');
+
+
 
     Route::get('/admin/report/addReport', 'admin\ReportController@addReport') ->name('admin.report.addReport');
     Route::get('/admin/report/listReport', 'admin\ReportController@index') ->name('admin.report.listReport');
