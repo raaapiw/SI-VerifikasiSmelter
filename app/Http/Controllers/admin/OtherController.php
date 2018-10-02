@@ -17,8 +17,8 @@ class OtherController extends Controller
 {
     //
     public function listPics(){
-        $order = Order::has('other')->get();
-        
+        $order = Order::has('others')->get();
+        // dd($order);
 
         return view ('pages.admin.other.list', compact('order'));
     }
@@ -33,6 +33,19 @@ class OtherController extends Controller
         $order = Order::find($id);
 
         return view ('pages.admin.other.formPics', compact('order'));
+    }
+    
+    public function detailPics($id){
+        $order = Order::find($id);
+        $other = Other::where('order_id','=',$id)->get();
+
+        return view ('pages.admin.other.detailPics', compact('order','other'));
+    }
+
+    public function editPics($id){
+        $other = Other::find($id);
+
+        return view('pages.admin.other.editPics', compact('other'));
     }
 
     public function store(Request $request){
@@ -69,6 +82,40 @@ class OtherController extends Controller
             // $user->notify(new DocPenNotificationEmail($document));
         }
         
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.other.listPics');
+    }
+
+    public function updatePics(Request $request, $id){
+        $other = Other::find($id);
+        $arrayFile = $request->file('pics');
+        // return dd($arrayFile);
+        foreach ($arrayFile as $row){
+            $uploadedFile =  $row;
+            // dd($uploadedFile);
+            $uploadedFileName = $request->work_id . '-' . $uploadedFile->getClientOriginalName();
+            if (Storage::exists($uploadedFileName)) {
+                Storage::delete($uploadedFileName);
+            }
+            // return dd($uploadedFileName);
+            $path = $uploadedFile->storeAs('public/files/order/picture', $uploadedFileName);
+
+            $data = [       
+                'order_id' => $request->order_id,
+                'evidence' => $path, 
+                'type' => $request->type,
+            ];
+            $other->fill($data)->save();
+
+            return redirect()->route('admin.other.listPics');
+        }
+    }
+
+    public function destroyPics($id)
+    {
+        //
+        
+        $other = Other::find($id)->delete();
+        
+        return redirect()->route('admin.other.listPics');
     }
 }

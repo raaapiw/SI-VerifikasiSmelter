@@ -38,7 +38,7 @@
                                     <td><center>{{ $row->created_at }}</center></td>
                                     <td>{{ $row->client->company_name }}</td>
                                     <td><center>
-                                            {{-- <a href="{{ route('client.docper.addDoc', $row->id)}}"><span><i class="fa fa-send"></i></span></a> --}}
+                                            <a href="{{ route('admin.other.detailPics', $row->id)}}"><span><i class="fa fa-search"></i></span></a>
                                         </center>
                                     </td>
                                 </tr>                            

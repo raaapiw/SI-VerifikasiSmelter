@@ -397,7 +397,7 @@
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('admin.other.addPics')}}">Tambah Foto Lapangan</a></li>
                                         <li><a href="#">Tambah Surat Dirkom</a></li>
-                                        <li><a href="#">List</a></li>
+                                        <li><a href="{{ route('admin.other.listPics')}}">List</a></li>
                                     </ul>
                                 </li>  
                                 <li>

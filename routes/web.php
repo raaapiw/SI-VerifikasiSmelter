@@ -101,7 +101,12 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/other/addPics', 'admin\OtherController@addPics') ->name('admin.other.addPics');
     Route::get('/admin/other/formPics/{id}', 'admin\OtherController@formPics') ->name('admin.other.formPics');
     Route::post('/admin/other/store', 'admin\OtherController@store') ->name('admin.other.store');
-
+    Route::get('/admin/other/listPics', 'admin\OtherController@listPics') ->name('admin.other.listPics');
+    Route::get('/admin/other/detailPics/{id}', 'admin\OtherController@detailPics') ->name('admin.other.detailPics');
+    Route::get('/admin/other/destroy/{id}', 'admin\OtherController@destroyPics') ->name('admin.other.destroyPics');
+    Route::post('/admin/other/UpdatePics/{id}', 'admin\OtherController@updatePics') ->name('admin.other.updatePics');
+    Route::get('/admin/other/editPics/{id}', 'admin\OtherController@editPics') ->name('admin.other.editPics');
+    
 
 
     Route::get('/admin/report/addReport', 'admin\ReportController@addReport') ->name('admin.report.addReport');
