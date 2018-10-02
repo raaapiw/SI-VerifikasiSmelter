@@ -7,10 +7,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Upload Dokumen</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Upload Foto Lapangan</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">Upload Dokumen</li>
+            <li class="breadcrumb-item active">Upload Foto Lapangan</li>
         </ol>
     </div>
 </div>
@@ -21,10 +21,10 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{  route('client.docper.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{  route('admin.other.store') }}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="order_id" value="{{$order->id}}">
                     <div class="form-body">
-                        <h3 class="box-title m-t-40">Upload Dokumen Perencanaan</h3>
+                        <h3 class="box-title m-t-40">Upload Foto Lapangan</h3>
                         <hr>
                         <div id="dynamic_field">
                             <div class="row" >
@@ -35,8 +35,10 @@
                                                 <h4 class="card-title">Nama Dokumen</h4>
                                                 <input type="text" class="form-control" id="nameFile" name="type[]" required/>
                                             </div>
-                                            <h4 class="card-title">Dokumen Perencanaan</h4>
-                                            <input type="file" id="file" name="evidence[]" class="dropify" required/>
+                                            <h4 class="card-title">File Foto<font color="red">*</font></h4>
+                                            <input type="file" id="file" name="pics[]" class="dropify" required/>
+                                            <br>
+                                            <p><font color="red">* jika file foto lebih dari 1 atau di dalam folder harus di .rar/.zip terlebih dahulu</font></p>
                                         </div>
                                     </div>
                                 </div>
@@ -81,7 +83,7 @@ $( document ).ready(function() {
         // i = $(this).attr("data-count");
         // console.log(i);
         $(document).on("click","#add",function() {
-            $('#dynamic_field').append('<div class="row" id="row'+i+'"><div class="col-md-12"><div class="card"><div class="card-body"><div class="form-group"><h4 class="card-title">Nama Dokumen</h4><input type="text" class="form-control" id="nameFile" name="type[]" required/></div><h4 class="card-title">File Dokumen Pekerjaan</h4><input type="file" id="file" name="evidence[]" class="dropify" required/></div><div class="col-md-12"><div class="form-group"><button type="button" name="btn_remove" id="'+i+'" class="btn btn-danger btn_remove">Clear</button></div></div></div></div></div>');
+            $('#dynamic_field').append('<div class="row" id="row'+i+'"><div class="col-md-12"><div class="card"><div class="card-body"><div class="form-group"><h4 class="card-title">Nama File</h4><input type="text" class="form-control" id="nameFile" name="type[]" required/></div><h4 class="card-title">File Foto</h4><input type="file" id="file" name="pics[]" class="dropify" required/><br><p><font color="red">* jika file foto lebih dari 1 atau di dalam folder harus di .rar/.zip terlebih dahulu</font></p></div><div class="col-md-12"><div class="form-group"><button type="button" name="btn_remove" id="'+i+'" class="btn btn-danger btn_remove">Clear</button></div></div></div></div></div>');
             i++;
             // $(".select2").select2();
             // $(".vertical-spin").TouchSpin({

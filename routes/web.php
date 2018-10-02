@@ -99,6 +99,8 @@ Route::group(['middleware' => 'admin'], function() {
     
     
     Route::get('/admin/other/addPics', 'admin\OtherController@addPics') ->name('admin.other.addPics');
+    Route::get('/admin/other/formPics/{id}', 'admin\OtherController@formPics') ->name('admin.other.formPics');
+    Route::post('/admin/other/store', 'admin\OtherController@store') ->name('admin.other.store');
 
 
 
