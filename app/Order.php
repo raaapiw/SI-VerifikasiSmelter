@@ -23,7 +23,9 @@ class Order extends Model
         'state_report',
         'author_work',
         'author_report',
-        'author_order'
+        'author_order',
+        'pics',
+        'letter'
     ];
     
     protected $appends =[
