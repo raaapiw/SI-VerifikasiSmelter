@@ -106,6 +106,10 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/other/destroy/{id}', 'admin\OtherController@destroyPics') ->name('admin.other.destroyPics');
     Route::post('/admin/other/UpdatePics/{id}', 'admin\OtherController@updatePics') ->name('admin.other.updatePics');
     Route::get('/admin/other/editPics/{id}', 'admin\OtherController@editPics') ->name('admin.other.editPics');
+    Route::get('/admin/other/addLetter', 'admin\OtherController@addLetter') ->name('admin.other.addLetter');
+    Route::get('/admin/other/formLetter/{id}', 'admin\OtherController@formLetter') ->name('admin.other.formLetter');
+    Route::post('/admin/other/UpdateLetter/{id}', 'admin\OtherController@updateDir') ->name('admin.other.updateDir');
+    Route::get('/admin/other/destroy/{id}', 'admin\OtherController@destroyDir') ->name('admin.other.destroyDir');
     
 
 

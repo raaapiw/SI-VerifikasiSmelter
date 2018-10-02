@@ -110,11 +110,52 @@ class OtherController extends Controller
         }
     }
 
+    public function addLetter(){
+        $order = Order::where('dirkom','=', null)->get();
+
+        return view ('pages.admin.other.addLetter', compact('order'));
+    }
+
+    public function formLetter($id){
+        $order = Order::find($id);
+
+        return view ('pages.admin.other.formLetter', compact('order'));
+
+    }
+
+    public function updateDir(Request $request, $id){
+        $order = Order::find($id);
+
+        $uploadedFile = $request->file('dirkom');
+            $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
+            if (Storage::exists($uploadedFileName)) {
+                Storage::delete($uploadedFileName);
+            }
+            $path = $uploadedFile->storeAs('public/files/order/admin/dirkom', $uploadedFileName);
+
+                $data = [
+                    'client_id' => $request->client_id,
+                    'dirkom' => $path,
+                ];    
+                $order->fill($data)->save();
+                return redirect()->route('admin.other.listPics');
+    }
+
     public function destroyPics($id)
     {
         //
         
         $other = Other::find($id)->delete();
+        
+        return redirect()->route('admin.other.listPics');
+    }
+
+    public function destroyDir($id)
+    {
+        //
+        
+        $temporder = Order::find($id);
+        $order = $temporder->where('dirkom')->delete();
         
         return redirect()->route('admin.other.listPics');
     }

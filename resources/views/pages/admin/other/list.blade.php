@@ -28,7 +28,8 @@
                                 <th>No</th>
                                 <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
-                                <th><center>Tambah Dokumen</center></th>
+                                <th><center>Detail Foto Lapangan</center></th>
+                                <th><center>Action Surat Dirkom</center></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,6 +41,19 @@
                                     <td><center>
                                             <a href="{{ route('admin.other.detailPics', $row->id)}}"><span><i class="fa fa-search"></i></span></a>
                                         </center>
+                                    </td>
+                                    <td>
+                                        @if($row->dirkom == null)
+                                        <center>
+                                            <span class="label label-warning">ON PROCESS</span>
+                                        </center>
+                                        @else
+                                        <center>
+                                            <a href="{{ route('admin.other.formLetter', $row->id)}}"><span><i class="fa fa-pencil"></i></span></a>
+                                            <a href="{{ route('admin.other.destroyDir', $row->id) }}"><span><i class="mdi mdi-delete"></i></span></a>
+                                            <a href="{{ Storage::url($row->dirkom) }}"><span><i class="fa fa-download"></i></span></a>
+                                        </center>
+                                        @endif
                                     </td>
                                 </tr>                            
                             @endforeach

@@ -396,7 +396,7 @@
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Other</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('admin.other.addPics')}}">Tambah Foto Lapangan</a></li>
-                                        <li><a href="#">Tambah Surat Dirkom</a></li>
+                                        <li><a href="{{ route('admin.other.addLetter')}}">Tambah Surat Dirkom</a></li>
                                         <li><a href="{{ route('admin.other.listPics')}}">List</a></li>
                                     </ul>
                                 </li>  
