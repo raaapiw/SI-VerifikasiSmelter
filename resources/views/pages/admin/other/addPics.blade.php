@@ -7,10 +7,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">List Pemesanan</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Tambah Foto Lapangan</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">List Pemesanan</li>
+            <li class="breadcrumb-item active">Tambah Foto Lapangan</li>
         </ol>
     </div>
 </div>
@@ -26,21 +26,19 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th style="width:50%"><center>Nama Perusahaan</center></th>
-                                <th>Tanggal Meeting</th>
-                                <th>Waktu Meeting</th>
-                                <th><center>Upload Berita Acara</center></th>
+                                <th><center>Date</center></th>
+                                <th style="width:50%"><center>Company Name</center></th>
+                                <th><center>Tambah</center></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($meetings as $key=>$row)
+                            @foreach($order as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
-                                    <td>{{ $row->order->client->company_name }}</td>
-                                    <td>{{$row->date}}</td>
-                                    <td>{{$row->time}}</td>
+                                    <td><center>{{ $row->created_at }}</center></td>
+                                    <td>{{ $row->client->company_name }}</td>
                                     <td><center>
-                                            <a href="{{ route('admin.meeting.createBA', $row->order->id)}}"><span><i class="fa fa-send"></i></span></a>
+                                            <a href="{{ route('admin.other.formPics', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         </center>
                                     </td>
                                 </tr>                            
@@ -59,6 +57,6 @@
 <script src="{{ asset('material/plugins/sweetalert/sweetalert.min.js')}}"></script>
 <script src="{{ asset('material/plugins/sweetalert/jquery.sweet-alert.custom.js')}}"></script>
 <script>$('#myTable').DataTable({
-    "order": [[ 2, "desc" ]]
+    "order": [[ 1, "DESC" ]]
 });</script>
 @endsection

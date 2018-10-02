@@ -391,7 +391,15 @@
                                         <li><a href="{{ route('admin.report.listReport')}}">List Laporan</a></li>
                                         <li><a href="{{ route('admin.report.approve')}}">Approval Laporan</a></li>
                                     </ul>
-                                </li>
+                                </li>  
+                                <li>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Other</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('admin.other.addPics')}}">Tambah Foto Lapangan</a></li>
+                                        <li><a href="{{ route('admin.other.addLetter')}}">Tambah Surat Dirkom</a></li>
+                                        <li><a href="{{ route('admin.other.listPics')}}">List</a></li>
+                                    </ul>
+                                </li>  
                                 <li>
                                     <a class="" href="{{ route('admin.announcement.list')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pengumuman</span></a> 
                                     

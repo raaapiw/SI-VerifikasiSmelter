@@ -96,6 +96,22 @@ Route::group(['middleware' => 'admin'], function() {
     
     Route::get('/admin/document/listDoc', 'admin\DocumentController@index_doc') ->name('admin.document.listDoc');
     Route::get('/admin/document/detail/{id}', 'admin\DocumentController@detail') ->name('admin.document.detail');
+    
+    
+    Route::get('/admin/other/addPics', 'admin\OtherController@addPics') ->name('admin.other.addPics');
+    Route::get('/admin/other/formPics/{id}', 'admin\OtherController@formPics') ->name('admin.other.formPics');
+    Route::post('/admin/other/store', 'admin\OtherController@store') ->name('admin.other.store');
+    Route::get('/admin/other/listPics', 'admin\OtherController@listPics') ->name('admin.other.listPics');
+    Route::get('/admin/other/detailPics/{id}', 'admin\OtherController@detailPics') ->name('admin.other.detailPics');
+    Route::get('/admin/other/destroy/{id}', 'admin\OtherController@destroyPics') ->name('admin.other.destroyPics');
+    Route::post('/admin/other/UpdatePics/{id}', 'admin\OtherController@updatePics') ->name('admin.other.updatePics');
+    Route::get('/admin/other/editPics/{id}', 'admin\OtherController@editPics') ->name('admin.other.editPics');
+    Route::get('/admin/other/addLetter', 'admin\OtherController@addLetter') ->name('admin.other.addLetter');
+    Route::get('/admin/other/formLetter/{id}', 'admin\OtherController@formLetter') ->name('admin.other.formLetter');
+    Route::post('/admin/other/UpdateLetter/{id}', 'admin\OtherController@updateDir') ->name('admin.other.updateDir');
+    Route::get('/admin/other/destroy/{id}', 'admin\OtherController@destroyDir') ->name('admin.other.destroyDir');
+    
+
 
     Route::get('/admin/report/addReport', 'admin\ReportController@addReport') ->name('admin.report.addReport');
     Route::get('/admin/report/listReport', 'admin\ReportController@index') ->name('admin.report.listReport');

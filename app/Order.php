@@ -23,7 +23,9 @@ class Order extends Model
         'state_report',
         'author_work',
         'author_report',
-        'author_order'
+        'author_order',
+        'pics',
+        'dirkom'
     ];
     
     protected $appends =[
@@ -39,6 +41,10 @@ class Order extends Model
     public function docpers()
     {
         return $this->hasMany(Docper::class);
+    }
+    public function others()
+    {
+        return $this->hasMany(Other::class);
     }
     public function meetings()
     {

@@ -58,7 +58,7 @@ class MeetingController extends Controller
     public function uploadBA()
     {
 
-        $meetings = Meeting::all();
+        $meetings = Meeting::where('bap','=',null)->get();
         // dd($orders);
         return view('pages.admin.meeting.uploadBA', compact('orders','meetings'));
     }
