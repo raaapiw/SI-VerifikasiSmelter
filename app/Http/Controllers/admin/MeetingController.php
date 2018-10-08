@@ -37,7 +37,7 @@ class MeetingController extends Controller
 
     public function createBA($id)
     {
-        $meeting = Meeting::where('order_id','=',$id)->first();
+        $meeting = Meeting::find($id);
         
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
@@ -193,9 +193,9 @@ class MeetingController extends Controller
                     'client_id' => $request->client_id,
                     'bap' => $path,
                 ];
-                // dd($meeting);
+                // dd($data);
                 $meeting->fill($data)->save();
-                
+                dd($meeting);
                 $order = Order::where('id','=',$meeting->order_id)->first();
                 $client = Client::where('id','=',$order->client_id)->first();
                 // dd($client);
