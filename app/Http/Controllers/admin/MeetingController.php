@@ -133,7 +133,7 @@ class MeetingController extends Controller
                 $client = Client::where('id','=',$order->client_id)->first();
                 // dd($client);
                 
-                Meeting::create($data);
+                // Meeting::create($data);
                 $user = User::where('id','=',$client->user_id)->first();
                 $user->notify(new MeetingNotificationEmail($meeting));
                 $user1 = User::where('id','=',2)->first();
