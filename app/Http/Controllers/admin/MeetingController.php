@@ -195,7 +195,7 @@ class MeetingController extends Controller
                 ];
                 // dd($data);
                 $meeting->fill($data)->save();
-                dd($meeting);
+                // dd($meeting);
                 $order = Order::where('id','=',$meeting->order_id)->first();
                 $client = Client::where('id','=',$order->client_id)->first();
                 // dd($client);
