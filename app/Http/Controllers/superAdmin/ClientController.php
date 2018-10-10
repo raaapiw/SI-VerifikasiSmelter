@@ -90,6 +90,7 @@ class ClientController extends Controller
             'username'  => $request->username,
             'password'  => $request->password,
         ];
+        // dd($data);
 
         $user = Sentinel::registerAndActivate($data);
         $role = Sentinel::findRoleBySlug('client');

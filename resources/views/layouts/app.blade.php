@@ -331,7 +331,7 @@
                                 <ul aria-expanded="false" class="collapse">
                                     <li><a href="{{ route('superAdmin.client.create') }}">Add User Client</a></li>
                                     <li><a href="{{ route('superAdmin.client.list') }}">List Client</a></li>
-                                    <li><a href="{{ route('superAdmin.client.addClient') }}">Add Client</a></li>
+                                    {{-- <li><a href="{{ route('superAdmin.client.addClient') }}">Add Client</a></li> --}}
                                 </ul>
                             </li>
                             <li>
