@@ -317,7 +317,7 @@
                         <ul id="sidebarnav">
                             <li class="nav-small-cap">SUPERADMIN</li>
                             <li>
-                                <a href="{{ route('superAdmin.dashboard') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a>
+                                <a href="{{ route('superAdmin.dashboard') }}" aria-expanded="false"><i class="fa fa-dashboard"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
                             <li>
                                 <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Admin</span></a>
@@ -346,7 +346,7 @@
                             <ul id="sidebarnav">
                                 <li class="nav-small-cap">Admin</li>
                                 <li>
-                                    <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                                    <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-dashboard"></i><span class="hide-menu">Dashboard</span></a>
                                 </li>
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
@@ -401,7 +401,7 @@
                                     </ul>
                                 </li>  
                                 <li>
-                                    <a class="" href="{{ route('admin.announcement.list')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pengumuman</span></a> 
+                                    <a class="" href="{{ route('admin.announcement.list')}}" aria-expanded="false"><i data-icon="Y" class="linea-icon linea-ecommerce"></i><span class="hide-menu">Pengumuman</span></a> 
                                     
                                 </li>
                                 {{-- <li>
@@ -421,7 +421,7 @@
                             <ul id="sidebarnav">
                                 <li class="nav-small-cap">Management</li>
                                 <li>
-                                    <a href="{{ route('management.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                                    <a href="{{ route('management.dashboard')}}" aria-expanded="false"><i class="fa fa-dashboard"></i><span class="hide-menu">Dashboard</span></a>
                                 </li>
                                 {{-- <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
@@ -453,7 +453,7 @@
                                 <ul id="sidebarnav">
                                     <li class="nav-small-cap">Marketing</li>
                                     <li>
-                                        <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                                        <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-dashboard"></i><span class="hide-menu">Dashboard</span></a>
                                     </li>
                                     <li>
                                         <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
@@ -469,7 +469,7 @@
                         <ul id="sidebarnav">
                                 <li class="nav-small-cap">Minerba</li>
                                 <li>
-                                    <a href="{{ route('minerba.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                                    <a href="{{ route('minerba.dashboard')}}" aria-expanded="false"><i class="fa fa-dashboard"></i><span class="hide-menu">Dashboard</span></a>
                                 </li>
                                 <li>
                                     <a href="{{ route('minerba.order.listSpk')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">SPK</span></a>
@@ -518,7 +518,7 @@
                             <ul id="sidebarnav">
                                 <li class="nav-small-cap"></li>
                                 <li>
-                                    <a href="{{ route('client.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
+                                    <a href="{{ route('client.dashboard')}}" aria-expanded="false"><i class="fa fa-dashboard"></i><span class="hide-menu">Dashboard</span></a>
                                 </li>
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>

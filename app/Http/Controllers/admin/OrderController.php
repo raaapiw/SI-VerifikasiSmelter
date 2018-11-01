@@ -47,7 +47,7 @@ class OrderController extends Controller
     }
     public function addOffer(){
         // $tempclient = Client::doesntHave('order');
-        $order = Order::where('state','=',0)->get();
+        $order = Order::all();
         // dd($order);
         // $client = $tempclient->where('state','=',0)->get();
         // dd($client);

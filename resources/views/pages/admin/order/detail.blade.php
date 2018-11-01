@@ -89,35 +89,35 @@
                             @if ($order->offer_letter !== null)
                                 <center><a href="{{ Storage::url($order->offer_letter) }}"><span><i class="fa fa-download"></i></span></a></center>
                             @else
-                                Dokumen Tidak ada
+                                Dokumen Tidak ada !
                             @endif
                         </td>
                         <td>
                             @if ($order->dp_invoice !== null)
                             <center><a href="{{ Storage::url($order->dp_invoice) }}"><span><i class="fa fa-download"></i></span></a></center>
                             @else
-                                Dokumen Tidak ada
+                                Dokumen Tidak ada !
                             @endif
                         </td>
                         <td>
                             @if ($order->transfer_proof !== null)
                             <center><a href="{{ Storage::url($order->transfer_proof) }}"><span><i class="fa fa-download"></i></span></a></center>
                             @else
-                                Dokumen Tidak ada
+                                Dokumen Tidak ada !
                             @endif
                         </td>
                         <td>
                             @if ($order->spk !== null)
                             <center><a href="{{ Storage::url($order->spk) }}"><span><i class="fa fa-download"></i></span></a></center>
                             @else
-                                Dokumen Tidak ada
+                                Dokumen Tidak ada !
                             @endif
                         </td>  
                         <td>
                             @if ($order->contract !== null)
                             <center><a href="{{ Storage::url($order->contract) }}"><span><i class="fa fa-download"></i></span></a></center>
                             @else
-                                Dokumen Tidak ada
+                                Dokumen Tidak ada !
                             @endif
                         </td>                     
                     </tr>

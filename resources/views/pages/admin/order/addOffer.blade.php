@@ -31,6 +31,8 @@
                             <th style="width : 10%">Status Penawaran</th>
                             <th style="width : 10%">Invoice DP</th>
                             <th style="width : 10%">Accept Pemesanan</th>
+                            <th style="width : 10%">Status Order</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -57,7 +59,13 @@
                                 </td>
                                 <td class="text-nowrap">
                                     <center>
-                                        <a href="{{ route('admin.order.proceed', $row->id)}}" data-toggle="tooltip" data-original-title="Accept"> <i class="fa fa-check m-r-10"></i> </a>
+                                            @if ($row->state == 0)
+                                            <a href="{{ route('admin.order.proceed', $row->id)}}" data-toggle="tooltip" data-original-title="Accept"> <i class="fa fa-check m-r-10"></i> </a>
+                                            
+                                            @else
+                                                <span class="label label-success">FINISH</span>
+                                            @endif
+                                        
                                         {{-- <a href="#" data-toggle="tooltip" data-original-title="Update"><span><i class="fa fa-tasks text-inverse m-r-10"></i></span></a> --}}
                                         {{-- <a href="#" onclick="$(this).find('#delete').submit();" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i>
                                         <form action="#" id="delete" method="post">
@@ -66,6 +74,13 @@
                                         {{-- </a> --}}
                                     </center>
                                 </td>
+                                <td>  @if ($row->state == 0)
+                                    <span class="label label-warning">ON PROCESS</span>
+                                    
+                                @else
+                                    <span class="label label-success">FINISH</span>
+                                @endif
+                            </td>
                             </tr>                            
                         @endforeach
                     </tbody>
