@@ -8,12 +8,12 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Patient Detail</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Company Detail</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
             
-            <li class="breadcrumb-item"><a href="#">Patient</a></li>
-            <li class="breadcrumb-item active">Patient Detail</li>
+            <li class="breadcrumb-item"><a href="#">Company</a></li>
+            <li class="breadcrumb-item active">Company Detail</li>
         </ol>
     </div>
 </div>
@@ -60,68 +60,48 @@
                     </section>
                 </form>
                 <hr>
-                <label>Patient History</label>
-                {{--  Table Diagnosis  --}}
-                <table id="myTable" class="table table-bordered table-striped">
-                    <tr>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="myTable" class="table table-bordered table-striped">
                         <thead>
-                            <th>ID</th>
-                            <th>Date</th>
-                            <th>Surat Permintaan</th>
-                            <th>Surat Penawaran</th>
-                            <th>Invoices DP</th>
-                            <th>Bukti Transfer</th>
-                            <th>SPK</th>
-                            <th>Kontrak</th>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th><center>Dokumen</center></th>
+                                <th><center>Tipe Dokumen</center></th>
+                                <th><center>Action</center></th>
+                            </tr>
                         </thead>
-                    </tr>
-                    <tr>
-                        <td>{{ $order->id}}</td>
-                        <td>{{ $order->created_at}}</td>
-                        <td>
-                            @if ($order->letter_of_request !== null)
-                            <center><a href="{{ Storage::url($order->letter_of_request) }}"><span><i class="fa fa-download"></i></span></a></center>
-                            @else
-                                Dokumen Tidak ada !
-                            @endif
-                        </td>
-                        <td>
-                            @if ($order->offer_letter !== null)
-                                <center><a href="{{ Storage::url($order->offer_letter) }}"><span><i class="fa fa-download"></i></span></a></center>
-                            @else
-                                Dokumen Tidak ada !
-                            @endif
-                        </td>
-                        <td>
-                            @if ($order->dp_invoice !== null)
-                            <center><a href="{{ Storage::url($order->dp_invoice) }}"><span><i class="fa fa-download"></i></span></a></center>
-                            @else
-                                Dokumen Tidak ada !
-                            @endif
-                        </td>
-                        <td>
-                            @if ($order->transfer_proof !== null)
-                            <center><a href="{{ Storage::url($order->transfer_proof) }}"><span><i class="fa fa-download"></i></span></a></center>
-                            @else
-                                Dokumen Tidak ada !
-                            @endif
-                        </td>
-                        <td>
-                            @if ($order->spk !== null)
-                            <center><a href="{{ Storage::url($order->spk) }}"><span><i class="fa fa-download"></i></span></a></center>
-                            @else
-                                Dokumen Tidak ada !
-                            @endif
-                        </td>  
-                        <td>
-                            @if ($order->contract !== null)
-                            <center><a href="{{ Storage::url($order->contract) }}"><span><i class="fa fa-download"></i></span></a></center>
-                            @else
-                                Dokumen Tidak ada !
-                            @endif
-                        </td>                     
-                    </tr>
-                </table>
+                        @foreach($other as $row)
+                        <tr>
+                            <td>{{ $row->id}}</td>
+                            <td>{{ $row->created_at}}</td>
+                            <td>
+                                <center><a href="{{ Storage::url($row->pics) }}"><span>{{$row->RealNamePics}}</span></a></center>
+                            </td>   
+                            <td>{{ $row->type}}</td>
+                            <td><center>
+                                    <a href="{{ route('admin.other.editPics',$row->id)}}"><span><i class="fa fa-pencil"></i></span></a>
+                                    <!-- <a href="{{ route('admin.other.destroyPics', $row->id)}}"><span><i class="mdi mdi-delete"></i></span></a> -->
+                                </center>
+                            </td>                  
+                        </tr>
+                        @endforeach
+                    </table>
+                    <br>
+                    <br>
+                        <a href="{{route('admin.other.formPics', $order->id)}}">
+                            <button type="button" class="btn btn-success" value="upload"><i class="fa fa-plus"></i> Tambah File</button>
+                        </a>
+                        <a class="btn btn-inverse btn-close" href="{{ url()->previous() }}">Back</a>
+                </div>
             </div>
         </div>
     </div>
@@ -135,6 +115,9 @@
 <script src="{{ asset('material/plugins/wizard/steps.js')}}"></script>
 <script src="{{ asset('material/plugins/select2/dist/js/select2.full.min.js')}}" type="text/javascript"></script>
 <script src="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js')}}" type="text/javascript"></script>
-
+<script src="{{ asset('material/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script>$('#myTable').DataTable({
+        "order": [[ 1, "DESC" ]]
+    });</script>
   
 @endsection
