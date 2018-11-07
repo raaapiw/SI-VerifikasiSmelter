@@ -28,6 +28,7 @@
                                 <th>No</th>
                                 <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
+                                <th><center>Jenis Pekerjaan</center></th>
                                 <th><center>Detail</center></th>
                             </tr>
                         </thead>
@@ -37,6 +38,7 @@
                                     <td><center>{{$key+1}}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
                                     <td>{{ $row->client->company_name }}</td>
+                                    <td><center>{{ $row->work_kind }}</center></td>
                                     <td><center>
                                             <a href="{{ route('admin.order.detail', $row->id)}}"><span><i class="fa fa-search"></i></span></a>
                                         </center>
@@ -59,4 +61,19 @@
 <script>$('#myTable').DataTable({
     "order": [[ 1, "DESC" ]]
 });</script>
+
+<script src="{{ asset('material/plugins/jquery-datatables-editable/jquery.dataTables.js')}}"></script>
+<script src="{{ asset('material/plugins/datatables/dataTables.bootstrap.js')}}"></script>
+<script src="{{ asset('material/plugins/tiny-editable/mindmup-editabletable.js')}}"></script>
+<script src="{{ asset('material/plugins/tiny-editable/numeric-input-example.js')}}"></script>
+
+<script type="text/javascript" language="javascript" src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
+<script>
+    $('#myTable').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this, {
+            submit: 'allIfChanged'
+        } );
+    } );
+        // $('#myTable').editableTableWidget().numericInputExample().find('td:first').focus();
+</script>
 @endsection
