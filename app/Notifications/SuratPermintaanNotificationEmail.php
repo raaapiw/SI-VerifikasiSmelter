@@ -43,8 +43,7 @@ class SuratPermintaanNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Perusahaan' . $this->order->client->company_name . 'sudah mengirim SURAT PERMINTAAN')
-                    ->line('SEGERA LAKUKAN PENGECEKAN !')
+                    
                     ->markdown('vendor.mail.admin.permintaan', ['order' => $this->order]);
     }
 

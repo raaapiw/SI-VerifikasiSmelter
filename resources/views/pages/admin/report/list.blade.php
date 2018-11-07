@@ -40,9 +40,10 @@
                                     <td>{{ $row->order->client->company_name }}</td>
                                     <td><center>
                                         @if ($row->jenis == null)
-                                        <a href="{{ route('admin.report.jenis', $row->id)}}"><span><i class="fa fa-plus"></i></span></a>
+                                            <a href="{{ route('admin.report.jenis', $row->id)}}"><span><i class="fa fa-plus"></i></span></a>
                                         @else 
                                             {{ $row->jenis }}
+                                            <a href="{{ route('admin.report.jenis', $row->id)}}"><span><i class="fa fa-pencil"></i></span></a>                                        
                                         @endif
                                         </center>
                                     </td>                                        
