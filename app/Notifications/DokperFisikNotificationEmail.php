@@ -44,7 +44,7 @@ class DokperFisikNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->markdown('vendor.mail.admin.dokper', ['order' => $this->work]);
+        ->markdown('vendor.mail.admin.dokper', ['work' => $this->work]);
     }
 
     /**

@@ -43,7 +43,7 @@ class BeritaAcaraNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->markdown('vendor.mail.client.bap', ['order' => $this->meeting]);
+        ->markdown('vendor.mail.client.bap', ['meeting' => $this->meeting]);
     }
 
     /**

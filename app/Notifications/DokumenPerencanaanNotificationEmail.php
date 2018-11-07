@@ -43,7 +43,7 @@ class DokumenPerencanaanNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->markdown('vendor.mail.admin.docper', ['order' => $this->docper]);
+        ->markdown('vendor.mail.admin.docper', ['docper' => $this->docper]);
     }
 
     /**

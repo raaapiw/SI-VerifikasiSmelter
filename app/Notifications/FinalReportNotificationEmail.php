@@ -43,7 +43,7 @@ class FinalReportNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->markdown('vendor.mail.client.laporan', ['order' => $this->meeting]);
+        ->markdown('vendor.mail.client.laporan', ['report' => $this->report]);
     }
 
     /**

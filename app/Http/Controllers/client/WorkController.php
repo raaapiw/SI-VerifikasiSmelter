@@ -11,7 +11,7 @@ use App\Work;
 use App\User;
 use Sentinel;
 use Storage;
-use App\Notifications\DocPerNotificationEmail;
+use App\Notifications\DokPerFisikNotificationEmail;
 
 class WorkController extends Controller
 {
@@ -109,7 +109,7 @@ class WorkController extends Controller
                 // dd($order);
                 
                 $user = User::where('id','=',2)->first();
-                $user->notify(new DocPerNotificationEmail($work));
+                $user->notify(new DokPerFisikNotificationEmail($work));
                 return redirect()->route('client.dashboard');
             
             
@@ -182,7 +182,7 @@ class WorkController extends Controller
                 // dd($order);
                 
                 $user = User::where('id','=',2)->first();
-                $user->notify(new DocPerNotificationEmail($work));
+                $user->notify(new DokPerFisikNotificationEmail($work));
 
                 return redirect()->route('client.dashboard');
             

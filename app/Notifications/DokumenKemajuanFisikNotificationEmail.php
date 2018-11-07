@@ -45,7 +45,7 @@ class DokumenKemajuanFisikNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->markdown('vendor.mail.admin.doc', ['order' => $this->document]);
+        ->markdown('vendor.mail.admin.doc', ['document' => $this->document]);
     }
 
     /**
