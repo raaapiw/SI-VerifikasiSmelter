@@ -126,6 +126,8 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/report/approve', 'admin\ReportController@approve') ->name('admin.report.approve');
     Route::get('/admin/report/approval/{id}', 'admin\ReportController@approval') ->name('admin.report.approval');
     Route::get('/admin/report/destroy/{id}', 'admin\ReportController@destroy') ->name('admin.report.destroy');
+    Route::get('/admin/report/jenis/{id}', 'admin\ReportController@jenis') ->name('admin.report.jenis');
+    Route::post('/admin/report/UpdateJenis/{id}', 'admin\ReportController@update_jenis') ->name('admin.report.update_jenis');
     
     Route::get('/admin/report/addletter', 'admin\ReportController@addletter') ->name('admin.report.addLetter');
     Route::get('/admin/report/letter/{id}', 'admin\ReportController@letter') ->name('admin.report.letter');
