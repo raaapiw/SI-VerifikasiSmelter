@@ -171,8 +171,7 @@ class WorkController extends Controller
                 if (Storage::exists($uploadedFileName)) {
                     Storage::delete($uploadedFileName);
                 }
-                $path = $uploadedFile->storeAs('public/files/work/client', $uploadedFileName);$uploadedFile->store('public/files');
-    
+                $path = $uploadedFile->storeAs('public/files/work/client', $uploadedFileName);    
                 $data = [
                     'order_id' => $request->order_id,
                     'curva_s' => $path,

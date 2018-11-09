@@ -387,6 +387,7 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pelaporan</span></a>
                                     <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('admin.draft.listDraft')}}">List Draft Laporan</a></li>
                                         <li><a href="{{ route('admin.report.addReport')}}">Tambah Laporan</a></li>
                                         <li><a href="{{ route('admin.report.listReport')}}">List Laporan</a></li>
                                         <li><a href="{{ route('admin.report.approve')}}">Approval Laporan</a></li>
