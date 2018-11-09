@@ -11,7 +11,7 @@ use App\Work;
 use App\User;
 use Sentinel;
 use Storage;
-use App\Notifications\DocPerNotificationEmail;
+use App\Notifications\DokPerFisikNotificationEmail;
 
 class WorkController extends Controller
 {
@@ -98,8 +98,11 @@ class WorkController extends Controller
             
             
                 $uploadedFile = $request->file('curva_s');
-
-                $path = $uploadedFile->store('public/files');
+                $uploadedFileName = $request->order_id . '-' . $uploadedFile->getClientOriginalName();
+                if (Storage::exists($uploadedFileName)) {
+                    Storage::delete($uploadedFileName);
+                }
+                $path = $uploadedFile->storeAs('public/files/work/client', $uploadedFileName);   
     
                 $data = [
                     'order_id' => $request->order_id,
@@ -109,13 +112,18 @@ class WorkController extends Controller
                 // dd($order);
                 
                 $user = User::where('id','=',2)->first();
-                $user->notify(new DocPerNotificationEmail($work));
+                $user->notify(new DokPerFisikNotificationEmail($work));
+                $user1 = User::where('id','=',3)->first();
+                $user1->notify(new DokPerFisikNotificationEmail($work));
+                $user2 = User::where('id','=',5)->first();
+                $user2->notify(new DokPerFisikNotificationEmail($work));
+                $user3 = User::where('id','=',7)->first();
+                $user3->notify(new DokPerFisikNotificationEmail($work));
+                $user4 = User::where('id','=',50)->first();
+                $user4->notify(new DokPerFisikNotificationEmail($work));
+                $user5 = User::where('id','=',60)->first();
+                $user5->notify(new DokPerFisikNotificationEmail($work));
                 return redirect()->route('client.dashboard');
-            
-            
-             
-           
-            
         } 
     }
 
@@ -171,8 +179,7 @@ class WorkController extends Controller
                 if (Storage::exists($uploadedFileName)) {
                     Storage::delete($uploadedFileName);
                 }
-                $path = $uploadedFile->storeAs('public/files/work/client', $uploadedFileName);$uploadedFile->store('public/files');
-    
+                $path = $uploadedFile->storeAs('public/files/work/client', $uploadedFileName);    
                 $data = [
                     'order_id' => $request->order_id,
                     'curva_s' => $path,
@@ -182,7 +189,7 @@ class WorkController extends Controller
                 // dd($order);
                 
                 $user = User::where('id','=',2)->first();
-                $user->notify(new DocPerNotificationEmail($work));
+                $user->notify(new DokPerFisikNotificationEmail($work));
 
                 return redirect()->route('client.dashboard');
             

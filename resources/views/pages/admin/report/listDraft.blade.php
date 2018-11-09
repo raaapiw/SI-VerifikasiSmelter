@@ -7,10 +7,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">List Report</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">List Draft</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">List Report</li>
+            <li class="breadcrumb-item active">List Draft</li>
         </ol>
     </div>
 </div>
@@ -28,29 +28,17 @@
                                 <th>No</th>
                                 <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
-                                <th><center>Jenis Laporan</center></th>
                                 <th><center>Action</center></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($reports as $key=>$row)
+                            @foreach($orders as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
-                                    <td>{{ $row->order->client->company_name }}</td>
+                                    <td>{{ $row->client->company_name }}</td>                                                         
                                     <td><center>
-                                        @if ($row->jenis == null)
-                                            <a href="{{ route('admin.report.jenis', $row->id)}}"><span><i class="fa fa-plus"></i></span></a>
-                                        @else 
-                                            {{ $row->jenis }}
-                                            <a href="{{ route('admin.report.jenis', $row->id)}}"><span><i class="fa fa-pencil"></i></span></a>                                        
-                                        @endif
-                                        </center>
-                                    </td>                                        
-                                    <td><center>
-                                            <a href="{{ route('admin.report.edit', $row->id)}}"><span><i class="fa fa-pencil"></i></span></a>
-                                            <a href="{{ route('admin.report.destroy', $row->id)}}"><span><i class="mdi mdi-delete"></i></span></a>
-                                            <a href="{{ Storage::url($row->report) }}"><span><i class="fa fa-download"></i></span></a>
+                                            <a href="{{ route('admin.report.detailDraft', $row->id)}}"><span><i class="fa fa-search"></i></span></a>                                            
                                         </center>
                                     </td>
                                 </tr>                            

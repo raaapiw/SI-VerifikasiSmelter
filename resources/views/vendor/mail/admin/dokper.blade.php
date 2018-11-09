@@ -6,7 +6,7 @@
         @endcomponent
     @endslot
 {{-- Body --}}
-Perusahaan {{$order->client->company_name}} sudah mengirim SPK
+Perusahaan {{$work->order->client->company_name}} sudah mengirim Dokumen Perencanaan Fisik
 <br>
 <br> 
 SEGERA LAKUKAN PENGECEKAN

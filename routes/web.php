@@ -126,6 +126,15 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/report/approve', 'admin\ReportController@approve') ->name('admin.report.approve');
     Route::get('/admin/report/approval/{id}', 'admin\ReportController@approval') ->name('admin.report.approval');
     Route::get('/admin/report/destroy/{id}', 'admin\ReportController@destroy') ->name('admin.report.destroy');
+    Route::get('/admin/report/jenis/{id}', 'admin\ReportController@jenis') ->name('admin.report.jenis');
+    Route::post('/admin/report/UpdateJenis/{id}', 'admin\ReportController@update_jenis') ->name('admin.report.update_jenis');
+    
+    Route::get('/admin/draft/listDraft', 'admin\DraftController@listDraft') ->name('admin.draft.listDraft');
+    Route::get('/admin/draft/form/{id}', 'admin\DraftController@form') ->name('admin.report.formDraft');
+    Route::get('/admin/draft/detail/{id}', 'admin\DraftController@detail') ->name('admin.report.detailDraft');
+    Route::post('/admin/draft/store', 'admin\DraftController@storeDraft') ->name('admin.report.storeDraft');
+    Route::post('/admin/draft/Update/{id}', 'admin\DraftController@updateDraft') ->name('admin.report.updateDraft');
+    Route::get('/admin/draft/formEdit/{id}', 'admin\DraftController@edit') ->name('admin.report.editDraft');
     
     Route::get('/admin/report/addletter', 'admin\ReportController@addletter') ->name('admin.report.addLetter');
     Route::get('/admin/report/letter/{id}', 'admin\ReportController@letter') ->name('admin.report.letter');

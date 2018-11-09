@@ -43,7 +43,7 @@ class MeetingNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->markdown('vendor.mail.client.meeting', ['order' => $this->meeting]);
+        ->markdown('vendor.mail.client.meeting', ['meeting' => $this->meeting]);
     }
 
     /**

@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Docper extends Model
+class Draft extends Model
 {
+    //
     protected $fillable =[
         'order_id',
         'evidence',

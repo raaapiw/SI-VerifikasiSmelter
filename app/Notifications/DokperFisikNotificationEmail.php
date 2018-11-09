@@ -7,22 +7,21 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class DokumenKemajuanFisikNotificationEmail extends Notification
+class DokperFisikNotificationEmail extends Notification
 {
     use Queueable;
-
-    protected $document;
+    protected $work;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($document)
+    public function __construct($work)
     {
         //
-
-        $this->document = $document;
+        
+        $this->work = $work;
     }
 
     /**
@@ -45,7 +44,7 @@ class DokumenKemajuanFisikNotificationEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->markdown('vendor.mail.admin.doc', ['document' => $this->document]);
+        ->markdown('vendor.mail.admin.dokper', ['work' => $this->work]);
     }
 
     /**

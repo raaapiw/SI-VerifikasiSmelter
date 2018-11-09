@@ -42,6 +42,15 @@ class ReportController extends Controller
 
         return view('pages.admin.report.approval', compact('order','work'));
     }
+    public function jenis($id)
+    {
+        $report = Report::find($id);
+        $order = Order::where('id', '=',$report->order_id)->first();
+        
+        // dd($work);
+
+        return view('pages.admin.report.jenis', compact('order','report'));
+    }
     public function addLetter()
     {
         $report = Report::where('covering_letter','=', null)->get();
@@ -230,6 +239,7 @@ class ReportController extends Controller
     {
         //
         $report = Report::find($id);
+        // dd($report);
         if (isset($request->report)){
             $rules = [
                 'report'                  => 'required',
@@ -296,6 +306,19 @@ class ReportController extends Controller
                         // dd($order);
                         return redirect()->route('admin.report.listReport');
                     }
+                    // elseif (isset($request->kind)){
+                        
+                        
+                    //     $data = [
+                    //         // 'order_id' => $request->order_id,
+                    //         'jenis' => $request->kind,
+                    //     ];
+                    //     dd($data);
+                    //     $report->update($data);
+                
+                    //     dd($report);
+                    //     return redirect()->route('admin.report.listReport');
+                    // }
     }
 
     /**
@@ -317,6 +340,20 @@ class ReportController extends Controller
         // dd($data);
         $order->fill($data)->save();
         return redirect()->route('admin.report.approve');
+
+    }
+
+    public function update_jenis(Request $request, $id)
+    {
+        $order = Order::find($id);
+        $report = Report::where('order_id','=',$id);
+        $data = [
+            'jenis' => $request->kind,
+        ];
+       
+        // dd($data);
+        $report->update($data);
+        return redirect()->route('admin.report.listReport');
 
     }
     public function destroy($id)

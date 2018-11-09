@@ -124,6 +124,16 @@ class DocperController extends Controller
             
             $user = User::where('id','=',2)->first();
             $user->notify(new DokumenPerencanaanNotificationEmail($docper));
+            $user1 = User::where('id','=',3)->first();
+            $user1->notify(new DokumenPerencanaanNotificationEmail($document));
+            $user2 = User::where('id','=',5)->first();
+            $user2->notify(new DokumenPerencanaanNotificationEmail($document));
+            $user3 = User::where('id','=',7)->first();
+            $user3->notify(new DokumenPerencanaanNotificationEmail($document));
+            $user4 = User::where('id','=',50)->first();
+            $user4->notify(new DokumenPerencanaanNotificationEmail($document));
+            $user5 = User::where('id','=',60)->first();
+            $user5->notify(new DokumenPerencanaanNotificationEmail($document));
             
             // $user = User::where('id','=',2)->first();
             // $user->notify(new DocPenNotificationEmail($document));
