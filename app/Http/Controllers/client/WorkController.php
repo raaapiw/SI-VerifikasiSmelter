@@ -98,8 +98,11 @@ class WorkController extends Controller
             
             
                 $uploadedFile = $request->file('curva_s');
-
-                $path = $uploadedFile->store('public/files');
+                $uploadedFileName = $request->order_id . '-' . $uploadedFile->getClientOriginalName();
+                if (Storage::exists($uploadedFileName)) {
+                    Storage::delete($uploadedFileName);
+                }
+                $path = $uploadedFile->storeAs('public/files/work/client', $uploadedFileName);   
     
                 $data = [
                     'order_id' => $request->order_id,
@@ -110,12 +113,17 @@ class WorkController extends Controller
                 
                 $user = User::where('id','=',2)->first();
                 $user->notify(new DokPerFisikNotificationEmail($work));
+                $user1 = User::where('id','=',3)->first();
+                $user1->notify(new DokPerFisikNotificationEmail($work));
+                $user2 = User::where('id','=',5)->first();
+                $user2->notify(new DokPerFisikNotificationEmail($work));
+                $user3 = User::where('id','=',7)->first();
+                $user3->notify(new DokPerFisikNotificationEmail($work));
+                $user4 = User::where('id','=',50)->first();
+                $user4->notify(new DokPerFisikNotificationEmail($work));
+                $user5 = User::where('id','=',60)->first();
+                $user5->notify(new DokPerFisikNotificationEmail($work));
                 return redirect()->route('client.dashboard');
-            
-            
-             
-           
-            
         } 
     }
 
