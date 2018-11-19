@@ -26,7 +26,8 @@ class WorkController extends Controller
     
     public function approve()
     {
-        $orders = Order::where('state_work','!=',1)->get();
+        $orders = Order::where('state_work','!=',1)->orwhere('state_work','=',null)->get();
+        // dd($orders);
         // $orders = Order::has('work')->get();
         // $orders = $temporder->where($temporder->work->state, '=', null)->get();
         // dd($orders);

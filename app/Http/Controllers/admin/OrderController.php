@@ -91,6 +91,12 @@ class OrderController extends Controller
         return view('pages.admin.order.uploadDp', compact('order'));
     }
     
+    public function year($id)
+    {
+        $order = Order::find($id);
+
+        return view('pages.admin.order.year', compact('order'));
+    }
     public function listOrder()
     {
 
@@ -313,6 +319,15 @@ class OrderController extends Controller
             $data = [
                 'client_id' => $request->client_id,
                 'state_work' => $request->state_work,
+            ];    
+            
+                $order->fill($data)->save();
+            
+                return redirect()->route('admin.dashboard');
+        }elseif (isset($request->year)) {
+            $data = [
+                'client_id' => $request->client_id,
+                'year' => $request->year,
             ];    
             
                 $order->fill($data)->save();
