@@ -5,6 +5,8 @@
 
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
 @endsection
 
 @section('breadcumb')
@@ -28,7 +30,7 @@
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th style="width:5%"><center>No</center></th>
+                                <th><center>No</center></th>
                                 <th><center>Date</center></th>
                                 <th><center>Company Name</center></th>
                                 <th><center>Jenis Laporan</center></th>
@@ -68,6 +70,7 @@
                                 <th>Company Name</th>
                                 <th>Jenis Pekerjaan</th>
                                 <th>Tahun Pekerjaan</th>
+                                <th style="display:none;">Detail</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -83,8 +86,6 @@
 <script src="{{ asset('material/plugins/sweetalert/sweetalert.min.js')}}"></script>
 <script src="{{ asset('material/plugins/sweetalert/jquery.sweet-alert.custom.js')}}"></script>
 <script type="text/javascript" class="init">
-	
-
     $(document).ready(function() {
         // Setup - add a text input to each footer cell
         $('#myTable tfoot th').each( function () {
@@ -114,8 +115,8 @@
 });</script> --}}
 {{-- <script src="{{ asset('material/plugins/jquery-datatables-editable/jquery.dataTables.js')}}"></script> --}}
 <script src="{{ asset('material/plugins/datatables/dataTables.bootstrap.js')}}"></script>
-<script src="{{ asset('material/plugins/tiny-editable/mindmup-editabletable.js')}}"></script>
-<script src="{{ asset('material/plugins/tiny-editable/numeric-input-example.js')}}"></script>
+{{-- <script src="{{ asset('material/plugins/tiny-editable/mindmup-editabletable.js')}}"></script> --}}
+{{-- <script src="{{ asset('material/plugins/tiny-editable/numeric-input-example.js')}}"></script> --}}
 {{-- <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script> --}}
 {{-- <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> --}}
 {{-- <script type="text/javascript" language="javascript" src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script> --}}
