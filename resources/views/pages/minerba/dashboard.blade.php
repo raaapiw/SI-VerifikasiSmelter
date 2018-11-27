@@ -23,9 +23,9 @@
                             <tr>
                                 <th>No</th>
                                 <th><center>Date</center></th>
-                                <th style="width:50%"><center>Company Name</center></th>
-                                <th><center>Status Pemesanan</center></th>
-                                
+                                <th style="width:50%"><center>Company Name</center></th>                  
+                                <th><center>Tahun Pekerjaan</center></th>
+                                <th><center>Status Pemesanan</center></th>                                
                                 <th><center>Status Pekerjaan</center></th>
                                 <th><center>Status Laporan Akhir</center></th>
                             </tr>
@@ -36,6 +36,7 @@
                                     <td><center>{{$key+1}}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
                                     <td>{{ $row->client->company_name }}</td>
+                                    <td><center>{{ $row->year }}</center></td>                                    
                                     <td><center>
                                         @if ($row->state == 0)
                                             <span class="label label-warning">ON PROCESS</span>
