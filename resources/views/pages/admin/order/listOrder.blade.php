@@ -34,6 +34,7 @@
                                 <th><center>Date</center></th>
                                 <th><center>Company Name</center></th>
                                 <th><center>Jenis Laporan</center></th>
+                                <th><center>Bulan Pekerjaan</center></th> 
                                 <th><center>Tahun Pekerjaan</center></th>                                
                                 <th><center>Detail</center></th>
                             </tr>
@@ -50,7 +51,11 @@
                                     @else
                                         <td><center> - </center></td>
                                     @endif
-
+                                    @if (!empty($row->month))
+                                        <td><center><a href="{{ route('admin.order.year', $row->id)}}">{{ $row->month }}</a></center></td>
+                                    @else
+                                        <td><center><a href="{{ route('admin.order.year', $row->id)}}"><span><i class="fa fa-plus"></i></span></a><center></td>
+                                    @endif
                                     @if (!empty($row->year))
                                         <td><center><a href="{{ route('admin.order.year', $row->id)}}">{{ $row->year }}</a></center></td>
                                     @else
@@ -69,6 +74,7 @@
                                 <th>Date</th>
                                 <th>Company Name</th>
                                 <th>Jenis Pekerjaan</th>
+                                <th>Bulan Pekerjaan</th>
                                 <th>Tahun Pekerjaan</th>
                                 <th style="display:none;">Detail</th>
                             </tr>
