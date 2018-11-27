@@ -24,6 +24,7 @@
                                 <th>No</th>
                                 <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>                  
+                                <th><center>Bulan Pekerjaan</center></th>                
                                 <th><center>Tahun Pekerjaan</center></th>
                                 <th><center>Status Pemesanan</center></th>                                
                                 <th><center>Status Pekerjaan</center></th>
@@ -36,7 +37,16 @@
                                     <td><center>{{$key+1}}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
                                     <td>{{ $row->client->company_name }}</td>
-                                    <td><center>{{ $row->year }}</center></td>                                    
+                                    @if (!empty($row->month))
+                                    <td><center>{{ $row->month }}</a></center></td>
+                                    @else
+                                        <td><center>-</center></td>
+                                    @endif
+                                    @if (!empty($row->year))
+                                        <td><center>{{ $row->year }}</a></center></td>
+                                    @else
+                                        <td><center>-</center></td>
+                                    @endif                                  
                                     <td><center>
                                         @if ($row->state == 0)
                                             <span class="label label-warning">ON PROCESS</span>

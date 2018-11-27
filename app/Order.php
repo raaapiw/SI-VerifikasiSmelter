@@ -26,7 +26,8 @@ class Order extends Model
         'author_order',
         'pics',
         'dirkom',
-        'year'
+        'year',
+        'month'
     ];
     
     protected $appends =[

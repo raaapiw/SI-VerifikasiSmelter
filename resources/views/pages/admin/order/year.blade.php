@@ -61,8 +61,27 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <center>
-                                    <h3>Tahun Pekerjaan</h3> 
-                                    <input type="number" name="year" >
+                                        <div class="col-md-2">
+                                        <h3>Tahun Pekerjaan</h3> 
+                                        <input type="number" class="form-control" name="year" >
+                                        <br>
+                                        <br>                                        
+                                        <h3>Bulan Pekerjaan</h3> 
+                                        <select id="id" class="form-control custom-select" name="month" >                                            
+                                            <option   value="Januari">Januari </option>
+                                            <option   value="Februari">Februari </option>
+                                            <option   value="Maret">Maret </option>
+                                            <option   value="April">April </option>
+                                            <option   value="Mei">Mei </option>
+                                            <option   value="Juni">Juni </option>
+                                            <option   value="Juli">Juli </option>
+                                            <option   value="Agustus">Agustus </option>
+                                            <option   value="September">September </option>
+                                            <option   value="Oktober">Oktober </option>
+                                            <option   value="November">November </option>
+                                            <option   value="Desember">Desember </option>                                                                   
+                                        </select>  
+                                        </div>                                        
                                     </center>
                                 </div>
                             </div>

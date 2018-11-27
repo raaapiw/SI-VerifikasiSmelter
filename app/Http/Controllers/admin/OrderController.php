@@ -271,7 +271,7 @@ class OrderController extends Controller
                 $client = Client::where('id','=',$order->client_id)->first();
                 // dd($client);
                 $user = User::where('id','=',$client->user_id)->first();
-                $user->notify(new SuratPenawaranNotificationEmail($order));
+                // $user->notify(new SuratPenawaranNotificationEmail($order));
                     // $order = Order::update($data);
         
                 return redirect()->route('admin.dashboard');
@@ -328,6 +328,7 @@ class OrderController extends Controller
             $data = [
                 'client_id' => $request->client_id,
                 'year' => $request->year,
+                'month' => $request->month
             ];    
             
                 $order->fill($data)->save();
