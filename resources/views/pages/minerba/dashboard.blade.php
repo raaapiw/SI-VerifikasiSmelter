@@ -22,7 +22,6 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>                  
                                 <th><center>Bulan Pekerjaan</center></th>                
                                 <th><center>Tahun Pekerjaan</center></th>
@@ -35,7 +34,6 @@
                             @foreach($order as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
-                                    <td><center>{{ $row->created_at }}</center></td>
                                     <td>{{ $row->client->company_name }}</td>
                                     @if (!empty($row->month))
                                     <td><center>{{ $row->month }}</a></center></td>
@@ -91,6 +89,6 @@
 <script src="{{ asset('material/plugins/sweetalert/sweetalert.min.js')}}"></script>
 <script src="{{ asset('material/plugins/sweetalert/jquery.sweet-alert.custom.js')}}"></script>
 <script>$('#myTable').DataTable({
-    "order": [[ 1, "desc" ]]
+    "order": [[ 0, "asc" ]]
 });</script>
 @endsection
