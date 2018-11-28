@@ -18,6 +18,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
+                    <h2> DETAIL ORDER </h2>
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
