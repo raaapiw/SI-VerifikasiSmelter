@@ -26,7 +26,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th><center>Date</center></th>
+                                <th><center>Bulan Pekerjaan</center></th>
+                                <th><center>Tahun Pekerjaan</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
                                 <th><center>Download Laporan</center></th>
                             </tr>
@@ -36,7 +37,16 @@
                             @foreach($reports as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
-                                    <td><center>{{ $row->created_at }}</center></td>
+                                    @if (!empty($row->order->month))
+                                        <td><center>{{ $row->order->month }}</a></center></td>
+                                    @else
+                                        <td><center>-</center></td>
+                                    @endif
+                                    @if (!empty($row->order->year))
+                                        <td><center>{{ $row->order->year }}</a></center></td>
+                                    @else
+                                        <td><center>-</center></td>
+                                    @endif 
                                     <td>{{ $row->order->client->company_name }}</td>
                                     <td><center>
                                             @if($row->order->state_report == 1)

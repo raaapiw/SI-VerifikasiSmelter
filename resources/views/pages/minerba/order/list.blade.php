@@ -26,7 +26,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th><center>Date</center></th>
+                                <th><center>Bulan Pekerjaan</center></th>
+                                <th><center>Tahun Pekerjaan</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
                                 <th><center>Action</center></th>
                             </tr>
@@ -36,7 +37,16 @@
                             @foreach($orders as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
-                                    <td><center>{{ $row->created_at }}</center></td>
+                                    @if (!empty($row->month))
+                                    <td><center>{{ $row->month }}</a></center></td>
+                                    @else
+                                        <td><center>-</center></td>
+                                    @endif
+                                    @if (!empty($row->year))
+                                        <td><center>{{ $row->year }}</a></center></td>
+                                    @else
+                                        <td><center>-</center></td>
+                                    @endif 
                                     <td>{{ $row->client->company_name }}</td>
                                     <td><center>
                                             <a href="{{ Storage::url($row->spk), $row->id }}"><span><i class="fa fa-download"></i></span></a>
