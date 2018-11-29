@@ -26,7 +26,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th><center>Date</center></th>
+                                <th><center>Tahun Pekerjaan</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
                                 <th><center>Detail Foto Lapangan</center></th>
                                 <th><center>Action Surat Dirkom</center></th>
@@ -36,22 +36,23 @@
                             @foreach($order as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
-                                    <td><center>{{ $row->created_at }}</center></td>
+                                    <td><center>{{ $row->year }}</center></td>
                                     <td>{{ $row->client->company_name }}</td>
-                                    <td><center>
+                                    <td>
+                                        <center>
                                             <a href="{{ route('admin.other.detailPics', $row->id)}}"><span><i class="fa fa-search"></i></span></a>
                                         </center>
                                     </td>
                                     <td>
-                                        @if($row->dirkom == null)
+                                        @if(!empty($row->dirkom))
                                         <center>
-                                            <span class="label label-warning">ON PROCESS</span>
+                                                <a href="{{ route('admin.other.formLetter', $row->id)}}"><span><i class="fa fa-pencil"></i></span></a>
+                                                <a href="{{ route('admin.other.destroyDir', $row->id) }}"><span><i class="mdi mdi-delete"></i></span></a>
+                                                <a href="{{ Storage::url($row->dirkom) }}"><span><i class="fa fa-download"></i></span></a>
                                         </center>
                                         @else
                                         <center>
-                                            <a href="{{ route('admin.other.formLetter', $row->id)}}"><span><i class="fa fa-pencil"></i></span></a>
-                                            <a href="{{ route('admin.other.destroyDir', $row->id) }}"><span><i class="mdi mdi-delete"></i></span></a>
-                                            <a href="{{ Storage::url($row->dirkom) }}"><span><i class="fa fa-download"></i></span></a>
+                                                <span class="label label-warning">ON PROCESS</span>                                                
                                         </center>
                                         @endif
                                     </td>

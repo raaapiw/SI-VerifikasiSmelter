@@ -17,7 +17,7 @@ class OtherController extends Controller
 {
     //
     public function listPics(){
-        $order = Order::has('others')->get();
+        $order = Order::all();
         // dd($order);
 
         return view ('pages.admin.other.list', compact('order'));
