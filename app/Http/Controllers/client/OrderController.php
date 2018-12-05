@@ -151,9 +151,9 @@ class OrderController extends Controller
 
                 $order = Order::create($data);
                 // dd($order);
-                $user = User::where('id','=',2)->first();
+                // $user = User::where('id','=',2)->first();
                 // dd($user);
-                $user->notify(new SuratPermintaanNotificationEmail($order));
+                // $user->notify(new SuratPermintaanNotificationEmail($order));
                 // dd($user);
                 return redirect()->route('client.dashboard');
             
@@ -250,18 +250,18 @@ class OrderController extends Controller
 
                 $order->fill($data)->save();
         
-                $user = User::where('id','=',2)->first();
-                $user->notify(new SuratPermintaanNotificationEmail($order));
-                $user = User::where('id','=',3)->first();
-                $user->notify(new SuratPermintaanNotificationEmail($order));
-                $user = User::where('id','=',5)->first();
-                $user->notify(new SuratPermintaanNotificationEmail($order));
-                $user = User::where('id','=',7)->first();
-                $user->notify(new SuratPermintaanNotificationEmail($order));
-                $user = User::where('id','=',50)->first();
-                $user->notify(new SuratPermintaanNotificationEmail($order));
-                $user = User::where('id','=',60)->first();
-                $user->notify(new SuratPermintaanNotificationEmail($order));
+                // $user = User::where('id','=',2)->first();
+                // $user->notify(new SuratPermintaanNotificationEmail($order));
+                // $user = User::where('id','=',3)->first();
+                // $user->notify(new SuratPermintaanNotificationEmail($order));
+                // $user = User::where('id','=',5)->first();
+                // $user->notify(new SuratPermintaanNotificationEmail($order));
+                // $user = User::where('id','=',7)->first();
+                // $user->notify(new SuratPermintaanNotificationEmail($order));
+                // $user = User::where('id','=',50)->first();
+                // $user->notify(new SuratPermintaanNotificationEmail($order));
+                // $user = User::where('id','=',60)->first();
+                // $user->notify(new SuratPermintaanNotificationEmail($order));
                 return redirect()->route('client.dashboard');
             
             
@@ -280,18 +280,18 @@ class OrderController extends Controller
            
                 $order->fill($data)->save();
         
-                $user = User::where('id','=',2)->first();
-                $user->notify(new BuktiTransferNotificationEmail($order));
-                $user1 = User::where('id','=',3)->first();
-                $user1->notify(new BuktiTransferNotificationEmail($order));
-                $user2 = User::where('id','=',5)->first();
-                $user2->notify(new BuktiTransferNotificationEmail($order));
-                $user3 = User::where('id','=',7)->first();
-                $user3->notify(new BuktiTransferNotificationEmail($order));
-                $user4 = User::where('id','=',50)->first();
-                $user4->notify(new BuktiTransferNotificationEmail($order));
-                $user5 = User::where('id','=',60)->first();
-                $user5->notify(new BuktiTransferNotificationEmail($order));
+                // $user = User::where('id','=',2)->first();
+                // $user->notify(new BuktiTransferNotificationEmail($order));
+                // $user1 = User::where('id','=',3)->first();
+                // $user1->notify(new BuktiTransferNotificationEmail($order));
+                // $user2 = User::where('id','=',5)->first();
+                // $user2->notify(new BuktiTransferNotificationEmail($order));
+                // $user3 = User::where('id','=',7)->first();
+                // $user3->notify(new BuktiTransferNotificationEmail($order));
+                // $user4 = User::where('id','=',50)->first();
+                // $user4->notify(new BuktiTransferNotificationEmail($order));
+                // $user5 = User::where('id','=',60)->first();
+                // $user5->notify(new BuktiTransferNotificationEmail($order));
                 
             return redirect()->route('client.dashboard');
            
@@ -311,18 +311,18 @@ class OrderController extends Controller
            
                 $order->fill($data)->save();
     
-                $user = User::where('id','=',2)->first();
-                $user->notify(new PersetujuanPenawaranNotificationEmail($order));
-                $user1 = User::where('id','=',3)->first();
-                $user1->notify(new PersetujuanPenawaranNotificationEmail($order));
-                $user2 = User::where('id','=',5)->first();
-                $user2->notify(new PersetujuanPenawaranNotificationEmail($order));
-                $user3 = User::where('id','=',7)->first();
-                $user3->notify(new PersetujuanPenawaranNotificationEmail($order));
-                $user4 = User::where('id','=',50)->first();
-                $user4->notify(new PersetujuanPenawaranNotificationEmail($order));
-                $user5 = User::where('id','=',60)->first();
-                $user5->notify(new PersetujuanPenawaranNotificationEmail($order));
+                // $user = User::where('id','=',2)->first();
+                // $user->notify(new PersetujuanPenawaranNotificationEmail($order));
+                // $user1 = User::where('id','=',3)->first();
+                // $user1->notify(new PersetujuanPenawaranNotificationEmail($order));
+                // $user2 = User::where('id','=',5)->first();
+                // $user2->notify(new PersetujuanPenawaranNotificationEmail($order));
+                // $user3 = User::where('id','=',7)->first();
+                // $user3->notify(new PersetujuanPenawaranNotificationEmail($order));
+                // $user4 = User::where('id','=',50)->first();
+                // $user4->notify(new PersetujuanPenawaranNotificationEmail($order));
+                // $user5 = User::where('id','=',60)->first();
+                // $user5->notify(new PersetujuanPenawaranNotificationEmail($order));
             return redirect()->route('client.dashboard');
         }elseif (isset($request->spk)){
             $uploadedFile = $request->file('spk');
@@ -340,18 +340,18 @@ class OrderController extends Controller
            
                 $order->fill($data)->save();
     
-                $user = User::where('id','=',2)->first();
-                $user->notify(new SpkNotificationEmail($order));
-                $user1 = User::where('id','=',3)->first();
-                $user1->notify(new SpkNotificationEmail($order));
-                $user2 = User::where('id','=',5)->first();
-                $user2->notify(new SpkNotificationEmail($order));
-                $user3 = User::where('id','=',7)->first();
-                $user3->notify(new SpkNotificationEmail($order));
-                $user4 = User::where('id','=',50)->first();
-                $user4->notify(new SpkNotificationEmail($order));
-                $user5 = User::where('id','=',60)->first();
-                $user5->notify(new SpkNotificationEmail($order));
+                // $user = User::where('id','=',2)->first();
+                // $user->notify(new SpkNotificationEmail($order));
+                // $user1 = User::where('id','=',3)->first();
+                // $user1->notify(new SpkNotificationEmail($order));
+                // $user2 = User::where('id','=',5)->first();
+                // $user2->notify(new SpkNotificationEmail($order));
+                // $user3 = User::where('id','=',7)->first();
+                // $user3->notify(new SpkNotificationEmail($order));
+                // $user4 = User::where('id','=',50)->first();
+                // $user4->notify(new SpkNotificationEmail($order));
+                // $user5 = User::where('id','=',60)->first();
+                // $user5->notify(new SpkNotificationEmail($order));
             return redirect()->route('client.dashboard');
         }
     }
