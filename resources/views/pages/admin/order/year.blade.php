@@ -62,26 +62,17 @@
                                 <div class="form-group">
                                     <center>
                                         <div class="col-md-2">
-                                        <h3>Tahun Pekerjaan</h3> 
-                                        <input type="number" class="form-control" name="year" >
+                                            <h3>Tahun Pekerjaan</h3> 
+                                            <input type="number" class="form-control" name="year" >
+                                            <br>
+                                            <br>                                                                                
+                                        </div>                                      
+                                        <div class="col-md-4">
+                                            <h3>Periode Pekerjaan</h3> 
+                                            <input type="text" class="form-control" name="month" >
                                         <br>
-                                        <br>                                        
-                                        <h3>Bulan Pekerjaan</h3> 
-                                        <select id="id" class="form-control custom-select" name="month" >                                            
-                                            <option   value="Januari">Januari </option>
-                                            <option   value="Februari">Februari </option>
-                                            <option   value="Maret">Maret </option>
-                                            <option   value="April">April </option>
-                                            <option   value="Mei">Mei </option>
-                                            <option   value="Juni">Juni </option>
-                                            <option   value="Juli">Juli </option>
-                                            <option   value="Agustus">Agustus </option>
-                                            <option   value="September">September </option>
-                                            <option   value="Oktober">Oktober </option>
-                                            <option   value="November">November </option>
-                                            <option   value="Desember">Desember </option>                                                                   
-                                        </select>  
-                                        </div>                                        
+                                        <br>                                                                                
+                                        </div>                                                                                
                                     </center>
                                 </div>
                             </div>
