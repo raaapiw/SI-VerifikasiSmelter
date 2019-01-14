@@ -148,8 +148,8 @@ class ReportController extends Controller
                 $order = Order::where('id','=',$report->order_id)->first();
                 $client = Client::where('id','=',$order->client_id)->first();
 
-                // $user = User::where('id','=',$client->user_id)->first();
-                // $user->notify(new FinalReportNotificationEmail($report));
+                $user = User::where('id','=',$client->user_id)->first();
+                $user->notify(new FinalReportNotificationEmail($report));
                 // dd($order);
                 return redirect()->route('admin.report.listReport');
             }elseif (isset($request->covering_letter)){
