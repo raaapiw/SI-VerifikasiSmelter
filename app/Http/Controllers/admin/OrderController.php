@@ -271,7 +271,7 @@ class OrderController extends Controller
                 $client = Client::where('id','=',$order->client_id)->first();
                 // dd($client);
                 $user = User::where('id','=',$client->user_id)->first();
-                // $user->notify(new SuratPenawaranNotificationEmail($order));
+                $user->notify(new SuratPenawaranNotificationEmail($order));
                     // $order = Order::update($data);
         
                 return redirect()->route('admin.dashboard');
@@ -293,8 +293,8 @@ class OrderController extends Controller
                 $order->fill($data)->save();
            
                 $client = Client::where('id','=',$order->client_id)->first();
-                // $user = User::where('id','=',$client->user_id)->first();
-                // $user->notify(new DpInvoiceNotificationEmail($order));
+                $user = User::where('id','=',$client->user_id)->first();
+                $user->notify(new DpInvoiceNotificationEmail($order));
             // $order = Order::update($data);
         
             return redirect()->route('admin.dashboard');
@@ -345,8 +345,8 @@ class OrderController extends Controller
                 $order->fill($data)->save();
             
                 $client = Client::where('id','=',$order->client_id)->first();
-                // $user = User::where('id','=',$client->user_id)->first();
-                // $user->notify(new ApprovalNotificationEmail($order));
+                $user = User::where('id','=',$client->user_id)->first();
+                $user->notify(new ApprovalNotificationEmail($order));
                 return redirect()->route('admin.dashboard');
         }
     }
