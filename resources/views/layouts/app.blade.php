@@ -371,6 +371,7 @@
                                         <li>
                                             <a class="has-arrow" href="#" aria-expanded="false">Ver Perencanaan</a>
                                             <ul aria-expanded="false" class="collapse">
+                                                    <li><a href="{{ route('admin.upload.addName')}}">Tambah Nama Dokumen</a></li>
                                                 <li><a href="{{ route('admin.work.listDocper')}}">List Ver. Perencanaan</a></li>
                                             </ul>
                                         </li>
@@ -524,10 +525,10 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pemesanan</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('client.order.uploadOffer', Sentinel::getUser()->id)}}">Surat Permintaan</a></li>
-                                        <li><a href="{{ route('client.offer.listOrder', Sentinel::getUser()->id)}}">Surat Penawaran</a></li>
+                                        <li><a href="{{ route('client.order.uploadOffer', Sentinel::getUser()->id)}}">Tambah Order Baru</a></li>
+                                        {{-- <li><a href="{{ route('client.offer.listOrder', Sentinel::getUser()->id)}}">Surat Penawaran</a></li>
                                         <li><a href="{{ route('client.order.listDp', Sentinel::getUser()->id )}}">Pembayaran DP</a></li>
-                                        <li><a href="{{ route('client.order.listSPK')}}">Upload SPK</a></li>
+                                        <li><a href="{{ route('client.order.listSPK')}}">Upload SPK</a></li> --}}
                                         <li><a href="{{ route('client.order.listOrder')}}">List Pemesanan</a></li>
                                         
                                     </ul>
@@ -542,23 +543,25 @@
                                 <li>
                                     <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pekerjaan</span></a>
                                     <ul aria-expanded="false" class="collapse">
+                                        {{-- @if ($orders_== 1) --}}
                                         <li>
-                                            <a class="has-arrow" href="#" aria-expanded="false">Ver Perencanaan</a>
+                                            <a class="has-arrow" href="#" aria-expanded="false">Verifikasi<br> Perencanaan</a>
                                             <ul aria-expanded="false" class="collapse">
-                                                <li><a href="{{ route('client.docper.doc',Sentinel::getUser()->id)}}">Verifikasi Perencanaan</a></li>
+                                                <li><a href="{{ route('client.docper.listOrder',Sentinel::getUser()->id)}}">Dokumen Perencanaan</a></li>
                                                 <li><a href="{{ route('client.docper.listDoc',Sentinel::getUser()->id)}}">List Verifikasi <br> Perencanaan</a></li>
                                             </ul>
                                         </li>
+                                        {{-- @else --}}
                                         <li>
-                                            <a class="has-arrow" href="#" aria-expanded="false">Ver Kemajuan Fisik</a>
+                                            <a class="has-arrow" href="#" aria-expanded="false">Verifikasi<br> Kemajuan Fisik</a>
                                             <ul aria-expanded="false" class="collapse">
-                                                <li><a href="{{ route('client.work.addCurva',Sentinel::getUser()->id)}}">Dokumen Perencanaan<font color="red">*</font></a></li>
-                                                <li><a href="{{ route('client.document.doc',Sentinel::getUser()->id)}}">Verifikasi Kemajuan Fisik</a></li>
-                                                <li><a href="{{ route('client.work.listCurvaS',Sentinel::getUser()->id)}}">List Dokumen <br> Perencanaan</a></li>
-                                                <li><a href="{{ route('client.document.listDoc',Sentinel::getUser()->id)}}">List verifikasi <br> Kemajuan Fisik</a></li>
+                                                <li><a href="{{ route('client.work.addCurva',Sentinel::getUser()->id)}}">Laporan Perencanaan<font color="red">*</font></a></li>
+                                                <li><a href="{{ route('client.document.doc',Sentinel::getUser()->id)}}">Dokumen Kemajuan<br>Fisik</a></li>
+                                                <li><a href="{{ route('client.work.listCurvaS',Sentinel::getUser()->id)}}">List Laporan <br> Perencanaan</a></li>
+                                                <li><a href="{{ route('client.document.listDoc',Sentinel::getUser()->id)}}">List Dokumen <br> Kemajuan Fisik</a></li>
                                             </ul>
                                         </li>
-                                        
+                                        {{-- @endif --}}
                                     </ul>
                                 </li>
                                 <li>

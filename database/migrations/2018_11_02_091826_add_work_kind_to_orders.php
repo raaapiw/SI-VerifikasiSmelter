@@ -15,7 +15,7 @@ class AddWorkKindToOrders extends Migration
     {
         //
         Schema::table('orders', function($table) {
-            $table->String('work_kind')->nullable();
+            $table->integer('work_kind')->nullable();
         });
     }
 

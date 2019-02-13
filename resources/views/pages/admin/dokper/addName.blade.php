@@ -7,10 +7,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Tambah Dokumen Verifikasi Perencanaan</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Tambah Nama File</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">Tambah Dokumen Verifikasi Perencanaan</li>
+            <li class="breadcrumb-item active">Tambah Nama File</li>
         </ol>
     </div>
 </div>
@@ -28,23 +28,23 @@
                                 <th>No</th>
                                 <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
-                                <th><center>Tambah Dokumen</center></th>
+                                <th><center>Detail</center></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @if ($order->docper->state == null) --}}
-                            @foreach($order as $key=>$row)
+                            
+                            @foreach($orders as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
                                     <td>{{ $row->client->company_name }}</td>
                                     <td><center>
-                                            <a href="{{ route('client.docper.addDoc', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
+                                            {{-- <input type="hidden" name="state_work" value=1> --}}
+                                            <a href="{{ route('admin.upload.formName', $row->id)}}"><span><i class="fa fa-check m-r-10"></i></span></a>
                                         </center>
                                     </td>
                                 </tr>                            
                             @endforeach
-                            {{-- @endif --}}
                         </tbody>
                     </table>
                 </div>
@@ -59,6 +59,6 @@
 <script src="{{ asset('material/plugins/sweetalert/sweetalert.min.js')}}"></script>
 <script src="{{ asset('material/plugins/sweetalert/jquery.sweet-alert.custom.js')}}"></script>
 <script>$('#myTable').DataTable({
-    "order": [[ 1, "DESC" ]]
+    "order": [[ 1, "desc" ]]
 });</script>
 @endsection

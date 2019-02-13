@@ -143,6 +143,11 @@ Route::group(['middleware' => 'admin'], function() {
     
     Route::get('/admin/docper/detail/{id}', 'admin\DocperController@detail') ->name('admin.work.detail');
     Route::get('/admin/docper/listDocper', 'admin\DocperController@list') ->name('admin.work.listDocper');
+
+    Route::get('/admin/docper/addName', 'admin\UploadController@index') ->name('admin.upload.addName');
+    Route::get('/admin/docper/formName/{id}', 'admin\UploadController@create') ->name('admin.upload.formName');
+    Route::post('/admin/docper/storeName', 'admin\UploadController@store') ->name('admin.upload.store');
+    Route::post('/admin/docper/updateName/{id}', 'admin\UploadController@update') ->name('admin.upload.update');
     
     Route::get('/admin/announcement/list', 'admin\AnnouncementController@list') ->name('admin.announcement.list');
     Route::post('/admin/announcement/update/{id}', 'admin\AnnouncementController@update') ->name('admin.announcement.update');
@@ -153,6 +158,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::post('/admin/announcement/active/{id}', 'admin\AnnouncementController@active') ->name('admin.announcement.active');
     Route::post('/admin/announcement/not_active/{id}', 'admin\AnnouncementController@not_active') ->name('admin.announcement.not_active');
     
+
     
     
 });
