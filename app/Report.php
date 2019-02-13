@@ -8,6 +8,7 @@ class Report extends Model
 {
     //
     protected $fillable =[
+        'client_id',
         'order_id',
         'report',
         'covering_letter',
@@ -18,5 +19,9 @@ class Report extends Model
     public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
     }
 }

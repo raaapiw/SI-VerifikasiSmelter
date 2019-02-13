@@ -26,6 +26,9 @@ class Client extends Model
     public function orders(){
         return $this->hasMany(Order::class);
     }
+    public function reports(){
+        return $this->hasMany(Report::class);
+    }
     public function getFullCompanyNameAttribute()
     {
         $full_company_name = ''.$this->company_name;
