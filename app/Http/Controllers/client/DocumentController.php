@@ -120,7 +120,7 @@ class DocumentController extends Controller
 
             $data = [       
                 'work_id' => $request->work_id,
-                'type' =>$arrayType[$index],
+                // 'type' =>$arrayType[$index],
                 'evidence' => $path, 
             ];
             

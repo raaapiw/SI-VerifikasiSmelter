@@ -29,11 +29,11 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Jenis Pekerjaan</h4>
                                     <label class="custom-control custom-radio">
-                                        <input required id="radio5" name="radio" type="radio" class="custom-control-input" value="1" >
+                                        <input required id="radio5" name="radio" type="radio" class="custom-control-input" value="0" >
                                         <span class="custom-control-label">Verifikasi Kemajuan Fisik</span>
                                     </label>
                                     <label class="custom-control custom-radio">
-                                        <input id="radio6" name="radio" type="radio" class="custom-control-input" value="0" >
+                                        <input id="radio6" name="radio" type="radio" class="custom-control-input" value="1" >
                                         <span class="custom-control-label">Verifikasi Perencanaan</span>
                                     </label>
                                 </div>

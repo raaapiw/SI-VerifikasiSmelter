@@ -371,14 +371,14 @@
                                         <li>
                                             <a class="has-arrow" href="#" aria-expanded="false">Ver Perencanaan</a>
                                             <ul aria-expanded="false" class="collapse">
-                                                    <li><a href="{{ route('admin.upload.addName')}}">Tambah Nama Dokumen</a></li>
+                                                    <li><a href="{{ route('admin.docper.addName1')}}">Tambah Nama Dokumen</a></li>
                                                 <li><a href="{{ route('admin.work.listDocper')}}">List Ver. Perencanaan</a></li>
                                             </ul>
                                         </li>
                                         <li>
                                             <a class="has-arrow" href="#" aria-expanded="false">Ver Kemajuan Fisik</a>
                                             <ul aria-expanded="false" class="collapse">
-                                                <li><a href="{{ route('admin.work.curvaS')}}">List Dok. Perencanaan</a></li>
+                                                <li><a href="{{ route('admin.work.curvaS')}}">List Laporan <br> Perencanaan</a></li>
                                                 <li><a href="{{ route('admin.document.listDoc')}}">List Ver. Kemajuan Fisik</a></li>
                                             </ul>
                                         </li>
@@ -547,18 +547,19 @@
                                         <li>
                                             <a class="has-arrow" href="#" aria-expanded="false">Verifikasi<br> Perencanaan</a>
                                             <ul aria-expanded="false" class="collapse">
-                                                <li><a href="{{ route('client.docper.listOrder',Sentinel::getUser()->id)}}">Dokumen Perencanaan</a></li>
-                                                <li><a href="{{ route('client.docper.listDoc',Sentinel::getUser()->id)}}">List Verifikasi <br> Perencanaan</a></li>
+                                                {{-- <li><a href="{{ route('client.docper.listOrder',Sentinel::getUser()->id)}}">Dokumen Perencanaan</a></li> --}}
+                                                <li><a href="{{ route('client.docper.listDoc',Sentinel::getUser()->id)}}">Tambah Dokumen <br>Verifikasi Perencanaan</a></li>
                                             </ul>
                                         </li>
                                         {{-- @else --}}
                                         <li>
                                             <a class="has-arrow" href="#" aria-expanded="false">Verifikasi<br> Kemajuan Fisik</a>
                                             <ul aria-expanded="false" class="collapse">
-                                                <li><a href="{{ route('client.work.addCurva',Sentinel::getUser()->id)}}">Laporan Perencanaan<font color="red">*</font></a></li>
-                                                <li><a href="{{ route('client.document.doc',Sentinel::getUser()->id)}}">Dokumen Kemajuan<br>Fisik</a></li>
+                                                <li><a href="{{ route('client.work.addCurva',Sentinel::getUser()->id)}}">Tambah <br>Laporan Perencanaan<font color="red">*</font></a></li>
+                                                {{-- <li><a href="{{ route('client.document.doc',Sentinel::getUser()->id)}}">Dokumen Kemajuan<br>Fisik</a></li> --}}
+                                                
+                                                <li><a href="{{ route('client.document.listDoc',Sentinel::getUser()->id)}}">Tambah Dokumen <br> Kemajuan Fisik</a></li>
                                                 <li><a href="{{ route('client.work.listCurvaS',Sentinel::getUser()->id)}}">List Laporan <br> Perencanaan</a></li>
-                                                <li><a href="{{ route('client.document.listDoc',Sentinel::getUser()->id)}}">List Dokumen <br> Kemajuan Fisik</a></li>
                                             </ul>
                                         </li>
                                         {{-- @endif --}}

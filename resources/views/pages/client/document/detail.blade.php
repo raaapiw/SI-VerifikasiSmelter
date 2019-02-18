@@ -8,12 +8,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Patient Detail</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Upload Kemajuan Fisik</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            
-            <li class="breadcrumb-item"><a href="#">Patient</a></li>
-            <li class="breadcrumb-item active">Patient Detail</li>
+            <li class="breadcrumb-item active">Upload Kemajuan Fisik</li>
         </ol>
     </div>
 </div>
@@ -76,7 +74,7 @@
                                 <th>Date</th>
                                 <th><center>Dokumen</center></th>
                                 <th><center>Tipe Dokumen</center></th>
-                                <th><center>Action</center></th>
+                                <th><center>Tambah Dokumen</center></th>
                             </tr>
                         </thead>
                         @foreach($document as $row)
@@ -88,8 +86,12 @@
                             </td>   
                             <td>{{ $row->type}}</td>
                             <td><center>
+                                @if(isset($row->evidence))
                                     <a href="{{ route('client.document.editDoc',$row->id)}}"><span><i class="fa fa-pencil"></i></span></a>
-                                    <a href="{{ route('client.document.destroy', $row->id) }}"><span><i class="mdi mdi-delete"></i></span></a>
+                                @else
+                                    <a href="{{ route('client.document.editDoc',$row->id)}}"><span><i class="fa fa-plus"></i></span></a>
+                                    {{-- <a href="{{ route('client.document.destroy', $row->id) }}"><span><i class="mdi mdi-delete"></i></span></a> --}}
+                                @endif
                                 </center>
                             </td>                  
                         </tr>

@@ -28,7 +28,7 @@
                                 <th>No</th>
                                 <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
-                                <th><center>Detail</center></th>
+                                <th><center>Kirim Dokumen</center></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,7 +39,7 @@
                                     <td><center>{{ $row->created_at }}</center></td>
                                     <td>{{ $row->client->company_name }}</td>
                                     <td><center>
-                                            <a href="{{ route('client.docper.detail', $row->id)}}"><span><i class="fa fa-search"></i></span></a>
+                                            <a href="{{ route('client.docper.detail', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         </center>
                                     </td>
                                 </tr>                            

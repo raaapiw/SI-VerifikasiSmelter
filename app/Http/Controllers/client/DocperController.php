@@ -185,6 +185,7 @@ class DocperController extends Controller
     {
         //
         $docper = Docper::find($id);
+        // $order = Order::where('id','=',$docper->order_id)->first();
         $arrayFile = $request->file('evidence');
         // return dd($arrayFile);
         foreach ($arrayFile as $row){
@@ -200,9 +201,10 @@ class DocperController extends Controller
             $data = [       
                 'order_id' => $request->order_id,
                 'evidence' => $path, 
-                'type' => $request->type,
+                // 'type' => $request->type,
             ];
             $docper->fill($data)->save();
+            
             
             $user = User::where('id','=',2)->first();
             $user->notify(new DokumenPerencanaanNotificationEmail($docper));

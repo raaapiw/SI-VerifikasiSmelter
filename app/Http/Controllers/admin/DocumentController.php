@@ -63,9 +63,14 @@ class DocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
+        $order = Order::find($id);
+        $work = Work::where('order_id', '=',$id)->first();
+
+
+        return view('pages.admin.fisik.formName1', compact('order','work'));
     }
 
     /**
@@ -77,6 +82,20 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         //
+        $arrayName = $request->name;
+        foreach($arrayName as $index=>$row){
+            $data = [       
+                'work_id' => $request->work_id,
+                'type' =>$arrayName[$index],
+                
+            ];
+            
+            $document = Document::create($data);
+        }
+
+        return redirect()->route('admin.dashboard');
+        
+        
     }
 
     /**
@@ -99,6 +118,14 @@ class DocumentController extends Controller
     public function edit($id)
     {
         //
+        $document = Document::find($id);
+        // dd($docper);
+        $order = Order::where('id','=',$document->work->order_id)->first();
+        // dd($order);
+        $work = Work::where('order_id','=',$order->id)->first();
+
+
+        return view('pages.admin.fisik.edit', compact('order','document','work'));
     }
 
     /**
@@ -111,6 +138,19 @@ class DocumentController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $document = Document::find($id);
+        
+        $data = [       
+                'order_id' => $request->order_id,
+                'type' =>$request->type
+                
+            ];
+            
+            $document->fill($data)->save();
+        
+
+        return redirect()->route('admin.dashboard');
+    
     }
 
     /**
@@ -122,5 +162,8 @@ class DocumentController extends Controller
     public function destroy($id)
     {
         //
+        $document = Document::find($id)->delete();
+        
+        return redirect()->route('admin.dashboard');
     }
 }

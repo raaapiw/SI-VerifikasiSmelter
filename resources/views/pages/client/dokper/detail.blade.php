@@ -76,7 +76,7 @@
                                 <th>Date</th>
                                 <th><center>Dokumen</center></th>
                                 <th><center>Tipe Dokumen</center></th>
-                                <th><center>Action</center></th>
+                                <th><center>Upload</center></th>
                             </tr>
                         </thead>
                         @foreach($docper as $row)
@@ -88,9 +88,13 @@
                             </td>   
                             <td>{{ $row->type}}</td>
                             <td><center>
-                                    <a href="{{ route('client.docper.editDoc',$row->id)}}"><span><i class="fa fa-pencil"></i></span></a>
-                                    <a href="{{ route('client.docper.destroy', $row->id) }}"><span><i class="mdi mdi-delete"></i></span></a>
-                                </center>
+                                @if(isset($row->evidence))
+                                    <a href="{{ route('client.docper.editDoc',$row->id)}}"><span><i class="fa fa-pencil"></i></span></a>                                    
+                                @else
+                                    <a href="{{ route('client.docper.editDoc',$row->id)}}"><span><i class="fa fa-send"></i></span></a>
+                                    {{-- <a href="{{ route('client.docper.destroy', $row->id) }}"><span><i class="mdi mdi-delete"></i></span></a> --}}
+                                @endif
+                            </center>
                             </td>                  
                         </tr>
                         @endforeach

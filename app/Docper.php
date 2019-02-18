@@ -17,10 +17,10 @@ class Docper extends Model
         'name_type'
     ];
 
-    // public function order()
-    // {
-    //     return $this->belongsTo(Order::class);
-    // }
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
     public function getRealNameEvidenceAttribute()
     {
         if($this->evidence != NULL){
