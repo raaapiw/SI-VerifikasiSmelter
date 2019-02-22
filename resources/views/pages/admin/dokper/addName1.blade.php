@@ -28,7 +28,7 @@
                                 <th>No</th>
                                 <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
-                                <th><center>Detail</center></th>
+                                <th><center>Tambah Nama Dokumen</center></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,7 +40,7 @@
                                     <td>{{ $row->client->company_name }}</td>
                                     <td><center>
                                             {{-- <input type="hidden" name="state_work" value=1> --}}
-                                            <a href="{{ route('admin.docper.formName1', $row->id)}}"><span><i class="fa fa-check m-r-10"></i></span></a>
+                                            <a href="{{ route('admin.docper.formName1', $row->id)}}"><span><i class="fa fa-plus"></i></span></a>
                                         </center>
                                     </td>
                                 </tr>                            

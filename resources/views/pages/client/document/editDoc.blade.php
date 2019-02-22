@@ -41,7 +41,7 @@
                                                 </select>    
                                             </div> --}}
                                         <div class="form-group">
-                                            <h4 class="card-title">Nama Dokumen</h4>
+                                            <h4 class="card-title">Nama WBS</h4>
                                             <input type="text" class="form-control" id="nameFile" disabled required/ placeholder="{{$document->type}}">
                                         </div>
                                         <h4 class="card-title">Dokumen Pekerjaan</h4>

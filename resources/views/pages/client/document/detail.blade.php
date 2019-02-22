@@ -72,8 +72,8 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Date</th>
-                                <th><center>Dokumen</center></th>
-                                <th><center>Tipe Dokumen</center></th>
+                                <th><center>File</center></th>
+                                <th><center>Nama Dokumen</center></th>
                                 <th><center>Tambah Dokumen</center></th>
                             </tr>
                         </thead>

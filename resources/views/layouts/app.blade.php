@@ -534,9 +534,9 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pertemuan</span></a>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Meeting</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('client.meeting.listMeeting')}}">Jadwal Pertemuan</a></li>
+                                        <li><a href="{{ route('client.meeting.listMeeting')}}">Jadwal Meeting</a></li>
                                         <li><a href="{{ route('client.meeting.listBA')}}">List Berita Acara</a></li>
                                     </ul>
                                 </li>

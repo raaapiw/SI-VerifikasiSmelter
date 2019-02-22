@@ -64,7 +64,7 @@ class DocumentController extends Controller
       
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
         $temporder = Order::has('work');
-        $order = $temporder->where('client_id','=',$client->id)->get();
+        $order = $temporder->where('client_id','=',$client->id)->where('state_work','=',null)->get();
         // $order = Order::where('client_id','=',$client->id)->get();
         // dd($order);
         // $work  = Work::where('order_id','=',$order->id)->get();
