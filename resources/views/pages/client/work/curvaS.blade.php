@@ -6,10 +6,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($work) ? 'Edit Laporan Perencanaan': 'Upload Laporan Perencanaan'}}</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($work) ? 'Edit Laporan Perencanaan': 'Upload Laporan Perencanaan & Kurva S'}}</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">{{ isset($work) ? 'Edit Laporan Perencanaan':'Upload Laporan Perencanaan'}}</li>
+            <li class="breadcrumb-item active">{{ isset($work) ? 'Edit Laporan Perencanaan':'Upload Laporan Perencanaan & Kurva S'}}</li>
         </ol>
     </div>
 </div>
@@ -23,12 +23,13 @@
                 <form action="{{isset($work) ? route('client.work.update', $work->id) : route('client.work.store') }}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="order_id" value="{{$order->id}}">
                     <div class="form-body">
-                        <h3 class="box-title m-t-40">Upload Verifikasi Perencanaan</h3>
+                        <h3 class="box-title m-t-40"><b>Upload Verifikasi Perencanaan</b></h3>
                         <hr>
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">File Verifikasi Perencanaan</h4>
+                                    <h4 class="card-title"><b>File Laporan Perencanaan & Kurva S</b></h4>
+                                    <h5 class="card-title" style="color:red">Harap masukkan Laporan Perencanaan, Kurva S perencanaan & Kurva S Klaim ke dalam format RAR atau ZIP dengan nama file LaporanPerencanaan_(Nama Perusahaan).</h5>
                                     <input type="file" id="file" name="curva_s" class="dropify" required/>
                                 </div>
                             </div>
