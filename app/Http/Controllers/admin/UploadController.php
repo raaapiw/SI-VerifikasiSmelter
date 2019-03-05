@@ -1,62 +1,39 @@
 <?php
 
-namespace App\Http\Controllers\client;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use \Input as Input;
-use Storage;
 use App\Order;
-use App\Document;
-use App\Work;
-use App\Client;
-use App\Report;
-use Sentinel;
+use App\Upload;
 
-class ReportController extends Controller
+class UploadController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function listLetter()
-    {
-        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $orders = Order::where('client_id','=',$client->id)->get();
-
-        return view('pages.client.report.listLetter', compact('orders'));
-        
-    }
-    public function listReceipt()
-    {
-        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $orders = Order::where('client_id','=',$client->id)->get();
-
-        return view('pages.client.report.listReceipt', compact('orders'));
-        
-    }
-     public function index()
+    public function index()
     {
         //
-        $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        // $order = Order::where('client_id','=',$client->id)->get();
-        // dd($orders);
-        // $report = Report::where('order_id','=',$order->id)->get();
-        $reports = Report::where('client_id','=',$client->id)->get();
-        // dd($report);
-        return view('pages.client.report.list', compact('orders','reports'));
+        $orders = Order::where('work','=',1)->get();
+
+        return view('pages.admin.dokper.addName', compact('orders'));
     }
-   
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
+        $order = Order::find($id);
+
+
+        return view('pages.admin.dokper.formName', compact('order'));
     }
 
     /**
@@ -68,6 +45,21 @@ class ReportController extends Controller
     public function store(Request $request)
     {
         //
+        
+        $arrayName = $request->name;
+        foreach($arrayName as $index=>$row){
+            $data = [       
+                'order_id' => $request->order_id,
+                'pics' =>$arrayName[$index],
+                
+            ];
+            
+            $upload = Upload::create($data);
+        }
+
+        return redirect()->route('admin.dashboard');
+        
+        // dd($data);
     }
 
     /**
@@ -102,6 +94,19 @@ class ReportController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $upload = Upload::find($id);
+        $arrayName = $request->name;
+        foreach($arrayName as $index=>$row){
+            $data = [       
+                'order_id' => $request->order_id,
+                'name' =>$arrayName[$index],
+                
+            ];
+            
+            $upload->fill($data)->save();
+        }
+
+        return redirect()->route('admin.dashboard');
     }
 
     /**

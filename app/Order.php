@@ -18,7 +18,7 @@ class Order extends Model
         'state_offer',
         'contract',
         'spk',
-        'admin_id',
+        'admin_id',     
         'state_work',
         'state_report',
         'author_work',
@@ -27,7 +27,9 @@ class Order extends Model
         'pics',
         'dirkom',
         'year',
-        'month'
+        'month',
+        'work_kind',
+        'work'
     ];
     
     protected $appends =[

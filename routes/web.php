@@ -143,6 +143,23 @@ Route::group(['middleware' => 'admin'], function() {
     
     Route::get('/admin/docper/detail/{id}', 'admin\DocperController@detail') ->name('admin.work.detail');
     Route::get('/admin/docper/listDocper', 'admin\DocperController@list') ->name('admin.work.listDocper');
+
+    Route::get('/admin/docper/addName', 'admin\UploadController@index') ->name('admin.upload.addName');
+    Route::get('/admin/docper/formName/{id}', 'admin\UploadController@create') ->name('admin.upload.formName');
+    Route::post('/admin/docper/storeName', 'admin\UploadController@store') ->name('admin.upload.store');
+    Route::post('/admin/docper/updateName/{id}', 'admin\UploadController@update') ->name('admin.upload.update');
+    Route::get('/admin/docper/addName1', 'admin\DocperController@index') ->name('admin.docper.addName1');
+    Route::get('/admin/docper/formName1/{id}', 'admin\DocperController@create') ->name('admin.docper.formName1');
+    Route::get('/admin/docper/editformName1/{id}', 'admin\DocperController@edit') ->name('admin.docper.editformName1');
+    Route::post('/admin/docper/storeName1', 'admin\DocperController@store') ->name('admin.docper.store1');
+    Route::post('/admin/docper/updateName1/{id}', 'admin\DocperController@update') ->name('admin.docper.update1');
+    Route::get('/admin/docper/destroy/{id}', 'admin\DocperController@destroy')->name('admin.docper.destroy');
+    
+    Route::get('/admin/document/formName1/{id}', 'admin\DocumentController@create') ->name('admin.document.formName1');
+    Route::get('/admin/document/editformName1/{id}', 'admin\DocumentController@edit') ->name('admin.document.editformName1');
+    Route::post('/admin/document/storeName1', 'admin\DocumentController@store') ->name('admin.document.store1');
+    Route::post('/admin/document/updateName1/{id}', 'admin\DocumentController@update') ->name('admin.document.update1');
+    Route::get('/admin/document/destroy/{id}', 'admin\DocumentController@destroy')->name('admin.document.destroy');
     
     Route::get('/admin/announcement/list', 'admin\AnnouncementController@list') ->name('admin.announcement.list');
     Route::post('/admin/announcement/update/{id}', 'admin\AnnouncementController@update') ->name('admin.announcement.update');
@@ -153,6 +170,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::post('/admin/announcement/active/{id}', 'admin\AnnouncementController@active') ->name('admin.announcement.active');
     Route::post('/admin/announcement/not_active/{id}', 'admin\AnnouncementController@not_active') ->name('admin.announcement.not_active');
     
+
     
     
 });

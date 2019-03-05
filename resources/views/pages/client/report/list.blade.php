@@ -32,8 +32,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(isset($report))
-                            @foreach($report as $key=>$row)
+                            @if(isset($reports))
+                            @foreach($reports as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>

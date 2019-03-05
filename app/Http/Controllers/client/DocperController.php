@@ -12,6 +12,7 @@ use App\Work;
 use App\Client;
 use App\User;
 use App\Docper;
+use App\Upload;
 use Sentinel;
 use App\Notifications\DokumenPerencanaanNotificationEmail;
 
@@ -32,11 +33,12 @@ class DocperController extends Controller
     public function addDoc($id)
     {
         $order = Order::find($id);
+        $upload = Upload::where('order_id','=',$id)->get();
         // dd($order);
         // dd($work);
         // $document = Docper::all();
         // dd($document);
-        return view('pages.client.dokper.addDoc', compact('work','document','order'));
+        return view('pages.client.dokper.addDoc', compact('upload','document','order'));
     }
     
     public function index()
@@ -44,7 +46,9 @@ class DocperController extends Controller
         //
       
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
-        $order = Order::where('client_id','=',$client->id)->get();
+        $temporder = Order::where('client_id','=',$client->id)->first();
+        $order = $temporder->where('work','=',1)->where('state_work','=',null)->get();
+        
         // dd($order);
         // $work  = Work::where('order_id','=',$order->id)->get();
         // dd($work);
@@ -59,7 +63,7 @@ class DocperController extends Controller
       
         $client = Client::where('user_id','=',Sentinel::getUser()->id)->first();
         $temporder = Order::has('docpers');
-        $order = $temporder->where('client_id','=',$client->id)->get();
+        $order = $temporder->where('client_id','=',$client->id)->where('state_work','=',null)->get();
         // $order = Order::where('client_id','=',$client->id)->get();
         // dd($order);
         // $work  = Work::where('order_id','=',$order->id)->get();
@@ -115,7 +119,8 @@ class DocperController extends Controller
             $data = [       
                 'order_id' => $request->order_id,
                 'type' =>$arrayType[$index],
-                'evidence' => $path, 
+                'evidence' => $path,
+                'state' => 1 
             ];
             
             // dd($data);
@@ -180,6 +185,7 @@ class DocperController extends Controller
     {
         //
         $docper = Docper::find($id);
+        // $order = Order::where('id','=',$docper->order_id)->first();
         $arrayFile = $request->file('evidence');
         // return dd($arrayFile);
         foreach ($arrayFile as $row){
@@ -195,9 +201,10 @@ class DocperController extends Controller
             $data = [       
                 'order_id' => $request->order_id,
                 'evidence' => $path, 
-                'type' => $request->type,
+                // 'type' => $request->type,
             ];
             $docper->fill($data)->save();
+            
             
             $user = User::where('id','=',2)->first();
             $user->notify(new DokumenPerencanaanNotificationEmail($docper));

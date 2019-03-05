@@ -62,7 +62,7 @@ class OrderController extends Controller
     {
         //
         $client = Client::where('user_id','=',$id)->first();
-        $order = Order::where('client_id','=',$client->id)->get();
+        // $order = Order::where('client_id','=',$client->id)->get();
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
         return view('pages.client.order.uploadOffer', compact('client','order'));
@@ -163,20 +163,28 @@ class OrderController extends Controller
             
         } elseif (isset($request->transfer_proof)){
             $uploadedFile = $request->file('transfer_proof');
+            $uploadedFile1 = $request->file('spk');
             $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
                 if (Storage::exists($uploadedFileName)) {
                     Storage::delete($uploadedFileName);
                 }
-                $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
+                $path = $uploadedFile->storeAs('public/files/order/client/transfer_proof', $uploadedFileName);
+            $uploadedFileName1 = $request->client_id . '-' . $uploadedFile1->getClientOriginalName();
+            if (Storage::exists($uploadedFileName1)) {
+                Storage::delete($uploadedFileName1);
+            }
+            $path1 = $uploadedFile1->storeAs('public/files/order/client/spk', $uploadedFileName1);
     
                 $data = [
                     'client_id' => $request->client_id,
                     'transfer_proof' => $path,
+                    'spk' => $path1,
+                    'work' => $request->radio
                 ];    
            
             $order = Order::create($data);
-            $user = User::where('id','=',2)->first();
-            $user->notify(new BuktiTransferNotificationEmail($order));
+            // $user = User::where('id','=',2)->first();
+            // $user->notify(new BuktiTransferNotificationEmail($order));
             return redirect()->route('client.dashboard');
            
         } elseif (isset($request->spk)){
@@ -190,12 +198,13 @@ class OrderController extends Controller
                 $data = [
                     'client_id' => $request->client_id,
                     'spk' => $path,
+                    'work_kind' => $request->radio
                 ];    
         //    dd($data);
             $order = Order::create($data);
                 // dd($order);
-            $user = User::where('id','=',2)->first();
-            $user->notify(new SpkNotificationEmail($order));
+            // $user = User::where('id','=',2)->first();
+            // $user->notify(new SpkNotificationEmail($order));
             return redirect()->route('client.dashboard');
            
         } 

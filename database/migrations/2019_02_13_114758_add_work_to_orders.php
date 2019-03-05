@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddWorkKindToOrders extends Migration
+class AddWorkToOrders extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class AddWorkKindToOrders extends Migration
     {
         //
         Schema::table('orders', function($table) {
-            $table->integer('work_kind')->nullable();
+            $table->integer('work')->nullable();
         });
     }
 
@@ -27,5 +27,8 @@ class AddWorkKindToOrders extends Migration
     public function down()
     {
         //
+        Schema::table('orders', function($table) {
+            $table->dropColumn('work');
+        });
     }
 }

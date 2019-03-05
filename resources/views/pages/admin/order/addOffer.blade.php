@@ -26,10 +26,10 @@
                         <tr>
                             <th style="width : 5%">ID</th>
                             <th>Date</th>
-                            <th style="width : 30%">Company Name</th>
-                            <th style="width : 10%">Surat Penawaran</th>
+                            <th style="width : 60%">Company Name</th>
+                            {{-- <th style="width : 10%">Surat Penawaran</th>
                             <th style="width : 10%">Status Penawaran</th>
-                            <th style="width : 10%">Invoice DP</th>
+                            <th style="width : 10%">Invoice DP</th> --}}
                             <th style="width : 10%">Accept Pemesanan</th>
                             <th style="width : 10%">Status Order</th>
                             
@@ -41,7 +41,7 @@
                                 <td>{{ $row->id }}</td>
                                 <td>{{ $row->created_at }}</td>
                                 <td>{{ $row->client->company_name }}</td>
-                                <td><center>
+                                {{-- <td><center>
                                         <a href="{{ route('admin.order.uploadOffer', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         <a href="{{ Storage::url($row->offer_letter) }}"><span><i class="fa fa-download"></i></span></a></center>
                                 </td>
@@ -56,7 +56,7 @@
                                         <a href="{{ route('admin.order.uploadDp', $row->id)}}"><span><i class="fa fa-send"></i></span></a>
                                         <a href="{{ Storage::url($row->dp_invoice) }}"><span><i class="fa fa-download"></i></span></a>
                                     </center>
-                                </td>
+                                </td> --}}
                                 <td class="text-nowrap">
                                     <center>
                                             @if ($row->state == 0)

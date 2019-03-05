@@ -6,10 +6,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($order->letter_of_request) ? 'Edit Surat Permintaan': 'Upload Surat Permintaan'}}</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($order) ? 'Edit Pemesanan': 'Tambah Order Baru'}}</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">{{ isset($order->letter_of_request) ? 'Edit Surat Permintaan':'Upload Surat Permintaan'}}</li>
+            <li class="breadcrumb-item active">{{ isset($order) ? 'Edit Pemesanan':'Tambah Order Baru'}}</li>
         </ol>
     </div>
 </div>
@@ -20,27 +20,30 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{ isset($order->letter_of_request) ? route('client.order.update', $order->id) : route('client.order.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ isset($order) ? route('client.order.update', $order->id) : route('client.order.store')}}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="client_id" value="{{ $client->id}}">
                     <div class="form-body">
-                        <h3 class="box-title m-t-40">Upload Surat Permintaan</h3>
                         <hr>
                         <div class="col-md-12">
                             <div class="card">
-                                {{-- <div class="card-body">
+                                <div class="card-body">
                                     <h4 class="card-title">Jenis Pekerjaan</h4>
                                     <label class="custom-control custom-radio">
-                                        <input required id="radio5" name="radio" type="radio" class="custom-control-input" value="1" >
-                                        <span class="custom-control-label">Verifikasi Kemajuan</span>
+                                        <input required id="radio5" name="radio" type="radio" class="custom-control-input" value="0" >
+                                        <span class="custom-control-label">Verifikasi Kemajuan Fisik</span>
                                     </label>
                                     <label class="custom-control custom-radio">
-                                        <input id="radio6" name="radio" type="radio" class="custom-control-input" value="0" >
+                                        <input id="radio6" name="radio" type="radio" class="custom-control-input" value="1" >
                                         <span class="custom-control-label">Verifikasi Perencanaan</span>
                                     </label>
-                                </div> --}}
+                                </div>
                                 <div class="card-body">
-                                    <h4 class="card-title">File Surat Permintaan</h4>
-                                    <input type="file" id="file" name="letter_of_request" class="dropify" accept="application/pdf" required/>
+                                    <h4 class="card-title">File SPK</h4>
+                                    <input type="file" id="file" name="spk" class="dropify" accept="application/pdf" required/>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">File Bukti Transfer</h4>
+                                    <input type="file" id="file" name="transfer_proof" class="dropify" accept="application/pdf" required/>
                                 </div>
                             </div>
                         </div>

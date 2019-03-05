@@ -76,6 +76,7 @@
                                 <th>Date</th>
                                 <th><center>Tipe Dokumen</center></th>
                                 <th><center>Dokumen</center></th>
+                                <th><center>Action</center></th>
                             </tr>
                         </thead>
                         @foreach($document as $row)
@@ -85,10 +86,20 @@
                             <td>{{ $row->type}}</td>
                             <td>
                                 <center><a href="{{ Storage::url($row->evidence) }}"><span>{{$row->RealNameEvidence}}</span></a></center>
-                            </td>                  
+                            </td> 
+                            <td><center>
+                                <a href="{{ route('admin.document.editformName1',$row->id)}}"><span><i class="fa fa-pencil"></i></span></a>
+                                <a href="{{ route('admin.document.destroy', $row->id) }}"><span><i class="mdi mdi-delete"></i></span></a>
+                            </center>
+                        </td>                   
                         </tr>
                         @endforeach
                     </table>
+                    <br>
+                    <br>
+                    <a href="{{route('admin.document.formName1', $order->id)}}">
+                        <button type="button" class="btn btn-success" value="upload"><i class="fa fa-plus"></i> Tambah Nama Dokumen</button>
+                    </a>
                 </div>
             </div>
         </div>

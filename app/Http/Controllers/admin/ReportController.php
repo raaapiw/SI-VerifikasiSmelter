@@ -139,6 +139,7 @@ class ReportController extends Controller
                 $path = $uploadedFile->storeAs('public/files/report/admin', $uploadedFileName);
     
                 $data = [
+                    'client_id' => $request->client_id,
                     'order_id' => $request->order_id,
                     'report' => $path,
                 ];
@@ -333,7 +334,7 @@ class ReportController extends Controller
         $order = Order::find($id);
         $report = Report::where('order_id','=',$id);
         $data = [
-            'state_report' => $request->state_report,
+            'state_report' => 1,
             'author_report' => Sentinel::getUser()->name
         ];
        

@@ -65,17 +65,17 @@
                         <thead>
                             <th>ID</th>
                             <th>Date</th>
-                            <th>Surat Permintaan</th>
-                            <th>Surat Persetujuan Penawaran</th>    
-                            <th>Bukti Transfer</th>
-                            <th>SPK</th>
-                            <th>Kontrak</th>
+                            {{-- <th>Surat Permintaan</th>
+                            <th>Surat Persetujuan Penawaran</th>     --}}
+                            <th><center>Bukti Transfer</center></th>
+                            <th><center>SPK</center></th>
+                            {{-- <th>Kontrak</th> --}}
                         </thead>
                     </tr>
                     <tr>
                         <td>{{ $order->id}}</td>
                         <td>{{ $order->created_at}}</td>
-                        <td>
+                        {{-- <td>
                             @if ($order->letter_of_request !== null)
                             <center><a href="{{ Storage::url($order->letter_of_request) }}"><span><i class="fa fa-download"></i></span></a></center>
                             @else
@@ -88,7 +88,7 @@
                             @else
                                 Dokumen Tidak ada !
                             @endif
-                        </td>
+                        </td> --}}
                         <td>
                             @if ($order->transfer_proof !== null)
                             <center><a href="{{ Storage::url($order->transfer_proof) }}"><span><i class="fa fa-download"></i></span></a></center>
@@ -103,13 +103,13 @@
                                 Dokumen Tidak ada
                             @endif
                         </td>  
-                        <td>
+                        {{-- <td>
                             @if ($order->contract !== null)
                             <center><a href="{{ Storage::url($order->contract) }}"><span><i class="fa fa-download"></i></span></a></center>
                             @else
                                 Dokumen Tidak ada
                             @endif
-                        </td>                       
+                        </td>                        --}}
                     </tr>
                 </table>
             </div>

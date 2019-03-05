@@ -22,6 +22,7 @@
             <div class="card-body">
                 <form action="{{ isset($report) ? route('admin.report.update', $report->id) : route('admin.report.store') }}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="order_id" value="{{$orders->id}}">
+                    <input type="hidden" name="client_id" value="{{$orders->client->id}}">
                     <div class="form-body">
                         <h3 class="box-title m-t-40">Upload Laporan</h3>
                         <hr>

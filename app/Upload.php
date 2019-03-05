@@ -4,16 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Report extends Model
+class Upload extends Model
 {
     //
     protected $fillable =[
-        'client_id',
         'order_id',
-        'report',
-        'covering_letter',
-        'receipt',
-        'state',
+        'name',
+        'pics',
         'jenis'
     ];
     public function order()

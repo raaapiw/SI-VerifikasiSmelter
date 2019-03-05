@@ -8,12 +8,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Company Detail</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Detail Perusahaan</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            
-            <li class="breadcrumb-item"><a href="#">Company</a></li>
-            <li class="breadcrumb-item active">Company Detail</li>
+            <li class="breadcrumb-item active">Detail Perusahaan</li>
         </ol>
     </div>
 </div>
@@ -76,7 +74,7 @@
                                 <th>Date</th>
                                 <th><center>Dokumen</center></th>
                                 <th><center>Tipe Dokumen</center></th>
-                                <th><center>Action</center></th>
+                                <th><center>Upload</center></th>
                             </tr>
                         </thead>
                         @foreach($docper as $row)
@@ -88,9 +86,13 @@
                             </td>   
                             <td>{{ $row->type}}</td>
                             <td><center>
-                                    <a href="{{ route('client.docper.editDoc',$row->id)}}"><span><i class="fa fa-pencil"></i></span></a>
-                                    <a href="{{ route('client.docper.destroy', $row->id) }}"><span><i class="mdi mdi-delete"></i></span></a>
-                                </center>
+                                @if(isset($row->evidence))
+                                    <a href="{{ route('client.docper.editDoc',$row->id)}}"><span><i class="fa fa-pencil"></i></span></a>                                    
+                                @else
+                                    <a href="{{ route('client.docper.editDoc',$row->id)}}"><span><i class="fa fa-send"></i></span></a>
+                                    {{-- <a href="{{ route('client.docper.destroy', $row->id) }}"><span><i class="mdi mdi-delete"></i></span></a> --}}
+                                @endif
+                            </center>
                             </td>                  
                         </tr>
                         @endforeach

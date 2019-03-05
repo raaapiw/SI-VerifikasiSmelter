@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddWorkKindToOrders extends Migration
+class AddClientIdToReports extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,9 @@ class AddWorkKindToOrders extends Migration
     public function up()
     {
         //
-        Schema::table('orders', function($table) {
-            $table->integer('work_kind')->nullable();
+        Schema::table('reports', function($table) {
+            $table->integer('client_id')->nullable();
+            
         });
     }
 

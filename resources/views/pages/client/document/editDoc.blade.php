@@ -6,10 +6,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Edit Dokumen</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Tambah Dokumen</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">Edit Dokumen</li>
+            <li class="breadcrumb-item active">Tambah Dokumen</li>
         </ol>
     </div>
 </div>
@@ -41,8 +41,8 @@
                                                 </select>    
                                             </div> --}}
                                         <div class="form-group">
-                                            <h4 class="card-title">Nama Dokumen</h4>
-                                            <input type="text" class="form-control" id="nameFile" name="type" required/ placeholder="{{$document->type}}">
+                                            <h4 class="card-title">Nama WBS</h4>
+                                            <input type="text" class="form-control" id="nameFile" disabled required/ placeholder="{{$document->type}}">
                                         </div>
                                         <h4 class="card-title">Dokumen Pekerjaan</h4>
                                         <input type="file" id="file" name="evidence[]" class="dropify" accept="application/rar" required/>

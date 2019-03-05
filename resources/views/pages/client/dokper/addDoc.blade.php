@@ -21,7 +21,7 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{  route('client.docper.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('client.docper.store')}}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="order_id" value="{{$order->id}}">
                     <div class="form-body">
                         <h3 class="box-title m-t-40">Upload Dokumen Perencanaan</h3>
@@ -30,13 +30,22 @@
                             <div class="row" >
                                 <div class="col-md-12">
                                     <div class="card">
-                                        <div class="card-body">
-                                            <div class="form-group">
+                                        <div class="card-body">                                            
+                                            @foreach($upload as $row)
+                                            <h4><b><input type="hidden" name="type[]" value="{{$row->pics}}"></b></h4> 
+                                                <h3><b>{{$row->pics}}</b></h3>
+                                                <input type="file" name="evidence[]" accept=".pdf">
+                                                <br>
+                                                <br>
+                                                {{-- <h4 class="card-title" name= {{$row->pics}}>{{$row->pics}}</h4>
+                                                <input type="file" id="file" name="evidence[]" class="dropify" required/> --}}
+                                            @endforeach
+                                            {{-- <div class="form-group">
                                                 <h4 class="card-title">Nama Dokumen</h4>
                                                 <input type="text" class="form-control" id="nameFile" name="type[]" required/>
                                             </div>
                                             <h4 class="card-title">Dokumen Perencanaan</h4>
-                                            <input type="file" id="file" name="evidence[]" class="dropify" required/>
+                                            <input type="file" id="file" name="evidence[]" class="dropify" required/> --}}
                                         </div>
                                     </div>
                                 </div>
