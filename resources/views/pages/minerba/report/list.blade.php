@@ -48,6 +48,7 @@
                                         <td><center>-</center></td>
                                     @endif 
                                     <td>{{ $row->order->client->company_name }}</td>
+                                    {{-- <td><a href="{{ Storage::url($row->report) }}"><span><i class="fa fa-download"></i></span></a></td> --}}
                                     <td><center>
                                             @if($row->order->state_report == 1)
                                                 <a href="{{ Storage::url($row->report) }}"><span><i class="fa fa-download"></i></span></a>
