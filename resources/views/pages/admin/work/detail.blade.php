@@ -116,7 +116,7 @@
 <script src="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js')}}" type="text/javascript"></script>
 <script src="{{ asset('material/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script>$('#myTable').DataTable({
-        "order": [[ 1, "desc" ]]
+        "document": [[ 0, "desc" ]]
     });</script>
   
 @endsection
