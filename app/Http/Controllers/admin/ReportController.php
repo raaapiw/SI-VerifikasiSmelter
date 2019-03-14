@@ -334,6 +334,8 @@ class ReportController extends Controller
         $order = Order::find($id);
         $report = Report::where('order_id','=',$id);
         $data = [
+            
+            'client_id' => $request->client_id,
             'state_report' => 1,
             'author_report' => Sentinel::getUser()->name
         ];
