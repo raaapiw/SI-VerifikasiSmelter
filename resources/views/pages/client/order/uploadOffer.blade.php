@@ -39,10 +39,13 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title">File SPK</h4>
+                                    <h5 class="card-title" style="color:red">Harap file berupa format .pdf dengan nama file SPK(NamaPerusahaan).</h5>
                                     <input type="file" id="file" name="spk" class="dropify" accept="application/pdf" required/>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title">File Bukti Transfer</h4>
+                                    
+                                    <h5 class="card-title" style="color:red">Harap file berupa format .pdf dengan nama file BuktiTransfer(NamaPerusahaan).</h5>
                                     <input type="file" id="file" name="transfer_proof" class="dropify" accept="application/pdf" required/>
                                 </div>
                             </div>
