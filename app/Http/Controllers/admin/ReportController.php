@@ -142,6 +142,7 @@ class ReportController extends Controller
                     'client_id' => $request->client_id,
                     'order_id' => $request->order_id,
                     'report' => $path,
+                    'link' => $request->link
                 ];
                 // dd($data);
                 $report = Report::create($data);
@@ -153,49 +154,50 @@ class ReportController extends Controller
                 $user->notify(new FinalReportNotificationEmail($report));
                 // dd($order);
                 return redirect()->route('admin.report.listReport');
-            }elseif (isset($request->covering_letter)){
-                $rules = [
-                    'covering_letter'                  => 'required',
-                ];
+            }
+            // elseif (isset($request->covering_letter)){
+            //     $rules = [
+            //         'covering_letter'                  => 'required',
+            //     ];
                 
                 
-                    $uploadedFile = $request->file('covering_letter');
-                    $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
-                    if (Storage::exists($uploadedFileName)) {
-                        Storage::delete($uploadedFileName);
-                    }
-                    $path = $uploadedFile->storeAs('public/files/report/admin', $uploadedFileName);
+            //         $uploadedFile = $request->file('covering_letter');
+            //         $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
+            //         if (Storage::exists($uploadedFileName)) {
+            //             Storage::delete($uploadedFileName);
+            //         }
+            //         $path = $uploadedFile->storeAs('public/files/report/admin', $uploadedFileName);
         
-                    $data = [
-                        'order_id' => $request->order_id,
-                        'covering_letter' => $path,
-                    ];
-                    // dd($data);
-                    $report = Report::create($data);
-                    // dd($order);
-                    return redirect()->route('admin.report.listReport');
-                }elseif (isset($request->receipt)){
-                    $rules = [
-                        'receipt'                  => 'required',
-                    ];
+            //         $data = [
+            //             'order_id' => $request->order_id,
+            //             'covering_letter' => $path,
+            //         ];
+            //         // dd($data);
+            //         $report = Report::create($data);
+            //         // dd($order);
+            //         return redirect()->route('admin.report.listReport');
+            //     }elseif (isset($request->receipt)){
+            //         $rules = [
+            //             'receipt'                  => 'required',
+            //         ];
                     
                     
-                        $uploadedFile = $request->file('receipt');
-                        $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
-                        if (Storage::exists($uploadedFileName)) {
-                            Storage::delete($uploadedFileName);
-                        }
-                        $path = $uploadedFile->storeAs('public/files/order/admin', $uploadedFileName);
+            //             $uploadedFile = $request->file('receipt');
+            //             $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
+            //             if (Storage::exists($uploadedFileName)) {
+            //                 Storage::delete($uploadedFileName);
+            //             }
+            //             $path = $uploadedFile->storeAs('public/files/order/admin', $uploadedFileName);
             
-                        $data = [
-                            'order_id' => $request->order_id,
-                            'receipt' => $path,
-                        ];
-                        // dd($data);
-                        $report = Report::create($data);
-                        // dd($order);
-                        return redirect()->route('admin.report.listReport');
-                    }
+            //             $data = [
+            //                 'order_id' => $request->order_id,
+            //                 'receipt' => $path,
+            //             ];
+            //             // dd($data);
+            //             $report = Report::create($data);
+            //             // dd($order);
+            //             return redirect()->route('admin.report.listReport');
+            //         }
     }
 
     /**
@@ -257,56 +259,70 @@ class ReportController extends Controller
                 $data = [
                     'order_id' => $request->order_id,
                     'report' => $path,
+                    'link' => $request->link
                 ];
                 // dd($data);
                 $report->fill($data)->save();
                 // dd($order);
                 return redirect()->route('admin.report.listReport');
-            }elseif (isset($request->covering_letter)){
-                $rules = [
-                    'covering_letter'                  => 'required',
+            }
+            else
+            {
+                $data = [
+
+                    'link' => $request->link
                 ];
+
+                $report->fill($data)->save();
+
+                return redirect()->route('admin.report.listReport');
+
+            }
+            // elseif (isset($request->covering_letter)){
+            //     $rules = [
+            //         'covering_letter'                  => 'required',
+            //     ];
                 
                 
-                    $uploadedFile = $request->file('covering_letter');
-                    $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
-                    if (Storage::exists($uploadedFileName)) {
-                        Storage::delete($uploadedFileName);
-                    }
-                    $path = $uploadedFile->storeAs('public/files/report/admin', $uploadedFileName);
+            //         $uploadedFile = $request->file('covering_letter');
+            //         $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
+            //         if (Storage::exists($uploadedFileName)) {
+            //             Storage::delete($uploadedFileName);
+            //         }
+            //         $path = $uploadedFile->storeAs('public/files/report/admin', $uploadedFileName);
         
-                    $data = [
-                        'order_id' => $request->order_id,
-                        'covering_letter' => $path,
-                    ];
-                    // dd($data);
-                    $report->fill($data)->save();
+            //         $data = [
+            //             'order_id' => $request->order_id,
+            //             'covering_letter' => $path,
+            //         ];
+            //         // dd($data);
+            //         $report->fill($data)->save();
                 
-                    // dd($order);
-                    return redirect()->route('admin.report.listReport');
-                }elseif (isset($request->receipt)){
-                    $rules = [
-                        'receipt'                  => 'required',
-                    ];
+            //         // dd($order);
+            //         return redirect()->route('admin.report.listReport');
+            //     }elseif (isset($request->receipt)){
+            //         $rules = [
+            //             'receipt'                  => 'required',
+            //         ];
                     
                     
-                        $uploadedFile = $request->file('receipt');
-                        $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
-                        if (Storage::exists($uploadedFileName)) {
-                            Storage::delete($uploadedFileName);
-                        }
-                        $path = $uploadedFile->storeAs('public/files/report/admin', $uploadedFileName);
+            //             $uploadedFile = $request->file('receipt');
+            //             $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
+            //             if (Storage::exists($uploadedFileName)) {
+            //                 Storage::delete($uploadedFileName);
+            //             }
+            //             $path = $uploadedFile->storeAs('public/files/report/admin', $uploadedFileName);
             
-                        $data = [
-                            'order_id' => $request->order_id,
-                            'receipt' => $path,
-                        ];
-                        // dd($data);
-                        $report->fill($data)->save();
+            //             $data = [
+            //                 'order_id' => $request->order_id,
+            //                 'receipt' => $path,
+            //             ];
+            //             // dd($data);
+            //             $report->fill($data)->save();
                 
-                        // dd($order);
-                        return redirect()->route('admin.report.listReport');
-                    }
+            //             // dd($order);
+            //             return redirect()->route('admin.report.listReport');
+            //         }
                     // elseif (isset($request->kind)){
                         
                         

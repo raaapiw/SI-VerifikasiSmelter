@@ -27,11 +27,24 @@
                         <h3 class="box-title m-t-40">Upload Laporan</h3>
                         <hr>
                         <div class="col-md-12">
+                            @if(isset($report))
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">File Laporan</h4>
+                                    <input type="file" id="file" name="report" class="dropify" accept="application/pdf"/>
+                                </div>
+                            </div>
+                            @else
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File Laporan</h4>
                                     <input type="file" id="file" name="report" class="dropify" accept="application/pdf" required/>
                                 </div>
+                            </div>
+                            @endif    
+                            <div class="form-group">
+                                <h4 class="card-title">Link Video</h4>
+                                <input type="text" class="form-control" id="nameFile" name="link" required placeholder="{{isset($report) ? $report->link : ""}}">
                             </div>
                         </div>
                         <div class="form-actions">

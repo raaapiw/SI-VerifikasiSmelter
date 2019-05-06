@@ -30,6 +30,7 @@
                                 <th style="width:50%"><center>Company Name</center></th>
                                 <th><center>Jenis Laporan</center></th>
                                 <th><center>Action</center></th>
+                                <th><center>Video</center></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,6 +54,12 @@
                                             <a href="{{ Storage::url($row->report) }}"><span><i class="fa fa-download"></i></span></a>
                                         </center>
                                     </td>
+                                    <td>
+                                        <center>
+                                            
+                                            <a href="{{$row->link}}"><span><i class="fa fa-eye"></i></span></a>
+                                        </center>
+                                        </td>
                                 </tr>                            
                             @endforeach
                         </tbody>
