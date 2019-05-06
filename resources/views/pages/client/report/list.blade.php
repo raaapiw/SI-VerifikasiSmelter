@@ -28,7 +28,8 @@
                                 <th>No</th>
                                 <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
-                                <th><center>Action</center></th>
+                                <th><center>Download Laporan</center></th>
+                                <th><center>Link Laporan</center></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,6 +45,15 @@
                                                 <a href="{{ Storage::url($row->report) }}"><span><i class="fa fa-download"></i></span></a>
                                             @else
                                                 <span class="label label-warning">ON PROCESS</span>
+                                            @endif
+                                        </center>
+                                    </td>
+                                    <td>
+                                        <center>
+                                            @if(isset($row->receipt))
+                                                <a href="{{ $row->receipt }}"><span><i class="fa fa-"></i></span></a>
+                                            @else
+                                                <span class="label label-warning">Tidak Ada</span>
                                             @endif
                                         </center>
                                     </td>
