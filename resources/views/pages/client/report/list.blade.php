@@ -29,7 +29,7 @@
                                 <th><center>Date</center></th>
                                 <th style="width:50%"><center>Company Name</center></th>
                                 <th><center>Download Laporan</center></th>
-                                <th><center>Link Laporan</center></th>
+                                <th><center>Video</center></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,8 +50,8 @@
                                     </td>
                                     <td>
                                         <center>
-                                            @if(isset($row->receipt))
-                                                <a href="{{ $row->receipt }}"><span><i class="fa fa-"></i></span></a>
+                                            @if(isset($row->link))
+                                                <a href="{{ $row->link }}"><span><i class="fa fa-eye"></i></span></a>
                                             @else
                                                 <span class="label label-warning">Tidak Ada</span>
                                             @endif
