@@ -20,8 +20,8 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{ isset($orders->meeting) ? route('admin.meeting.update', $orders->meeting-> id) : route('admin.meeting.store')}}" method="POST" enctype="multipart/form-data">
-                    
+                <form action="{{ isset($meeting) ? route('admin.meeting.update', $meeting->id) : route('admin.meeting.store')}}" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="order_id" value="{{ $meeting->order->id}}">
                     <div class="form-body">
                         <h3 class="card-title">Jadwal Meeting</h3>
                         <hr>
@@ -29,12 +29,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="idPatient1">Company :</label>
-                                    @if(isset($orders))
-                                    <select id="id" class="form-control custom-select" name="order_id" >
-                                        @foreach($orders as $row)
-                                        <option   value="{{$row->id}}">{{$row->id}} - {{ $row->client->company_name}} </option>                                                                   
-                                        @endforeach
-                                    </select>
+                                    @if(isset($meeting))
+                                    <input type="text" disabled class="form-control" placeholder="{{$meeting->order->client->company_name}}">
                                     @else
                                     <select id="id" class="form-control custom-select" name="order_id" >
                                         @foreach($orders as $row)
@@ -49,7 +45,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tanggal :</label>
-                                    <input type="date" class="form-control" id="input" name="date">
+                                    <input type="date" class="form-control" id="input" name="date" placeholder="{{$meeting->date}}">
                                 </div>
                             </div>
                         </div>
@@ -57,7 +53,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Waktu :</label>
-                                <input type="text" class="form-control" id="waktu" name="time">
+                                    <input type="text" class="form-control" id="waktu" name="time"value="{{$meeting->time}}">
                                 </div>
                             </div>
                         </div>
@@ -65,7 +61,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tempat :</label>
-                                    <input type="text" class="form-control" id="tempat" name="place">
+                                    <input type="text" class="form-control" id="tempat" name="place" value="{{$meeting->place}}">
                                 </div>
                             </div>
                             <br>

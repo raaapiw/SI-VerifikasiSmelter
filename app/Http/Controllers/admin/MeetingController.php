@@ -30,9 +30,11 @@ class MeetingController extends Controller
         return view('pages.admin.meeting.schedule', compact ('clients','meetings','orders'));
     }
 
-    public function editSchedule()
+    public function editSchedule($id)
     {
-        
+        $meeting = Meeting::find($id);
+
+        return view('pages.admin.meeting.schedule', compact('meeting'));
     }
 
     public function createBA($id)
@@ -113,7 +115,15 @@ class MeetingController extends Controller
                 $client = Client::where('id','=',$order->client_id)->first();
                 // dd($client);
                 $user = User::where('id','=',$client->user_id)->first();
-                $user->notify(new BeritaAcaraNotificationEmail($meeting));
+                $user->notify(new BeritaAcaraNotificationEmail($order));
+                $user1 = User::where('id','=',76)->first();
+                $user1->notify(new BeritaAcaraNotificationEmail($order));
+                $user2 = User::where('id','=',50)->first();
+                $user2->notify(new BeritaAcaraNotificationEmail($order));
+                $user3 = User::where('id','=',5)->first();
+                $user3->notify(new BeritaAcaraNotificationEmail($order));
+                $user3 = User::where('id','=',2)->first();
+                $user3->notify(new BeritaAcaraNotificationEmail($order));
                 // $order = Order::update($data);
         
                 return redirect()->route('admin.dashboard');
@@ -137,6 +147,14 @@ class MeetingController extends Controller
                 $user = User::where('id','=',$client->user_id)->first();
                 $user->notify(new MeetingNotificationEmail($meeting));
                 $user1 = User::where('id','=',2)->first();
+                $user1->notify(new MeetingNotificationEmail($meeting));
+                $user1 = User::where('id','=',3)->first();
+                $user1->notify(new MeetingNotificationEmail($meeting));
+                $user1 = User::where('id','=',7)->first();
+                $user1->notify(new MeetingNotificationEmail($meeting));
+                $user1 = User::where('id','=',77)->first();
+                $user1->notify(new MeetingNotificationEmail($meeting));
+                $user1 = User::where('id','=',78)->first();
                 $user1->notify(new MeetingNotificationEmail($meeting));
                 return redirect()->route('admin.dashboard');
             }
@@ -213,7 +231,7 @@ class MeetingController extends Controller
                     'place'=> $request->place,         
                 ];
                 
-                $order->fill($data)->save();
+                $meeting->fill($data)->save();
                 
                 $order = Order::where('id','=',$meeting->order_id)->first();
                 $client = Client::where('id','=',$order->client_id)->first();

@@ -6,13 +6,13 @@
         @endcomponent
     @endslot
 {{-- Body --}}
-Perusahaan {{$order->client->company_name}} sudah mengirim Surat Permintaan
+Perusahaan {{$order->client->company_name}} sudah membuat order baru
 <br>
 <br> 
-SEGERA LAKUKAN PENGECEKAN
+SEGERA LAKUKAN PENGECEKAN !
 <br>
 
-<a href="https://verifikasismelter-ptsi.co.id" class="btn btn-success" target="_blank">Verifikasi Smelter</a>
+<button type="button" class="btn waves-effect waves-light btn-success"><a href="https://verifikasismelter-ptsi.co.id" target="_blank">Verifikasi Smelter</a></button>
 {{-- Subcopy --}}
     @isset($subcopy)
         @slot('subcopy')

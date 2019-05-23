@@ -183,31 +183,19 @@ class OrderController extends Controller
                 ];    
            
             $order = Order::create($data);
+
+            $user1 = User::where('id','=',76)->first();
+            $user1->notify(new SuratPermintaanNotificationEmail($order));
+            $user2 = User::where('id','=',4)->first();
+            $user2->notify(new SuratPermintaanNotificationEmail($order));
+            $user3 = User::where('id','=',6)->first();
+            $user3->notify(new SuratPermintaanNotificationEmail($order));
+            $user3 = User::where('id','=',2)->first();
+            $user3->notify(new SuratPermintaanNotificationEmail($order));
             // $user = User::where('id','=',2)->first();
             // $user->notify(new BuktiTransferNotificationEmail($order));
             return redirect()->route('client.dashboard');
-           
-        } elseif (isset($request->spk)){
-            $uploadedFile = $request->file('spk');
-            $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
-                if (Storage::exists($uploadedFileName)) {
-                    Storage::delete($uploadedFileName);
-                }
-                $path = $uploadedFile->storeAs('public/files/order/client', $uploadedFileName);
-    
-                $data = [
-                    'client_id' => $request->client_id,
-                    'spk' => $path,
-                    'work_kind' => $request->radio
-                ];    
-        //    dd($data);
-            $order = Order::create($data);
-                // dd($order);
-            // $user = User::where('id','=',2)->first();
-            // $user->notify(new SpkNotificationEmail($order));
-            return redirect()->route('client.dashboard');
-           
-        } 
+        }  
     }
 
     /**

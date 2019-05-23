@@ -57,6 +57,16 @@ Route::group(['middleware' => 'superAdmin'], function() {
         'destroy' => 'superAdmin.minerba.destroy'
     ]]);
 
+    Route::resource('superadmin/management', 'superAdmin\ManagementController', ['names' => [
+        'index'   => 'superAdmin.management.list',
+        'show'    => 'superAdmin.management.show',
+        'create'  => 'superAdmin.management.create',
+        'store'   => 'superAdmin.management.store',
+        'edit'    => 'superAdmin.management.edit',
+        'update'  => 'superAdmin.management.update',
+        'destroy' => 'superAdmin.management.destroy'
+    ]]);
+
 });
 
 
@@ -84,6 +94,7 @@ Route::group(['middleware' => 'admin'], function() {
     
     Route::get('/admin/meeting/BeritaAcara', 'admin\MeetingController@uploadBA') ->name('admin.meeting.uploadBA');
     Route::get('/admin/meeting/schedule', 'admin\MeetingController@createSchedule') ->name('admin.meeting.schedule');
+    Route::get('/admin/meeting/scheduleEdit/{id}', 'admin\MeetingController@editSchedule') ->name('admin.meeting.editSchedule');
     Route::post('/admin/meeting/store', 'admin\MeetingController@store') ->name('admin.meeting.store');
     Route::get('/admin/meeting/listMeeting', 'admin\MeetingController@listMeeting') ->name('admin.meeting.listMeeting');
     Route::get('/admin/meeting/createBA/{id}', 'admin\MeetingController@createBA') ->name('admin.meeting.createBA');

@@ -7,12 +7,16 @@
     @endslot
 {{-- Body --}}
 Jadwal meeting sudah di kirim
+Nama Perusahaan : {{$meeting->order->client->company_name}}
+Tempat          : {{$meeting->place}}
+Tanggal         : {{$meeting->date}}
+Waktu           : {{$meeting->time}}
 <br>
 <br> 
-SILAHKAN CEK DI WEBSITE
+Mohon untuk hadir tepat waktu, terima kasih.
 <br>
 
-<a href="https://verifikasismelter-ptsi.co.id" class="btn btn-success" target="_blank">Verifikasi Smelter</a>
+<button type="button" class="btn waves-effect waves-light btn-success"><a href="https://verifikasismelter-ptsi.co.id" target="_blank">Verifikasi Smelter</a></button>
 {{-- Subcopy --}}
     @isset($subcopy)
         @slot('subcopy')
