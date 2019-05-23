@@ -62,7 +62,7 @@
                                                 <span class="label label-warning">Tidak Ada</span>
                                             @endif
                                         </center>
-                                        </td>
+                                    </td>
                                 </tr>                            
                             @endforeach
                         </tbody>

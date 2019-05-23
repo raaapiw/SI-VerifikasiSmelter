@@ -12,7 +12,7 @@ Pemesanan Anda sudah di Aprrove oleh kami.
 MOHON SEGERA LANJUTKAN KE BAGIAN MENU PEKERJAAN DAN UPLOAD KE MENU SESUAI PEKERJAAN
 <br>
 
-<a href="https://verifikasismelter-ptsi.co.id" class="btn btn-success" target="_blank">Verifikasi Smelter</a>
+<button type="button" class="btn waves-effect waves-light btn-success"><a href="https://verifikasismelter-ptsi.co.id" target="_blank">Verifikasi Smelter</a></button>
 {{-- Subcopy --}}
     @isset($subcopy)
         @slot('subcopy')

@@ -30,6 +30,7 @@
                                 <th><center>Tanggal Meeting</center></th>
                                 <th><center>Waktu Meeting</center></th>
                                 <th><center>Tempat Meeting</center></th>
+                                <th><center>Edit Meeting</center></th>
                                 <th><center>Download Berita Acara</center></th>
                             </tr>
                         </thead>
@@ -41,6 +42,7 @@
                                     <td>{{ $row->date }}</td>
                                     <td>{{ $row->time }}</td>
                                     <td>{{ $row->place }}</td>
+                                    <td><a href="{{ route('admin.meeting.editSchedule', $row->id)}}"><span><i class="fa fa-pencil"></i></span></a></td>
                                     <td><center>
                                         @if($row->bap == null)
                                             <span class="label label-warning">ON PROCESS</span>

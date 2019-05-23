@@ -341,6 +341,13 @@
                                     <li><a href="{{ route('superAdmin.minerba.list') }}">List Minerba</a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Management</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="{{ route('superAdmin.management.create') }}">Add User Management</a></li>
+                                    <li><a href="{{ route('superAdmin.management.list') }}">List Management</a></li>
+                                </ul>
+                            </li>
                         </ul>
                         @elseif(Sentinel::getUser()->roles()->first()->slug == 'admin')
                             <ul id="sidebarnav">

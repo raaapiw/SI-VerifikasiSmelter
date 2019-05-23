@@ -150,8 +150,24 @@ class ReportController extends Controller
                 $order = Order::where('id','=',$report->order_id)->first();
                 $client = Client::where('id','=',$order->client_id)->first();
 
-                $user = User::where('id','=',$client->user_id)->first();
-                $user->notify(new FinalReportNotificationEmail($report));
+                $user8 = User::where('id','=',$client->user_id)->first();
+                $user8->notify(new FinalReportNotificationEmail($report));
+                $user = User::where('id','=',2)->first();
+                $user->notify(new FinalReportNotificationEmail($document));
+                $user1 = User::where('id','=',3)->first();
+                $user1->notify(new FinalReportNotificationEmail($document));
+                $user2 = User::where('id','=',5)->first();
+                $user2->notify(new FinalReportNotificationEmail($document));
+                $user3 = User::where('id','=',7)->first();
+                $user3->notify(new FinalReportNotificationEmail($document));
+                $user4 = User::where('id','=',50)->first();
+                $user4->notify(new FinalReportNotificationEmail($document));
+                $user5 = User::where('id','=',76)->first();
+                $user5->notify(new FinalReportNotificationEmail($document));
+                $user6 = User::where('id','=',4)->first();
+                $user6->notify(new FinalReportNotificationEmail($document));
+                $user7 = User::where('id','=',6)->first();
+                $user7->notify(new FinalReportNotificationEmail($document));
                 // dd($order);
                 return redirect()->route('admin.report.listReport');
             }
