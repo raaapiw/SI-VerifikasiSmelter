@@ -67,9 +67,9 @@
                         <thead>
                             <th>ID</th>
                             <th>Date</th>
-                            <th>Surat Permintaan</th>
+                            <!-- <th>Surat Permintaan</th>
                             <th>Surat Penawaran</th>
-                            <th>Invoices DP</th>
+                            <th>Invoices DP</th> -->
                             <th>Bukti Transfer</th>
                             <th>SPK</th>
                             <th>Kontrak</th>
@@ -78,7 +78,7 @@
                     <tr>
                         <td>{{ $order->id}}</td>
                         <td>{{ $order->created_at}}</td>
-                        <td>
+                        <!-- <td>
                             @if ($order->letter_of_request !== null)
                             <center><a href="{{ Storage::url($order->letter_of_request) }}"><span><i class="fa fa-download"></i></span></a></center>
                             @else
@@ -98,19 +98,19 @@
                             @else
                                 Dokumen Tidak ada !
                             @endif
-                        </td>
+                        </td> -->
                         <td>
                             @if ($order->transfer_proof !== null)
                             <center><a href="{{ Storage::url($order->transfer_proof) }}"><span><i class="fa fa-download"></i></span></a></center>
                             @else
-                                Dokumen Tidak ada !
+                            <center><a href="{{ route('admin.order.uploadDp', $order->id)}}"><span><i class="fa fa-plus"></i></span></a><center>
                             @endif
                         </td>
                         <td>
                             @if ($order->spk !== null)
                             <center><a href="{{ Storage::url($order->spk) }}"><span><i class="fa fa-download"></i></span></a></center>
                             @else
-                                Dokumen Tidak ada !
+                            <center><a href="{{ route('admin.order.spk', $order->id)}}"><span><i class="fa fa-plus"></i></span></a><center>
                             @endif
                         </td>  
                         <td>
@@ -119,7 +119,7 @@
                             @else
                                 Dokumen Tidak ada !
                             @endif
-                        </td>                     
+                        </td>                
                     </tr>
                 </table>
             </div>

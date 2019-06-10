@@ -37,6 +37,7 @@
                                 <th><center>Bulan Pekerjaan</center></th> 
                                 <th><center>Tahun Pekerjaan</center></th>                                
                                 <th><center>Detail</center></th>
+                                <th><center>Hapus</center></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,6 +66,9 @@
                                             <a href="{{ route('admin.order.detail', $row->id)}}"><span><i class="fa fa-search"></i></span></a>
                                         </center>
                                     </td>
+                                    <td>
+                                        <center><a href="{{ route('admin.order.destroy', $row->id)}}"><span><i class="mdi mdi-delete"></i></span></a><center>   
+                                    </td>  
                                 </tr>                            
                             @endforeach
                         </tbody>
@@ -77,6 +81,7 @@
                                 <th>Bulan Pekerjaan</th>
                                 <th>Tahun Pekerjaan</th>
                                 <th style="display:none;">Detail</th>
+                                <th style="display:none;">Hapus</th>
                             </tr>
                         </tfoot>
                     </table>

@@ -55,6 +55,12 @@ class OrderController extends Controller
         return view('pages.admin.order.addOffer', compact('order'));
     }
 
+    public function uploadSpk($id){
+        $order = Order::Find($id);
+
+        return view('pages.admin.order.spk', compact('order'));
+    }
+
     public function uploadOffer($id)
     {
         //
@@ -162,17 +168,17 @@ class OrderController extends Controller
              
            
             
-        } elseif (isset($request->dp_invoice)){
-            $uploadedFile = $request->file('dp_invoice');
+        } elseif (isset($request->transfer_proof)){
+            $uploadedFile = $request->file('transfer_proof');
             $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
             if (Storage::exists($uploadedFileName)) {
                 Storage::delete($uploadedFileName);
             }
-            $path = $uploadedFile->storeAs('public/files/order/admin', $uploadedFileName);
+            $path = $uploadedFile->storeAs('public/files/order/admin/transfer_proof', $uploadedFileName);
 
                 $data = [
                     'client_id' => $request->client_id,
-                    'dp_invoice' => $path,
+                    'transfer_proof' => $path,
                 ];    
            
             $order = Order::create($data);
@@ -189,8 +195,7 @@ class OrderController extends Controller
 
                 $data = [
                     'client_id' => $request->client_id,
-                    'spk' => $path,
-                    'state' => 1,
+                    'spk' => $path
                 ];    
            
             $order = Order::create($data);
@@ -277,18 +282,35 @@ class OrderController extends Controller
                 return redirect()->route('admin.dashboard');
            
             
-        } elseif (isset($request->dp_invoice)){
-
-            $uploadedFile = $request->file('dp_invoice');
+        } elseif (isset($request->spk)){
+            $uploadedFile = $request->file('spk');
             $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
             if (Storage::exists($uploadedFileName)) {
                 Storage::delete($uploadedFileName);
             }
-            $path = $uploadedFile->storeAs('public/files/order/admin/dp_invoice', $uploadedFileName);
+            $path = $uploadedFile->storeAs('public/files/order/admin', $uploadedFileName);
 
                 $data = [
                     'client_id' => $request->client_id,
-                    'dp_invoice' => $path,
+                    'spk' => $path
+                ];    
+           
+            $order = Order::create($data);
+        
+            return redirect()->route('admin.dashboard');
+           
+        } elseif (isset($request->transfer_proof)){
+
+            $uploadedFile = $request->file('transfer_proof');
+            $uploadedFileName = $request->client_id . '-' . $uploadedFile->getClientOriginalName();
+            if (Storage::exists($uploadedFileName)) {
+                Storage::delete($uploadedFileName);
+            }
+            $path = $uploadedFile->storeAs('public/files/order/admin/transfer_proof', $uploadedFileName);
+
+                $data = [
+                    'client_id' => $request->client_id,
+                    'transfer_proof' => $path,
                 ];    
                 $order->fill($data)->save();
            
@@ -360,5 +382,8 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+        $order = Order::find($id)->delete();
+
+        return redirect()->route('admin.order.listOrder');
     }
 }

@@ -83,7 +83,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::post('/admin/order/list/{id}', 'admin\OrderController@update') ->name('admin.order.update');
     Route::get('/admin/order/destroy/{id}', 'admin\OrderController@destroy')->name('admin.order.destroy');
     Route::get('/admin/order/addDp', 'admin\OrderController@addOffer') ->name('admin.order.addDp');
-    Route::get('/admin/order/uploadDp/{id}', 'admin\OrderController@uploadDP') ->name('admin.order.uploadDp');
+    Route::get('/admin/order/uploadTP/{id}', 'admin\OrderController@uploadDP') ->name('admin.order.uploadDp');
     Route::get('/admin/order/listOrder', 'admin\OrderController@listOrder') ->name('admin.order.listOrder');
     Route::get('/admin/order/proceed/{id}', 'admin\OrderController@proceed') ->name('admin.order.proceed');
     Route::get('/admin/order/detail/{id}', 'admin\OrderController@detail') ->name('admin.order.detail');
@@ -91,6 +91,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/order/addContract', 'admin\OrderController@addContract') ->name('admin.order.addContract');
     Route::get('/admin/order/listContract', 'admin\OrderController@listContract') ->name('admin.order.listContract');
     Route::get('/admin/order/addYear/{id}', 'admin\OrderController@year') ->name('admin.order.year');
+    Route::get('/admin/order/uploadSpk/{id}', 'admin\OrderController@uploadSpk') ->name('admin.order.spk');
     
     Route::get('/admin/meeting/BeritaAcara', 'admin\MeetingController@uploadBA') ->name('admin.meeting.uploadBA');
     Route::get('/admin/meeting/schedule', 'admin\MeetingController@createSchedule') ->name('admin.meeting.schedule');

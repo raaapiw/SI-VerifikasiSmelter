@@ -6,10 +6,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($order->transfer_proof) ? 'Edit Bukti Transfer': 'Upload Bukti Transfer'}}</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($order->spk) ? 'Edit SPK': 'Upload SPK'}}</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">{{ isset($order->transfer_proof) ? 'Edit Bukti Transfer':'Upload Bukti Transfer'}}</li>
+            <li class="breadcrumb-item active">{{ isset($order->spk) ? 'Edit SPK':'Upload SPK'}}</li>
         </ol>
     </div>
 </div>
@@ -56,13 +56,13 @@
                             </div>
                             <br>
                         </div>
-                        <h3 class="box-title m-t-40">Upload Bukti Transfer</h3>
+                        <h3 class="box-title m-t-40">Upload SPK</h3>
                         <hr>
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">File Bukti Transfer</h4>
-                                    <input type="file" id="file" name="transfer_proof" class="dropify" accept="application/pdf" required/>
+                                    <h4 class="card-title">File SPK</h4>
+                                    <input type="file" id="file" name="spk" class="dropify" accept="application/pdf" required/>
                                 </div>
                             </div>
                         </div>
