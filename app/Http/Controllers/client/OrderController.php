@@ -62,10 +62,10 @@ class OrderController extends Controller
     {
         //
         $client = Client::where('user_id','=',$id)->first();
-        // $order = Order::where('client_id','=',$client->id)->get();
+        // $order = Order::where('client_id','=',$client->id)->first();
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('pages.client.order.uploadOffer', compact('client','order'));
+        return view('pages.client.order.uploadOffer', compact('client'));
     }
 
     public function uploadOffer2($id)
@@ -168,11 +168,11 @@ class OrderController extends Controller
                 if (Storage::exists($uploadedFileName)) {
                     Storage::delete($uploadedFileName);
                 }
-                $path = $uploadedFile->storeAs('public/files/order/client/transfer_proof', $uploadedFileName);
+            $path = $uploadedFile->storeAs('public/files/order/client/transfer_proof', $uploadedFileName);
             $uploadedFileName1 = $request->client_id . '-' . $uploadedFile1->getClientOriginalName();
-            if (Storage::exists($uploadedFileName1)) {
-                Storage::delete($uploadedFileName1);
-            }
+                if (Storage::exists($uploadedFileName1)) {
+                    Storage::delete($uploadedFileName1);
+                }
             $path1 = $uploadedFile1->storeAs('public/files/order/client/spk', $uploadedFileName1);
     
                 $data = [

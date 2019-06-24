@@ -25,9 +25,9 @@ class MeetingController extends Controller
     public function createSchedule()
     { 
         
-        $orders = Order::all();
+        $order = Order::all();
         // dd($orders);
-        return view('pages.admin.meeting.schedule', compact ('clients','meetings','orders'));
+        return view('pages.admin.meeting.schedule', compact ('order'));
     }
 
     public function editSchedule($id)
@@ -41,9 +41,10 @@ class MeetingController extends Controller
     {
         $meeting = Meeting::find($id);
         
+        
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('pages.admin.meeting.createBA', compact ('order','meeting'));
+        return view('pages.admin.meeting.createBA', compact ('orders','meeting'));
     }
 
     
@@ -62,7 +63,7 @@ class MeetingController extends Controller
 
         $meetings = Meeting::where('bap','=',null)->get();
         // dd($orders);
-        return view('pages.admin.meeting.uploadBA', compact('orders','meetings'));
+        return view('pages.admin.meeting.uploadBA', compact('meetings'));
     }
     
 

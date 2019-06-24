@@ -21,7 +21,12 @@
         <div class="card card-outline-info">
             <div class="card-body">
                 <form action="{{ isset($meeting) ? route('admin.meeting.update', $meeting->id) : route('admin.meeting.store')}}" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="order_id" value="{{ $meeting->order->id}}">
+                    {{-- @if(isset($meeting))
+                        <input type="hidden" name="order_id" value="{{ $meeting->order->id}}">
+                    @else 
+                    
+                    <input type="hidden" name="order_id" value="{{ $order->id}}">
+                    @endif --}}
                     <div class="form-body">
                         <h3 class="card-title">Jadwal Meeting</h3>
                         <hr>
@@ -33,7 +38,7 @@
                                     <input type="text" disabled class="form-control" placeholder="{{$meeting->order->client->company_name}}">
                                     @else
                                     <select id="id" class="form-control custom-select" name="order_id" >
-                                        @foreach($orders as $row)
+                                        @foreach($order as $row)
                                         <option   value="{{$row->id}}">{{$row->id}} - {{ $row->client->company_name }}</option>                                                                   
                                         @endforeach
                                     </select>
@@ -45,7 +50,11 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tanggal :</label>
-                                    <input type="date" class="form-control" id="input" name="date" placeholder="{{$meeting->date}}">
+                                    @if(isset($meeting))
+                                        <input type="date" class="form-control" id="input" name="date" placeholder="{{$meeting->date}}">
+                                    @else
+                                    <input type="date" class="form-control" id="input" name="date">
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -53,7 +62,11 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Waktu :</label>
-                                    <input type="text" class="form-control" id="waktu" name="time"value="{{$meeting->time}}">
+                                    @if(isset($meeting))
+                                    <input type="text" class="form-control" id="waktu" name="time" value="{{$meeting->time}}">
+                                    @else
+                                    <input type="text" class="form-control" id="waktu" name="time" >
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -61,7 +74,11 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tempat :</label>
-                                    <input type="text" class="form-control" id="tempat" name="place" value="{{$meeting->place}}">
+                                    @if(isset($meeting))
+                                        <input type="text" class="form-control" id="tempat" name="place" value="{{$meeting->place}}">
+                                    @else
+                                        <input type="text" class="form-control" id="tempat" name="place">
+                                    @endif
                                 </div>
                             </div>
                             <br>
