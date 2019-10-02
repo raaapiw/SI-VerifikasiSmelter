@@ -44,7 +44,7 @@ class MeetingController extends Controller
         
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('pages.admin.meeting.createBA', compact ('orders','meeting'));
+        return view('pages.admin.meeting.createBA', compact ('meeting'));
     }
 
     
