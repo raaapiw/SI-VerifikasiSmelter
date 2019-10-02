@@ -6,7 +6,7 @@
         @endcomponent
     @endslot
 {{-- Body --}}
-Perusahaan {{$document->work->order->client->company_name}} sudah mengirim Dokumen Kemjuan Fisik
+Perusahaan {{$document->work->order->client->company_name}} sudah mengirim Dokumen Kemjuan Fisik {{$document->evidence}}
 <br>
 <br> 
 SEGERA LAKUKAN PENGECEKAN
