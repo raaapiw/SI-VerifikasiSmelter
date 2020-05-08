@@ -13,7 +13,7 @@
     {{-- <meta name="userId" content="{{ Auth::check() ? Auth::user->id : '' }}"> --}}
     
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/head-logo.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/iconSI.ico') }}">
     <title>Verifikasi Smelter SI</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('material/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
