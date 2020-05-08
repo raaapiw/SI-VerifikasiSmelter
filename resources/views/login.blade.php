@@ -119,7 +119,7 @@
     <!-- ============================================================== -->
     {{-- style="background-image:url({{ asset('material/images/background/2.jpg')}}); min-height: 100%;min-width: 1024px;width: 100%;height: auto;" --}}
     <section id="wrapper">
-        <div class="login-register" style="background-image:url({{ asset('material/images/background/2.jpg')}}); min-height: 100%;min-width: 1024px;width: 100%;height: auto;">        
+        <div class="login-register" style="background-image:url({{ asset('material/images/background/4.jpg')}}); min-height: 100%;min-width: 1024px;width: 100%;height: auto;">        
             <div class="login-box card">
             <div class="card-body">
                 <form class="form-horizontal form-material" id="loginform" action="{{ route('postLogin') }}" method="POST">                    
