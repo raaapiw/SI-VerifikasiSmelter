@@ -15,6 +15,7 @@ Route::post('/logout', 'UserController@postLogout')->name('postLogout');
 
 Route::group(['middleware' => 'visitor'], function() {
     Route::get('/login', 'UserController@login')->name('login');
+    Route::get('/new-login', 'UserController@newlogin')->name('newlogin');
     Route::post('/login', 'UserController@postLogin')->name('postLogin');
 
 });

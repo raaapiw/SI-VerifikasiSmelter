@@ -27,9 +27,14 @@ class UserController extends Controller
         return view('login');
     }
 
+    public function newlogin(){
+        return view('newlogin');
+    }
+
     public function postLogin(Request $request){
         try{
             Sentinel::authenticate($request->all());
+            // dd($request->all());
             if(Sentinel::check()){
                 if(Sentinel::getUser()->roles()->first()->slug == 'superAdmin')
                     return redirect()->route('superAdmin.dashboard');

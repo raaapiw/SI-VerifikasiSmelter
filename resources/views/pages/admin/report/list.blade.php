@@ -59,7 +59,7 @@
                                             @if(isset($row->link))
                                                 <a href="{{ $row->link }}"><span><i class="fa fa-eye"></i></span></a>
                                             @else
-                                                <span class="label label-warning">Tidak Ada</span>
+                                                -
                                             @endif
                                         </center>
                                     </td>
