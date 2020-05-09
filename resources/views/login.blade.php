@@ -3,6 +3,88 @@
 <html lang="en">
 
 <head>
+    <style>
+        .cb-slideshow,
+        .cb-slideshow:after { 
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            z-index: 0; 
+        }
+        .cb-slideshow:after { 
+            content: '';
+            background: transparent url(img.png) repeat top left; 
+        }
+
+        .cb-slideshow li span { 
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            color: transparent;
+            background-size: cover;
+            background-position: 50% 50%;
+            background-repeat: none;
+            opacity: 0;
+            z-index: 0;
+            animation: imageAnimation 30s linear infinite 0s; 
+        }
+
+        .cb-slideshow li:nth-child(1) span { 
+            background-image: url({{ asset('material/images/background/4.jpg')}}) 
+        }
+        .cb-slideshow li:nth-child(2) span { 
+            background-image: url({{ asset('material/images/background/1.jpg')}});
+            animation-delay: 6s; 
+        }
+        .cb-slideshow li:nth-child(3) span { 
+            background-image: url({{ asset('material/images/background/6.jpg')}});
+            animation-delay: 12s; 
+        }
+        .cb-slideshow li:nth-child(4) span { 
+            background-image: url({{ asset('material/images/background/3.jpg')}});
+            animation-delay: 18s; 
+        }
+        .cb-slideshow li:nth-child(5) span { 
+            background-image: url({{ asset('material/images/background/5.jpg')}});
+            animation-delay: 24s; 
+        }
+        /* .cb-slideshow li:nth-child(6) span { 
+            background-image: url({{ asset('material/images/background/2.jpg')}});
+            animation-delay: 30s; 
+        } */
+
+        .cb-slideshow li:nth-child(2) div { 
+            animation-delay: 6s; 
+        }
+        .cb-slideshow li:nth-child(3) div { 
+            animation-delay: 12s; 
+        }
+        .cb-slideshow li:nth-child(4) div { 
+            animation-delay: 18s; 
+        }
+        .cb-slideshow li:nth-child(5) div { 
+            animation-delay: 24s; 
+        }
+        /* .cb-slideshow li:nth-child(6) div { 
+            animation-delay: 30s; 
+        } */
+
+        @keyframes imageAnimation { 
+            0% { opacity: 0; animation-timing-function: ease-in; }
+            8% { opacity: 1; animation-timing-function: ease-out; }
+            17% { opacity: 1 }
+            25% { opacity: 0 }
+            100% { opacity: 0 }
+        }
+
+        .no-cssanimations .cb-slideshow li span{
+            opacity: 1;
+        }
+    </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
@@ -107,6 +189,26 @@
 </head>
 
 <body>
+    <ul class="cb-slideshow">
+        <li style="list-style-type: none;">
+            <span>Image 01</span>
+        </li>
+        <li style="list-style-type: none;">
+            <span>Image 02</span>
+        </li>
+        <li style="list-style-type: none;">
+            <span>Image 03</span>
+        </li>
+        <li style="list-style-type: none;">
+            <span>Image 04</span>
+        </li>
+        <li style="list-style-type: none;">
+            <span>Image 05</span>
+        </li>
+        {{-- <li style="list-style-type: none;">
+            <span>Image 06</span>
+        </li> --}}
+    </ul>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -119,7 +221,7 @@
     <!-- ============================================================== -->
     {{-- style="background-image:url({{ asset('material/images/background/2.jpg')}}); min-height: 100%;min-width: 1024px;width: 100%;height: auto;" --}}
     <section id="wrapper">
-        <div class="login-register" style="background-image:url({{ asset('material/images/background/4.jpg')}}); min-height: 100%;min-width: 1024px;width: 100%;height: auto;">        
+        <div class="login-register" style="background-image:url(); min-height: 100%;min-width: 1024px;width: 100%;height: auto;">        
             <div class="login-box card">
             <div class="card-body">
                 <form class="form-horizontal form-material" id="loginform" action="{{ route('postLogin') }}" method="POST">                    
