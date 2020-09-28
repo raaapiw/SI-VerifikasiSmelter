@@ -233,7 +233,7 @@
                             
                         </div>
                         <div class="col-3">
-                            <img width="90px" src="{{ asset('material/images/logobumn.png')}}" alt="Home" />
+                            <img width="100px" src="{{ asset('material/images/bumn2.png')}}" alt="Home" />
                         </div>
                     </div>
                     <div>
